@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper", "RockScissorPaper\RockScissorPaper.csproj", "{42DBF428-134D-4F28-889F-167C315F82D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.Tests", "RockScissorPaper.Tests\RockScissorPaper.Tests.csproj", "{671AA7A6-9325-450F-830D-2E0A4900CCE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42DBF428-134D-4F28-889F-167C315F82D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42DBF428-134D-4F28-889F-167C315F82D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42DBF428-134D-4F28-889F-167C315F82D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42DBF428-134D-4F28-889F-167C315F82D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
