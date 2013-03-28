@@ -8,8 +8,26 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
-
+    <nav style="background-color:aqua">
+        <div class="wrapper960" >
+            <div class="wrapper2R">
+                <a>LinkToAdd</a>
+            </div>
+        </div>
+        <div class="clear-fix"></div>
+    </nav>
+    <section id="banner" style="background-color:firebrick">
+        <div class="wrapper960" >
+                <h2>Rock Scissor Paper</h2>
+                <p>
+                
+                </p>
+            <div class="clear-fix"></div>
+        </div>
+    </section>
+    <div class="wrapper960" >
+        @RenderBody()
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>

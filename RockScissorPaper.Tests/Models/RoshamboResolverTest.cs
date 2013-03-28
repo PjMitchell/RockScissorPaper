@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RockScissorPaper.Tests.Models
 {
     [TestClass]
-    public class RoshamboServiceTest
+    public class RoshamboResolverTest
     {
         private string _rockWin = "Rock breaks Scissor";
         private string _scissorWin = "Scissors cut Paper";
@@ -15,7 +15,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestRockVsRock()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Rock, RoshamboSelection.Rock);
 
@@ -26,7 +26,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestRockVsScissor()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Rock, RoshamboSelection.Scissor);
 
@@ -37,7 +37,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestRockVsPaper()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Rock, RoshamboSelection.Paper);
 
@@ -48,7 +48,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestScissorVsRock()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Scissor, RoshamboSelection.Rock);
 
@@ -59,7 +59,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestScissorVsScissor()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Scissor, RoshamboSelection.Scissor);
             Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
@@ -70,7 +70,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestScissorVsPaper()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Scissor, RoshamboSelection.Paper);
 
@@ -81,7 +81,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestPaperVsRock()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Paper, RoshamboSelection.Rock);
 
@@ -92,7 +92,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestPaperVsScissor()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Paper, RoshamboSelection.Scissor);
             
@@ -103,7 +103,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestPaperVsPaper()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
 
             service.ResolveRound(RoshamboSelection.Paper, RoshamboSelection.Paper);
 
@@ -116,7 +116,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestMultipleResolvesWithOneInstance()
         {
-            RoshamboService service = new RoshamboService();
+            RoshamboResolver service = new RoshamboResolver();
             service.ResolveRound(RoshamboSelection.Rock, RoshamboSelection.Scissor);
             service.ResolveRound(RoshamboSelection.Rock, RoshamboSelection.Paper);
 

@@ -93,7 +93,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\RoshamboServiceTest.cs" />
+    <Compile Include="Models\Bots\SimpleBotTest.cs" />
+    <Compile Include="Models\RoshamboResolverTest.cs" />
+    <Compile Include="Models\Statistics\PearsonChiSquaredTestTest.cs" />
+    <Compile Include="Models\StandardGamerScoreResolverTest.cs" />
+    <Compile Include="Models\GameServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
   </ItemGroup>
