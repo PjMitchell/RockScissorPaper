@@ -46,13 +46,53 @@
             <td></td>
         </tr>
          <tr>
-            <td><button>Rock</button></td>
+            <td><button onclick="RoshamboSelect('1')">Rock</button></td>
             <td></td>
-            <td><button>Scissor</button></td>
+            <td><button onclick="RoshamboSelect('2')">Scissor</button></td>
             <td></td>
-            <td><button>Paper</button></td>
+            <td><button onclick="RoshamboSelect('3')">Paper</button></td>
         </tr>
     </table>
+    @section scripts {
+    <script>
+        function RoshamboSelect(input) {
+            var inputModel = { id: '@Model.Id', playerId: '@Model.PlayerOne.PlayerId', selection: input };
+            $.getJSON('/api/values', inputModel, function (data) {
+                $('#gameBannerMessage').html(data.BannerMessage);
+                if (data.PlayerOne.CurrentSelection == 1)
+                { data.PlayerOne.CurrentSelection = 'Rock'; }
+                if (data.PlayerOne.CurrentSelection == 2)
+                { data.PlayerOne.CurrentSelection = 'Scissor'; }
+                if (data.PlayerOne.CurrentSelection == 3)
+                { data.PlayerOne.CurrentSelection = 'Paper'; }
+                if (data.PlayerOne.CurrentSelection == 0)
+                { data.PlayerOne.CurrentSelection = 'Ready'; }
+                $('#p1Selection').html(data.PlayerOne.CurrentSelection);
+                if (data.PlayerTwo.CurrentSelection == 1)
+                { data.PlayerTwo.CurrentSelection = 'Rock'; }
+                if (data.PlayerTwo.CurrentSelection == 2)
+                { data.PlayerTwo.CurrentSelection = 'Scissor'; }
+                if (data.PlayerTwo.CurrentSelection == 3)
+                { data.PlayerTwo.CurrentSelection = 'Paper'; }
+                if (data.PlayerTwoCurrentSelection == 0)
+                { data.PlayerTwo.CurrentSelection = 'Ready'; }
+                $('#p2Selection').html(data.PlayerTwo.CurrentSelection);
+                $('#p1Score').html(data.PlayerOne.CurrentScore);
+                $('#p2Score').html(data.PlayerTwo.CurrentScore);
+                if (data.PlayerOne.IsViewer) {
+                    $('#userMessage').html(data.PlayerOne.PlayerMessage);
+                }
+                if (data.PlayerTwo.IsViewer) {
+                    $('#userMessage').html(data.PlayerTwo.PlayerMessage);
+                }
+                $('#GameRounds').html(data.PlayerTwo.RoundMessage);
+               
+            });
+            
+        }
+        
+    </script>
+        }
 
     
     

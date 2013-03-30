@@ -18,8 +18,9 @@ namespace RockScissorPaper.Controllers
         }
 
         // GET api/values/5
-        public GameState Get(int id, int playerId, RoshamboSelection selection)
+        public GameState Get(int id, int playerId, int selection)
         {
+            RoshamboSelection playerSelection = (RoshamboSelection)selection;
             GameService service = GameRepository.OpenGameServices.FirstOrDefault(s => s.CurrentGame.GameId == id);
             if (service == null)
             {
@@ -30,11 +31,11 @@ namespace RockScissorPaper.Controllers
                 GameServiceCommand command = new GameServiceCommand(id);
                 if (playerId == service.CurrentGame.PlayerOne.PlayerId)
                 {
-                    command.PlayerOneSelection = selection;
+                    command.PlayerOneSelection = playerSelection;
                 }
                 else if (playerId == service.CurrentGame.PlayerTwo.PlayerId)
                 {
-                    command.PlayerOneSelection = selection;
+                    command.PlayerOneSelection = playerSelection;
                 }
                 else
                 {
