@@ -7,11 +7,8 @@ namespace RockScissorPaper.Models
 {
     public class GameRepository
     {
-        public List<RoshamboGame> OpenGames  {get; set;}
+        public static List<RoshamboGame> OpenGames  = new List<RoshamboGame>();
 
-        public GameRepository()
-        {
-            OpenGames = new List<RoshamboGame>();
-        }
+       
     }
 }

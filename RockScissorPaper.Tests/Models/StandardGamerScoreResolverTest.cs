@@ -31,6 +31,7 @@ namespace RockScissorPaper.Tests.Models
             Assert.AreEqual(0, action.PlayerTwoScore);
 
         }
+
         [TestMethod]
         public void TestScoreP2Win()
         {
@@ -53,6 +54,7 @@ namespace RockScissorPaper.Tests.Models
             Assert.AreEqual(3, action.PlayerTwoScore);
 
         }
+
         [TestMethod]
         public void TestScoreDraw()
         {

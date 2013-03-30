@@ -30,16 +30,8 @@ namespace RockScissorPaper.Models
         public GameRules(byte numberofrounds = 5, bool allowDraw = true, IRoshamboResolver roshamboResolver = null, IGameScoreResolver gameScoreResolver=null)
         {
             _totalRounds = numberofrounds;
-            if (roshamboResolver == null)
-            {
-                roshamboResolver = new RoshamboResolver();
-            }
-            _roundResolver = roshamboResolver;
-            if (gameScoreResolver == null)
-            {
-                gameScoreResolver = new StandardGameScoreResolver();
-            }
-            _gameScoreResolver = gameScoreResolver;
+            _roundResolver = roshamboResolver ?? new RoshamboResolver();
+            _gameScoreResolver = gameScoreResolver ?? new StandardGameScoreResolver();
             _allowDraw = allowDraw;
         }
         

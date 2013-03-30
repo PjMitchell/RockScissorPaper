@@ -8,16 +8,20 @@ namespace RockScissorPaper.Models.Bots
     public class SimpleBot : BotBase
     {
         private static string name = "Simple Jack";
+        private static Random _random = new Random((int)DateTime.Now.Ticks);
+
         public SimpleBot() :base(name)
         {
         }
 
         public override RoshamboSelection Go()
         {
-            Random random = new Random();
-            int i = random.Next(1, 3);
+            lock (_random)
+            {
+            int i = _random.Next(1,4);
             RoshamboSelection result = (RoshamboSelection)i;
-            return base.Go();
+            return result;
+            }
         }
     }
 }

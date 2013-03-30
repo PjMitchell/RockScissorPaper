@@ -7,16 +7,17 @@ namespace RockScissorPaper.Tests.Models
     [TestClass]
     public class RoshamboResolverTest
     {
-        private string _rockWin = "Rock breaks Scissor";
-        private string _scissorWin = "Scissors cut Paper";
-        private string _paperWin = "Paper covers Rock";
-        private string _draw = "Great minds think alike";
+        private const string _rockWin = "Rock breaks Scissor";
+        private const string _scissorWin = "Scissors cut Paper";
+        private const string _paperWin = "Paper covers Rock";
+        private const string _draw = "Great minds think alike";
+
         #region All Combos
+        
         [TestMethod]
         public void TestRockVsRock()
         {
             RoshamboResolver service = new RoshamboResolver();
-
             service.ResolveRound(RoshamboSelection.Rock, RoshamboSelection.Rock);
 
             Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
@@ -55,7 +56,7 @@ namespace RockScissorPaper.Tests.Models
             Assert.AreEqual(GameOutcome.Lose, service.PlayerOneResult);
             Assert.AreEqual(_rockWin, service.Message);
         }
-        
+
         [TestMethod]
         public void TestScissorVsScissor()
         {
@@ -111,6 +112,7 @@ namespace RockScissorPaper.Tests.Models
             Assert.AreEqual(_draw, service.Message);
 
         }
+
         #endregion
 
         [TestMethod]

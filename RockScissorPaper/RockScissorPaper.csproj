@@ -130,26 +130,29 @@
     <Compile Include="Models\Bots\BotBase.cs" />
     <Compile Include="Models\Bots\RockBot.cs" />
     <Compile Include="Models\Bots\SimpleBot.cs" />
-    <Compile Include="Models\GameModels\GameRules.cs" />
-    <Compile Include="Models\GameModels\GameOutcome.cs" />
+    <Compile Include="Models\DomainModels\GameRules.cs" />
+    <Compile Include="Models\DomainModels\GameOutcome.cs" />
     <Compile Include="Models\GameModels\IGameScoreResolver.cs" />
-    <Compile Include="Models\GameModels\RoshamboGame.cs" />
+    <Compile Include="Models\DomainModels\RoshamboGame.cs" />
     <Compile Include="Models\GameModels\StandardGameScoreResolver.cs" />
-    <Compile Include="Models\GameModels\GameRound.cs" />
+    <Compile Include="Models\DomainModels\GameRound.cs" />
     <Compile Include="Models\GameModels\IRoshamboResolver.cs" />
-    <Compile Include="Models\GameRepository.cs" />
-    <Compile Include="Models\GameService.cs" />
-    <Compile Include="Models\GameServiceCommand.cs" />
-    <Compile Include="Models\GameServiceResult.cs" />
-    <Compile Include="Models\GameServiceStatus.cs" />
-    <Compile Include="Models\RoshamboSelection.cs" />
-    <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\RoshamboResolver.cs" />
+    <Compile Include="Models\DataHandling\GameRepository.cs" />
+    <Compile Include="Models\ViewModels\GameViewModel.cs" />
+    <Compile Include="Models\Services\GameService.cs" />
+    <Compile Include="Models\Commands\GameServiceCommand.cs" />
+    <Compile Include="Models\DomainModels\GameServiceResult.cs" />
+    <Compile Include="Models\DomainModels\GameServiceStatus.cs" />
+    <Compile Include="Models\DomainModels\RoshamboSelection.cs" />
+    <Compile Include="Models\DomainModels\Player.cs" />
+    <Compile Include="Models\GameModels\RoshamboResolver.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Drunk-hamster2.jpg" />
+    <Content Include="Content\Pm.jpg" />
     <Content Include="Content\Wrapper960Static.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -249,10 +252,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Game.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DataHandling\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

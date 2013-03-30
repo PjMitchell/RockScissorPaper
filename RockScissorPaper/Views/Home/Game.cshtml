@@ -1,0 +1,49 @@
+﻿@model RockScissorPaper.Models.GameViewModel
+@{
+    ViewBag.Title = "Game";
+}
+<div class="wrapper3"></div>
+<div class="wrapper6" id="gameContainer">
+    
+    <h2 id="gameBannerMessage"> Make Your selection</h2>
+    <table>
+        <tr>
+            <td>@Model.PlayerOne.Name</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.PlayerTwo.Name</td>
+        </tr>
+        <tr>
+            <td><img src="~/Content/Pm.jpg" width="80"/></td>
+            <td id="p1Selection">Ready?</td>
+            <td> Vs</td>
+            <td id="p2Selection">Ready?</td>
+            <td><img src="~/Content/Drunk-hamster2.jpg" width="80"/></td>
+        </tr>
+        <tr>
+            <td id="p1Score"></td>
+            <td ></td>
+            <td id="userMessage">Make your selection</td>
+            <td></td>
+            <td id="p2Score"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td id="GameRounds">0/5</td>
+            <td></td>
+            <td></td>
+        </tr>
+         <tr>
+            <td><button>Rock</button></td>
+            <td></td>
+            <td><button>Scissor</button></td>
+            <td></td>
+            <td><button>Paper</button></td>
+        </tr>
+    </table>
+
+    
+    
+</div>

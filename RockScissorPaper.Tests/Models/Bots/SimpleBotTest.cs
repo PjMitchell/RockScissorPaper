@@ -27,7 +27,7 @@ namespace RockScissorPaper.Tests.Models.Bots
             int countRock = 0;
             int countPaper = 0;
             int countScissor = 0;
-            for (int i = 0; i < 99; i++)
+            for (int i = 0; i < 99999; i++)
             {
                 RoshamboSelection selection = bot.Go();
                 switch (selection)
@@ -44,9 +44,9 @@ namespace RockScissorPaper.Tests.Models.Bots
                 }
             }
             List<PearsonChiSquaredSample> sample = new List<PearsonChiSquaredSample>();
-            sample.Add(new PearsonChiSquaredSample(33,countRock));
-            sample.Add(new PearsonChiSquaredSample(33, countPaper));
-            sample.Add(new PearsonChiSquaredSample(33, countScissor));
+            sample.Add(new PearsonChiSquaredSample(33333,countRock));
+            sample.Add(new PearsonChiSquaredSample(33333, countPaper));
+            sample.Add(new PearsonChiSquaredSample(33333, countScissor));
             PearsonChiSquaredTest test= new PearsonChiSquaredTest(sample);
 
             Assert.IsTrue(test.Probability > 0.01m);

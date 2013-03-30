@@ -67,9 +67,9 @@ namespace RockScissorPaper.Models.Statistics
 
         private void getProbability()
         {
-            for (int i = 8; i < 0; i--)
+            for (int i = 7; i >= 0; i--)
             {
-                if (PROBABILITYTABLE[degreesOfFreedom, i] >= chiSqaredNumber)
+                if (PROBABILITYTABLE[degreesOfFreedom, i] <= chiSqaredNumber)
                 {
                     probability = PROBABILITYTABLE[0, i];
                     return;

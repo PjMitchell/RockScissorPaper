@@ -12,5 +12,10 @@ namespace RockScissorPaper.Models.Bots
             : base(name)
         {
         }
+
+        public override RoshamboSelection Go()
+        {
+            return RoshamboSelection.Rock;
+        }
     }
 }

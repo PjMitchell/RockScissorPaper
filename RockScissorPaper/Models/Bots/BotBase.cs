@@ -15,10 +15,8 @@ namespace RockScissorPaper.Models.Bots
             _name = name;
         }
 
-        public virtual RoshamboSelection Go()
-        {
-            return RoshamboSelection.Rock;
-        }
+        public abstract RoshamboSelection Go();
+       
 
 
     }
