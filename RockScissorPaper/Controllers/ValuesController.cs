@@ -21,7 +21,7 @@ namespace RockScissorPaper.Controllers
         public GameState Get(int id, int playerId, int selection)
         {
             RoshamboSelection playerSelection = (RoshamboSelection)selection;
-            GameService service = GameRepository.OpenGameServices.FirstOrDefault(s => s.CurrentGame.GameId == id);
+            GameService service = GameRepository.Get(id) ;
             if (service == null)
             {
                 return null;
@@ -42,7 +42,8 @@ namespace RockScissorPaper.Controllers
                     return null;
                 }
                 service.Execute(command);
-                return service.GetGameState(playerId);
+                GameState result = service.GetGameState(playerId);
+                return result;
             }
         }
 

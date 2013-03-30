@@ -19,6 +19,7 @@ namespace RockScissorPaper.Controllers
 
         public ActionResult Game()
         {
+            GameRepository.Reset();
             int playerid = 1;
             int botid = 2;
             Player one = new Player();
@@ -29,7 +30,7 @@ namespace RockScissorPaper.Controllers
             two.Name = two.Bot.Name;
             two.PlayerId = botid;
             GameService service = new GameService(new RoshamboGame(1, new GameRules(), one, two));
-            GameRepository.OpenGameServices.Add(service);
+            GameRepository.Add(service);
             GameViewModel view = new GameViewModel();
             view.PlayerOne = one;
             view.PlayerTwo = two;

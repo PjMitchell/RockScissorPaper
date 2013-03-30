@@ -40,19 +40,19 @@ namespace RockScissorPaper.Models
             CurrentGame.Rules.RoundResolver.ResolveRound(currentRound);
             GameState.BannerMessage = CurrentGame.Rules.RoundResolver.Message;
             int currentRoundNumber = CurrentGame.Rounds.Count;
-            GameState.RoundMessage = string.Format("{0} / {1}", currentRound, CurrentGame.Rules.TotalRounds);
+            GameState.RoundMessage = string.Format("{0} / {1}", currentRoundNumber, CurrentGame.Rules.TotalRounds);
             CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
             
             //Sets Player One State
             GameState.PlayerOne.PlayerId = CurrentGame.PlayerOne.PlayerId;
             GameState.PlayerOne.CurrentSelection = currentRound.PlayerOneSelection;
-            GameState.PlayerOne.CurrentScore = CurrentGame.Rules.GameScoreResolver.PlayerOneScore;
+            GameState.PlayerOne.CurrentScore = CurrentGame.Rounds.Count(r=>r.PlayerOneOutcome== GameOutcome.Win);
             GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.RoundResolver.PlayerOneResult);
             
             //Sets Player Two State
             GameState.PlayerTwo.PlayerId = CurrentGame.PlayerTwo.PlayerId;
             GameState.PlayerTwo.CurrentSelection = currentRound.PlayerTwoSelection;
-            GameState.PlayerTwo.CurrentScore = CurrentGame.Rules.GameScoreResolver.PlayerTwoScore;
+            GameState.PlayerTwo.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
             GameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.RoundResolver.PlayerTwoResult);
         }
 
