@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Bots\SimpleBotTest.cs" />
+    <Compile Include="Models\DummyGame.cs" />
     <Compile Include="Models\RoshamboResolverTest.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTestTest.cs" />
     <Compile Include="Models\StandardGamerScoreResolverTest.cs" />

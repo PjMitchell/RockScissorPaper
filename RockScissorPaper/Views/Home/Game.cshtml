@@ -5,7 +5,7 @@
 <div class="wrapper3"></div>
 <div class="wrapper6" id="gameContainer">
     
-    <h2 id="gameBannerMessage"> Make Your selection</h2>
+    <h2 id="gameBannerMessage"> @Model.StateOfGame.BannerMessage</h2>
     <table>
         <tr>
             <td>@Model.PlayerOne.Name</td>
@@ -16,22 +16,32 @@
         </tr>
         <tr>
             <td><img src="~/Content/Pm.jpg" width="80"/></td>
-            <td id="p1Selection">Ready?</td>
+            <td id="p1Selection">@Model.StateOfGame.PlayerOne.CurrentSelection</td>
             <td> Vs</td>
-            <td id="p2Selection">Ready?</td>
+            <td id="p2Selection">@Model.StateOfGame.PlayerTwo.CurrentSelection</td>
             <td><img src="~/Content/Drunk-hamster2.jpg" width="80"/></td>
         </tr>
         <tr>
-            <td id="p1Score"></td>
+            <td id="p1Score">@Model.StateOfGame.PlayerOne.CurrentScore</td>
             <td ></td>
-            <td id="userMessage">Make your selection</td>
+            <td id="userMessage">
+                @if (@Model.StateOfGame.PlayerOne.IsViewer)
+                {
+                    @Model.StateOfGame.PlayerOne.PlayerMessage 
+                }
+                else
+                {
+                    @Model.StateOfGame.PlayerTwo.PlayerMessage
+                }
+
+            </td>
             <td></td>
-            <td id="p2Score"></td>
+            <td id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
-            <td id="GameRounds">0/5</td>
+            <td id="GameRounds">@Model.StateOfGame.RoundMessage</td>
             <td></td>
             <td></td>
         </tr>

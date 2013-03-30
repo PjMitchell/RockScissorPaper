@@ -7,6 +7,8 @@ using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockScissorPaper;
 using RockScissorPaper.Controllers;
+using RockScissorPaper.Models;
+using RockScissorPaper.Tests.Models;
 
 namespace RockScissorPaper.Tests.Controllers
 {
@@ -34,12 +36,14 @@ namespace RockScissorPaper.Tests.Controllers
         {
             // Arrange
             ValuesController controller = new ValuesController();
+            GameService service = new GameService(DummyGame.GetDummyGame());
+            GameRepository.OpenGameServices.Add(service);
 
             // Act
-            string result = controller.Get(5);
+            GameState result = controller.Get(1,1,RoshamboSelection.Paper);
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);
         }
 
         [TestMethod]

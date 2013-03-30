@@ -9,33 +9,35 @@ namespace RockScissorPaper.Models
     public class GameService
     {
         
-        private RoshamboGame _currentgame;
+        
         private GameRound _currentRound;
-        private GameServiceStatus _status;
-        public GameServiceStatus Status { get { return _status; } }
-        public RoshamboGame CurrentGame { get { return _currentgame; } }
+        public GameStatus Status { get; private set; }
+        public RoshamboGame CurrentGame { get; private set; }
+        private GameStateService _gameStateService { get; set; }
 
         public GameService(RoshamboGame game)
         {
-            _currentgame = game;
-            _status = GameServiceStatus.NewRound;
+            CurrentGame = game;
+            _gameStateService = new GameStateService(game);
+            Status = GameStatus.NewRound;
+            _gameStateService.Update(Status);
         }
 
         public GameServiceResult Execute(GameServiceCommand command)
         {
-            if (_currentgame.GameId == command.Id)
+            if (CurrentGame.GameId == command.GameId)
             {
-                switch (_status)
+                switch (Status)
                 {
-                    case GameServiceStatus.NewRound:
+                    case GameStatus.NewRound:
                         return ProcessNewRound(command);
-                    case GameServiceStatus.WaitingPlayerOne:
+                    case GameStatus.WaitingPlayerOne:
                         break;
-                    case GameServiceStatus.WaitingPlayerTwo:
+                    case GameStatus.WaitingPlayerTwo:
                         break;
-                    case GameServiceStatus.RoundResult:
+                    case GameStatus.RoundResult:
                         return ProcessRoundResult(command);
-                    case GameServiceStatus.EndOfGame:
+                    case GameStatus.EndOfGame:
                         return ProcessEndOfGame(command);
                     default:
                         break;
@@ -45,12 +47,14 @@ namespace RockScissorPaper.Models
             return null;
         }
 
+        #region ExecuteProcesses
+
         private GameServiceResult ProcessEndOfGame(GameServiceCommand command)
         {
-            _currentgame.Rules.GameScoreResolver.ResolveGame(_currentgame.Rounds);
+            CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
             GameServiceResult result = new GameServiceResult();
-            result.PlayerOneOutcome = _currentgame.Rules.GameScoreResolver.PlayerOneOutcome;
-            result.PlayerTwoOutcome = _currentgame.Rules.GameScoreResolver.PlayerTwoOutcome;
+            result.PlayerOneOutcome = CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome;
+            result.PlayerTwoOutcome = CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome;
             return result;
 
         }
@@ -59,41 +63,42 @@ namespace RockScissorPaper.Models
         {
             if (_currentRound == null)
             {
-                _status = GameServiceStatus.NewRound;
+                Status = GameStatus.NewRound;
                 return null;
             }
             if (_currentRound.PlayerOneSelection == 0 )
             {
-                _status = GameServiceStatus.WaitingPlayerOne;
+                Status = GameStatus.WaitingPlayerOne;
                 return null;
             }
             if (_currentRound.PlayerTwoSelection == 0)
             {
-                _status = GameServiceStatus.WaitingPlayerTwo;
+                Status = GameStatus.WaitingPlayerTwo;
                 return null;
             }
-            _currentgame.Rules.RoundResolver.ResolveRound(_currentRound);
-            _currentgame.Rounds.Add(_currentRound);
+            CurrentGame.Rules.RoundResolver.ResolveRound(_currentRound);
+            CurrentGame.Rounds.Add(_currentRound);
+            _gameStateService.Update(Status, _currentRound);
 
             //Postround decision
             GameServiceResult result = new GameServiceResult();
-            result.Message = _currentgame.Rules.RoundResolver.Message;
-            _currentgame.Rules.GameScoreResolver.ResolveGame(_currentgame.Rounds);
-            if (_currentRound.RoundNumber < _currentgame.Rules.TotalRounds)
+            result.Message = CurrentGame.Rules.RoundResolver.Message;
+            CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
+            if (_currentRound.RoundNumber < CurrentGame.Rules.TotalRounds)
             {
-                _status = GameServiceStatus.NewRound;
+                Status = GameStatus.NewRound;
                 return result;
             }
             else
             {
-                if (_currentgame.Rules.AllowDraw ||_currentgame.Rules.GameScoreResolver.PlayerOneOutcome != GameOutcome.Draw)
+                if (CurrentGame.Rules.AllowDraw || CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome != GameOutcome.Draw)
                 {
-                    _status = GameServiceStatus.EndOfGame;
+                    Status = GameStatus.EndOfGame;
                     return result;
                 }
                 else
                 {
-                    _status = GameServiceStatus.NewRound;
+                    Status = GameStatus.NewRound;
                     return result;
                 }
             }
@@ -109,22 +114,22 @@ namespace RockScissorPaper.Models
             }
                
             _currentRound = new GameRound();
-            _currentRound.RoundNumber = _currentgame.Rounds.Count + 1;
+            _currentRound.RoundNumber = CurrentGame.Rounds.Count + 1;
 
             //player one choice
             if (command.PlayerOneSelection != 0)
             {
                 _currentRound.PlayerOneSelection = command.PlayerOneSelection;
-                if (_currentgame.PlayerTwo.IsBot)
+                if (CurrentGame.PlayerTwo.IsBot)
                 {
-                    _currentRound.PlayerTwoSelection = _currentgame.PlayerTwo.Bot.Go();
+                    _currentRound.PlayerTwoSelection = CurrentGame.PlayerTwo.Bot.Go();
                     command.PlayerTwoSelection = _currentRound.PlayerTwoSelection;
-                    _status = GameServiceStatus.RoundResult;
+                    Status = GameStatus.RoundResult;
                     return Execute(command);
                 }
                 else
                 {
-                    _status = GameServiceStatus.WaitingPlayerTwo;
+                    Status = GameStatus.WaitingPlayerTwo;
                     GameServiceResult result = new GameServiceResult();
                     result.Message = "Waiting for player two";
                     return result;
@@ -134,16 +139,16 @@ namespace RockScissorPaper.Models
             if (command.PlayerTwoSelection != 0)
             {
                 _currentRound.PlayerTwoSelection = command.PlayerTwoSelection;
-                if (_currentgame.PlayerOne.IsBot)
+                if (CurrentGame.PlayerOne.IsBot)
                 {
-                    _currentRound.PlayerOneSelection = _currentgame.PlayerOne.Bot.Go();
+                    _currentRound.PlayerOneSelection = CurrentGame.PlayerOne.Bot.Go();
                     command.PlayerOneSelection = _currentRound.PlayerOneSelection;
-                    _status = GameServiceStatus.RoundResult;
+                    Status = GameStatus.RoundResult;
                     return Execute(command);
                 }
                 else
                 {
-                    _status = GameServiceStatus.WaitingPlayerOne;
+                    Status = GameStatus.WaitingPlayerOne;
                     GameServiceResult result = new GameServiceResult();
                     result.Message = "Waiting for player one";
                     return result;
@@ -151,9 +156,14 @@ namespace RockScissorPaper.Models
             }
             return null;
         }
-
         
+        #endregion
 
-        
+        public GameState GetGameState(int playerId)
+        {
+            _gameStateService.SetObservingPlayer(playerId);
+            return _gameStateService.GameState;
+        }
+
     }
 }

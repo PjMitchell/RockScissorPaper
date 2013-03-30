@@ -26,28 +26,28 @@ namespace RockScissorPaper.Tests.Models
             GameServiceResult r1 = service.Execute(c1);
             
             Assert.AreEqual("Paper covers Rock", r1.Message);
-            Assert.AreEqual(GameServiceStatus.NewRound, service.Status);
+            Assert.AreEqual(GameStatus.NewRound, service.Status);
            
             GameServiceResult r2 = service.Execute(c2);
             Assert.AreEqual("Rock breaks Scissor", r2.Message);
-            Assert.AreEqual(GameServiceStatus.NewRound, service.Status);
+            Assert.AreEqual(GameStatus.NewRound, service.Status);
 
             GameServiceResult r3 = service.Execute(c3);
             Assert.AreEqual("Great minds think alike", r3.Message);
-            Assert.AreEqual(GameServiceStatus.NewRound, service.Status);
+            Assert.AreEqual(GameStatus.NewRound, service.Status);
 
             GameServiceResult r4 = service.Execute(c1);
             Assert.AreEqual("Paper covers Rock", r1.Message);
-            Assert.AreEqual(GameServiceStatus.NewRound, service.Status);
+            Assert.AreEqual(GameStatus.NewRound, service.Status);
 
             GameServiceResult r5 = service.Execute(c1);
             Assert.AreEqual("Paper covers Rock", r1.Message);
-            Assert.AreEqual(GameServiceStatus.EndOfGame, service.Status);
+            Assert.AreEqual(GameStatus.EndOfGame, service.Status);
 
             GameServiceResult r6 = service.Execute(c1);
             Assert.AreEqual(GameOutcome.Win, r6.PlayerOneOutcome);
             Assert.AreEqual(GameOutcome.Lose, r6.PlayerTwoOutcome);
-            Assert.AreEqual(GameServiceStatus.EndOfGame, service.Status);
+            Assert.AreEqual(GameStatus.EndOfGame, service.Status);
 
 
 

@@ -7,7 +7,8 @@ namespace RockScissorPaper.Models
 {
     public class GameRepository
     {
-        public static List<RoshamboGame> OpenGames  = new List<RoshamboGame>();
+        //Add dispose methods
+        public static List<GameService> OpenGameServices  = new List<GameService>();
 
        
     }

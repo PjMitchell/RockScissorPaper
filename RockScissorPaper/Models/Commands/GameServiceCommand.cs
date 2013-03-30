@@ -7,8 +7,7 @@ namespace RockScissorPaper.Models
 {
     public class GameServiceCommand
     {
-        private int _id;
-        public int Id { get { return _id; } }
+        public int GameId { get; private set; }
 
         public RoshamboSelection PlayerOneSelection { get; set; }
 
@@ -16,7 +15,7 @@ namespace RockScissorPaper.Models
 
         public GameServiceCommand(int gameId)
         {
-            _id = gameId;
+            GameId = gameId;
         }
     }
 }

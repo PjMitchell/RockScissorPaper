@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public enum GameServiceStatus
+    public enum GameStatus
     {
         NewRound =1,
         WaitingPlayerOne = 2,

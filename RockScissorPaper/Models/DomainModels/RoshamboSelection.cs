@@ -7,6 +7,7 @@ namespace RockScissorPaper.Models
 {
     public enum RoshamboSelection
     {
+        Ready = 0,
         Rock = 1,
         Scissor = 2,
         Paper = 3

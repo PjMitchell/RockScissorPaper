@@ -10,6 +10,7 @@ namespace RockScissorPaper.Controllers
 {
     public class HomeController : Controller
     {
+        
 
         public ActionResult Index()
         {
@@ -18,18 +19,22 @@ namespace RockScissorPaper.Controllers
 
         public ActionResult Game()
         {
-            
+            int playerid = 1;
+            int botid = 2;
             Player one = new Player();
             one.Name = "Some Guy";
+            one.PlayerId = playerid;
             Player two = new Player();
             two.Bot = new SimpleBot();
             two.Name = two.Bot.Name;
-            RoshamboGame game = new RoshamboGame(1, new GameRules(), one, two);
-            GameRepository.OpenGames.Add(game);
+            two.PlayerId = botid;
+            GameService service = new GameService(new RoshamboGame(1, new GameRules(), one, two));
+            GameRepository.OpenGameServices.Add(service);
             GameViewModel view = new GameViewModel();
             view.PlayerOne = one;
             view.PlayerTwo = two;
-            view.Id = game.GameId;
+            view.Id = service.CurrentGame.GameId;
+            view.StateOfGame = service.GetGameState(playerid);
             return View(view);
         }
     }

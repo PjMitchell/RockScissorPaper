@@ -138,16 +138,19 @@
     <Compile Include="Models\DomainModels\GameRound.cs" />
     <Compile Include="Models\GameModels\IRoshamboResolver.cs" />
     <Compile Include="Models\DataHandling\GameRepository.cs" />
+    <Compile Include="Models\GameStateService.cs" />
+    <Compile Include="Models\ViewModels\GameState.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Services\GameService.cs" />
     <Compile Include="Models\Commands\GameServiceCommand.cs" />
     <Compile Include="Models\DomainModels\GameServiceResult.cs" />
-    <Compile Include="Models\DomainModels\GameServiceStatus.cs" />
+    <Compile Include="Models\DomainModels\GameStatus.cs" />
     <Compile Include="Models\DomainModels\RoshamboSelection.cs" />
     <Compile Include="Models\DomainModels\Player.cs" />
     <Compile Include="Models\GameModels\RoshamboResolver.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />
+    <Compile Include="Models\ViewModels\PlayerState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
