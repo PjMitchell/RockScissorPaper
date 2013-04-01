@@ -36,11 +36,10 @@ namespace RockScissorPaper.Tests.Controllers
         {
             // Arrange
             ValuesController controller = new ValuesController();
-            GameService service = new GameService(DummyGame.GetDummyGame());
-            GameRepository.OpenGameServices.Add(service);
+            GameService service = new GameService(new GameRepository(), DummyGame.GetDummyGame());
 
             // Act
-            GameState result = controller.Get(1,1,RoshamboSelection.Paper);
+            GameStateViewModel result = controller.Get(1,1,3);
 
             // Assert
             Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);

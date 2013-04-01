@@ -14,13 +14,13 @@ namespace RockScissorPaper.Tests.Models
         {
             RoshamboGame game = new RoshamboGame(1, new GameRules(), new Player(), new Player());
             game.PlayerTwo.Bot = new RockBot();
-            GameService service = new GameService(game);
+            GameService service = new GameService(new GameRepository(), game);
             
-            GameServiceCommand c1 = new GameServiceCommand(game.GameId);
+            PlayerSelectionCommand c1 = new PlayerSelectionCommand(game.GameId);
             c1.PlayerOneSelection = RoshamboSelection.Paper;
-            GameServiceCommand c2 = new GameServiceCommand(game.GameId);
+            PlayerSelectionCommand c2 = new PlayerSelectionCommand(game.GameId);
             c2.PlayerOneSelection = RoshamboSelection.Scissor;
-            GameServiceCommand c3 = new GameServiceCommand(game.GameId);
+            PlayerSelectionCommand c3 = new PlayerSelectionCommand(game.GameId);
             c3.PlayerOneSelection = RoshamboSelection.Rock;
 
             GameServiceResult r1 = service.Execute(c1);

@@ -8,22 +8,36 @@ namespace RockScissorPaper.Models
 {
     public class GameService
     {
-        
-        
+
+        private IGameRepository _repository;
         private GameRound _currentRound;
         public GameStatus Status { get; private set; }
         public RoshamboGame CurrentGame { get; private set; }
-        private GameStateService _gameStateService { get; set; }
+        private GameViewStateFactory _gameStateService { get; set; }
 
-        public GameService(RoshamboGame game)
+        public GameService(IGameRepository repository, RoshamboGame game)
         {
+            
+            _repository = repository;
+            _repository.Reset();//To be removed
             CurrentGame = game;
-            _gameStateService = new GameStateService(game);
+            _repository.AddGame(CurrentGame);
+            _gameStateService = new GameViewStateFactory(CurrentGame);
             Status = GameStatus.NewRound;
             _gameStateService.Update(Status);
-        }
 
-        public GameServiceResult Execute(GameServiceCommand command)
+        }
+        public GameService(IGameRepository repository, int id)
+        {
+            
+            _repository = repository;
+            CurrentGame = _repository.GetGame(id);
+            _gameStateService = new GameViewStateFactory(CurrentGame);
+            Status = GameStatus.NewRound;
+            _gameStateService.Update(Status);
+
+        }
+        public GameServiceResult Execute(PlayerSelectionCommand command)
         {
             if (CurrentGame.GameId == command.GameId)
             {
@@ -49,7 +63,7 @@ namespace RockScissorPaper.Models
 
         #region ExecuteProcesses
 
-        private GameServiceResult ProcessEndOfGame(GameServiceCommand command)
+        private GameServiceResult ProcessEndOfGame(PlayerSelectionCommand command)
         {
             CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
             GameServiceResult result = new GameServiceResult();
@@ -59,7 +73,7 @@ namespace RockScissorPaper.Models
 
         }
 
-        private GameServiceResult ProcessRoundResult(GameServiceCommand command)
+        private GameServiceResult ProcessRoundResult(PlayerSelectionCommand command)
         {
             if (_currentRound == null)
             {
@@ -106,7 +120,7 @@ namespace RockScissorPaper.Models
 
         }
 
-        private GameServiceResult ProcessNewRound(GameServiceCommand command)
+        private GameServiceResult ProcessNewRound(PlayerSelectionCommand command)
         {
             if (command.PlayerOneSelection == 0 && command.PlayerTwoSelection == 0)
             {
@@ -159,7 +173,7 @@ namespace RockScissorPaper.Models
         
         #endregion
 
-        public GameState GetGameState(int playerId)
+        public GameStateViewModel GetGameState(int playerId)
         {
             _gameStateService.SetObservingPlayer(playerId);
             return _gameStateService.GameState;

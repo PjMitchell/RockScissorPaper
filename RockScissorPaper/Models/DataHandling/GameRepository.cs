@@ -5,39 +5,37 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class GameRepository
+    public class GameRepository : IGameRepository
     {
         //Add dispose methods
-        private static List<GameService> OpenGameServices { get; set; }
+        private static List<RoshamboGame> OpenGames = new List<RoshamboGame>();
+        private static List<GameRound> UnresolvedRounds = new List<GameRound>();
         const int listLimit = 20;
 
-        public static void Reset()
+        public void Reset()
         {
-            OpenGameServices = new List<GameService>();
+            OpenGames = new List<RoshamboGame>();
         }
 
-        public static void Add(GameService gameService)
+        public void AddGame(RoshamboGame game)
         {
-            lock (OpenGameServices)
+            lock (OpenGames)
             {
-                if (OpenGameServices == null)
-                {
-                    OpenGameServices = new List<GameService>();
-                }
-                if (OpenGameServices.Count > listLimit)
+                
+                if (OpenGames.Count > listLimit)
                 {
                     // do something
                 }
                 else
                 {
-                    OpenGameServices.Add(gameService);
+                    OpenGames.Add(game);
                 }
             }
         }
 
-        public  static GameService Get(int id)
+        public RoshamboGame GetGame(int id)
         {
-            GameService result = OpenGameServices.FirstOrDefault(s => s.CurrentGame.GameId == id);
+            RoshamboGame result = OpenGames.FirstOrDefault(s => s.GameId == id);
             return result;
         }
     }

@@ -5,18 +5,18 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class GameState
+    public class GameStateViewModel
     {
         public int GameId { get; set; }
-        public PlayerState PlayerOne { get; set; }
-        public PlayerState PlayerTwo { get; set; }
+        public PlayerViewState PlayerOne { get; set; }
+        public PlayerViewState PlayerTwo { get; set; }
         public string RoundMessage { get; set; }
         public string BannerMessage { get; set; }
 
-        public GameState()
+        public GameStateViewModel()
         {
-            PlayerOne = new PlayerState();
-            PlayerTwo = new PlayerState();
+            PlayerOne = new PlayerViewState();
+            PlayerTwo = new PlayerViewState();
         }
     }
 }

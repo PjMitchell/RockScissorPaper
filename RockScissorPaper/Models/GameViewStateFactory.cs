@@ -5,15 +5,15 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class GameStateService
+    public class GameViewStateFactory
     {
-        public GameState GameState { get; private set; }
+        public GameStateViewModel GameState { get; private set; }
         public RoshamboGame CurrentGame { get; private set; }
 
-        public GameStateService(RoshamboGame game)
+        public GameViewStateFactory(RoshamboGame game)
         {
             CurrentGame = game;
-            GameState = new GameState();
+            GameState = new GameStateViewModel();
         }
 
         public void Update(GameStatus currentStatus, GameRound currentRound = null)
@@ -66,9 +66,9 @@ namespace RockScissorPaper.Models
             GameState.PlayerTwo = SetInitialPlayerState(CurrentGame.PlayerOne.PlayerId); 
         }
 
-        private PlayerState SetInitialPlayerState(int playerId)
+        private PlayerViewState SetInitialPlayerState(int playerId)
         {
-            PlayerState state = new PlayerState();
+            PlayerViewState state = new PlayerViewState();
             state.PlayerId = playerId;
             state.CurrentScore = 0;
             state.PlayerMessage = "Go!";

@@ -5,7 +5,10 @@ using System.Text;
 
 namespace RockScissorPaper.Models
 {
-    public class GameServiceCommand
+    /// <summary>
+    /// Player Selection for the round
+    /// </summary>
+    public class PlayerSelectionCommand
     {
         public int GameId { get; private set; }
 
@@ -13,7 +16,7 @@ namespace RockScissorPaper.Models
 
         public RoshamboSelection PlayerTwoSelection { get; set; }
 
-        public GameServiceCommand(int gameId)
+        public PlayerSelectionCommand(int gameId)
         {
             GameId = gameId;
         }
