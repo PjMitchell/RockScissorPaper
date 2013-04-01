@@ -123,7 +123,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="APIs\GamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,7 +139,7 @@
     <Compile Include="Models\DomainModels\GameRound.cs" />
     <Compile Include="Models\GameModels\IRoshamboResolver.cs" />
     <Compile Include="Models\DataHandling\GameRepository.cs" />
-    <Compile Include="Models\GameViewStateFactory.cs" />
+    <Compile Include="Models\GameStateViewModelFactory.cs" />
     <Compile Include="Models\ViewModels\GameStateViewModel.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Services\GameService.cs" />

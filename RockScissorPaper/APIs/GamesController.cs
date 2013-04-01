@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace RockScissorPaper.Controllers
 {
-    public class ValuesController : ApiController
+    public class GamesController : ApiController
     {
         // GET api/values
         
@@ -51,8 +51,30 @@ namespace RockScissorPaper.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public GameStateViewModel Put(int id, int playerId, int selection)
         {
+            RoshamboSelection playerSelection = (RoshamboSelection)selection;
+            GameService service = new GameService(new GameRepository(), id);
+            if (service == null)
+            {
+                return null;
+            }
+            PlayerSelectionCommand command = new PlayerSelectionCommand(id);
+            if (playerId == service.CurrentGame.PlayerOne.PlayerId)
+            {
+                command.PlayerOneSelection = playerSelection;
+            }
+            else if (playerId == service.CurrentGame.PlayerTwo.PlayerId)
+            {
+                command.PlayerOneSelection = playerSelection;
+            }
+            else
+            {
+                return null;
+            }
+            service.Execute(command);
+            GameStateViewModel result = service.GetGameState(playerId);
+            return result;
         }
 
         // DELETE api/values/5

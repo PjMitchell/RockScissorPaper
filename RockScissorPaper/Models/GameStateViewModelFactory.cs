@@ -5,12 +5,12 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class GameViewStateFactory
+    public class GameStateViewModelFactory
     {
         public GameStateViewModel GameState { get; private set; }
         public RoshamboGame CurrentGame { get; private set; }
 
-        public GameViewStateFactory(RoshamboGame game)
+        public GameStateViewModelFactory(RoshamboGame game)
         {
             CurrentGame = game;
             GameState = new GameStateViewModel();
@@ -29,11 +29,47 @@ namespace RockScissorPaper.Models
                         SetAsRoundResultState(currentRound);
                     }
                     break;
+                case GameStatus.EndOfGame :
+                    SetAsEndGameResult();
+                    break;
             }
         }
 
-        #region Update private Methods
         
+
+        #region Update private Methods
+
+        private void SetAsEndGameResult()
+        {
+            GameState.GameId = CurrentGame.GameId;
+            int currentRoundNumber = CurrentGame.Rounds.Count;
+            GameState.RoundMessage = string.Format("{0} / {1}", currentRoundNumber, CurrentGame.Rules.TotalRounds);
+            CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
+            
+            //Sets Player One State
+            GameState.PlayerOne.PlayerId = CurrentGame.PlayerOne.PlayerId;
+            GameState.PlayerOne.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerOneOutcome == GameOutcome.Win);
+            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome);
+
+            //Sets Player Two State
+            GameState.PlayerTwo.PlayerId = CurrentGame.PlayerTwo.PlayerId;
+            GameState.PlayerTwo.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
+            GameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome);
+
+            if (CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome == GameOutcome.Win)
+            {
+                GameState.BannerMessage = CurrentGame.PlayerOne.Name + " wins the game!";
+            }
+            else if (CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome == GameOutcome.Win)
+            {
+                GameState.BannerMessage = CurrentGame.PlayerTwo.Name + " wins the game!";
+            }
+            else 
+            {
+                  GameState.BannerMessage = "Its a draw.";
+            }
+        }
+
         private void SetAsRoundResultState(GameRound currentRound)
         {
             GameState.GameId = CurrentGame.GameId;

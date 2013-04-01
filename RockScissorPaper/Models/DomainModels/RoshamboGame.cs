@@ -12,6 +12,7 @@ namespace RockScissorPaper.Models
         public Player PlayerOne { get; set; }
         public Player PlayerTwo { get; set; }
         public List<GameRound> Rounds { get; set; }
+        public GameStatus Status { get; set; }
 
         public RoshamboGame(int id, GameRules rules, Player playerOne, Player playerTwo)
         {
@@ -20,6 +21,7 @@ namespace RockScissorPaper.Models
             PlayerOne = playerOne;
             PlayerTwo = playerTwo;
             Rounds = new List<GameRound>();
+            Status = GameStatus.NewRound;
         }
     }
 }

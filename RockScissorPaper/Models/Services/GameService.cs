@@ -11,9 +11,10 @@ namespace RockScissorPaper.Models
 
         private IGameRepository _repository;
         private GameRound _currentRound;
-        public GameStatus Status { get; private set; }
+        private GameStatus _status;
+        public GameStatus Status { get { return _status; } private set { _status = value; CurrentGame.Status = _status; } }
         public RoshamboGame CurrentGame { get; private set; }
-        private GameViewStateFactory _gameStateService { get; set; }
+        private GameStateViewModelFactory _gameStateService { get; set; }
 
         public GameService(IGameRepository repository, RoshamboGame game)
         {
@@ -22,8 +23,8 @@ namespace RockScissorPaper.Models
             _repository.Reset();//To be removed
             CurrentGame = game;
             _repository.AddGame(CurrentGame);
-            _gameStateService = new GameViewStateFactory(CurrentGame);
-            Status = GameStatus.NewRound;
+            _gameStateService = new GameStateViewModelFactory(CurrentGame);
+            _status = CurrentGame.Status;
             _gameStateService.Update(Status);
 
         }
@@ -32,8 +33,8 @@ namespace RockScissorPaper.Models
             
             _repository = repository;
             CurrentGame = _repository.GetGame(id);
-            _gameStateService = new GameViewStateFactory(CurrentGame);
-            Status = GameStatus.NewRound;
+            _gameStateService = new GameStateViewModelFactory(CurrentGame);
+            _status = CurrentGame.Status;
             _gameStateService.Update(Status);
 
         }
@@ -69,6 +70,7 @@ namespace RockScissorPaper.Models
             GameServiceResult result = new GameServiceResult();
             result.PlayerOneOutcome = CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome;
             result.PlayerTwoOutcome = CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome;
+            _gameStateService.Update(Status);
             return result;
 
         }
