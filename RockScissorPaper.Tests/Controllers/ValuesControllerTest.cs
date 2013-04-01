@@ -19,7 +19,7 @@ namespace RockScissorPaper.Tests.Controllers
         public void Get()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            GamesController controller = new GamesController();
 
             // Act
             IEnumerable<string> result = controller.Get();
@@ -35,7 +35,7 @@ namespace RockScissorPaper.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            GamesController controller = new GamesController();
             GameService service = new GameService(new GameRepository(), DummyGame.GetDummyGame());
 
             // Act
@@ -49,7 +49,7 @@ namespace RockScissorPaper.Tests.Controllers
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            GamesController controller = new GamesController();
 
             // Act
             controller.Post("value");
@@ -61,10 +61,10 @@ namespace RockScissorPaper.Tests.Controllers
         public void Put()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            GamesController controller = new GamesController();
 
             // Act
-            controller.Put(5, "value");
+            controller.Put(1,1,1);
 
             // Assert
         }
@@ -73,7 +73,7 @@ namespace RockScissorPaper.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            GamesController controller = new GamesController();
 
             // Act
             controller.Delete(5);

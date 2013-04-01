@@ -15,11 +15,11 @@
             <td>@Model.PlayerTwo.Name</td>
         </tr>
         <tr>
-            <td><img src="~/Content/Pm.jpg" width="80"/></td>
+            <td><img src="~/Content/Images/Pm.jpg" width="80"/></td>
             <td id="p1Selection">@Model.StateOfGame.PlayerOne.CurrentSelection</td>
             <td> Vs</td>
             <td id="p2Selection">@Model.StateOfGame.PlayerTwo.CurrentSelection</td>
-            <td><img src="~/Content/Drunk-hamster2.jpg" width="80"/></td>
+            <td><img src="~/Content/Images/Drunk-hamster2.jpg" width="80"/></td>
         </tr>
         <tr>
             <td id="p1Score">@Model.StateOfGame.PlayerOne.CurrentScore</td>
@@ -45,58 +45,20 @@
             <td></td>
             <td></td>
         </tr>
-         <tr>
-            <td><button onclick="RoshamboSelect('1')">Rock</button></td>
+         <tr id="playerSelections">
+            <td><button data-selection="1">Rock</button></td>
             <td></td>
-            <td><button onclick="RoshamboSelect('2')">Scissor</button></td>
+            <td><button data-selection="2">Scissor</button></td>
             <td></td>
-            <td><button onclick="RoshamboSelect('3')">Paper</button></td>
+            <td><button data-selection="3">Paper</button></td>
         </tr>
     </table>
+
     @section scripts {
     <script>
-        
-        function SetCurrentSelection(DivToUpdate, Data) {
-            if (Data == 1)
-            { Data = 'Rock'; }
-            if (Data == 2)
-            { Data = 'Scissor'; }
-            if (Data == 3)
-            { Data = 'Paper'; }
-            if (Data == 0)
-            { Data = 'Ready'; }
-            DivToUpdate.html(Data);
-        }
-        
-        function RoshamboSelect(input) {
-            var inputModel = { id: '@Model.Id', playerId: '@Model.PlayerOne.PlayerId', selection: input };
-            $.getJSON('/api/Games', inputModel, function (data) {
-                var GameContainer = $('#gameContainer'),
-                    Banner = GameContainer.find('#gameBannerMessage'),
-                    P1Selection = GameContainer.find('#p1Selection'),
-                    P2Selection = GameContainer.find('#p2Selection'),
-                    P1Score = GameContainer.find('#p1Score'),
-                    P2Score = GameContainer.find('#p2Score'),
-                    UserMessage = GameContainer.find('#userMessage'),
-                    GameRounds = GameContainer.find('#GameRounds');
-
-                Banner.html(data.BannerMessage);
-                SetCurrentSelection(P1Selection,data.PlayerOne.CurrentSelection);
-                SetCurrentSelection(P2Selection,data.PlayerTwo.CurrentSelection);
-                P1Score.html(data.PlayerOne.CurrentScore);
-                P2Score.html(data.PlayerTwo.CurrentScore);
-                if (data.PlayerOne.IsViewer) {
-                    UserMessage.html(data.PlayerOne.PlayerMessage);
-                }
-                if (data.PlayerTwo.IsViewer) {
-                    UserMessage.html(data.PlayerTwo.PlayerMessage);
-                }
-                GameRounds.html(data.RoundMessage);
-               
-            });
-            
-        }
-        
+        $(function () {
+            Roshambo.init(@Model.Id, @Model.PlayerOne.PlayerId);
+        });
     </script>
         }
 
