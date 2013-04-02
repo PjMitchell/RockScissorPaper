@@ -50,11 +50,11 @@ namespace RockScissorPaper.Models
             GameState.PlayerOne.PlayerId = CurrentGame.PlayerOne.PlayerId;
             GameState.PlayerOne.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerOneOutcome == GameOutcome.Win);
             GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome);
-
+            GameState.PlayerOne.PlayerMessage = "<a href=\"/home/Game\">Play again?</a>";
             //Sets Player Two State
             GameState.PlayerTwo.PlayerId = CurrentGame.PlayerTwo.PlayerId;
             GameState.PlayerTwo.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
-            GameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome);
+            GameState.PlayerTwo.PlayerMessage = "<a href=\"/home/Game\">Play again?</a>";
 
             if (CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome == GameOutcome.Win)
             {
@@ -83,7 +83,7 @@ namespace RockScissorPaper.Models
             GameState.PlayerOne.PlayerId = CurrentGame.PlayerOne.PlayerId;
             GameState.PlayerOne.CurrentSelection = currentRound.PlayerOneSelection;
             GameState.PlayerOne.CurrentScore = CurrentGame.Rounds.Count(r=>r.PlayerOneOutcome== GameOutcome.Win);
-            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.RoundResolver.PlayerOneResult);
+            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome);
             
             //Sets Player Two State
             GameState.PlayerTwo.PlayerId = CurrentGame.PlayerTwo.PlayerId;

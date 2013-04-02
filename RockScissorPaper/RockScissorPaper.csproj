@@ -130,6 +130,7 @@
     <Compile Include="Models\Bots\BotBase.cs" />
     <Compile Include="Models\Bots\RockBot.cs" />
     <Compile Include="Models\Bots\SimpleBot.cs" />
+    <Compile Include="Models\Commands\GameAPIPutCommand.cs" />
     <Compile Include="Models\DataHandling\IGameRepository.cs" />
     <Compile Include="Models\DomainModels\GameRules.cs" />
     <Compile Include="Models\DomainModels\GameOutcome.cs" />

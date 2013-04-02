@@ -34,27 +34,13 @@ namespace RockScissorPaper.Tests.Controllers
         [TestMethod]
         public void GetById()
         {
-            // Arrange
-            GamesController controller = new GamesController();
-            GameService service = new GameService(new GameRepository(), DummyGame.GetDummyGame());
-
-            // Act
-            GameStateViewModel result = controller.Get(1,1,3);
-
-            // Assert
-            Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);
+            
         }
 
         [TestMethod]
         public void Post()
         {
-            // Arrange
-            GamesController controller = new GamesController();
-
-            // Act
-            controller.Post("value");
-
-            // Assert
+            
         }
 
         [TestMethod]
@@ -62,11 +48,16 @@ namespace RockScissorPaper.Tests.Controllers
         {
             // Arrange
             GamesController controller = new GamesController();
+            GameService service = new GameService(new GameRepository(), DummyGame.GetDummyGame());
+            GameAPIPutCommand command = new GameAPIPutCommand();
+            command.playerId = 1;
+            command.selection = 3;
 
             // Act
-            controller.Put(1,1,1);
+            GameStateViewModel result = controller.Put(1, command);
 
             // Assert
+            Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);
         }
 
         [TestMethod]

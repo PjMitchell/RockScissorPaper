@@ -18,41 +18,24 @@ namespace RockScissorPaper.Controllers
         }
 
         // GET api/values/5
-        public GameStateViewModel Get(int id, int playerId, int selection)//to put
+        public string Get(int id)
         {
-            RoshamboSelection playerSelection = (RoshamboSelection)selection;
-            GameService service = new GameService(new GameRepository(), id);
-            if (service == null)
-            {
-                return null;
-            }
-            PlayerSelectionCommand command = new PlayerSelectionCommand(id);
-            if (playerId == service.CurrentGame.PlayerOne.PlayerId)
-            {
-                command.PlayerOneSelection = playerSelection;
-            }
-            else if (playerId == service.CurrentGame.PlayerTwo.PlayerId)
-            {
-                command.PlayerOneSelection = playerSelection;
-            }
-            else
-            {
-                return null;
-            }
-            service.Execute(command);
-            GameStateViewModel result = service.GetGameState(playerId);
-            return result;
+            
+            return "value";
             
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public void Post()
         {
+            
         }
 
         // PUT api/values/5
-        public GameStateViewModel Put(int id, int playerId, int selection)
+        public GameStateViewModel Put(int id, GameAPIPutCommand apiCommand)
         {
+            int playerId =  apiCommand.playerId;
+            int selection = apiCommand.selection;
             RoshamboSelection playerSelection = (RoshamboSelection)selection;
             GameService service = new GameService(new GameRepository(), id);
             if (service == null)
