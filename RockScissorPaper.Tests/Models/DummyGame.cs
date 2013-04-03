@@ -16,7 +16,9 @@ namespace RockScissorPaper.Tests.Models
         /// <returns></returns>
         public static RoshamboGame GetDummyGame()
         {
-            return new RoshamboGame(1, new GameRules(), DummyPlayerOne(), DummyBot());
+            RoshamboGame game = new RoshamboGame(new GameRules(), DummyPlayerOne(), DummyBot());
+            game.GameId = 1;
+            return game;
         }
 
         /// <summary>

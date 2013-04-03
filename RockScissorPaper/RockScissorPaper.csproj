@@ -134,10 +134,12 @@
     <Compile Include="Models\Bots\RockBot.cs" />
     <Compile Include="Models\Bots\SimpleBot.cs" />
     <Compile Include="Models\Commands\GameAPIPutCommand.cs" />
+    <Compile Include="Models\DataHandling\GameSQLRepository.cs" />
     <Compile Include="Models\DataHandling\IDatabaseConnector.cs" />
     <Compile Include="Models\DataHandling\IGameRepository.cs" />
     <Compile Include="Models\DataHandling\IMapper.cs" />
     <Compile Include="Models\DataHandling\MySQLDatabaseConnector.cs" />
+    <Compile Include="Models\DataHandling\StoreProceedureParameter.cs" />
     <Compile Include="Models\DomainModels\GameRules.cs" />
     <Compile Include="Models\DomainModels\GameOutcome.cs" />
     <Compile Include="Models\GameModels\IGameScoreResolver.cs" />
@@ -173,8 +175,11 @@
     <Content Include="Scripts\Lib\jquery-1.8.3.min.js" />
     <Content Include="Scripts\Lib\modernizr-2.5.3.js" />
     <Content Include="Scripts\Roshambo\Roshambo.js" />
+    <Content Include="SQLScripts\CreateGameProc.sql" />
+    <Content Include="SQLScripts\CreateRoundProc.sql" />
     <Content Include="SQLScripts\DatabaseStartUpScript.sql" />
     <Content Include="SQLScripts\UNDO-DatabaseStartUpScript.sql" />
+    <Content Include="SQLScripts\UpdateGameStatusProc.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

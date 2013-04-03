@@ -62,6 +62,12 @@ FOREIGN KEY (RoshamboGameId) REFERENCES RoshamboGame(RoshamboGameId)
 )
 ;
 
+INSERT INTO Player(PlayerId, PlayerName, PlayerIPAddress)
+VALUES
+(1, 'Some Guy','LocalTest'),
+(2, 'Simple Jack','IsBot')
+;
+
 CREATE TABLE RoshamboSelection
 (
 SelectionId int NOT NULL,

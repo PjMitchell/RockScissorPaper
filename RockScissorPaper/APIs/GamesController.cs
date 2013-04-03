@@ -1,4 +1,5 @@
 ﻿using RockScissorPaper.Models;
+using RockScissorPaper.Models.DataHandling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace RockScissorPaper.Controllers
                 return null;
             }
             service.Execute(command);
-            GameStateViewModel result = service.GetGameState(playerId);
+            GameStateViewModel result = service.GetGameStateViewModel(playerId);
             return result;
         }
 

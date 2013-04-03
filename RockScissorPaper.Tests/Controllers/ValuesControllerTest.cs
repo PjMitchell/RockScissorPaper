@@ -9,6 +9,7 @@ using RockScissorPaper;
 using RockScissorPaper.Controllers;
 using RockScissorPaper.Models;
 using RockScissorPaper.Tests.Models;
+using RockScissorPaper.Models.DataHandling;
 
 namespace RockScissorPaper.Tests.Controllers
 {

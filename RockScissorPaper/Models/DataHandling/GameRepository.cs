@@ -17,7 +17,11 @@ namespace RockScissorPaper.Models.DataHandling
             OpenGames = new List<RoshamboGame>();
         }
 
-        public void AddGame(RoshamboGame game)
+        /// <summary>
+        /// Adds new empty game to data storage
+        /// </summary>
+        /// <param name="game"></param>
+        public void CreateNewGame(RoshamboGame game)
         {
             lock (OpenGames)
             {
@@ -37,6 +41,24 @@ namespace RockScissorPaper.Models.DataHandling
         {
             RoshamboGame result = OpenGames.FirstOrDefault(s => s.GameId == id);
             return result;
+        }
+
+
+        public void UpdateGame(RoshamboGame game)
+        {
+            //perhaps add something
+        }
+
+
+        public void UpdateGameStatus(int gameId, GameStatus value)
+        {
+            
+        }
+
+
+        public int CreateRound(int roundNumber, int gameId)
+        {
+            return roundNumber;
         }
     }
 }

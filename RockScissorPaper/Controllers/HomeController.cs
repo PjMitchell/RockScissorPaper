@@ -1,5 +1,6 @@
 ﻿using RockScissorPaper.Models;
 using RockScissorPaper.Models.Bots;
+using RockScissorPaper.Models.DataHandling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,12 @@ namespace RockScissorPaper.Controllers
             two.Bot = new SimpleBot();
             two.Name = two.Bot.Name;
             two.PlayerId = botid;
-            GameService service = new GameService(new GameRepository(), new RoshamboGame(1, new GameRules(), one, two));
+            GameService service = new GameService(new GameRepository(), new RoshamboGame(new GameRules(), one, two));
             GameViewModel view = new GameViewModel();
             view.PlayerOne = one;
             view.PlayerTwo = two;
             view.Id = service.CurrentGame.GameId;
-            view.StateOfGame = service.GetGameState(playerid);
+            view.StateOfGame = service.GetGameStateViewModel(playerid);
             return View(view);
         }
     }

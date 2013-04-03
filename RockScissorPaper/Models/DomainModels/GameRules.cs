@@ -13,6 +13,7 @@ namespace RockScissorPaper.Models
         private IGameScoreResolver _gameScoreResolver;
         private bool _allowDraw;
 
+        public int Id { get; set; }
         public int TotalRounds { get { return _totalRounds; } }
         public IRoshamboResolver RoundResolver { get { return _roundResolver; } }
         public IGameScoreResolver GameScoreResolver { get { return _gameScoreResolver; } }
@@ -21,6 +22,7 @@ namespace RockScissorPaper.Models
 
         public GameRules()
         {
+            Id = 1;
             _totalRounds = 5;
             _roundResolver = new RoshamboResolver();
             _gameScoreResolver = new StandardGameScoreResolver();

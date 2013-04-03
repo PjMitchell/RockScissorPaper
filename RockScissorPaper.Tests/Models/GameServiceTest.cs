@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockScissorPaper.Models;
 using RockScissorPaper.Models.GameModels;
 using RockScissorPaper.Models.Bots;
+using RockScissorPaper.Models.DataHandling;
 
 namespace RockScissorPaper.Tests.Models
 {
@@ -12,7 +13,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestVsRockBot()
         {
-            RoshamboGame game = new RoshamboGame(1, new GameRules(), new Player(), new Player());
+            RoshamboGame game = new RoshamboGame(new GameRules(), new Player(), new Player());
             game.PlayerTwo.Bot = new RockBot();
             GameService service = new GameService(new GameRepository(), game);
             
