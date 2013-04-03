@@ -134,7 +134,10 @@
     <Compile Include="Models\Bots\RockBot.cs" />
     <Compile Include="Models\Bots\SimpleBot.cs" />
     <Compile Include="Models\Commands\GameAPIPutCommand.cs" />
+    <Compile Include="Models\DataHandling\IDatabaseConnector.cs" />
     <Compile Include="Models\DataHandling\IGameRepository.cs" />
+    <Compile Include="Models\DataHandling\IMapper.cs" />
+    <Compile Include="Models\DataHandling\MySQLDatabaseConnector.cs" />
     <Compile Include="Models\DomainModels\GameRules.cs" />
     <Compile Include="Models\DomainModels\GameOutcome.cs" />
     <Compile Include="Models\GameModels\IGameScoreResolver.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="Models\GameModels\IRoshamboResolver.cs" />
     <Compile Include="Models\DataHandling\GameRepository.cs" />
     <Compile Include="Models\GameStateViewModelFactory.cs" />
+    <Compile Include="Models\Private\PrivateValues.cs" />
     <Compile Include="Models\ViewModels\GameStateViewModel.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Services\GameService.cs" />
