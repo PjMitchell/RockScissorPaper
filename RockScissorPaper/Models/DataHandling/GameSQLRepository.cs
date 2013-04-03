@@ -27,14 +27,21 @@ namespace RockScissorPaper.Models.DataHandling
             game.GameId = Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_NewGame", parameters));
         }
 
-        public void UpdateGame(RoshamboGame game)
+        
+        /// <summary>
+        /// Retrives Game by Game Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public RoshamboGame RetrieveGame(int id)
         {
-            throw new NotImplementedException();
-        }
+            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
+            parameters.Add(new StoreProceedureParameter("GameIdInput", id));
+            RoshamboGameMapper mapper = new RoshamboGameMapper();
+            _dataAccess.Get("",mapper,parameters);
+            RoshamboGame result = mapper.Result;
+            return result;
 
-        public RoshamboGame GetGame(int id)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -62,6 +69,24 @@ namespace RockScissorPaper.Models.DataHandling
             parameters.Add(new StoreProceedureParameter("GameIdInput", gameId));
             parameters.Add(new StoreProceedureParameter("RoundNumberInput", roundNumber));
             return Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_GameRound", parameters));
+        }
+
+        /// <summary>
+        /// Creates RoundResult for Player
+        /// </summary>
+        /// <param name="playerID">Id of player makeing the choice</param>
+        /// <param name="gameId">The Id of the Game being played</param>
+        /// <param name="gameRoundId">The Id of the current Round </param>
+        /// <param name="selection">The Players selection</param>
+        public void CreateGameRoundResult(int playerID, int gameId, int gameRoundId, RoshamboSelection selection)
+        {
+            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
+            parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerID));
+            parameters.Add(new StoreProceedureParameter("RoshamboGameIdInput", gameId));
+            parameters.Add(new StoreProceedureParameter("GameRoundIdInput", gameRoundId));
+            parameters.Add(new StoreProceedureParameter("SelectionIdInput", (int)selection));
+            _dataAccess.ExecuteNonQuery("Proc_Create_GameRoundResult", parameters);
+            
         }
     }
 }

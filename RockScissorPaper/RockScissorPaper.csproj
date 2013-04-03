@@ -139,6 +139,7 @@
     <Compile Include="Models\DataHandling\IGameRepository.cs" />
     <Compile Include="Models\DataHandling\IMapper.cs" />
     <Compile Include="Models\DataHandling\MySQLDatabaseConnector.cs" />
+    <Compile Include="Models\DataHandling\RoshamboGameMapper.cs" />
     <Compile Include="Models\DataHandling\StoreProceedureParameter.cs" />
     <Compile Include="Models\DomainModels\GameRules.cs" />
     <Compile Include="Models\DomainModels\GameOutcome.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Scripts\Lib\modernizr-2.5.3.js" />
     <Content Include="Scripts\Roshambo\Roshambo.js" />
     <Content Include="SQLScripts\CreateGameProc.sql" />
+    <Content Include="SQLScripts\CreateGameRoundResultProc.sql" />
     <Content Include="SQLScripts\CreateRoundProc.sql" />
     <Content Include="SQLScripts\DatabaseStartUpScript.sql" />
     <Content Include="SQLScripts\UNDO-DatabaseStartUpScript.sql" />

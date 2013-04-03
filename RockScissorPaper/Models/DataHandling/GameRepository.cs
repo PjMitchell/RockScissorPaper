@@ -37,19 +37,14 @@ namespace RockScissorPaper.Models.DataHandling
             }
         }
 
-        public RoshamboGame GetGame(int id)
+        public RoshamboGame RetrieveGame(int id)
         {
             RoshamboGame result = OpenGames.FirstOrDefault(s => s.GameId == id);
             return result;
         }
 
 
-        public void UpdateGame(RoshamboGame game)
-        {
-            //perhaps add something
-        }
-
-
+        
         public void UpdateGameStatus(int gameId, GameStatus value)
         {
             
@@ -59,6 +54,12 @@ namespace RockScissorPaper.Models.DataHandling
         public int CreateRound(int roundNumber, int gameId)
         {
             return roundNumber;
+        }
+
+
+        public void CreateGameRoundResult(int playerID, int gameId, int gameRoundId, RoshamboSelection selection)
+        {
+            
         }
     }
 }

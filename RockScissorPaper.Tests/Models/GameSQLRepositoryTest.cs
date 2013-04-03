@@ -49,6 +49,16 @@ namespace RockScissorPaper.Tests.Models
             
             Assert.AreNotEqual(0, i);
         }
+        [TestMethod]
+        public void TestNewGameRoundResult()
+        {
+
+            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector());
+
+            repository.CreateGameRoundResult(1,1,1, RoshamboSelection.Rock);
+
+            //To Determine no Execptions are thrown
+        }
            
         
     }

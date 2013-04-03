@@ -49,7 +49,7 @@ namespace RockScissorPaper.Models
         {
             
             _repository = repository;
-            CurrentGame = _repository.GetGame(id);
+            CurrentGame = _repository.RetrieveGame(id);
             _gameStateViewModelFactory = new GameStateViewModelFactory(CurrentGame);
             _status = CurrentGame.Status;
             _gameStateViewModelFactory.Update(Status);
@@ -177,11 +177,13 @@ namespace RockScissorPaper.Models
             if (command.PlayerOneSelection != 0)
             {
                 _currentRound.PlayerOneSelection = command.PlayerOneSelection;
+                _repository.CreateGameRoundResult(CurrentGame.PlayerOne.PlayerId, CurrentGame.GameId, _currentRound.RoundId, command.PlayerOneSelection);
                 
                 if (CurrentGame.PlayerTwo.IsBot)
                 {
                     _currentRound.PlayerTwoSelection = CurrentGame.PlayerTwo.Bot.Go();
                     command.PlayerTwoSelection = _currentRound.PlayerTwoSelection;
+                    _repository.CreateGameRoundResult(CurrentGame.PlayerTwo.PlayerId, CurrentGame.GameId, _currentRound.RoundId, command.PlayerTwoSelection);
                     Status = GameStatus.RoundResult;
                     return Execute(command);
                 }
@@ -197,10 +199,12 @@ namespace RockScissorPaper.Models
             if (command.PlayerTwoSelection != 0)
             {
                 _currentRound.PlayerTwoSelection = command.PlayerTwoSelection;
+                _repository.CreateGameRoundResult(CurrentGame.PlayerTwo.PlayerId, CurrentGame.GameId, _currentRound.RoundId, command.PlayerTwoSelection);
                 if (CurrentGame.PlayerOne.IsBot)
                 {
                     _currentRound.PlayerOneSelection = CurrentGame.PlayerOne.Bot.Go();
                     command.PlayerOneSelection = _currentRound.PlayerOneSelection;
+                    _repository.CreateGameRoundResult(CurrentGame.PlayerOne.PlayerId, CurrentGame.GameId, _currentRound.RoundId, command.PlayerOneSelection);
                     Status = GameStatus.RoundResult;
                     return Execute(command);
                 }
