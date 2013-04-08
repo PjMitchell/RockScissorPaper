@@ -67,6 +67,7 @@ namespace RockScissorPaper.Models.DataHandling
                         round.RoundNumber = map.MapInt32("RoundNumber");
                         round.PlayerOneSelection = (RoshamboSelection)map.MapInt32("PlayerOneChoice");
                         round.PlayerTwoSelection = (RoshamboSelection)map.MapInt32("PlayerTwoChoice");
+                        _result.Rules.RoundResolver.ResolveRound(round);
                         _result.Rounds.Add(round);
                     }
                 }

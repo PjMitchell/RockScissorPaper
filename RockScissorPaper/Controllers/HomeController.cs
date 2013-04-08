@@ -11,20 +11,33 @@ namespace RockScissorPaper.Controllers
 {
     public class HomeController : Controller
     {
-        
+        PlayerSQLRepository _playerRepository = new PlayerSQLRepository(new MySQLDatabaseConnector());
 
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult Game()
+        [HttpPost]
+        public ActionResult Index(string username)
         {
-            int playerid = 1;
+            if (username == null || username =="")
+            {
+                return View();
+            }
+            else
+            {
+                
+                string ipAddress = Request.UserHostAddress;
+                int playerId = _playerRepository.CreatePlayer(username, ipAddress);
+                return RedirectToAction("Game", new { id = playerId });
+            }
+        }
+
+        public ActionResult Game(int id)
+        {
+            
             int botid = 2;
-            Player one = new Player();
-            one.Name = "Some Guy";
-            one.PlayerId = playerid;
+            Player one = _playerRepository.RetrievePlayer(id);
             Player two = new Player();
             two.Bot = new SimpleBot();
             two.Name = two.Bot.Name;
@@ -34,7 +47,7 @@ namespace RockScissorPaper.Controllers
             view.PlayerOne = one;
             view.PlayerTwo = two;
             view.Id = service.CurrentGame.GameId;
-            view.StateOfGame = service.GetGameStateViewModel(playerid);
+            view.StateOfGame = service.GetGameStateViewModel(id);
             return View(view);
         }
     }

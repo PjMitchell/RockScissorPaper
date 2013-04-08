@@ -1,3 +1,12 @@
 ﻿<div class="wrapper4"></div>
-<div class="wrapper4">@Html.ActionLink("Start","Game")</div>
+
+<div class="wrapper4">
+@using( Html.BeginForm())
+{
+    <p>Please enter your name before you start</p>
+    @Html.TextBox("username", null)
+   <input type="submit" value="Start Game"/>
+}
+</div>
+
 <div class="clear-fix"></div>
