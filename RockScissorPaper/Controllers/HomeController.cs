@@ -29,7 +29,7 @@ namespace RockScissorPaper.Controllers
             two.Bot = new SimpleBot();
             two.Name = two.Bot.Name;
             two.PlayerId = botid;
-            GameService service = new GameService(new GameRepository(), new RoshamboGame(new GameRules(), one, two));
+            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector()), new RoshamboGame(new GameRules(), one, two));
             GameViewModel view = new GameViewModel();
             view.PlayerOne = one;
             view.PlayerTwo = two;

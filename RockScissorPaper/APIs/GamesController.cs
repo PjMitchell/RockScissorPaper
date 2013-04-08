@@ -38,7 +38,7 @@ namespace RockScissorPaper.Controllers
             int playerId =  apiCommand.playerId;
             int selection = apiCommand.selection;
             RoshamboSelection playerSelection = (RoshamboSelection)selection;
-            GameService service = new GameService(new GameRepository(), id);
+            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector()), id);
             if (service == null)
             {
                 return null;

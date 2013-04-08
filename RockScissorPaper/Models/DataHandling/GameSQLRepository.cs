@@ -38,8 +38,17 @@ namespace RockScissorPaper.Models.DataHandling
             List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
             parameters.Add(new StoreProceedureParameter("GameIdInput", id));
             RoshamboGameMapper mapper = new RoshamboGameMapper();
-            _dataAccess.Get("",mapper,parameters);
-            RoshamboGame result = mapper.Result;
+            _dataAccess.Get("Proc_Select_GameById", mapper, parameters);
+            RoshamboGame result = mapper.Result as RoshamboGame;
+            if (result.GameId != id) 
+            {
+                return null;
+            }
+            List<StoreProceedureParameter> newParameters = new List<StoreProceedureParameter>();
+            newParameters.Add(new StoreProceedureParameter("GameIdInput", result.GameId));
+            newParameters.Add(new StoreProceedureParameter("PlayerOneIdInput", result.PlayerOne.PlayerId));
+            newParameters.Add(new StoreProceedureParameter("PlayerTwoIdInput", result.PlayerTwo.PlayerId));
+            _dataAccess.Get("Proc_Select_GameRoundByGameIdAndPlayerIds", mapper, newParameters);
             return result;
 
         }

@@ -138,6 +138,7 @@
     <Compile Include="Models\DataHandling\IDatabaseConnector.cs" />
     <Compile Include="Models\DataHandling\IGameRepository.cs" />
     <Compile Include="Models\DataHandling\IMapper.cs" />
+    <Compile Include="Models\DataHandling\MappingHelper.cs" />
     <Compile Include="Models\DataHandling\MySQLDatabaseConnector.cs" />
     <Compile Include="Models\DataHandling\RoshamboGameMapper.cs" />
     <Compile Include="Models\DataHandling\StoreProceedureParameter.cs" />
@@ -180,6 +181,8 @@
     <Content Include="SQLScripts\CreateGameRoundResultProc.sql" />
     <Content Include="SQLScripts\CreateRoundProc.sql" />
     <Content Include="SQLScripts\DatabaseStartUpScript.sql" />
+    <Content Include="SQLScripts\SelectGameByIdProc.sql" />
+    <Content Include="SQLScripts\SelectGameRoundByGameIdAndPlayerIdsProc.sql" />
     <Content Include="SQLScripts\UNDO-DatabaseStartUpScript.sql" />
     <Content Include="SQLScripts\UpdateGameStatusProc.sql" />
     <Content Include="Web.config" />

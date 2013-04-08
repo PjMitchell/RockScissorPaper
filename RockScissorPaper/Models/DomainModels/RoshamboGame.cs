@@ -14,6 +14,10 @@ namespace RockScissorPaper.Models
         public List<GameRound> Rounds { get; set; }
         public GameStatus Status { get; set; }
 
+        public RoshamboGame()
+        {
+        }
+
         public RoshamboGame(GameRules rules, Player playerOne, Player playerTwo)
         {
             Rules = rules;
