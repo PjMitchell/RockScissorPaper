@@ -56,8 +56,10 @@ namespace RockScissorPaper.Controllers
             {
                 return null;
             }
+            
             service.Execute(command);
             GameStateViewModel result = service.GetGameStateViewModel(playerId);
+            
             return result;
         }
 

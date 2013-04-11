@@ -5,14 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper", "RockSci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.Tests", "RockScissorPaper.Tests\RockScissorPaper.Tests.csproj", "{671AA7A6-9325-450F-830D-2E0A4900CCE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart", "ShoppingCart\ShoppingCart.csproj", "{A895E2A6-029C-48E2-9E80-11129F2B69C7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{999EC0F9-9D83-4A98-BD4A-855520517CCD}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Tests", "ShoppingCart.Tests\ShoppingCart.Tests.csproj", "{7442B413-1410-4BAE-9040-6F152E91A3C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,14 +24,6 @@ Global
 		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{671AA7A6-9325-450F-830D-2E0A4900CCE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A895E2A6-029C-48E2-9E80-11129F2B69C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A895E2A6-029C-48E2-9E80-11129F2B69C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A895E2A6-029C-48E2-9E80-11129F2B69C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A895E2A6-029C-48E2-9E80-11129F2B69C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7442B413-1410-4BAE-9040-6F152E91A3C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7442B413-1410-4BAE-9040-6F152E91A3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7442B413-1410-4BAE-9040-6F152E91A3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7442B413-1410-4BAE-9040-6F152E91A3C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

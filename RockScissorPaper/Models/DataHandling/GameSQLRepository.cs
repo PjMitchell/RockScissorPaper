@@ -87,15 +87,40 @@ namespace RockScissorPaper.Models.DataHandling
         /// <param name="gameId">The Id of the Game being played</param>
         /// <param name="gameRoundId">The Id of the current Round </param>
         /// <param name="selection">The Players selection</param>
-        public void CreateGameRoundResult(int playerID, int gameId, int gameRoundId, RoshamboSelection selection)
+        public void CreateGameRoundResult(int playerId, int gameId, int gameRoundId, RoshamboSelection selection)
         {
             List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerID));
+            parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerId));
             parameters.Add(new StoreProceedureParameter("RoshamboGameIdInput", gameId));
             parameters.Add(new StoreProceedureParameter("GameRoundIdInput", gameRoundId));
             parameters.Add(new StoreProceedureParameter("SelectionIdInput", (int)selection));
             _dataAccess.ExecuteNonQuery("Proc_Create_GameRoundResult", parameters);
             
+        }
+
+        /// <summary>
+        /// Updates the GamePlayer Table with Players' game result and score
+        /// </summary>
+        /// <param name="game"></param>
+        public void UpdateGameResult(RoshamboGame game)
+        {
+            game.Rules.GameScoreResolver.ResolveGame(game.Rounds);
+            UpdateGameResult(game.GameId, game.PlayerOne.PlayerId, game.Rules.GameScoreResolver.PlayerOneOutcome, game.Rules.GameScoreResolver.PlayerOneScore);
+            UpdateGameResult(game.GameId, game.PlayerTwo.PlayerId, game.Rules.GameScoreResolver.PlayerTwoOutcome, game.Rules.GameScoreResolver.PlayerTwoScore);
+            
+        }
+        /// <summary>
+        /// Private method used by UpdateGameResult for each player
+        /// </summary>
+        /// <param name="game"></param>
+        private void UpdateGameResult(int gameId, int playerId, GameOutcome gameOutcome, int gameScore)
+        {
+            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
+            parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerId));
+            parameters.Add(new StoreProceedureParameter("RoshamboGameIdInput", gameId));
+            parameters.Add(new StoreProceedureParameter("GameOutcomeInput", (int)gameOutcome));
+            parameters.Add(new StoreProceedureParameter("GameScoreInput", gameScore));
+            _dataAccess.ExecuteNonQuery("Proc_Update_GamePlayerResult", parameters);
         }
     }
 }

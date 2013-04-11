@@ -50,15 +50,31 @@ PlayerIPAddress varchar(25) character set UTF8 NOT NULL,
 PRIMARY KEY (PlayerId)
 )
 ;
+CREATE TABLE GameResult
+(
+GameResultId int NOT NULL,
+GameResultText varchar(25) character set UTF8 NOT NULL,
+PRIMARY KEY (GameResultId)
+)
+;
+INSERT INTO GameResult(GameResultId, GameResultText)
+VALUES
+(1, 'Lose'),
+(2, 'Draw'),
+(3, 'Win')
+;
 
 CREATE TABLE GamePlayer
 (
 PlayerId int NOT NULL,
 RoshamboGameId int NOT NULL,
 Position int NOT NULL,
+PlayerGameResult int,
+PlayerGameScore int,
 PRIMARY KEY (PlayerId,RoshamboGameId),
 FOREIGN KEY (PlayerId) REFERENCES Player(PlayerId),
-FOREIGN KEY (RoshamboGameId) REFERENCES RoshamboGame(RoshamboGameId)
+FOREIGN KEY (RoshamboGameId) REFERENCES RoshamboGame(RoshamboGameId),
+FOREIGN KEY (PlayerGameResult) REFERENCES GameResult(GameResultId)
 )
 ;
 

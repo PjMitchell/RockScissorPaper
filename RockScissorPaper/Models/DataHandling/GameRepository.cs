@@ -61,5 +61,11 @@ namespace RockScissorPaper.Models.DataHandling
         {
             
         }
+
+
+        public void UpdateGameResult(RoshamboGame game)
+        {
+            
+        }
     }
 }

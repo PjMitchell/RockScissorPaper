@@ -43,5 +43,11 @@ namespace RockScissorPaper.Models.DataHandling
         /// <param name="gameRoundId">The Id of the current Round </param>
         /// <param name="selection">The Players selection</param>
         void CreateGameRoundResult(int playerID, int gameId, int gameRoundId, RoshamboSelection selection);
+
+        /// <summary>
+        /// Updates the GamePlayer Table with Players' game result and score
+        /// </summary>
+        /// <param name="game"></param>
+        void UpdateGameResult(RoshamboGame game);
     }
 }

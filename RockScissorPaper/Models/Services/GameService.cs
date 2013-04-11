@@ -143,6 +143,7 @@ namespace RockScissorPaper.Models
             {
                 if (CurrentGame.Rules.AllowDraw || CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome != GameOutcome.Draw)
                 {
+                    _repository.UpdateGameResult(CurrentGame);
                     Status = GameStatus.EndOfGame;
                     return result;
                 }
