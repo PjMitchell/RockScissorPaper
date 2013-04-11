@@ -144,6 +144,8 @@ namespace RockScissorPaper.Models
                 if (CurrentGame.Rules.AllowDraw || CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome != GameOutcome.Draw)
                 {
                     _repository.UpdateGameResult(CurrentGame);
+                    NotificationService service = new NotificationService(_repository);
+                    service.GameFinished();
                     Status = GameStatus.EndOfGame;
                     return result;
                 }

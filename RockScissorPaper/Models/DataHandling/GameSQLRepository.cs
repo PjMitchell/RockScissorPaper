@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -121,6 +122,22 @@ namespace RockScissorPaper.Models.DataHandling
             parameters.Add(new StoreProceedureParameter("GameOutcomeInput", (int)gameOutcome));
             parameters.Add(new StoreProceedureParameter("GameScoreInput", gameScore));
             _dataAccess.ExecuteNonQuery("Proc_Update_GamePlayerResult", parameters);
+        }
+
+        /// <summary>
+        /// Returns the Total wins of Human and Bot Players
+        /// </summary>
+        /// <returns></returns>
+        public RoshamboHubViewModel RetrieveBotVsHumanScore()
+        {
+            DataTable dt = _dataAccess.Get("Proc_Select_BotVsHumanVictoryCount");
+            DataRow dr = dt.Rows[0];
+            MappingHelper map = new MappingHelper(dr);
+            RoshamboHubViewModel result = new RoshamboHubViewModel();
+            result.BotWins = map.MapInt32("BotVictory");
+            result.HumanWins = map.MapInt32("HumanVictory");
+            return result;
+
         }
     }
 }

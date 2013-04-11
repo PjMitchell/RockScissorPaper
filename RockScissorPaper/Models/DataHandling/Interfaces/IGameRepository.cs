@@ -49,5 +49,11 @@ namespace RockScissorPaper.Models.DataHandling
         /// </summary>
         /// <param name="game"></param>
         void UpdateGameResult(RoshamboGame game);
+
+        /// <summary>
+        /// Returns the Total wins of Human and Bot Players
+        /// </summary>
+        /// <returns></returns>
+        RoshamboHubViewModel RetrieveBotVsHumanScore();
     }
 }

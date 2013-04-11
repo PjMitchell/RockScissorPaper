@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
+using RockScissorPaper.Models;
+using RockScissorPaper.Models.DataHandling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,8 @@ namespace RockScissorPaper.Hubs
 {
     public class RoshamboHub : Hub
     {
-        private static int _peopleConnected { get; set; }
+        public static int PeopleConnected { get; private set; } //Does not work as intended!!!!Pm
+        private IGameRepository _repository = new GameSQLRepository(new MySQLDatabaseConnector());
         
         public void Send(string name, string message)
         {
@@ -19,25 +22,27 @@ namespace RockScissorPaper.Hubs
         }
         public override Task OnConnected()
         {
-            _peopleConnected += 1;
+            PeopleConnected += 1;
             PeopleConnectedChanged();
             return base.OnConnected();
         }
         public override Task OnDisconnected()
         {
-            _peopleConnected -= 1;
+            PeopleConnected -= 1;
             PeopleConnectedChanged();
             return base.OnDisconnected();
         }
 
         private void PeopleConnectedChanged()
         {
-            Clients.All.UpdatePeopleConnected(_peopleConnected);
+            Clients.All.UpdatePeopleConnected(PeopleConnected);
         }
 
         public void GetInfo()
         {
-            Clients.Caller.RefreshInfo(_peopleConnected);
+            RoshamboHubViewModel view = _repository.RetrieveBotVsHumanScore();
+            view.NumberOfPeopleConnected = PeopleConnected;
+            Clients.Caller.refreshView(view);
         }
     }
 }
