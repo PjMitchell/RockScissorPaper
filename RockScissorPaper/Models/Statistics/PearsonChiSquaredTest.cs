@@ -77,5 +77,6 @@ namespace RockScissorPaper.Models.Statistics
             }
             probability = 0.15m;
         }
+       
     }
 }

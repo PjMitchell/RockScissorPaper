@@ -12,7 +12,9 @@ namespace RockScissorPaper.Controllers
     public class GamesController : ApiController
     {
         // GET api/values
-        
+        private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
+        private static IGameRepository _gameRepository = new GameSQLRepository(_connector);
+
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -38,7 +40,7 @@ namespace RockScissorPaper.Controllers
             int playerId =  apiCommand.playerId;
             int selection = apiCommand.selection;
             RoshamboSelection playerSelection = (RoshamboSelection)selection;
-            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector()), id);
+            GameService service = new GameService(_gameRepository, id);
             if (service == null)
             {
                 return null;

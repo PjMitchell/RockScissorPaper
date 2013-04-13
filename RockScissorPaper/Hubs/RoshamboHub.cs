@@ -9,9 +9,10 @@ using System.Web;
 
 namespace RockScissorPaper.Hubs
 {
-    public class RoshamboHub : Hub
+    public class RoshamboHub : Hub //Does Time out while Idle
     {
-        public static int PeopleConnected { get; private set; } //Does not work as intended!!!!Pm
+        private static HashSet<string> _connectionIds { get; set ;}
+        public static int PeopleConnected { get {return _connectionIds.Count; } } 
         private IGameRepository _repository = new GameSQLRepository(new MySQLDatabaseConnector());
         
         public void Send(string name, string message)
@@ -22,13 +23,37 @@ namespace RockScissorPaper.Hubs
         }
         public override Task OnConnected()
         {
-            PeopleConnected += 1;
+            string s = Context.ConnectionId;
+            if (_connectionIds == null)
+                {
+                    _connectionIds = new HashSet<string>();
+                }
+            lock(_connectionIds)
+            {
+                
+                if (!_connectionIds.Contains(s))
+                {
+                    _connectionIds.Add(s);
+                }
+            }
             PeopleConnectedChanged();
             return base.OnConnected();
         }
         public override Task OnDisconnected()
         {
-            PeopleConnected -= 1;
+            string s = Context.ConnectionId;
+            if (_connectionIds != null)
+            {
+                lock (_connectionIds)
+                {
+
+                    if (_connectionIds.Contains(s))
+                    {
+                        _connectionIds.Remove(s);
+                    }
+
+                }
+            }
             PeopleConnectedChanged();
             return base.OnDisconnected();
         }

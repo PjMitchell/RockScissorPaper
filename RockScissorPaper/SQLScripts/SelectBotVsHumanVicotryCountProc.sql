@@ -13,59 +13,18 @@ CREATE PROCEDURE `joelmitc_petertestdatabase`.`Proc_Select_BotVsHumanVictoryCoun
 BEGIN
 
 SELECT 
-
 (
-
 	SELECT Count(*) 
-
-
-
 	FROM joelmitc_petertestdatabase.gameplayer
-
-		where PlayerId = 
-
-			(
-
-			Select PlayerId 
-
-			From Player 
-
-			Where PlayerIPAddress = "IsBot"
-
-			)
-
-			and PlayerGameResult = 3
-
+	WHERE PlayerId = 2 and PlayerGameResult = 3
 )
-
 as BotVictory,
-
 (
-
 	SELECT Count(*) 
-
-
-
 	FROM joelmitc_petertestdatabase.gameplayer
-
-		where PlayerId = 
-
-			(
-
-			Select PlayerId 
-
-			From Player 
-
-			Where PlayerIPAddress = "IsBot"
-
-			)
-
-			and PlayerGameResult = 3
-
+	WHERE PlayerId != 2 and PlayerGameResult = 3
 )
-
 as HumanVictory
-
 ;
 
 

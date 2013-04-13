@@ -49,7 +49,7 @@ namespace RockScissorPaper.Tests.Controllers
         {
             // Arrange
             GamesController controller = new GamesController();
-            GameService service = new GameService(new GameRepository(), DummyGame.GetDummyGame());
+            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector()), DummyGame.GetDummyGame());
             GameAPIPutCommand command = new GameAPIPutCommand();
             command.playerId = 1;
             command.selection = 3;
