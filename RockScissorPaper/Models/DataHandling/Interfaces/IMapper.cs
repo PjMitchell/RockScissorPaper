@@ -10,7 +10,7 @@ namespace RockScissorPaper.Models.DataHandling
     public interface IMapper
     {
         object Result { get; }
-        List<object> Results { get; }
+        
         /// <summary>
         /// Maps Datatable to object
         /// Can use Proceedure string for function.

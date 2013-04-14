@@ -8,16 +8,11 @@ namespace RockScissorPaper.Models.DataHandling
 {
     public class PlayerMapper : IMapper
     {
+        private Player _result;
+        
         public object Result
         {
             get { return _result; }
-        }
-
-        private Player _result;
-
-        public List<object> Results
-        {
-            get { return null; }
         }
 
         public void Map(DataTable dt, string sqlProceedureString)

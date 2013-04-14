@@ -151,6 +151,7 @@
     <Compile Include="Models\Bots\RockBot.cs" />
     <Compile Include="Models\Bots\SimpleBot.cs" />
     <Compile Include="Models\Commands\GameAPIPutCommand.cs" />
+    <Compile Include="Models\DataHandling\RoundStatisticsMapper.cs" />
     <Compile Include="Models\DataHandling\Repositories\GameSQLRepository.cs" />
     <Compile Include="Models\DataHandling\Interfaces\IDatabaseConnector.cs" />
     <Compile Include="Models\DataHandling\Interfaces\IGameRepository.cs" />

@@ -9,9 +9,10 @@ namespace RockScissorPaper.Models.DataHandling
 {
     class RoshamboGameMapper : IMapper
     {
-        public object Result { get {return _result;} }
-        public List<object> Results { get { return null; } }
         private RoshamboGame _result;
+        
+        public object Result { get {return _result;} }
+       
         public RoshamboGameMapper()
         {
             _result = new RoshamboGame();
