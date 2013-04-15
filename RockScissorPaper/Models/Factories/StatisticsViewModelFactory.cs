@@ -20,11 +20,13 @@ namespace RockScissorPaper.Models
         public void Build()
         {
             Result = new StatisticsViewModel();
-            Result.RoundInformation = new List<List<RoshamboChoiceStatistic>>();
+            Result.RoundInformation = new List<RoundStatistic>();
             for (int i = 1; i <= 5; i++)
             {
-                List<RoshamboChoiceStatistic> roundstat = _repository.RetrieveRoundInformation(i);
+                RoundStatistic roundstat = _repository.RetrieveRoundInformation(i);
+                Result.RoundInformation.Add(roundstat);
             }
+            Result.RoundInformation.OrderBy(r => r.RoundNumber);
             Result.Overview = _repository.RetrieveRoundInformation();
             Result.GamesPlayed = _repository.RetrieveGamesPlayed();
         }

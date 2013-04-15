@@ -8,7 +8,7 @@ namespace RockScissorPaper.Models.DataHandling
 {
     public class RoundStatisticsMapper : IMapper
     {
-        private List<RoshamboChoiceStatistic> _result;
+        private RoundStatistic _result;
         
         public object Result
         {
@@ -17,20 +17,20 @@ namespace RockScissorPaper.Models.DataHandling
 
         public void Map(DataTable dt, string sqlProceedureString)
         {
-            _result = new List<RoshamboChoiceStatistic>();
+            _result = new RoundStatistic();
             foreach (DataRow dr in dt.Rows)
             {
                 MappingHelper map = new MappingHelper(dr);
                 RoshamboChoiceStatistic result = new RoshamboChoiceStatistic();
                 result.Selection = (RoshamboSelection)map.MapInt32("SelectionId");
                 result.Number = map.MapInt32("Count");
-                _result.Add(result);
+                _result.Choices.Add(result);
             }
 
-            int total = _result.Sum(m => m.Number);
-            foreach (RoshamboChoiceStatistic item in _result)
+            _result.TotalSelections = _result.Choices.Sum(m => m.Number);
+            foreach (RoshamboChoiceStatistic item in _result.Choices)
             {
-                item.Percentage = (double)item.Number / (double)total * 100;
+                item.Percentage = (double)item.Number / (double)_result.TotalSelections * 100;
             }
 
         }

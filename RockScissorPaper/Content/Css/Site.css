@@ -1,4 +1,19 @@
-﻿html {
+﻿
+.Rock {
+    background-color:black;
+}
+.Scissor {
+    background-color:gray;
+}
+.Paper {
+    background-color:blue;
+}
+.bar {
+    height:10px;
+}
+
+/*#region defaults*/
+html {
     background-color: #e2e2e2;
     margin: 0;
     padding: 0;
@@ -754,3 +769,4 @@ tr.pager td {
             margin: 0;
         }
 }
+/*#endregion*/

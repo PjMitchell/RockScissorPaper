@@ -7,9 +7,9 @@ namespace RockScissorPaper.Models.DataHandling
 {
     public interface IStatisticsRepository
     {
-        List<RoshamboChoiceStatistic> RetrieveRoundInformation();
+        RoundStatistic RetrieveRoundInformation();
 
-        List<RoshamboChoiceStatistic> RetrieveRoundInformation(int round);
+        RoundStatistic RetrieveRoundInformation(int round);
 
         int RetrieveGamesPlayed();
     }

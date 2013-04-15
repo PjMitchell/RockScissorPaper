@@ -1,0 +1,27 @@
+﻿@model RockScissorPaper.Models.StatisticsViewModel
+
+@{
+    ViewBag.Title = "Statistics";
+}
+<h3>Games Played: @Model.GamesPlayed</h3>
+<h3>Overall Totals</h3>
+<div id="overallResult">
+    @foreach(var item in Model.Overview.Choices)
+    {
+        <p >@item.Selection : @String.Format("{0:.##}", item.Percentage)%;</p>
+        <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px; "></div>
+    }
+</div>
+<div id="roundResults">
+    @foreach(var roundItem in Model.RoundInformation)
+    {
+        <h3>Round : @roundItem.RoundNumber</h3>
+        foreach(var item in roundItem.Choices)
+        {
+            <p >@item.Selection :@String.Format("{0:.##}", item.Percentage)%; :</p>
+            <div  class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px;"></div>
+        }
+    }
+</div>
+
+

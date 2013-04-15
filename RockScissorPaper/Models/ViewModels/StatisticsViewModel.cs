@@ -7,8 +7,8 @@ namespace RockScissorPaper.Models
 {
     public class StatisticsViewModel
     {
-        public List<List<RoshamboChoiceStatistic>> RoundInformation { get; set; }
-        public List<RoshamboChoiceStatistic> Overview { get; set; }
+        public List<RoundStatistic> RoundInformation { get; set; }
+        public RoundStatistic Overview { get; set; }
         public int GamesPlayed { get; set; }
     }
 }
