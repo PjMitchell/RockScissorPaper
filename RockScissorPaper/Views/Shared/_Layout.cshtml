@@ -8,25 +8,20 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav style="background-color:aqua">
-        <div class="wrapper960" >
-            <div class="wrapper2R">
+    <nav class="wrapper960">
                 @Html.ActionLink("Stats","Statistics","Home")
-            </div>
-        </div>
         <div class="clear-fix"></div>
     </nav>
-    <section id="banner" style="background-color:firebrick">
-        <div class="wrapper960" >
-                <h2>@Html.ActionLink("Rock Scissor Paper","Index","Home")</h2>
-                <p>
+    <header  class="wrapper960">
+        @Html.ActionLink("Rock Scissor Paper","Index","Home")
                 
-                </p>
             <div class="clear-fix"></div>
-        </div>
-    </section>
+        
+    </header>
     <div class="wrapper960" >
+        
         @RenderBody()
+        <div class="clear-fix"></div>
     </div>
     @Scripts.Render("~/bundles/global")
     @RenderSection("scripts", required: false)
