@@ -1,0 +1,128 @@
+﻿#gameContainer {
+    position:relative;
+    width: 460px;
+    height:300px;
+    margin: 0px 10px;
+    float:left;
+}
+#gameBannerMessage {
+    height:60px;
+    width: 460px;
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+.playerPanel {
+    width:160px;
+    height:200px;
+    margin:0px;
+    padding:0px;
+    position:absolute;
+}
+
+.centerPanel {
+    position:absolute;
+    width:140px;
+    height:200px;
+    left:160px;
+    top:60px;
+    text-align:center;
+}
+
+.playerImage {
+    width:80px;
+    height:120px;
+    position:absolute;
+    top:45px;
+    line-height:120px;
+}
+.playerImage img {
+    display: inline; 
+    vertical-align: middle ;
+    
+        
+}
+.playerSelection {
+    width:80px;
+    position:absolute;
+    text-align:center;
+    top:80px;
+}
+
+.score {
+    position:absolute;
+    width:80px;
+    bottom:0px;
+}
+#playerOne {
+    left:0px;
+    top:60px;
+}
+    #playerOne .playerImage {
+        left:0px;
+    }
+    #playerOne .playerSelection {
+        right:0px;
+    }
+    #playerOne .score {
+        left:0px;
+    }
+
+
+#playerTwo {
+    right:0px;
+    top:60px;
+}
+    #playerTwo .playerImage {
+            right:0px;
+        }
+    #playerTwo .playerSelection {
+            left:0px;
+        }
+    #playerTwo .score {
+            right:0px;
+        }
+
+
+#userMessage {
+     position:absolute;
+     top:80px;
+     left:0px;
+     right:0px;
+}
+#GameRounds {
+    position:absolute;
+     bottom:0px;
+     left:0px;
+     right:0px;
+}
+
+#playerOptions {
+    position:absolute;
+    left:0px;
+    right:0px;
+    bottom:-20px;
+    text-align:justify;
+}
+#playerOptions button{
+    margin:0px;
+    display:inline-block;
+    width:80px;
+}
+#playerOptions:after {
+    content:'';
+    width:100%;
+    display:inline-block;
+}
+
+/*#region LiveStatus Box*/
+#liveStatusBox {
+    width: 216px;
+    margin: 20px 10px;
+    float:left;
+    border: 2px solid #000;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+/*endregion*/

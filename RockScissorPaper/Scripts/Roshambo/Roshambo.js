@@ -6,13 +6,15 @@ window.Roshambo = (function ($) {
         _playerId;
 
     function init(gameId, playerId) {
-        $('#playerSelections').on('click', 'button', function (e) {
+        $('#playerOptions').on('click', 'button', function (e) {
             var $button = $(this),
                 selection = $button.attr('data-selection');
             processSelection(selection);
         });
         _gameId = gameId;
         _playerId = playerId;
+
+
     }
     
     function setCurrentSelection($divToUpdate, data) {
@@ -68,8 +70,31 @@ window.Roshambo = (function ($) {
         
     }
 
+    function liveStatus() {
+        // Reference the auto-generated proxy for the hub. 
+        var hub = $.connection.roshamboHub,
+            peopleConnectedField =$('#peoplePlayingField'),
+            botWinsField = $('#botWins'),
+            humanWinsField  =$('#humanWins');
+        // Create a function that the hub can call back to display changes in number of players.
+        hub.client.updatePeopleConnected = function (peopleConnected) {
+            // Add the message to the page. 
+               
+            peopleConnectedField.html('People Playing :'+peopleConnected);
+        };
+        hub.client.refreshView = function (view) {
+            peopleConnectedField.html('People Playing :'+ view.NumberOfPeopleConnected)
+            botWinsField.html('Bots :'+ view.BotWins)
+            humanWinsField.html('Humans :'+ view.HumanWins)
+        }
+        $.connection.hub.start().done(function () {
+            hub.server.getInfo();
+        });
+    }
+
     return {
-        init: init
+        init: init,
+        liveStatus: liveStatus
     }
 })($);
 
