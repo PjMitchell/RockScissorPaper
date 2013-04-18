@@ -19,9 +19,9 @@ namespace RockScissorPaper
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/Lib/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/styles").Include(
                 "~/Content/Css/Site.css",
                 "~/Content/Css/Wrapper960Static.css"));
         }
