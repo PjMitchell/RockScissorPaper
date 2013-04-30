@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -15,11 +16,11 @@ namespace RockScissorPaper.Models.DataHandling
         private static string GetConnectionString()
         {
 
-            string cs = PrivateValues.GetConnectionString();
+            string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             if (cs == null)
             {
-                throw new ApplicationException("The app requires a connection string to your Database");
+                throw new ApplicationException("The app requires a connection string 'DefaultConnection'");
             }
 
             return cs;

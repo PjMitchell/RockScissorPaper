@@ -15,24 +15,24 @@ namespace RockScissorPaper.Controllers
         private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
         private static IGameRepository _gameRepository = new GameSQLRepository(_connector);
 
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET api/values/5
-        public string Get(int id)
-        {
+        //public string Get(int id)
+        //{
             
-            return "value";
+        //    return "value";
             
-        }
+        //}
 
         // POST api/values
-        public void Post()
-        {
+        //public void Post()
+        //{
             
-        }
+        //}
 
         // PUT api/values/5
         public GameStateViewModel Put(int id, GameAPIPutCommand apiCommand)
@@ -66,8 +66,8 @@ namespace RockScissorPaper.Controllers
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace RockScissorPaper.Controllers
 {
@@ -23,10 +24,11 @@ namespace RockScissorPaper.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(string username)
         {
-            if (username == null || username =="")
+            if (string.IsNullOrWhiteSpace(username))
             {
                 return View();
             }
@@ -56,6 +58,7 @@ namespace RockScissorPaper.Controllers
             view.StateOfGame = service.GetGameStateViewModel(id);
             return View(view);
         }
+        [OutputCache(Location=OutputCacheLocation.Server, Duration=5)]
         public ActionResult Statistics()
         {
             StatisticsViewModelFactory factory = new StatisticsViewModelFactory(_statisticsRepository);
