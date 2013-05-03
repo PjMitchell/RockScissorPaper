@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class StatisticsViewModel
+    public class StatisticsOverviewViewInformation
     {
         public List<RoundStatistic> RoundInformation { get; set; }
         public RoundStatistic Overview { get; set; }

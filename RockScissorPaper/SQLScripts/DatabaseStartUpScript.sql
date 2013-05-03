@@ -1,5 +1,3 @@
-START TRANSACTION;
-
 CREATE TABLE GameStatus
 (
 GameStatusId int NOT NULL,
@@ -47,9 +45,16 @@ CREATE TABLE Player
 PlayerId int NOT NULL AUTO_INCREMENT,
 PlayerName  varchar(25) character set UTF8 NOT NULL,
 PlayerIPAddress varchar(25) character set UTF8 NOT NULL,
+IsBot bit NOT NULL, 
+BotType varchar(25) character set UTF8,
 PRIMARY KEY (PlayerId)
 )
 ;
+INSERT INTO Player(PlayerId, PlayerName, PlayerIPAddress, IsBot, BotType)
+VALUES
+(1, 'Simple Jack','IsBot',1, 'SimpleBot')
+;
+
 CREATE TABLE GameResult
 (
 GameResultId int NOT NULL,
@@ -78,11 +83,7 @@ FOREIGN KEY (PlayerGameResult) REFERENCES GameResult(GameResultId)
 )
 ;
 
-INSERT INTO Player(PlayerId, PlayerName, PlayerIPAddress)
-VALUES
-(1, 'Some Guy','LocalTest'),
-(2, 'Simple Jack','IsBot')
-;
+
 
 CREATE TABLE RoshamboSelection
 (
@@ -123,5 +124,3 @@ FOREIGN KEY (GameRoundId) REFERENCES GameRound(GameRoundId),
 FOREIGN KEY (SelectionId) REFERENCES RoshamboSelection(SelectionId)
 )
 ;
-
-COMMIT;

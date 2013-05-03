@@ -16,7 +16,6 @@ namespace RockScissorPaper.Models.DataHandling
         /// Can use Proceedure string for function.
         /// </summary>
         /// <param name="dt"></param>
-        /// <param name="sqlProceedureString"></param>
-        void Map(DataTable dt, string sqlProceedureString);
+        void Map(DataTable dt);
     }
 }

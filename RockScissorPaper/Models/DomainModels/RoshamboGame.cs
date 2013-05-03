@@ -26,5 +26,6 @@ namespace RockScissorPaper.Models
             Rounds = new List<GameRound>();
             Status = GameStatus.NewRound;
         }
+        
     }
 }

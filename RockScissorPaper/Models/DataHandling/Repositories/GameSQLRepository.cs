@@ -45,11 +45,17 @@ namespace RockScissorPaper.Models.DataHandling
             {
                 return null;
             }
+            GameRoundMapper mapper2 = new GameRoundMapper();
             List<StoreProceedureParameter> newParameters = new List<StoreProceedureParameter>();
             newParameters.Add(new StoreProceedureParameter("GameIdInput", result.GameId));
             newParameters.Add(new StoreProceedureParameter("PlayerOneIdInput", result.PlayerOne.PlayerId));
             newParameters.Add(new StoreProceedureParameter("PlayerTwoIdInput", result.PlayerTwo.PlayerId));
-            _dataAccess.Get("Proc_Select_GameRoundByGameIdAndPlayerIds", mapper, newParameters);
+            _dataAccess.Get("Proc_Select_GameRoundByGameIdAndPlayerIds", mapper2, newParameters);
+            result.Rounds = mapper2.Result as List<GameRound>;
+            foreach (GameRound round in result.Rounds)
+            {
+                result.Rules.RoundResolver.ResolveRound(round);
+            }
             return result;
 
         }

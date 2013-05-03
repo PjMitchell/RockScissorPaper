@@ -15,7 +15,7 @@ namespace RockScissorPaper.Models.DataHandling
             get { return _result; }
         }
 
-        public void Map(DataTable dt, string sqlProceedureString)
+        public void Map(DataTable dt)
         {
             _result = new RoundStatistic();
             foreach (DataRow dr in dt.Rows)

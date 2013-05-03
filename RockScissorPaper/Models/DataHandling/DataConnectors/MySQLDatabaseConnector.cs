@@ -75,7 +75,7 @@ namespace RockScissorPaper.Models.DataHandling
                 }
                 da.Fill(dt);
             }
-            output.Map(dt, sql);
+            output.Map(dt);
             
         }
 

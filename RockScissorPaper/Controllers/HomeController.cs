@@ -37,32 +37,41 @@ namespace RockScissorPaper.Controllers
                 
                 string ipAddress = Request.UserHostAddress;
                 int playerId = _playerRepository.CreatePlayer(username, ipAddress);
-                return RedirectToAction("Game", new { id = playerId });
+
+                //Game Lobby
+                int botid = 1;
+                Player one = _playerRepository.RetrievePlayer(playerId);
+                Player two = _playerRepository.RetrievePlayer(botid);               
+                GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two) );
+                return RedirectToAction("Game", new { id = service.CurrentGame.GameId });
             }
         }
 
         public ActionResult Game(int id)
         {
             
-            int botid = 2;
-            Player one = _playerRepository.RetrievePlayer(id);
-            Player two = new Player();
-            two.Bot = new SimpleBot();
-            two.Name = two.Bot.Name;
-            two.PlayerId = botid;
-            GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two));
+            GameService service = new GameService(_gameRepository, id);
             GameViewModel view = new GameViewModel();
-            view.PlayerOne = one;
-            view.PlayerTwo = two;
+            view.PlayerOne = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerOne.PlayerId);
+            view.PlayerTwo = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerTwo.PlayerId);
             view.Id = service.CurrentGame.GameId;
             view.StateOfGame = service.GetGameStateViewModel(id);
             return View(view);
         }
+
         [OutputCache(Location=OutputCacheLocation.Server, Duration=5)]
         public ActionResult Statistics()
         {
-            StatisticsViewModelFactory factory = new StatisticsViewModelFactory(_statisticsRepository);
-            StatisticsViewModel view = factory.Result;
+            StatisticsOverviewViewInformation view = new StatisticsOverviewViewInformation();
+            view.RoundInformation = new List<RoundStatistic>();
+            for (int i = 1; i <= 5; i++)
+            {
+                RoundStatistic roundstat = _statisticsRepository.RetrieveRoundInformation(i);
+                view.RoundInformation.Add(roundstat);
+            }
+            view.RoundInformation.OrderBy(r => r.RoundNumber);
+            view.Overview = _statisticsRepository.RetrieveRoundSummary();
+            view.GamesPlayed = _statisticsRepository.RetrieveGamesPlayed();
             return View(view);
         }
     }
