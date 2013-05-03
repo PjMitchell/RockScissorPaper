@@ -6,13 +6,28 @@ using System.Web;
 
 namespace RockScissorPaper.Models.DataHandling
 {
+    /// <summary>
+    /// Required Stored Proceedures
+    /// Proc_Create_GameRound
+    /// Proc_Create_GameRoundResult
+    /// Proc_Create_NewGame
+    /// Proc_Select_GameRoundByGameIdAndPlayerIds
+    /// Proc_Select_BotVsHumanVictoryCount
+    /// Proc_Select_GameById
+    /// Proc_Update_GamePlayerResult
+    /// Proc_Update_GameStatus
+    
+    /// </summary>
+    
     public class GameSQLRepository : IGameRepository 
     {
         private IDatabaseConnector _dataAccess;
+        private IPlayerRepository _playerRepositotry;
 
-        public GameSQLRepository(IDatabaseConnector dataConnector)
+        public GameSQLRepository(IDatabaseConnector dataConnector, IPlayerRepository playerRepository)
         {
             _dataAccess = dataConnector;
+            _playerRepositotry = playerRepository;
         }
 
         /// <summary>
@@ -45,6 +60,8 @@ namespace RockScissorPaper.Models.DataHandling
             {
                 return null;
             }
+            result.PlayerOne = _playerRepositotry.RetrievePlayer(result.PlayerOne.PlayerId);
+            result.PlayerTwo = _playerRepositotry.RetrievePlayer(result.PlayerTwo.PlayerId);
             GameRoundMapper mapper2 = new GameRoundMapper();
             List<StoreProceedureParameter> newParameters = new List<StoreProceedureParameter>();
             newParameters.Add(new StoreProceedureParameter("GameIdInput", result.GameId));

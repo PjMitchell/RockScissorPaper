@@ -1,14 +1,8 @@
-USE `joelmitc_petertestdatabase`;
-
-DROP procedure IF EXISTS `Proc_Select_GameRoundByGameIdAndPlayerIds`;
-
-
 
 DELIMITER $$
 
-USE `joelmitc_petertestdatabase`$$
 
-CREATE PROCEDURE `joelmitc_petertestdatabase`.`Proc_Select_GameRoundByGameIdAndPlayerIds` (
+CREATE PROCEDURE `Proc_Select_GameRoundByGameIdAndPlayerIds` (
 
 in GameIdInput int,
 

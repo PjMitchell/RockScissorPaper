@@ -5,6 +5,11 @@ using System.Web;
 
 namespace RockScissorPaper.Models.DataHandling
 {
+    /// <summary>
+    /// Required Stored Proceedures
+    /// Proc_Select_PlayerById
+    /// Proc_Create_NewPlayer
+    /// </summary>
     public class PlayerSQLRepository : IPlayerRepository
     {
         IDatabaseConnector _dataAccess;

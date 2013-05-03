@@ -5,6 +5,12 @@ using System.Web;
 
 namespace RockScissorPaper.Models.DataHandling
 {
+    /// <summary>
+    /// Required Stored Proceedures
+    /// Proc_Select_RoundStatisticsTotal
+    /// Proc_Select_RoundStatisticsByRoundNumber
+    /// Proc_Select_GameTotalPlayed
+    /// </summary>
     public class StatisticsSQLRepository : IStatisticsRepository
     {
         IDatabaseConnector _dataAccess;

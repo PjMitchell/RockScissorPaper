@@ -12,8 +12,8 @@ namespace RockScissorPaper.Hubs
     public class RoshamboHub : Hub //Does Time out while Idle
     {
         private static HashSet<string> _connectionIds { get; set ;}
-        public static int PeopleConnected { get {return _connectionIds.Count; } } 
-        private IGameRepository _repository = new GameSQLRepository(new MySQLDatabaseConnector());
+        public static int PeopleConnected { get {return _connectionIds.Count; } }
+        private IGameRepository _repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
         
         public void Send(string name, string message)
         {

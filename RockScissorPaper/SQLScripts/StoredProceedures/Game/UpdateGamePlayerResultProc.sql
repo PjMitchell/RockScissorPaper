@@ -1,14 +1,9 @@
-USE `joelmitc_petertestdatabase`;
-
-DROP procedure IF EXISTS `Proc_Update_GamePlayerResult`;
-
-
 
 DELIMITER $$
 
-USE `joelmitc_petertestdatabase`$$
 
-CREATE PROCEDURE `joelmitc_petertestdatabase`.`Proc_Update_GamePlayerResult` (
+
+CREATE PROCEDURE `Proc_Update_GamePlayerResult` (
 
 in 
 

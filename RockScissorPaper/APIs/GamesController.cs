@@ -13,7 +13,7 @@ namespace RockScissorPaper.Controllers
     {
         // GET api/values
         private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
-        private static IGameRepository _gameRepository = new GameSQLRepository(_connector);
+        private static IGameRepository _gameRepository = new GameSQLRepository(_connector, new PlayerSQLRepository(_connector));
 
         //public IEnumerable<string> Get()
         //{

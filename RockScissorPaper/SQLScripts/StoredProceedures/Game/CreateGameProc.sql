@@ -1,12 +1,6 @@
-USE `joelmitc_petertestdatabase`;
-
-DROP procedure IF EXISTS `Proc_Create_NewGame`;
-
-
 
 DELIMITER $$
 
-USE `joelmitc_petertestdatabase`$$
 
 CREATE PROCEDURE `Proc_Create_NewGame` (
 

@@ -17,7 +17,7 @@ namespace RockScissorPaper.Controllers
         /// </summary>
         private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
         private static IPlayerRepository _playerRepository = new PlayerSQLRepository(_connector);
-        private static IGameRepository _gameRepository = new GameSQLRepository(_connector);
+        private static IGameRepository _gameRepository = new GameSQLRepository(_connector, _playerRepository);
         private static IStatisticsRepository _statisticsRepository = new StatisticsSQLRepository(_connector); 
 
         public ActionResult Index()
@@ -38,13 +38,18 @@ namespace RockScissorPaper.Controllers
                 string ipAddress = Request.UserHostAddress;
                 int playerId = _playerRepository.CreatePlayer(username, ipAddress);
 
-                //Game Lobby
-                int botid = 1;
-                Player one = _playerRepository.RetrievePlayer(playerId);
-                Player two = _playerRepository.RetrievePlayer(botid);               
-                GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two) );
-                return RedirectToAction("Game", new { id = service.CurrentGame.GameId });
+                return RedirectToAction("GameLobby", new { id = playerId });
+                
             }
+        }
+
+        public ActionResult GameLobby(int id)
+        {
+            int botid = 1;
+            Player one = _playerRepository.RetrievePlayer(id);
+            Player two = _playerRepository.RetrievePlayer(botid);
+            GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two));
+            return RedirectToAction("Game", new { id = service.CurrentGame.GameId });
         }
 
         public ActionResult Game(int id)

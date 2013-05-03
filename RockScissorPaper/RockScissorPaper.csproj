@@ -216,21 +216,21 @@
     <Content Include="Scripts\Lib\jquery-1.8.3.min.js" />
     <Content Include="Scripts\Lib\modernizr-2.5.3.js" />
     <Content Include="Scripts\Roshambo\Roshambo.js" />
-    <Content Include="SQLScripts\StoredProceedures\CreateGameProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\CreateGameRoundResultProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\CreateNewPlayerProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\CreateRoundProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\CreateGameProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\CreateGameRoundResultProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Player\CreateNewPlayerProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\CreateRoundProc.sql" />
     <Content Include="SQLScripts\DatabaseStartUpScript.sql" />
-    <Content Include="SQLScripts\StoredProceedures\SelectBotVsHumanVicotryCountProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\SelectGameByIdProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\SelectGameRoundByGameIdAndPlayerIdsProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\SelectBotVsHumanVicotryCountProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameByIdProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRoundByGameIdAndPlayerIdsProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Statistics\SelectGameTotalPlayedProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\SelectPlayerByIdProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Player\SelectPlayerByIdProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsByRoundNumberProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsTotalProc.sql" />
     <Content Include="SQLScripts\UNDO-DatabaseStartUpScript.sql" />
-    <Content Include="SQLScripts\StoredProceedures\UpdateGamePlayerResultProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\UpdateGameStatusProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\UpdateGamePlayerResultProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\UpdateGameStatusProc.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

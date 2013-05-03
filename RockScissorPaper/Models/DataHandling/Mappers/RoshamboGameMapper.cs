@@ -30,19 +30,11 @@ namespace RockScissorPaper.Models.DataHandling
             // Player 1 info
             _result.PlayerOne = new Player();
             _result.PlayerOne.PlayerId = map.MapInt32("PlayerOneId");
-            _result.PlayerOne.Name = map.MapString("PlayerOneName");
-            if (_result.PlayerOne.Name == "Simple Jack")
-            {
-                _result.PlayerOne.Bot = new SimpleBot();
-            }
+            
             // Player 2 info
             _result.PlayerTwo = new Player();
             _result.PlayerTwo.PlayerId = map.MapInt32("PlayerTwoId");
-            _result.PlayerTwo.Name = map.MapString("PlayerTwoName");
-            if (_result.PlayerTwo.Name == "Simple Jack")
-            {
-                _result.PlayerTwo.Bot = new SimpleBot();
-            }
+            
 
             _result.Rules = new GameRules(); //To Reimplement when more rule sets are added
             int statusInt = map.MapInt32("GameStatus");
