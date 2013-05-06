@@ -1,4 +1,6 @@
-﻿using RockScissorPaper.Models;
+﻿using Ninject;
+using Ninject.Modules;
+using RockScissorPaper.Models;
 using RockScissorPaper.Models.Bots;
 using RockScissorPaper.Models.DataHandling;
 using System;
@@ -10,15 +12,20 @@ using System.Web.UI;
 
 namespace RockScissorPaper.Controllers
 {
+    
     public class HomeController : Controller
     {
-        /// <summary>
-        /// replace with ninject
-        /// </summary>
-        private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
-        private static IPlayerRepository _playerRepository = new PlayerSQLRepository(_connector);
-        private static IGameRepository _gameRepository = new GameSQLRepository(_connector, _playerRepository);
-        private static IStatisticsRepository _statisticsRepository = new StatisticsSQLRepository(_connector); 
+        
+        private readonly IPlayerRepository _playerRepository;
+        private readonly IGameRepository _gameRepository;
+        private readonly IStatisticsRepository _statisticsRepository;
+
+        public HomeController(IPlayerRepository playerRepository, IGameRepository gameRepository, IStatisticsRepository statisticsRepository)
+        {
+            _playerRepository = playerRepository;
+            _gameRepository = gameRepository;
+            _statisticsRepository = statisticsRepository;
+        }
 
         public ActionResult Index()
         {
@@ -83,4 +90,5 @@ namespace RockScissorPaper.Controllers
             return View(view);
         }
     }
+
 }
