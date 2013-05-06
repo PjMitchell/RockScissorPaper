@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace RockScissorPaper.Models.DataHandling
 {
     /// <summary>
@@ -31,11 +32,10 @@ namespace RockScissorPaper.Models.DataHandling
 
         public List<RoundStatistic> RetrieveRoundInformation()
         {
-            RoundStatisticsMapper mapper = new RoundStatisticsMapper();
-            _dataAccess.Get("Proc_Select_RoundStatisticsTotal", mapper);
-            RoundStatistic result = mapper.Result as RoundStatistic;
-            result.RoundNumber = 0;
-            return null;
+            ListOfRoundStatisticsMapper mapper = new ListOfRoundStatisticsMapper();
+            _dataAccess.Get("Proc_Select_RoundStatistics", mapper);
+            List<RoundStatistic> result = mapper.Result as List<RoundStatistic>;
+            return result;
         }
 
         public RoundStatistic RetrieveRoundInformation(int round)

@@ -35,7 +35,7 @@ namespace RockScissorPaper.Controllers
         //}
 
         // PUT api/values/5
-        public GameStateViewModel Put(int id, GameAPIPutCommand apiCommand)
+        public GameStateViewInformation Put(int id, GameAPIPutCommand apiCommand)
         {
             int playerId =  apiCommand.playerId;
             int selection = apiCommand.selection;
@@ -60,7 +60,7 @@ namespace RockScissorPaper.Controllers
             }
             
             service.Execute(command);
-            GameStateViewModel result = service.GetGameStateViewModel(playerId);
+            GameStateViewInformation result = service.GetGameStateViewModel(playerId);
             
             return result;
         }

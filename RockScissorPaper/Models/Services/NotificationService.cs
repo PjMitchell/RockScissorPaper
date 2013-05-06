@@ -22,7 +22,7 @@ namespace RockScissorPaper.Models
         
         public void GameFinished()
         {
-            RoshamboHubViewModel view = _gameRepository.RetrieveBotVsHumanScore();
+            RoshamboHubViewInformation view = _gameRepository.RetrieveBotVsHumanScore();
             view.NumberOfPeopleConnected = RoshamboHub.PeopleConnected;
             _context.Clients.All.refreshView(view);
         }

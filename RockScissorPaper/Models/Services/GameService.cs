@@ -30,7 +30,7 @@ namespace RockScissorPaper.Models
             } 
         }
         public RoshamboGame CurrentGame { get; private set; }
-        private GameStateViewModelFactory _gameStateViewModelFactory { get; set; }
+        private GameStateService _gameStateViewModelFactory { get; set; }
 
         #region Contructors
 
@@ -40,7 +40,7 @@ namespace RockScissorPaper.Models
             _repository = repository;
             CurrentGame = game;
             _repository.CreateNewGame(CurrentGame);
-            _gameStateViewModelFactory = new GameStateViewModelFactory(CurrentGame);
+            _gameStateViewModelFactory = new GameStateService(CurrentGame);
             _status = CurrentGame.Status;
             _gameStateViewModelFactory.Update(Status);
 
@@ -50,7 +50,7 @@ namespace RockScissorPaper.Models
             
             _repository = repository;
             CurrentGame = _repository.RetrieveGame(id);
-            _gameStateViewModelFactory = new GameStateViewModelFactory(CurrentGame);
+            _gameStateViewModelFactory = new GameStateService(CurrentGame);
             _status = CurrentGame.Status;
             _gameStateViewModelFactory.Update(Status);
 
@@ -229,7 +229,7 @@ namespace RockScissorPaper.Models
         /// </summary>
         /// <param name="playerId"></param>
         /// <returns></returns>
-        public GameStateViewModel GetGameStateViewModel(int playerId)
+        public GameStateViewInformation GetGameStateViewModel(int playerId)
         {
             _gameStateViewModelFactory.SetObservingPlayer(playerId);
             return _gameStateViewModelFactory.GameState;

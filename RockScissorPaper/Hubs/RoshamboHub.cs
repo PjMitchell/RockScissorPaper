@@ -65,7 +65,7 @@ namespace RockScissorPaper.Hubs
 
         public void GetInfo()
         {
-            RoshamboHubViewModel view = _repository.RetrieveBotVsHumanScore();
+            RoshamboHubViewInformation view = _repository.RetrieveBotVsHumanScore();
             view.NumberOfPeopleConnected = PeopleConnected;
             Clients.Caller.refreshView(view);
         }

@@ -42,7 +42,11 @@ namespace RockScissorPaper.Controllers
                 
             }
         }
-
+        /// <summary>
+        /// Player Is matched up with Oppenent
+        /// </summary>
+        /// <param name="id">Player Id</param>
+        /// <returns></returns>
         public ActionResult GameLobby(int id)
         {
             int botid = 1;
@@ -51,7 +55,11 @@ namespace RockScissorPaper.Controllers
             GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two));
             return RedirectToAction("Game", new { id = service.CurrentGame.GameId });
         }
-
+        /// <summary>
+        /// Game Is setup
+        /// </summary>
+        /// <param name="id">Game Id</param>
+        /// <returns></returns>
         public ActionResult Game(int id)
         {
             
@@ -68,12 +76,7 @@ namespace RockScissorPaper.Controllers
         public ActionResult Statistics()
         {
             StatisticsOverviewViewInformation view = new StatisticsOverviewViewInformation();
-            view.RoundInformation = new List<RoundStatistic>();
-            for (int i = 1; i <= 5; i++)
-            {
-                RoundStatistic roundstat = _statisticsRepository.RetrieveRoundInformation(i);
-                view.RoundInformation.Add(roundstat);
-            }
+            view.RoundInformation = _statisticsRepository.RetrieveRoundInformation();
             view.RoundInformation.OrderBy(r => r.RoundNumber);
             view.Overview = _statisticsRepository.RetrieveRoundSummary();
             view.GamesPlayed = _statisticsRepository.RetrieveGamesPlayed();

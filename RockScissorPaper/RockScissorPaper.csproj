@@ -149,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\RoshamboHub.cs" />
+    <Compile Include="Models\DataHandling\Mappers\ListOfRoundStatisticsMapper.cs" />
     <Compile Include="Models\Factories\BotPlayerFactory.cs" />
     <Compile Include="Models\Bots\BotBase.cs" />
     <Compile Include="Models\Bots\RockBot.cs" />
@@ -177,13 +178,13 @@
     <Compile Include="Models\GameModels\StandardGameScoreResolver.cs" />
     <Compile Include="Models\DomainModels\GameRound.cs" />
     <Compile Include="Models\GameModels\Interfaces\IRoshamboResolver.cs" />
-    <Compile Include="Models\Factories\GameStateViewModelFactory.cs" />
+    <Compile Include="Models\Services\GameStateService.cs" />
     <Compile Include="Models\DomainModels\RoundStatistic.cs" />
     <Compile Include="Models\DomainModels\ViewInformation\StatisticsOverviewViewInfomation.cs" />
     <Compile Include="Models\Statistics\GammaFunction.cs" />
-    <Compile Include="Models\ViewModels\RoshamboHubViewModel.cs" />
+    <Compile Include="Models\DomainModels\ViewInformation\RoshamboHubViewInformation.cs" />
     <Compile Include="Models\Services\NotificationService.cs" />
-    <Compile Include="Models\ViewModels\GameStateViewModel.cs" />
+    <Compile Include="Models\DomainModels\ViewInformation\GameStateViewInformation.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Services\GameService.cs" />
     <Compile Include="Models\Commands\PlayerSelectionCommand.cs" />
@@ -194,7 +195,7 @@
     <Compile Include="Models\GameModels\RoshamboResolver.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />
-    <Compile Include="Models\ViewModels\PlayerStateViewModel.cs" />
+    <Compile Include="Models\DomainModels\ViewInformation\PlayerStateViewInfomation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +225,7 @@
     <Content Include="SQLScripts\StoredProceedures\Game\SelectBotVsHumanVicotryCountProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Game\SelectGameByIdProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRoundByGameIdAndPlayerIdsProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Statistics\SelectGameTotalPlayedProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Player\SelectPlayerByIdProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsByRoundNumberProc.sql" />

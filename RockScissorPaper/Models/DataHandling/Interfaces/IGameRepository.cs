@@ -54,6 +54,6 @@ namespace RockScissorPaper.Models.DataHandling
         /// Returns the Total wins of Human and Bot Players
         /// </summary>
         /// <returns></returns>
-        RoshamboHubViewModel RetrieveBotVsHumanScore();
+        RoshamboHubViewInformation RetrieveBotVsHumanScore();
     }
 }

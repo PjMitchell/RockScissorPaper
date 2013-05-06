@@ -10,6 +10,6 @@ namespace RockScissorPaper.Models
         public int Id { get; set; }
         public Player PlayerTwo { get; set; }
         public Player PlayerOne { get; set; }
-        public GameStateViewModel StateOfGame { get; set; }
+        public GameStateViewInformation StateOfGame { get; set; }
     }
 }
