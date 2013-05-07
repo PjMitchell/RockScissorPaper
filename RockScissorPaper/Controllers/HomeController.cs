@@ -75,7 +75,7 @@ namespace RockScissorPaper.Controllers
             view.PlayerOne = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerOne.PlayerId);
             view.PlayerTwo = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerTwo.PlayerId);
             view.CurrentUserId = currentUserId;
-            view.StateOfGame = service.GetGameStateViewModel(id);
+            view.StateOfGame = service.GetGameStateViewModel(currentUserId);
             return View(view);
         }
 

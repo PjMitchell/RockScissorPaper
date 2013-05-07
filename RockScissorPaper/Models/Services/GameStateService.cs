@@ -18,6 +18,7 @@ namespace RockScissorPaper.Models
 
         public void Update(GameStatus currentStatus, GameRound currentRound = null)
         {
+            GameState.Status = currentStatus;
             switch (currentStatus)
             {
                 case GameStatus.NewRound :
@@ -132,6 +133,11 @@ namespace RockScissorPaper.Models
         {
             GameState.PlayerOne.IsViewer = playerId == GameState.PlayerOne.PlayerId;
             GameState.PlayerTwo.IsViewer = playerId == GameState.PlayerTwo.PlayerId;
+        }
+
+        public void SetAsFinalRoundResult(bool valueToSet = true)
+        {
+            GameState.FinalRoundResult = valueToSet;
         }
 
        

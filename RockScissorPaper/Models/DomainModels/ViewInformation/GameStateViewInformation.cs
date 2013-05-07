@@ -12,11 +12,14 @@ namespace RockScissorPaper.Models
         public PlayerStateViewInformation PlayerTwo { get; set; }
         public string RoundMessage { get; set; }
         public string BannerMessage { get; set; }
+        public GameStatus Status { get; set; }
+        public bool FinalRoundResult { get; set; }
 
         public GameStateViewInformation()
         {
             PlayerOne = new PlayerStateViewInformation();
             PlayerTwo = new PlayerStateViewInformation();
+            FinalRoundResult = false;
         }
     }
 }

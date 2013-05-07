@@ -13,20 +13,26 @@ namespace RockScissorPaper.Controllers
     {
         // GET api/values
         private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
-        private static IGameRepository _gameRepository = new GameSQLRepository(_connector, new PlayerSQLRepository(_connector));
-       
+        private static IPlayerRepository _playerRepository = new PlayerSQLRepository(_connector);
+        private static IGameRepository _gameRepository = new GameSQLRepository(_connector, _playerRepository);
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };
         //}
 
         // GET api/values/5
-        //public string Get(int id)
-        //{
-            
-        //    return "value";
-            
-        //}
+        public GameViewModel Get(int id, int currentUserId)
+        {
+
+            GameService service = new GameService(_gameRepository, id);
+            GameViewModel result = new GameViewModel();
+            result.PlayerOne = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerOne.PlayerId);
+            result.PlayerTwo = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerTwo.PlayerId);
+            result.CurrentUserId = currentUserId;
+            result.StateOfGame = service.GetGameStateViewModel(currentUserId);
+            return result;
+
+        }
 
         // POST api/values
         //public void Post()

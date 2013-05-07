@@ -30,7 +30,7 @@ namespace RockScissorPaper.Models
             } 
         }
         public RoshamboGame CurrentGame { get; private set; }
-        private GameStateService _gameStateViewModelFactory { get; set; }
+        private GameStateService _gameStateService { get; set; }
 
         #region Contructors
 
@@ -40,9 +40,9 @@ namespace RockScissorPaper.Models
             _repository = repository;
             CurrentGame = game;
             _repository.CreateNewGame(CurrentGame);
-            _gameStateViewModelFactory = new GameStateService(CurrentGame);
+            _gameStateService = new GameStateService(CurrentGame);
             _status = CurrentGame.Status;
-            _gameStateViewModelFactory.Update(Status);
+            _gameStateService.Update(Status);
 
         }
         public GameService(IGameRepository repository, int id)
@@ -50,9 +50,9 @@ namespace RockScissorPaper.Models
             
             _repository = repository;
             CurrentGame = _repository.RetrieveGame(id);
-            _gameStateViewModelFactory = new GameStateService(CurrentGame);
+            _gameStateService = new GameStateService(CurrentGame);
             _status = CurrentGame.Status;
-            _gameStateViewModelFactory.Update(Status);
+            _gameStateService.Update(Status);
 
         }
         
@@ -100,7 +100,8 @@ namespace RockScissorPaper.Models
             GameServiceResult result = new GameServiceResult();
             result.PlayerOneOutcome = CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome;
             result.PlayerTwoOutcome = CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome;
-            _gameStateViewModelFactory.Update(Status);
+            _gameStateService.Update(Status);
+            _gameStateService.SetAsFinalRoundResult(false);
             return result;
 
         }
@@ -128,7 +129,7 @@ namespace RockScissorPaper.Models
             }
             CurrentGame.Rules.RoundResolver.ResolveRound(_currentRound);
             CurrentGame.Rounds.Add(_currentRound);
-            _gameStateViewModelFactory.Update(Status, _currentRound);
+            _gameStateService.Update(Status, _currentRound);
 
             //Postround decision
             GameServiceResult result = new GameServiceResult();
@@ -144,6 +145,7 @@ namespace RockScissorPaper.Models
                 if (CurrentGame.Rules.AllowDraw || CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome != GameOutcome.Draw)
                 {
                     _repository.UpdateGameResult(CurrentGame);
+                    _gameStateService.SetAsFinalRoundResult();
                     NotificationService service = new NotificationService(_repository);
                     service.GameFinished();
                     Status = GameStatus.EndOfGame;
@@ -231,8 +233,8 @@ namespace RockScissorPaper.Models
         /// <returns></returns>
         public GameStateViewInformation GetGameStateViewModel(int playerId)
         {
-            _gameStateViewModelFactory.SetObservingPlayer(playerId);
-            return _gameStateViewModelFactory.GameState;
+            _gameStateService.SetObservingPlayer(playerId);
+            return _gameStateService.GameState;
         }
 
     }

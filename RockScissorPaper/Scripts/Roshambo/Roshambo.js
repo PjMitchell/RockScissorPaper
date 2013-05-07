@@ -64,12 +64,22 @@ window.Roshambo = (function ($) {
                     $userMessage.html(data.PlayerTwo.PlayerMessage);
                 }
                 $gameRounds.html(data.RoundMessage);
-                $buttonbox.children('button').each(function () {
-                    var $this = $(this),
-                         text = $this.attr('data-selectionName');
-                    $this.removeAttr('disabled', 'disabled');
-                    $this.html(text);
-                });
+                if (data.FinalRoundResult) {
+                    $buttonbox.children('button').each(function () {
+                        var $this = $(this);
+                        $this.remove();
+                    });
+                    setTimeout(function () { processSelection(1) }, 3000);
+
+                }
+                else {
+                    $buttonbox.children('button').each(function () {
+                        var $this = $(this),
+                             text = $this.attr('data-selectionName');
+                        $this.removeAttr('disabled', 'disabled');
+                        $this.html(text);
+                    });
+                }
                 
             }
             

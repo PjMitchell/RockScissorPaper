@@ -24,11 +24,12 @@
             <p id="userMessage">
                 @if (@Model.StateOfGame.PlayerOne.IsViewer)
                 {
-                    @Model.StateOfGame.PlayerOne.PlayerMessage 
+                    @Html.Raw(Model.StateOfGame.PlayerOne.PlayerMessage )
                 }
                 else
                 {
-                    @Model.StateOfGame.PlayerTwo.PlayerMessage
+                     @Html.Raw(Model.StateOfGame.PlayerTwo.PlayerMessage )
+                   
                 }
 
             </p>
