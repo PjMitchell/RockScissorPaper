@@ -60,21 +60,21 @@ namespace RockScissorPaper.Controllers
             Player one = _playerRepository.RetrievePlayer(id);
             Player two = _playerRepository.RetrievePlayer(botid);
             GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two));
-            return RedirectToAction("Game", new { id = service.CurrentGame.GameId });
+            return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
         }
         /// <summary>
         /// Game Is setup
         /// </summary>
         /// <param name="id">Game Id</param>
         /// <returns></returns>
-        public ActionResult Game(int id)
+        public ActionResult Game(int id, int currentUserId)
         {
             
             GameService service = new GameService(_gameRepository, id);
             GameViewModel view = new GameViewModel();
             view.PlayerOne = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerOne.PlayerId);
             view.PlayerTwo = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerTwo.PlayerId);
-            view.Id = service.CurrentGame.GameId;
+            view.CurrentUserId = currentUserId;
             view.StateOfGame = service.GetGameStateViewModel(id);
             return View(view);
         }

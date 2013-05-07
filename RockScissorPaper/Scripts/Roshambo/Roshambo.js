@@ -37,8 +37,8 @@ window.Roshambo = (function ($) {
     }
 
     function processSelection(input) {
-        var inputModel = { playerId: _playerId, selection: input };
-
+        var inputModel = { playerId: _playerId, selection: input },
+            $buttonbox = $('#playerOptions');
         $.ajax({
             dataType: 'json',
             url: '/api/Games/' + _gameId,
@@ -64,9 +64,17 @@ window.Roshambo = (function ($) {
                     $userMessage.html(data.PlayerTwo.PlayerMessage);
                 }
                 $gameRounds.html(data.RoundMessage);
+                $buttonbox.children('button').each(function () {
+                    var $this = $(this),
+                         text = $this.attr('data-selectionName');
+                    $this.removeAttr('disabled', 'disabled');
+                    $this.html(text);
+                });
+                
             }
-
+            
         });
+        $buttonbox.children('button').attr('disabled', 'disabled').html('<img src="/Content/Images/ajax-loader.gif"/>');
         
     }
 

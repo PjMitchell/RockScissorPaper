@@ -215,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Css\Game.css" />
+    <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\Drunk-hamster2.jpg" />
     <Content Include="Content\Images\Pm.jpg" />
     <Content Include="Content\Css\Wrapper960Static.css" />

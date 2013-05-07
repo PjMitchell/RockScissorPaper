@@ -43,9 +43,9 @@
         <h3 class="score" id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
     </div>
     <div id="playerOptions">
-        <button data-selection="1">Rock</button>
-        <button data-selection="2">Scissor</button>
-        <button data-selection="3">Paper</button>
+        <button data-selection="1" data-selectionName="Rock">Rock</button>
+        <button data-selection="2" data-selectionName="Scissor">Scissor</button>
+        <button data-selection="3" data-selectionName="Paper">Paper</button>
     </div>
 </div>
     @section scripts {
@@ -61,7 +61,7 @@
     
     <script>
         $(function () {
-            Roshambo.init(@Model.Id, @Model.PlayerOne.PlayerId);
+            Roshambo.init(@Model.StateOfGame.GameId, @Model.CurrentUserId);
             Roshambo.liveStatus();
         });
     </script>

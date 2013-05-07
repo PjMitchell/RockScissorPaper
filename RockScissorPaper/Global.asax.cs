@@ -23,9 +23,10 @@ namespace RockScissorPaper
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-            kernel.Bind<IGameRepository>().ToConstructor(c => new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())));
-            kernel.Bind<IStatisticsRepository>().ToConstructor(c => new StatisticsSQLRepository(new MySQLDatabaseConnector()));
-            kernel.Bind<IPlayerRepository>().ToConstructor(c => new PlayerSQLRepository(new MySQLDatabaseConnector()));
+            kernel.Bind<IDatabaseConnector>().To<MySQLDatabaseConnector>();
+            kernel.Bind<IGameRepository>().To<GameSQLRepository>();
+            kernel.Bind<IStatisticsRepository>().To<StatisticsSQLRepository>();
+            kernel.Bind<IPlayerRepository>().To<PlayerSQLRepository>();
             return kernel;
         }
 

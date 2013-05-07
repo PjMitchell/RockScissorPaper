@@ -14,7 +14,9 @@ namespace RockScissorPaper.Hubs
         private static HashSet<string> _connectionIds { get; set ;}
         public static int PeopleConnected { get {return _connectionIds.Count; } }
         private IGameRepository _repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
-        
+
+
+
         public void Send(string name, string message)
         {
             // Call the broadcastMessage method to update clients.

@@ -7,7 +7,7 @@ namespace RockScissorPaper.Models
 {
     public class GameViewModel
     {
-        public int Id { get; set; }
+        public int CurrentUserId { get; set; }
         public Player PlayerTwo { get; set; }
         public Player PlayerOne { get; set; }
         public GameStateViewInformation StateOfGame { get; set; }
