@@ -8,34 +8,28 @@ namespace RockScissorPaper.Models
 {
     public  class GameRules
     {
-        private byte _totalRounds;
-        private IRoshamboResolver _roundResolver;
-        private IGameScoreResolver _gameScoreResolver;
-        private bool _allowDraw;
 
         public int Id { get; set; }
-        public int TotalRounds { get { return _totalRounds; } }
-        public IRoshamboResolver RoundResolver { get { return _roundResolver; } }
-        public IGameScoreResolver GameScoreResolver { get { return _gameScoreResolver; } }
-        public bool AllowDraw { get { return _allowDraw; } }
+        public int TotalRounds { get; set; }
+        public IRoshamboResolver RoundResolver { get; set; }
+        public IGameScoreResolver GameScoreResolver { get; set; }
+        public bool AllowDraw { get; set; }
+        public GameType GameType { get; set; }
+        public GameSelectorButtonBox ButtonBox {get; set;}
 
+        
 
         public GameRules()
         {
             Id = 1;
-            _totalRounds = 5;
-            _roundResolver = new RoshamboResolver();
-            _gameScoreResolver = new StandardGameScoreResolver();
-            _allowDraw = true;
+            TotalRounds = 5;
+            RoundResolver = new RoshamboResolver();
+            GameScoreResolver = new StandardGameScoreResolver();
+            AllowDraw = true;
+            GameType = GameType.StandardGame;
+            ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(GameType, "RSP");
         }
-
-        public GameRules(byte numberofrounds = 5, bool allowDraw = true, IRoshamboResolver roshamboResolver = null, IGameScoreResolver gameScoreResolver=null)
-        {
-            _totalRounds = numberofrounds;
-            _roundResolver = roshamboResolver ?? new RoshamboResolver();
-            _gameScoreResolver = gameScoreResolver ?? new StandardGameScoreResolver();
-            _allowDraw = allowDraw;
-        }
+        
         
     }
 }

@@ -41,12 +41,9 @@ namespace RockScissorPaper.Controllers
             }
             else
             {
-                
                 string ipAddress = Request.UserHostAddress;
                 int playerId = _playerRepository.CreatePlayer(username, ipAddress);
-
                 return RedirectToAction("GameLobby", new { id = playerId });
-                
             }
         }
         /// <summary>
@@ -59,7 +56,10 @@ namespace RockScissorPaper.Controllers
             int botid = 1;
             Player one = _playerRepository.RetrievePlayer(id);
             Player two = _playerRepository.RetrievePlayer(botid);
+            GameRules gameRules = new GameRules();
+            gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, true);
             GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two));
+
             return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
         }
         /// <summary>

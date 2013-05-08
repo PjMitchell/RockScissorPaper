@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
+
+namespace RockScissorPaper.Models
+{
+    public class GameSelectorButtonBoxFactory
+    {
+        public static GameSelectorButtonBox GetButtonBox(GameType gametype, string buttonArrangement)
+        {
+            switch (gametype)
+            {
+                case GameType.StandardGame :
+                    return buildStandardGame(buttonArrangement);
+                default :
+                    return buildStandardGame(buttonArrangement);
+            }
+        }
+        public static GameSelectorButtonBox GetButtonBox(GameType gametype, bool GetRandom = false)
+        {
+            
+            
+            switch (gametype)
+            {
+                
+                case GameType.StandardGame:
+                    string buttonArrangement = "RSP";
+                    if (GetRandom)
+                    {
+                        Random rnd = new Random();
+                        StandardGameButtonOrder order = (StandardGameButtonOrder)rnd.Next(1, 7); 
+                        buttonArrangement = Convert.ToString(order); 
+                    }
+                    return buildStandardGame(buttonArrangement);
+                default:
+                    return buildStandardGame("RSP");
+            }
+        }
+
+
+        private static GameSelectorButtonBox buildStandardGame(string buttonArrangement)
+        {
+            /*
+             1 RSP 2 RPS 3 PRS 4 PSR 5 SPR 6 SRP
+            */
+            if (!Regex.IsMatch(buttonArrangement, "RSP|RPS|PRS|PSR|SPR|SRP"))
+            {
+                buttonArrangement="RSP";
+            }
+
+            GameSelectorButtonBox result = new GameSelectorButtonBox();
+            result.Id = buttonArrangement;
+            char[] buttonArray = buttonArrangement.ToCharArray();
+            foreach (char c in buttonArray)
+            {
+                result.Buttons.Add(loadButton(c));
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Rock Scissor Paper
+        /// </summary>
+        /// <returns></returns>
+        private static GameSelectorButton loadButton(char c)
+        {
+            switch (c)
+            {
+                case 'R' :
+                    return new GameSelectorButton(RoshamboSelection.Rock);
+                case 'S':
+                    return new GameSelectorButton(RoshamboSelection.Scissor);
+                case 'P' :
+                    return new GameSelectorButton(RoshamboSelection.Paper);
+                default :
+                    return null;
+            }
+        }
+    }
+}
