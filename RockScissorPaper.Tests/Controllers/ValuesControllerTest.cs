@@ -55,7 +55,7 @@ namespace RockScissorPaper.Tests.Controllers
             command.selection = 3;
 
             // Act
-            GameStateViewInformation result = controller.Put(1, command);
+            GameStateQuery result = controller.Put(1, command);
 
             // Assert
             Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);

@@ -54,6 +54,21 @@ namespace RockScissorPaper.Models.DataHandling
         /// Returns the Total wins of Human and Bot Players
         /// </summary>
         /// <returns></returns>
-        RoshamboHubViewInformation RetrieveBotVsHumanScore();
+        RoshamboHubViewModel RetrieveBotVsHumanScore();
+
+       /// <summary>
+       /// Returns the rule set for the desired Rule Id
+       /// </summary>
+       /// <param name="ruleId">Index to be retrieved</param>
+       /// <param name="factory"></param>
+       /// <returns></returns>
+        GameRules RetrieveGameRules(int ruleId, GameRulesFactory factory);
+ 
+        /// <summary>
+        /// Returns Id for GameRuleSet
+        /// </summary>
+        /// <param name="rules"></param>
+        /// <returns></returns>
+        int RetrieveGameRuleId(GameRules rules);
     }
 }

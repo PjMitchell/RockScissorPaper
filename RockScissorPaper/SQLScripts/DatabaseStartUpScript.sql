@@ -17,14 +17,22 @@ VALUES
 CREATE TABLE GameRuleSet
 (
 GameRuleSetId int NOT NULL AUTO_INCREMENT,
-Description varchar(25) character set UTF8 NOT NULL,
+NumberOfRounds int NOT NULL,
+AllowDraw bit NOT NULL,
+GameType varchar(25) character set UTF8 NOT NULL,
+ButtonOrder varchar(25) character set UTF8 NOT NULL,
 PRIMARY KEY (GameRuleSetId)
 )
 ;
 
-INSERT INTO GameRuleSet (GameRuleSetId, Description)
+INSERT INTO GameRuleSet (GameRuleSetId, GameType, ButtonOrder, AllowDraw, NumberOfRounds)
 VALUES
-(1, 'Standard Game')
+(1, 'Standard Game', 'RSP', 1, 5),
+(2, 'Standard Game', 'RPS', 1, 5),
+(3, 'Standard Game', 'PRS', 1, 5),
+(4, 'Standard Game', 'PSR', 1, 5),
+(5, 'Standard Game', 'SPR', 1, 5),
+(6, 'Standard Game', 'SRP', 1, 5)
 ;
 
 

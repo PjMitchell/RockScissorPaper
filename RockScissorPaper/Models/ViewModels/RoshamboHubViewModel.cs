@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class RoshamboHubViewInformation
+    public class RoshamboHubViewModel
     {
         public int NumberOfPeopleConnected { get; set; }
         public int BotWins { get; set; }

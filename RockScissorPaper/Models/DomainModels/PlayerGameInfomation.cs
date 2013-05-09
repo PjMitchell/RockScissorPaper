@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public class PlayerStateViewInformation
+    public class PlayerGameInformation
     {
         public int PlayerId { get; set; }
         public RoshamboSelection CurrentSelection { get; set; }

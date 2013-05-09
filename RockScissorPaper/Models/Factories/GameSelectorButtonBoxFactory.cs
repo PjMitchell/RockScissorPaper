@@ -8,7 +8,7 @@ namespace RockScissorPaper.Models
 {
     public class GameSelectorButtonBoxFactory
     {
-        public static GameSelectorButtonBox GetButtonBox(GameType gametype, string buttonArrangement)
+        public static GameSelectorButtonBox GetButtonBox(GameType gametype, string buttonArrangement="")
         {
             switch (gametype)
             {
@@ -18,33 +18,12 @@ namespace RockScissorPaper.Models
                     return buildStandardGame(buttonArrangement);
             }
         }
-        public static GameSelectorButtonBox GetButtonBox(GameType gametype, bool GetRandom = false)
-        {
-            
-            
-            switch (gametype)
-            {
-                
-                case GameType.StandardGame:
-                    string buttonArrangement = "RSP";
-                    if (GetRandom)
-                    {
-                        Random rnd = new Random();
-                        StandardGameButtonOrder order = (StandardGameButtonOrder)rnd.Next(1, 7); 
-                        buttonArrangement = Convert.ToString(order); 
-                    }
-                    return buildStandardGame(buttonArrangement);
-                default:
-                    return buildStandardGame("RSP");
-            }
-        }
+        
 
 
-        private static GameSelectorButtonBox buildStandardGame(string buttonArrangement)
+        private static GameSelectorButtonBox buildStandardGame(string buttonArrangement="")
         {
-            /*
-             1 RSP 2 RPS 3 PRS 4 PSR 5 SPR 6 SRP
-            */
+            
             if (!Regex.IsMatch(buttonArrangement, "RSP|RPS|PRS|PSR|SPR|SRP"))
             {
                 buttonArrangement="RSP";

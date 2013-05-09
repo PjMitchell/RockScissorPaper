@@ -186,7 +186,7 @@
     <Compile Include="Models\DataHandling\Core\StoreProceedureParameter.cs" />
     <Compile Include="Models\DataHandling\Repositories\StatisticsSQLRepository.cs" />
     <Compile Include="Models\DomainModels\GameRules.cs" />
-    <Compile Include="Models\DomainModels\Enums\GameOutcome.cs" />
+    <Compile Include="Models\Enums\GameOutcome.cs" />
     <Compile Include="Models\DomainModels\RoshamboChoiceStatistic.cs" />
     <Compile Include="Models\DomainModels\GameSelectorButtonBox.cs" />
     <Compile Include="Models\GameModels\Interfaces\IGameScoreResolver.cs" />
@@ -196,26 +196,28 @@
     <Compile Include="Models\GameModels\Interfaces\IRoshamboResolver.cs" />
     <Compile Include="Models\DomainModels\GameSelectorButton.cs" />
     <Compile Include="Models\Factories\GameSelectorButtonBoxFactory.cs" />
-    <Compile Include="Models\DomainModels\Enums\GameType.cs" />
+    <Compile Include="Models\Enums\GameType.cs" />
+    <Compile Include="Models\DomainModels\SelectionButtonOrderRandomizer.cs" />
+    <Compile Include="Models\Factories\GameRulesFactory.cs" />
+    <Compile Include="Models\GameRuleFactoryParameters.cs" />
     <Compile Include="Models\Services\GameStateService.cs" />
     <Compile Include="Models\DomainModels\RoundStatistic.cs" />
-    <Compile Include="Models\DomainModels\ViewInformation\StatisticsOverviewViewInfomation.cs" />
-    <Compile Include="Models\DomainModels\Enums\StandardGameButtonOrder.cs" />
+    <Compile Include="Models\ViewModels\StatisticsViewModel.cs" />
     <Compile Include="Models\Statistics\GammaFunction.cs" />
-    <Compile Include="Models\DomainModels\ViewInformation\RoshamboHubViewInformation.cs" />
+    <Compile Include="Models\ViewModels\RoshamboHubViewModel.cs" />
     <Compile Include="Models\Services\NotificationService.cs" />
-    <Compile Include="Models\DomainModels\ViewInformation\GameStateViewInformation.cs" />
+    <Compile Include="Models\Queries\GameStateQuery.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Services\GameService.cs" />
     <Compile Include="Models\Commands\PlayerSelectionCommand.cs" />
     <Compile Include="Models\DomainModels\GameServiceResult.cs" />
-    <Compile Include="Models\DomainModels\Enums\GameStatus.cs" />
-    <Compile Include="Models\DomainModels\Enums\RoshamboSelection.cs" />
+    <Compile Include="Models\Enums\GameStatus.cs" />
+    <Compile Include="Models\Enums\RoshamboSelection.cs" />
     <Compile Include="Models\DomainModels\Player.cs" />
     <Compile Include="Models\GameModels\RoshamboResolver.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />
-    <Compile Include="Models\DomainModels\ViewInformation\PlayerStateViewInfomation.cs" />
+    <Compile Include="Models\DomainModels\PlayerGameInfomation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,6 @@ namespace RockScissorPaper.Models
         public int CurrentUserId { get; set; }
         public Player PlayerTwo { get; set; }
         public Player PlayerOne { get; set; }
-        public GameStateViewInformation StateOfGame { get; set; }
+        public GameStateQuery StateOfGame { get; set; }
     }
 }

@@ -57,7 +57,7 @@ namespace RockScissorPaper.Controllers
             Player one = _playerRepository.RetrievePlayer(id);
             Player two = _playerRepository.RetrievePlayer(botid);
             GameRules gameRules = new GameRules();
-            gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, true);
+            gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameRules.GameType));
             GameService service = new GameService(_gameRepository, new RoshamboGame(new GameRules(), one, two));
 
             return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
@@ -82,7 +82,7 @@ namespace RockScissorPaper.Controllers
         [OutputCache(Location=OutputCacheLocation.Server, Duration=5)]
         public ActionResult Statistics()
         {
-            StatisticsOverviewViewInformation view = new StatisticsOverviewViewInformation();
+            StatisticsViewModel view = new StatisticsViewModel();
             view.RoundInformation = _statisticsRepository.RetrieveRoundInformation();
             view.RoundInformation.OrderBy(r => r.RoundNumber);
             view.Overview = _statisticsRepository.RetrieveRoundSummary();

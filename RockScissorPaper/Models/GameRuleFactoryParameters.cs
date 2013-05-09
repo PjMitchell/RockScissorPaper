@@ -5,8 +5,10 @@ using System.Web;
 
 namespace RockScissorPaper.Models
 {
-    public enum StandardGameButtonOrder
+    public enum GameRuleFactoryParameters
     {
-        RSP=1, RPS=2, PRS=3,  PSR=4, SPR=5, SRP=6
+        NoDrawAllowed, 
+        RandomButtonAsignment,
+        NoIndexRequired
     }
 }

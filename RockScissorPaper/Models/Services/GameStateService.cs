@@ -7,13 +7,13 @@ namespace RockScissorPaper.Models
 {
     public class GameStateService
     {
-        public GameStateViewInformation GameState { get; private set; }
+        public GameStateQuery GameState { get; private set; }
         public RoshamboGame CurrentGame { get; private set; }
 
         public GameStateService(RoshamboGame game)
         {
             CurrentGame = game;
-            GameState = new GameStateViewInformation();
+            GameState = new GameStateQuery();
         }
 
         public void Update(GameStatus currentStatus, GameRound currentRound = null)
@@ -103,9 +103,9 @@ namespace RockScissorPaper.Models
             GameState.PlayerTwo = SetInitialPlayerState(CurrentGame.PlayerOne.PlayerId); 
         }
 
-        private PlayerStateViewInformation SetInitialPlayerState(int playerId)
+        private PlayerGameInformation SetInitialPlayerState(int playerId)
         {
-            PlayerStateViewInformation state = new PlayerStateViewInformation();
+            PlayerGameInformation state = new PlayerGameInformation();
             state.PlayerId = playerId;
             state.CurrentScore = 0;
             state.PlayerMessage = "Go!";

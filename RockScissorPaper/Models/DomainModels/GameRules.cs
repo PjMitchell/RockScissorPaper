@@ -18,18 +18,6 @@ namespace RockScissorPaper.Models
         public GameSelectorButtonBox ButtonBox {get; set;}
 
         
-
-        public GameRules()
-        {
-            Id = 1;
-            TotalRounds = 5;
-            RoundResolver = new RoshamboResolver();
-            GameScoreResolver = new StandardGameScoreResolver();
-            AllowDraw = true;
-            GameType = GameType.StandardGame;
-            ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(GameType, "RSP");
-        }
-        
         
     }
 }

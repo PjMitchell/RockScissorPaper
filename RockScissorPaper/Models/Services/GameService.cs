@@ -231,7 +231,7 @@ namespace RockScissorPaper.Models
         /// </summary>
         /// <param name="playerId"></param>
         /// <returns></returns>
-        public GameStateViewInformation GetGameStateViewModel(int playerId)
+        public GameStateQuery GetGameStateViewModel(int playerId)
         {
             _gameStateService.SetObservingPlayer(playerId);
             return _gameStateService.GameState;

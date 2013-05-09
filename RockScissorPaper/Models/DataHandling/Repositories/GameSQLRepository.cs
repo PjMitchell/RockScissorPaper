@@ -151,16 +151,37 @@ namespace RockScissorPaper.Models.DataHandling
         /// Returns the Total wins of Human and Bot Players
         /// </summary>
         /// <returns></returns>
-        public RoshamboHubViewInformation RetrieveBotVsHumanScore()
+        public RoshamboHubViewModel RetrieveBotVsHumanScore()
         {
             DataTable dt = _dataAccess.Get("Proc_Select_BotVsHumanVictoryCount");
             DataRow dr = dt.Rows[0];
             MappingHelper map = new MappingHelper(dr);
-            RoshamboHubViewInformation result = new RoshamboHubViewInformation();
+            RoshamboHubViewModel result = new RoshamboHubViewModel();
             result.BotWins = map.MapInt32("BotVictory");
             result.HumanWins = map.MapInt32("HumanVictory");
             return result;
 
+        }
+
+        /// <summary>
+        /// Returns the rule set for the desired Rule Id
+        /// </summary>
+        /// <param name="ruleId">Index to be retrieved</param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public GameRules RetrieveGameRules(int ruleId, GameRulesFactory factory)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Returns Id for GameRuleSet
+        /// </summary>
+        /// <param name="rules"></param>
+        /// <returns></returns>
+        public int RetrieveGameRuleId(GameRules rules)
+        {
+            throw new NotImplementedException();
         }
     }
 }
