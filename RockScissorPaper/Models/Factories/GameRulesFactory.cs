@@ -19,10 +19,27 @@ namespace RockScissorPaper.Models
 
         public GameRules GetGameRules(int ruleId)
         {
-            return _repository.RetrieveGameRules(ruleId, this);
+             _repository.RetrieveGameRules(ruleId, this);
+             result.Id = ruleId;
+             return result;
         }
 
-        public GameRules GetGameRules(GameType gameType, int numberOfRounds=5, params GameRuleFactoryParameters[] args)
+        public GameRules GetGameRules(GameType gameType, params GameRuleFactoryParameters[] args)
+        {
+            return GetGameRules(gameType, 5, "", args);
+        }
+
+        public GameRules GetGameRules(GameType gameType,  int numberOfRounds, params GameRuleFactoryParameters[] args)
+        {
+            return GetGameRules(gameType, numberOfRounds, "", args);
+        }
+
+        public GameRules GetGameRules(GameType gameType, string buttonBoxOrder, params GameRuleFactoryParameters[] args)
+        {
+            return GetGameRules(gameType, 5, buttonBoxOrder, args);
+        }
+
+        public GameRules GetGameRules(GameType gameType, int numberOfRounds, string buttonBoxOrder, params GameRuleFactoryParameters[] args)
         {
             result = new GameRules();
             result.GameType = gameType;
@@ -37,13 +54,12 @@ namespace RockScissorPaper.Models
                 result.AllowDraw = true;
             }
 
-            string s = "";
 
             if (args.Contains(GameRuleFactoryParameters.RandomButtonAsignment))
             {
-                s = SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameType);
+                buttonBoxOrder = SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameType);
             }
-            result.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameType, s);
+            result.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameType, buttonBoxOrder);
 
             if (!args.Contains(GameRuleFactoryParameters.NoIndexRequired))
             {

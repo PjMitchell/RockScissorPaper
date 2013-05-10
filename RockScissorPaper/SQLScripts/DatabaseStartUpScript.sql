@@ -27,12 +27,12 @@ PRIMARY KEY (GameRuleSetId)
 
 INSERT INTO GameRuleSet (GameRuleSetId, GameType, ButtonOrder, AllowDraw, NumberOfRounds)
 VALUES
-(1, 'Standard Game', 'RSP', 1, 5),
-(2, 'Standard Game', 'RPS', 1, 5),
-(3, 'Standard Game', 'PRS', 1, 5),
-(4, 'Standard Game', 'PSR', 1, 5),
-(5, 'Standard Game', 'SPR', 1, 5),
-(6, 'Standard Game', 'SRP', 1, 5)
+(1, 'StandardGame', 'RSP', 1, 5),
+(2, 'StandardGame', 'RPS', 1, 5),
+(3, 'StandardGame', 'PRS', 1, 5),
+(4, 'StandardGame', 'PSR', 1, 5),
+(5, 'StandardGame', 'SPR', 1, 5),
+(6, 'StandardGame', 'SRP', 1, 5)
 ;
 
 

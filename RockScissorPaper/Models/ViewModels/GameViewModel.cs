@@ -11,5 +11,6 @@ namespace RockScissorPaper.Models
         public Player PlayerTwo { get; set; }
         public Player PlayerOne { get; set; }
         public GameStateQuery StateOfGame { get; set; }
+        public GameSelectorButtonBox ButtonBox { get; set; }
     }
 }

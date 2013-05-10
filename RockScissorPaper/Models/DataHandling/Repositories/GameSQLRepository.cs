@@ -60,6 +60,8 @@ namespace RockScissorPaper.Models.DataHandling
             {
                 return null;
             }
+            GameRulesFactory _rulefactory = new GameRulesFactory(this);
+            result.Rules = _rulefactory.GetGameRules(result.Rules.Id);
             result.PlayerOne = _playerRepositotry.RetrievePlayer(result.PlayerOne.PlayerId);
             result.PlayerTwo = _playerRepositotry.RetrievePlayer(result.PlayerTwo.PlayerId);
             GameRoundMapper mapper2 = new GameRoundMapper();
@@ -171,7 +173,22 @@ namespace RockScissorPaper.Models.DataHandling
         /// <returns></returns>
         public GameRules RetrieveGameRules(int ruleId, GameRulesFactory factory)
         {
-            throw new NotImplementedException();
+            List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
+            paras.Add(new StoreProceedureParameter("GameRuleSetIdInput", ruleId));
+            DataTable dt = _dataAccess.Get("Proc_Select_GameRuleById", paras);
+            MappingHelper mh = new MappingHelper(dt.Rows[0]);
+            int rounds = mh.MapInt32("NumberOfRounds");
+            string buttonOrder = mh.MapString("ButtonOrder");
+            GameRuleFactoryParameters allowDrawPara = GameRuleFactoryParameters.Null;
+            bool allowDraw = mh.MapBool("AllowDraw");
+            if (!allowDraw)
+            {
+                allowDrawPara = GameRuleFactoryParameters.NoDrawAllowed;
+            }
+            GameRuleFactoryParameters[] args = new GameRuleFactoryParameters[]{ GameRuleFactoryParameters.NoIndexRequired, allowDrawPara};
+            GameType gameType =(GameType) Enum.Parse(typeof(GameType), mh.MapString("GameType"),true);
+            return factory.GetGameRules(gameType, rounds, buttonOrder, args);
+
         }
 
         /// <summary>
@@ -181,7 +198,13 @@ namespace RockScissorPaper.Models.DataHandling
         /// <returns></returns>
         public int RetrieveGameRuleId(GameRules rules)
         {
-            throw new NotImplementedException();
+            List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
+            paras.Add(new StoreProceedureParameter("GameTypeInput", Convert.ToString(rules.GameType)));
+            paras.Add(new StoreProceedureParameter("ButtonOrderInput", rules.ButtonBox.Id));
+            paras.Add(new StoreProceedureParameter("AllowDrawInput", rules.AllowDraw));
+            paras.Add(new StoreProceedureParameter("NumberOfRoundsInput", rules.TotalRounds));
+            int result = (int)_dataAccess.GetScalar("Proc_Select_GameRuleId", paras);
+            return result;
         }
     }
 }

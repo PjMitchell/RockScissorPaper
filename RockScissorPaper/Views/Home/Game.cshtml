@@ -44,9 +44,10 @@
         <h3 class="score" id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
     </div>
     <div id="playerOptions">
-        <button data-selection="1" data-selectionName="Rock">Rock</button>
-        <button data-selection="2" data-selectionName="Scissor">Scissor</button>
-        <button data-selection="3" data-selectionName="Paper">Paper</button>
+        @foreach(var item in Model.ButtonBox.Buttons)
+        {
+        <button data-selection="@item.SelectionId" data-selectionName="@item.SelectionText">@item.SelectionText</button>
+        }
     </div>
 </div>
     @section scripts {

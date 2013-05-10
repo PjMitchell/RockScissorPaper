@@ -7,8 +7,9 @@ namespace RockScissorPaper.Models
 {
     public enum GameRuleFactoryParameters
     {
-        NoDrawAllowed, 
-        RandomButtonAsignment,
-        NoIndexRequired
+        Null = 0,
+        NoDrawAllowed =1, 
+        RandomButtonAsignment=2,
+        NoIndexRequired =3
     }
 }

@@ -36,7 +36,8 @@ namespace RockScissorPaper.Models.DataHandling
             _result.PlayerTwo.PlayerId = map.MapInt32("PlayerTwoId");
             
 
-            _result.Rules = new GameRules(); //To Reimplement when more rule sets are added
+            _result.Rules = new GameRules(); 
+            _result.Rules.Id = map.MapInt32("RuleSet");
             int statusInt = map.MapInt32("GameStatus");
             _result.Status = (GameStatus)statusInt;
 
