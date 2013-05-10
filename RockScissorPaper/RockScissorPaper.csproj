@@ -242,6 +242,8 @@
     <Content Include="Scripts\Roshambo\Roshambo.js" />
     <Content Include="SQLScripts\StoredProceedures\Game\CreateGameProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Game\CreateGameRoundResultProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRuleByIdProc.sql" />
+    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRuleIdProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Player\CreateNewPlayerProc.sql" />
     <Content Include="SQLScripts\StoredProceedures\Game\CreateRoundProc.sql" />
     <Content Include="SQLScripts\DatabaseStartUpScript.sql" />
