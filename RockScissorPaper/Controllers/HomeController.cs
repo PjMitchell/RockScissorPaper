@@ -1,8 +1,8 @@
 ﻿using Ninject;
 using Ninject.Modules;
+using RockScissorPaper.Core;
+using RockScissorPaper.DataAccessLayer;
 using RockScissorPaper.Models;
-using RockScissorPaper.Models.Bots;
-using RockScissorPaper.Models.DataHandling;
 using System;
 using System.Collections.Generic;
 using System.Linq;

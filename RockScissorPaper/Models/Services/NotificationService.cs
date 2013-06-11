@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using RockScissorPaper.Hubs;
-using RockScissorPaper.Models.DataHandling;
+using RockScissorPaper.DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace RockScissorPaper.Models
         
         public void GameFinished()
         {
-            RoshamboHubViewModel view = _gameRepository.RetrieveBotVsHumanScore();
+            CurrentGlobalResultsQuery view = _gameRepository.RetrieveBotVsHumanScore();
             view.NumberOfPeopleConnected = RoshamboHub.PeopleConnected;
             _context.Clients.All.refreshView(view);
         }

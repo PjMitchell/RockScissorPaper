@@ -1,5 +1,5 @@
-﻿using RockScissorPaper.Models.DataHandling;
-using RockScissorPaper.Models.GameModels;
+﻿using RockScissorPaper.Core;
+using RockScissorPaper.DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

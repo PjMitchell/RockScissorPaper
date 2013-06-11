@@ -1,5 +1,6 @@
-﻿using RockScissorPaper.Models;
-using RockScissorPaper.Models.DataHandling;
+﻿using RockScissorPaper.Core;
+using RockScissorPaper.DataAccessLayer;
+using RockScissorPaper.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
