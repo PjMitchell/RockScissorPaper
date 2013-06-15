@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     public class MappingHelper
     {

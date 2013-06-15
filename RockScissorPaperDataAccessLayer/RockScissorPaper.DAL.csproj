@@ -37,7 +37,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,9 +75,9 @@
     <Folder Include="DataHandling\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaperCore.csproj">
+    <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
       <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>
-      <Name>RockScissorPaperCore</Name>
+      <Name>RockScissorPaper.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

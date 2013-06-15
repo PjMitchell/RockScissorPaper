@@ -1,6 +1,6 @@
-﻿using RockScissorPaper.Core;
+﻿using RockScissorPaper.Domain;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     public interface IPlayerRepository
     {

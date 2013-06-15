@@ -1,5 +1,5 @@
 ﻿
-namespace RockScissorPaper.Core
+namespace RockScissorPaper.Domain
 {
     public abstract class BotBase
     {

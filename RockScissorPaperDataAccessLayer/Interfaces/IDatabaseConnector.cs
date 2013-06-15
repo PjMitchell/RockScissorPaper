@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     public interface IDatabaseConnector
     {

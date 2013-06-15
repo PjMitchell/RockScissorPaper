@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using RockScissorPaper.Hubs;
-using RockScissorPaper.DataAccessLayer;
+using RockScissorPaper.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

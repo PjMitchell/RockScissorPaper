@@ -258,13 +258,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaperCore.csproj">
+    <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
       <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>
-      <Name>RockScissorPaperCore</Name>
+      <Name>RockScissorPaper.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RockScissorPaperDataAccessLayer\RockScissorPaperDataAccessLayer.csproj">
+    <ProjectReference Include="..\RockScissorPaperDataAccessLayer\RockScissorPaper.DAL.csproj">
       <Project>{ada5a597-b2bf-455b-ac06-acda02562146}</Project>
-      <Name>RockScissorPaperDataAccessLayer</Name>
+      <Name>RockScissorPaper.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

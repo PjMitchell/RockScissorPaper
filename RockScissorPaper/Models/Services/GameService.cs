@@ -1,5 +1,5 @@
-﻿using RockScissorPaper.Core;
-using RockScissorPaper.DataAccessLayer;
+﻿using RockScissorPaper.Domain;
+using RockScissorPaper.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,10 +1,9 @@
-﻿using RockScissorPaper.Core.Bots;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RockScissorPaper.Core
+namespace RockScissorPaper.Domain
 {
     public class BotPlayerFactory
     {

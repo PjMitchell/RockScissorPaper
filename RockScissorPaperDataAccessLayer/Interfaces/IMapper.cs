@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     /// <summary>
     /// Interface For Database mapper class.

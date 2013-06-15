@@ -1,8 +1,8 @@
-﻿using RockScissorPaper.Core;
+﻿using RockScissorPaper.Domain;
 using System.Data;
 using System.Linq;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     public class RoundStatisticsMapper : IMapper
     {

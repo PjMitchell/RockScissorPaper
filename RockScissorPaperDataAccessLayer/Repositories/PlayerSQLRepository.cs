@@ -1,9 +1,9 @@
 ﻿
-using RockScissorPaper.Core;
+using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     /// <summary>
     /// Required Stored Proceedures

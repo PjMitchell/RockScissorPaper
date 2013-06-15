@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     public class MySQLDatabaseConnector : IDatabaseConnector
     {

@@ -1,7 +1,7 @@
-﻿using RockScissorPaper.Core;
+﻿using RockScissorPaper.Domain;
 using System.Data;
 
-namespace RockScissorPaper.DataAccessLayer
+namespace RockScissorPaper.DAL
 {
     class RoshamboGameMapper : IMapper
     {

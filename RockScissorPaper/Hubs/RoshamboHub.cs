@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
-using RockScissorPaper.DataAccessLayer;
+using RockScissorPaper.DAL;
 using RockScissorPaper.Models;
 using System;
 using System.Collections.Generic;

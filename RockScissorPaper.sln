@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{999EC0
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaperDataAccessLayer", "RockScissorPaperDataAccessLayer\RockScissorPaperDataAccessLayer.csproj", "{ADA5A597-B2BF-455B-AC06-ACDA02562146}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.DAL", "RockScissorPaperDataAccessLayer\RockScissorPaper.DAL.csproj", "{ADA5A597-B2BF-455B-AC06-ACDA02562146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaperCore", "RockScissorPaperCore\RockScissorPaperCore.csproj", "{E83840D2-E540-4C5E-A097-ACE6360AB0BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.Domain", "RockScissorPaperCore\RockScissorPaper.Domain.csproj", "{E83840D2-E540-4C5E-A097-ACE6360AB0BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

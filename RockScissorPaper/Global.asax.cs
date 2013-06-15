@@ -1,6 +1,6 @@
 ﻿using Ninject;
 using Ninject.Web.Common;
-using RockScissorPaper.DataAccessLayer;
+using RockScissorPaper.DAL;
 using System;
 using System.Web;
 using System.Web.Http;
