@@ -1,8 +1,12 @@
 ﻿using HilltopDigital.SimpleDAL;
+using Microsoft.AspNet.SignalR;
 using Ninject;
 using Ninject.Web.Common;
+using Ninject.Web.Mvc;
+using RockScissorPaper.BLL;
 using RockScissorPaper.DAL;
 using System;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -19,12 +23,18 @@ namespace RockScissorPaper
         protected override IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
+            kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             kernel.Bind<IDatabaseConnector>().To<MySQLDatabaseConnector>();
             kernel.Bind<IGameRepository>().To<GameSQLRepository>();
             kernel.Bind<IStatisticsRepository>().To<StatisticsSQLRepository>();
             kernel.Bind<IPlayerRepository>().To<PlayerSQLRepository>();
+            kernel.Bind<GameEventManager>().ToConstant(new GameEventManager());
+
+            GlobalConfiguration.Configuration.DependencyResolver = new LocalNinjectDependencyResolver(kernel);
+
+            GlobalHost.DependencyResolver = new SignalRNinjectDependencyResolver(kernel);
             return kernel;
         }
 

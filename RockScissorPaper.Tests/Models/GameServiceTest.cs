@@ -4,6 +4,7 @@ using RockScissorPaper.Models;
 using RockScissorPaper.Domain;
 using RockScissorPaper.DAL;
 using HilltopDigital.SimpleDAL;
+using RockScissorPaper.BLL;
 
 namespace RockScissorPaper.Tests.Models
 {
@@ -15,7 +16,7 @@ namespace RockScissorPaper.Tests.Models
         {
             Game game = new Game(new GameRules(), new Player(), new Player());
             game.PlayerTwo.Bot = new RockBot();
-            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())), game);
+            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())),new GameEventManager(), game);
             
             PlayerSelectionCommand c1 = new PlayerSelectionCommand(game.GameId);
             c1.PlayerOneSelection = GameSelection.Paper;

@@ -150,7 +150,9 @@ namespace RockScissorPaper.BLL
                 {
                     _repository.UpdateGameResult(CurrentGame);
                     _gameStateService.SetAsFinalRoundResult();
-                    _eventManager.Publish(new GameFinishedEvent("Game Finished"));
+                    var ev = new GameFinishedEvent();
+                    ev.CurrentGlobalResults = new CurrentGlobalResults(); // TODO fill in
+                    _eventManager.Publish(ev);
                     Status = GameStatus.EndOfGame;
                     return result;
                 }

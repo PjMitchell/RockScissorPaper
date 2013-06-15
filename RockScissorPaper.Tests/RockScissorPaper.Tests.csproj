@@ -169,6 +169,10 @@
       <Project>{4bfa59a8-50d7-45f7-a33c-6dc0b3ac3661}</Project>
       <Name>HilltopDigital.SimpleDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RockScissorPaper.BLL\RockScissorPaper.BLL.csproj">
+      <Project>{5ce2162f-eb77-4f03-91cd-9b570db5c4d8}</Project>
+      <Name>RockScissorPaper.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
       <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>
       <Name>RockScissorPaper.Domain</Name>

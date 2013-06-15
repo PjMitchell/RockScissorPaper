@@ -18,8 +18,13 @@ namespace RockScissorPaper.Controllers
         private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
         private static IPlayerRepository _playerRepository = new PlayerSQLRepository(_connector);
         private static IGameRepository _gameRepository = new GameSQLRepository(_connector, _playerRepository);
-        private static GameEventManager _gameEventManager = new GameEventManager();
-        private static NotificationService _notificationService = new NotificationService(_gameRepository, _gameEventManager);
+        private GameEventManager _gameEventManager;
+
+        public GamesController(GameEventManager gameEventManager)
+        {
+            _gameEventManager = gameEventManager;
+        }
+       // private static NotificationService _notificationService = new NotificationService(_gameRepository, _gameEventManager);
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };
