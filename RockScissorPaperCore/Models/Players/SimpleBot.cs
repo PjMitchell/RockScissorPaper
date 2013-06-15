@@ -14,12 +14,12 @@ namespace RockScissorPaper.Domain
         {
         }
 
-        public override RoshamboSelection Go()
+        public override GameSelection Go()
         {
             lock (_random)
             {
             int i = _random.Next(1,4);
-            RoshamboSelection result = (RoshamboSelection)i;
+            GameSelection result = (GameSelection)i;
             return result;
             }
         }

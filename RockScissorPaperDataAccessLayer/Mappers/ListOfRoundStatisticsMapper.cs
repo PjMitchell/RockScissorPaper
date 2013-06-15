@@ -23,20 +23,20 @@ namespace RockScissorPaper.DAL
                     MappingHelper mh = new MappingHelper(dr);
                     RoundStatistic result = new RoundStatistic();
                     result.RoundNumber = mh.MapInt32("RoundNumber");
-                    RoshamboChoiceStatistic rock = new RoshamboChoiceStatistic();
-                    rock.Selection = RoshamboSelection.Rock;
+                    GameChoiceStatistic rock = new GameChoiceStatistic();
+                    rock.Selection = GameSelection.Rock;
                     rock.Number = mh.MapInt32("Rock");
-                    RoshamboChoiceStatistic scissor = new RoshamboChoiceStatistic();
-                    scissor.Selection = RoshamboSelection.Scissor;
+                    GameChoiceStatistic scissor = new GameChoiceStatistic();
+                    scissor.Selection = GameSelection.Scissor;
                     scissor.Number = mh.MapInt32("Scissor");
-                    RoshamboChoiceStatistic paper = new RoshamboChoiceStatistic();
-                    paper.Selection = RoshamboSelection.Paper;
+                    GameChoiceStatistic paper = new GameChoiceStatistic();
+                    paper.Selection = GameSelection.Paper;
                     paper.Number = mh.MapInt32("Paper");
                     result.Choices.Add(rock);
                     result.Choices.Add(scissor);
                     result.Choices.Add(paper);
                     result.TotalSelections = result.Choices.Sum(m => m.Number);
-                    foreach (RoshamboChoiceStatistic item in result.Choices)
+                    foreach (GameChoiceStatistic item in result.Choices)
                         {
                             item.Percentage = (double)item.Number / (double)result.TotalSelections * 100;
                         }

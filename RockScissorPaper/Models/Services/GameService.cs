@@ -29,12 +29,12 @@ namespace RockScissorPaper.Models
                 }
             } 
         }
-        public RoshamboGame CurrentGame { get; private set; }
+        public Game CurrentGame { get; private set; }
         private GameStateService _gameStateService { get; set; }
 
         #region Contructors
 
-        public GameService(IGameRepository repository, RoshamboGame game)
+        public GameService(IGameRepository repository, Game game)
         {
             
             _repository = repository;
@@ -49,7 +49,7 @@ namespace RockScissorPaper.Models
         {
             
             _repository = repository;
-            CurrentGame = _repository.RetrieveGame(id);
+            CurrentGame = _repository.GetGame(id);
             _gameStateService = new GameStateService(CurrentGame);
             _status = CurrentGame.Status;
             _gameStateService.Update(Status);

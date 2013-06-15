@@ -48,11 +48,11 @@ namespace RockScissorPaper.Domain
             switch (c)
             {
                 case 'R' :
-                    return new GameSelectorButton(RoshamboSelection.Rock);
+                    return new GameSelectorButton(GameSelection.Rock);
                 case 'S':
-                    return new GameSelectorButton(RoshamboSelection.Scissor);
+                    return new GameSelectorButton(GameSelection.Scissor);
                 case 'P' :
-                    return new GameSelectorButton(RoshamboSelection.Paper);
+                    return new GameSelectorButton(GameSelection.Paper);
                 default :
                     return null;
             }

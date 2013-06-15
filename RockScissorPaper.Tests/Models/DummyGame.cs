@@ -1,5 +1,4 @@
-﻿using RockScissorPaper.Models;
-using RockScissorPaper.Models.Bots;
+﻿using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +13,9 @@ namespace RockScissorPaper.Tests.Models
         /// Returns Game with Id 1, standard rules, player one (id=1) and player two as Rockbot (id=2)
         /// </summary>
         /// <returns></returns>
-        public static RoshamboGame GetDummyGame()
+        public static Game GetDummyGame()
         {
-            RoshamboGame game = new RoshamboGame(new GameRules(), DummyPlayerOne(), DummyBot());
+            Game game = new Game(new GameRules(), DummyPlayerOne(), DummyBot());
             game.GameId = 1;
             return game;
         }

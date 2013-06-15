@@ -168,6 +168,14 @@
     <None Include="Scripts\jquery-2.0.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
+      <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>
+      <Name>RockScissorPaper.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RockScissorPaperDataAccessLayer\RockScissorPaper.DAL.csproj">
+      <Project>{ada5a597-b2bf-455b-ac06-acda02562146}</Project>
+      <Name>RockScissorPaper.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RockScissorPaper\RockScissorPaper.csproj">
       <Project>{42DBF428-134D-4F28-889F-167C315F82D3}</Project>
       <Name>RockScissorPaper</Name>

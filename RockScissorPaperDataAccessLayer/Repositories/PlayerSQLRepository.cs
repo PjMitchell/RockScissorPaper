@@ -19,7 +19,7 @@ namespace RockScissorPaper.DAL
             _dataAccess = dataAccess;
         }
 
-        public Player RetrievePlayer(int id)
+        public Player GetPlayer(int id)
         {
             List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
             parameters.Add(new StoreProceedureParameter("PlayerIdInput", id));

@@ -27,8 +27,8 @@ namespace RockScissorPaper.Controllers
 
             GameService service = new GameService(_gameRepository, id);
             GameViewModel result = new GameViewModel();
-            result.PlayerOne = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerOne.PlayerId);
-            result.PlayerTwo = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerTwo.PlayerId);
+            result.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
+            result.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);
             result.CurrentUserId = currentUserId;
             result.StateOfGame = service.GetGameStateViewModel(currentUserId);
             return result;
@@ -46,7 +46,7 @@ namespace RockScissorPaper.Controllers
         {
             int playerId =  apiCommand.playerId;
             int selection = apiCommand.selection;
-            RoshamboSelection playerSelection = (RoshamboSelection)selection;
+            GameSelection playerSelection = (GameSelection)selection;
             GameService service = new GameService(_gameRepository, id);
             if (service == null)
             {

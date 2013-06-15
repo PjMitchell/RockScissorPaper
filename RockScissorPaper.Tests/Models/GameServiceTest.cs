@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockScissorPaper.Models;
-using RockScissorPaper.Models.GameModels;
-using RockScissorPaper.Models.Bots;
-using RockScissorPaper.Models.DataHandling;
+using RockScissorPaper.Domain;
+using RockScissorPaper.DAL;
 
 namespace RockScissorPaper.Tests.Models
 {
@@ -13,16 +12,16 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestVsRockBot()
         {
-            RoshamboGame game = new RoshamboGame(new GameRules(), new Player(), new Player());
+            Game game = new Game(new GameRules(), new Player(), new Player());
             game.PlayerTwo.Bot = new RockBot();
-            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector()), game);
+            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())), game);
             
             PlayerSelectionCommand c1 = new PlayerSelectionCommand(game.GameId);
-            c1.PlayerOneSelection = RoshamboSelection.Paper;
+            c1.PlayerOneSelection = GameSelection.Paper;
             PlayerSelectionCommand c2 = new PlayerSelectionCommand(game.GameId);
-            c2.PlayerOneSelection = RoshamboSelection.Scissor;
+            c2.PlayerOneSelection = GameSelection.Scissor;
             PlayerSelectionCommand c3 = new PlayerSelectionCommand(game.GameId);
-            c3.PlayerOneSelection = RoshamboSelection.Rock;
+            c3.PlayerOneSelection = GameSelection.Rock;
 
             GameServiceResult r1 = service.Execute(c1);
             

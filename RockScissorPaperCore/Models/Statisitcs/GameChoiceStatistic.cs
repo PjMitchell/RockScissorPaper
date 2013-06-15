@@ -5,9 +5,9 @@ using System.Web;
 
 namespace RockScissorPaper.Domain
 {
-    public class RoshamboChoiceStatistic
+    public class GameChoiceStatistic
     {
-        public RoshamboSelection Selection { get; set; }
+        public GameSelection Selection { get; set; }
         public double Percentage { get; set; }
         public int Number { get; set; }
     }

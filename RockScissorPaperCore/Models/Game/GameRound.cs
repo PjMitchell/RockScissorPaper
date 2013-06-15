@@ -9,8 +9,8 @@ namespace RockScissorPaper.Domain
     {
         public int RoundId { get; set; }
         public int RoundNumber { get; set; }
-        public RoshamboSelection PlayerOneSelection { get; set; }
-        public RoshamboSelection PlayerTwoSelection { get; set; }
+        public GameSelection PlayerOneSelection { get; set; }
+        public GameSelection PlayerTwoSelection { get; set; }
         public GameOutcome PlayerOneOutcome { get; set; }
         public GameOutcome PlayerTwoOutcome { get; set; }
     }

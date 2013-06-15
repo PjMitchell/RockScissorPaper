@@ -9,28 +9,28 @@ using RockScissorPaper;
 using RockScissorPaper.Controllers;
 using RockScissorPaper.Models;
 using RockScissorPaper.Tests.Models;
-using RockScissorPaper.Models.DataHandling;
+using RockScissorPaper.DAL;
 
 namespace RockScissorPaper.Tests.Controllers
 {
     [TestClass]
     public class ValuesControllerTest
     {
-        [TestMethod]
-        public void Get()
-        {
-            // Arrange
-            GamesController controller = new GamesController();
+        //[TestMethod]
+        //public void Get()
+        //{
+        //    // Arrange
+        //    GamesController controller = new GamesController();
 
-            // Act
-            IEnumerable<string> result = controller.Get();
+        //    // Act
+        //    IEnumerable<string> result = controller.Get();
 
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //    Assert.AreEqual(2, result.Count());
+        //    Assert.AreEqual("value1", result.ElementAt(0));
+        //    Assert.AreEqual("value2", result.ElementAt(1));
+        //}
 
         [TestMethod]
         public void GetById()
@@ -49,7 +49,7 @@ namespace RockScissorPaper.Tests.Controllers
         {
             // Arrange
             GamesController controller = new GamesController();
-            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector()), DummyGame.GetDummyGame());
+            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())), DummyGame.GetDummyGame());
             GameAPIPutCommand command = new GameAPIPutCommand();
             command.playerId = 1;
             command.selection = 3;
@@ -61,16 +61,16 @@ namespace RockScissorPaper.Tests.Controllers
             Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);
         }
 
-        [TestMethod]
-        public void Delete()
-        {
-            // Arrange
-            GamesController controller = new GamesController();
+        //[TestMethod]
+        //public void Delete()
+        //{
+        //    // Arrange
+        //    GamesController controller = new GamesController();
 
-            // Act
-            controller.Delete(5);
+        //    // Act
+        //    controller.Delete(5);
 
-            // Assert
-        }
+        //    // Assert
+        //}
     }
 }

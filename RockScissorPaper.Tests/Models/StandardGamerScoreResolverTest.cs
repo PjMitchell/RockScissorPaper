@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using RockScissorPaper.Models;
-using RockScissorPaper.Models.GameModels;
+using RockScissorPaper.Domain;
 
 namespace RockScissorPaper.Tests.Models
 {

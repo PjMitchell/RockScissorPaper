@@ -41,33 +41,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseClasses\BotBase.cs" />
-    <Compile Include="Bots\RockBot.cs" />
-    <Compile Include="Bots\SimpleBot.cs" />
-    <Compile Include="Enums\GameOutcome.cs" />
-    <Compile Include="Enums\GameRuleFactoryParameters.cs" />
-    <Compile Include="Enums\GameStatus.cs" />
-    <Compile Include="Enums\GameType.cs" />
-    <Compile Include="Enums\RoshamboSelection.cs" />
+    <Compile Include="Models\Players\BotBase.cs" />
+    <Compile Include="Models\Players\RockBot.cs" />
+    <Compile Include="Models\Players\SimpleBot.cs" />
+    <Compile Include="Models\Game\GameOutcome.cs" />
+    <Compile Include="Models\Game\GameStatus.cs" />
+    <Compile Include="Models\Game\GameType.cs" />
+    <Compile Include="Models\Game\GameSelection.cs" />
     <Compile Include="Factories\BotPlayerFactory.cs" />
     <Compile Include="Factories\GameSelectorButtonBoxFactory.cs" />
-    <Compile Include="GameModels\RoshamboResolver.cs" />
-    <Compile Include="GameModels\StandardGameScoreResolver.cs" />
-    <Compile Include="Interfaces\IGameScoreResolver.cs" />
-    <Compile Include="Interfaces\IRoshamboResolver.cs" />
-    <Compile Include="Models\GameRound.cs" />
-    <Compile Include="Models\GameRules.cs" />
-    <Compile Include="Models\GameSelectorButton.cs" />
-    <Compile Include="Models\GameSelectorButtonBox.cs" />
-    <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\RoshamboChoiceStatistic.cs" />
-    <Compile Include="Models\RoshamboGame.cs" />
-    <Compile Include="Models\RoundStatistic.cs" />
+    <Compile Include="BusinessLogic\RoshamboGameResolver.cs" />
+    <Compile Include="BusinessLogic\StandardGameScoreResolver.cs" />
+    <Compile Include="BusinessLogic\Interfaces\IGameScoreResolver.cs" />
+    <Compile Include="BusinessLogic\Interfaces\IGameResolver.cs" />
+    <Compile Include="Models\Game\GameRound.cs" />
+    <Compile Include="Models\Game\GameRules.cs" />
+    <Compile Include="Models\Game\GameSelectorButton.cs" />
+    <Compile Include="Models\Game\GameSelectorButtonBox.cs" />
+    <Compile Include="Models\Players\Player.cs" />
+    <Compile Include="Models\Statisitcs\GameChoiceStatistic.cs" />
+    <Compile Include="Models\Game\Game.cs" />
+    <Compile Include="Models\Statisitcs\RoundStatistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />

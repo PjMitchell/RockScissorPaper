@@ -10,7 +10,7 @@ namespace RockScissorPaper.Domain
 
         public int Id { get; set; }
         public int TotalRounds { get; set; }
-        public IRoshamboResolver RoundResolver { get; set; }
+        public IGameResolver RoundResolver { get; set; }
         public IGameScoreResolver GameScoreResolver { get; set; }
         public bool AllowDraw { get; set; }
         public GameType GameType { get; set; }

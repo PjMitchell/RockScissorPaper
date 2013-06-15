@@ -18,7 +18,7 @@ namespace RockScissorPaper.DAL
 
         public GameRules GetGameRules(int ruleId)
         {
-             _repository.RetrieveGameRules(ruleId, this);
+             _repository.GetGameRules(ruleId, this);
              result.Id = ruleId;
              return result;
         }
@@ -62,7 +62,7 @@ namespace RockScissorPaper.DAL
 
             if (!args.Contains(GameRuleFactoryParameters.NoIndexRequired))
             {
-                result.Id = _repository.RetrieveGameRuleId(result);
+                result.Id = _repository.GetGameRuleId(result);
             }
             return result;
         }
@@ -73,11 +73,11 @@ namespace RockScissorPaper.DAL
             {
                 case GameType.StandardGame:
                     result.GameScoreResolver = new StandardGameScoreResolver();
-                    result.RoundResolver = new RoshamboResolver();
+                    result.RoundResolver = new RoshamboGameResolver();
                     break;
                 default :
                     result.GameScoreResolver = new StandardGameScoreResolver();
-                    result.RoundResolver = new RoshamboResolver();
+                    result.RoundResolver = new RoshamboGameResolver();
                     break;
 
             }

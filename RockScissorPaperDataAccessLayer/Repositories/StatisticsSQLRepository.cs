@@ -22,7 +22,7 @@ namespace RockScissorPaper.DAL
             _dataAccess = databaseConnector;
         }
 
-        public RoundStatistic RetrieveRoundSummary()
+        public RoundStatistic GetRoundSummary()
         {
             RoundStatisticsMapper mapper = new RoundStatisticsMapper();
             _dataAccess.Get("Proc_Select_RoundStatisticsTotal", mapper);
@@ -31,7 +31,7 @@ namespace RockScissorPaper.DAL
             return result;
         }
 
-        public List<RoundStatistic> RetrieveRoundInformation()
+        public List<RoundStatistic> GetRoundInformation()
         {
             ListOfRoundStatisticsMapper mapper = new ListOfRoundStatisticsMapper();
             _dataAccess.Get("Proc_Select_RoundStatistics", mapper);
@@ -39,7 +39,7 @@ namespace RockScissorPaper.DAL
             return result;
         }
 
-        public RoundStatistic RetrieveRoundInformation(int round)
+        public RoundStatistic GetRoundInformation(int round)
         {
             List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
             paras.Add(new StoreProceedureParameter("RoundNumberInput", round));
@@ -50,7 +50,7 @@ namespace RockScissorPaper.DAL
             return result;
         }
         
-        public int RetrieveGamesPlayed()
+        public int GetGamesPlayed()
         {
             int result = Convert.ToInt32(_dataAccess.GetScalar("Proc_Select_GameTotalPlayed"));
             return result;

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Domain
 {
-    public enum RoshamboSelection
+    public enum GameSelection
     {
         Ready = 0,
         Rock = 1,

@@ -54,12 +54,12 @@ namespace RockScissorPaper.Controllers
         public ActionResult GameLobby(int id)
         {
             int botid = 1;
-            Player one = _playerRepository.RetrievePlayer(id);
-            Player two = _playerRepository.RetrievePlayer(botid);
+            Player one = _playerRepository.GetPlayer(id);
+            Player two = _playerRepository.GetPlayer(botid);
             GameRulesFactory _factory = new GameRulesFactory(_gameRepository);
             GameRules gameRules = _factory.GetGameRules(GameType.StandardGame, GameRuleFactoryParameters.RandomButtonAsignment);
             gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameRules.GameType));
-            GameService service = new GameService(_gameRepository, new RoshamboGame(gameRules, one, two));
+            GameService service = new GameService(_gameRepository, new Game(gameRules, one, two));
 
             return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
         }
@@ -73,8 +73,8 @@ namespace RockScissorPaper.Controllers
             
             GameService service = new GameService(_gameRepository, id);
             GameViewModel view = new GameViewModel();
-            view.PlayerOne = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerOne.PlayerId);
-            view.PlayerTwo = _playerRepository.RetrievePlayer(service.CurrentGame.PlayerTwo.PlayerId);
+            view.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
+            view.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);
             view.CurrentUserId = currentUserId;
             view.StateOfGame = service.GetGameStateViewModel(currentUserId);
             view.ButtonBox = service.CurrentGame.Rules.ButtonBox;
@@ -85,10 +85,10 @@ namespace RockScissorPaper.Controllers
         public ActionResult Statistics()
         {
             StatisticsViewModel view = new StatisticsViewModel();
-            view.RoundInformation = _statisticsRepository.RetrieveRoundInformation();
+            view.RoundInformation = _statisticsRepository.GetRoundInformation();
             view.RoundInformation.OrderBy(r => r.RoundNumber);
-            view.Overview = _statisticsRepository.RetrieveRoundSummary();
-            view.GamesPlayed = _statisticsRepository.RetrieveGamesPlayed();
+            view.Overview = _statisticsRepository.GetRoundSummary();
+            view.GamesPlayed = _statisticsRepository.GetGamesPlayed();
             return View(view);
         }
     }

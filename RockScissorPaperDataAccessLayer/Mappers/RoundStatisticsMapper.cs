@@ -19,14 +19,14 @@ namespace RockScissorPaper.DAL
             foreach (DataRow dr in dt.Rows)
             {
                 MappingHelper map = new MappingHelper(dr);
-                RoshamboChoiceStatistic result = new RoshamboChoiceStatistic();
-                result.Selection = (RoshamboSelection)map.MapInt32("SelectionId");
+                GameChoiceStatistic result = new GameChoiceStatistic();
+                result.Selection = (GameSelection)map.MapInt32("SelectionId");
                 result.Number = map.MapInt32("Count");
                 _result.Choices.Add(result);
             }
 
             _result.TotalSelections = _result.Choices.Sum(m => m.Number);
-            foreach (RoshamboChoiceStatistic item in _result.Choices)
+            foreach (GameChoiceStatistic item in _result.Choices)
             {
                 item.Percentage = (double)item.Number / (double)_result.TotalSelections * 100;
             }

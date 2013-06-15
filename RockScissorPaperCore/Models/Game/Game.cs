@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Domain
 {
-    public class RoshamboGame
+    public class Game
     {
         public int GameId { get; set; }
         public GameRules Rules { get; set; }
@@ -14,11 +14,11 @@ namespace RockScissorPaper.Domain
         public List<GameRound> Rounds { get; set; }
         public GameStatus Status { get; set; }
 
-        public RoshamboGame()
+        public Game()
         {
         }
 
-        public RoshamboGame(GameRules rules, Player playerOne, Player playerTwo)
+        public Game(GameRules rules, Player playerOne, Player playerTwo)
         {
             Rules = rules;
             PlayerOne = playerOne;

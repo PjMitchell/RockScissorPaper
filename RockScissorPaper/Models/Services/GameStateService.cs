@@ -9,9 +9,9 @@ namespace RockScissorPaper.Models
     public class GameStateService
     {
         public GameStateQuery GameState { get; private set; }
-        public RoshamboGame CurrentGame { get; private set; }
+        public Game CurrentGame { get; private set; }
 
-        public GameStateService(RoshamboGame game)
+        public GameStateService(Game game)
         {
             CurrentGame = game;
             GameState = new GameStateQuery();

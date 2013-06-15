@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RockScissorPaper.Models.DataHandling;
+using RockScissorPaper.DAL;
 using RockScissorPaper.Models;
-using RockScissorPaper.Models.Bots;
+using RockScissorPaper.Domain;
 
 namespace RockScissorPaper.Tests.Models
 {
@@ -12,7 +12,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestAddNewGame()
         {
-            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector());
+            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
             
             int playerid = 1;
             int botid = 2;
@@ -23,7 +23,7 @@ namespace RockScissorPaper.Tests.Models
             two.Bot = new SimpleBot();
             two.Name = two.Bot.Name;
             two.PlayerId = botid;
-            RoshamboGame game = new RoshamboGame(new GameRules(), one, two);
+            Game game = new Game(new GameRules(), one, two);
             
             repository.CreateNewGame(game);
             
@@ -34,7 +34,7 @@ namespace RockScissorPaper.Tests.Models
         public void TestChangeStatus()
         {
 
-            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector());
+            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
             repository.UpdateGameStatus(1, GameStatus.RoundResult);
 
             //To Determine no Execptions are thrown
@@ -43,7 +43,7 @@ namespace RockScissorPaper.Tests.Models
         public void TestNewRound()
         {
 
-            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector());
+            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
             
             int i = repository.CreateRound(5,1);
             
@@ -53,9 +53,9 @@ namespace RockScissorPaper.Tests.Models
         public void TestNewGameRoundResult()
         {
 
-            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector());
+            GameSQLRepository repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
 
-            repository.CreateGameRoundResult(1,1,1, RoshamboSelection.Rock);
+            repository.CreateGameRoundResult(1,1,1, GameSelection.Rock);
 
             //To Determine no Execptions are thrown
         }

@@ -35,7 +35,7 @@ namespace RockScissorPaper.DAL
         /// Adds new empty game to data storage
         /// </summary>
         /// <param name="game"></param>
-        public void CreateNewGame(RoshamboGame game)
+        public void CreateNewGame(Game game)
         {
             List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
             parameters.Add(new StoreProceedureParameter("PlayerOneIdInput", game.PlayerOne.PlayerId));
@@ -50,21 +50,21 @@ namespace RockScissorPaper.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public RoshamboGame RetrieveGame(int id)
+        public Game GetGame(int id)
         {
             List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
             parameters.Add(new StoreProceedureParameter("GameIdInput", id));
             RoshamboGameMapper mapper = new RoshamboGameMapper();
             _dataAccess.Get("Proc_Select_GameById", mapper, parameters);
-            RoshamboGame result = mapper.Result as RoshamboGame;
+            Game result = mapper.Result as Game;
             if (result.GameId != id) 
             {
                 return null;
             }
             GameRulesFactory _rulefactory = new GameRulesFactory(this);
             result.Rules = _rulefactory.GetGameRules(result.Rules.Id);
-            result.PlayerOne = _playerRepositotry.RetrievePlayer(result.PlayerOne.PlayerId);
-            result.PlayerTwo = _playerRepositotry.RetrievePlayer(result.PlayerTwo.PlayerId);
+            result.PlayerOne = _playerRepositotry.GetPlayer(result.PlayerOne.PlayerId);
+            result.PlayerTwo = _playerRepositotry.GetPlayer(result.PlayerTwo.PlayerId);
             GameRoundMapper mapper2 = new GameRoundMapper();
             List<StoreProceedureParameter> newParameters = new List<StoreProceedureParameter>();
             newParameters.Add(new StoreProceedureParameter("GameIdInput", result.GameId));
@@ -114,7 +114,7 @@ namespace RockScissorPaper.DAL
         /// <param name="gameId">The Id of the Game being played</param>
         /// <param name="gameRoundId">The Id of the current Round </param>
         /// <param name="selection">The Players selection</param>
-        public void CreateGameRoundResult(int playerId, int gameId, int gameRoundId, RoshamboSelection selection)
+        public void CreateGameRoundResult(int playerId, int gameId, int gameRoundId, GameSelection selection)
         {
             List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
             parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerId));
@@ -129,7 +129,7 @@ namespace RockScissorPaper.DAL
         /// Updates the GamePlayer Table with Players' game result and score
         /// </summary>
         /// <param name="game"></param>
-        public void UpdateGameResult(RoshamboGame game)
+        public void UpdateGameResult(Game game)
         {
             game.Rules.GameScoreResolver.ResolveGame(game.Rounds);
             UpdateGameResult(game.GameId, game.PlayerOne.PlayerId, game.Rules.GameScoreResolver.PlayerOneOutcome, game.Rules.GameScoreResolver.PlayerOneScore);
@@ -172,7 +172,7 @@ namespace RockScissorPaper.DAL
         /// <param name="ruleId">Index to be retrieved</param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public GameRules RetrieveGameRules(int ruleId, GameRulesFactory factory)
+        public GameRules GetGameRules(int ruleId, GameRulesFactory factory)
         {
             List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
             paras.Add(new StoreProceedureParameter("GameRuleSetIdInput", ruleId));
@@ -197,7 +197,7 @@ namespace RockScissorPaper.DAL
         /// </summary>
         /// <param name="rules"></param>
         /// <returns></returns>
-        public int RetrieveGameRuleId(GameRules rules)
+        public int GetGameRuleId(GameRules rules)
         {
             List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
             paras.Add(new StoreProceedureParameter("GameTypeInput", Convert.ToString(rules.GameType)));

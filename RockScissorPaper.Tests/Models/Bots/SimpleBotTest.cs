@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RockScissorPaper.Models.Bots;
-using RockScissorPaper.Models;
-using RockScissorPaper.Models.Statistics;
+using RockScissorPaper.Domain;
 using System.Collections.Generic;
+using RockScissorPaper.Models.Statistics;
 
 namespace RockScissorPaper.Tests.Models.Bots
 {
@@ -29,16 +28,16 @@ namespace RockScissorPaper.Tests.Models.Bots
             int countScissor = 0;
             for (int i = 0; i < 99999; i++)
             {
-                RoshamboSelection selection = bot.Go();
+                GameSelection selection = bot.Go();
                 switch (selection)
                 {
-                    case RoshamboSelection.Rock:
+                    case GameSelection.Rock:
                         countRock += 1;
                         break;
-                    case RoshamboSelection.Scissor:
+                    case GameSelection.Scissor:
                         countScissor += 1;
                         break;
-                    case RoshamboSelection.Paper:
+                    case GameSelection.Paper:
                         countPaper += 1;
                         break;
                 }

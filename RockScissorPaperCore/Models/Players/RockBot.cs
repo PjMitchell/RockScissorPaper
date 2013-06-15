@@ -13,9 +13,9 @@ namespace RockScissorPaper.Domain
         {
         }
 
-        public override RoshamboSelection Go()
+        public override GameSelection Go()
         {
-            return RoshamboSelection.Rock;
+            return GameSelection.Rock;
         }
     }
 }

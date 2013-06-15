@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Domain
 {
-    public interface IRoshamboResolver
+    public interface IGameResolver
     {
         GameOutcome PlayerOneResult { get; }
         GameOutcome PlayerTwoResult { get; }

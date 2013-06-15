@@ -5,13 +5,13 @@ namespace RockScissorPaper.DAL
 {
     class RoshamboGameMapper : IMapper
     {
-        private RoshamboGame _result;
+        private Game _result;
         
         public object Result { get {return _result;} }
        
         public RoshamboGameMapper()
         {
-            _result = new RoshamboGame();
+            _result = new Game();
         }
         public void Map(DataTable dt)
         {

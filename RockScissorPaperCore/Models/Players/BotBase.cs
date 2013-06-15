@@ -11,7 +11,7 @@ namespace RockScissorPaper.Domain
             _name = name;
         }
 
-        public abstract RoshamboSelection Go();
+        public abstract GameSelection Go();
        
 
 

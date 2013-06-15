@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RockScissorPaper.Domain
 {
-    public class RoshamboResolver : IRoshamboResolver
+    public class RoshamboGameResolver : IGameResolver
     {
         private string _message;
         private GameOutcome _playerOneResult;
@@ -18,7 +18,7 @@ namespace RockScissorPaper.Domain
         public GameOutcome PlayerOneResult { get { return _playerOneResult; } }
         public GameOutcome PlayerTwoResult { get { return _playerTwoResult; } }
 
-        public void ResolveRound(RoshamboSelection playerOne, RoshamboSelection playerTwo)
+        public void ResolveRound(GameSelection playerOne, GameSelection playerTwo)
         {
             if (playerOne == playerTwo)
             {
@@ -29,8 +29,8 @@ namespace RockScissorPaper.Domain
             {
                 switch (playerOne)
                 {
-                    case RoshamboSelection.Rock:
-                        if (playerTwo == RoshamboSelection.Scissor)
+                    case GameSelection.Rock:
+                        if (playerTwo == GameSelection.Scissor)
                         {
                             SetResult(GameOutcome.Win);
                             _message = _rockWin;
@@ -41,8 +41,8 @@ namespace RockScissorPaper.Domain
                             _message = _paperWin;
                         }
                         break;
-                    case RoshamboSelection.Scissor:
-                        if (playerTwo == RoshamboSelection.Paper)
+                    case GameSelection.Scissor:
+                        if (playerTwo == GameSelection.Paper)
                         {
                             SetResult(GameOutcome.Win);
                             _message = _scissorWin;
@@ -53,8 +53,8 @@ namespace RockScissorPaper.Domain
                             _message = _rockWin;
                         }
                         break;
-                    case RoshamboSelection.Paper:
-                        if (playerTwo == RoshamboSelection.Rock)
+                    case GameSelection.Paper:
+                        if (playerTwo == GameSelection.Rock)
                         {
                              SetResult(GameOutcome.Win);
                             _message = _paperWin;

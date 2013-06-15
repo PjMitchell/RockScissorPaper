@@ -13,9 +13,9 @@ namespace RockScissorPaper.Models
     {
         public int GameId { get; private set; }
 
-        public RoshamboSelection PlayerOneSelection { get; set; }
+        public GameSelection PlayerOneSelection { get; set; }
 
-        public RoshamboSelection PlayerTwoSelection { get; set; }
+        public GameSelection PlayerTwoSelection { get; set; }
 
         public PlayerSelectionCommand(int gameId)
         {

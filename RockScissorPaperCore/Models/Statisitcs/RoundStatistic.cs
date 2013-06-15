@@ -10,12 +10,12 @@ namespace RockScissorPaper.Domain
         public int RoundNumber { get; set; } //0 = Summary
         public int TotalSelections { get; set; }
         public DateTime TimeStamp { get; private set; }
-        public List<RoshamboChoiceStatistic> Choices { get; set; }
+        public List<GameChoiceStatistic> Choices { get; set; }
 
         public RoundStatistic()
         {
             TimeStamp = DateTime.UtcNow;
-            Choices = new List<RoshamboChoiceStatistic>();
+            Choices = new List<GameChoiceStatistic>();
         }
     }
 }

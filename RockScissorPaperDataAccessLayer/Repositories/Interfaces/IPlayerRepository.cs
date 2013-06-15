@@ -4,7 +4,7 @@ namespace RockScissorPaper.DAL
 {
     public interface IPlayerRepository
     {
-        Player RetrievePlayer(int id);
+        Player GetPlayer(int id);
         int CreatePlayer(string playerName, string ipAddress);
     }
 }

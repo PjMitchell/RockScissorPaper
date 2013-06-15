@@ -12,14 +12,14 @@ namespace RockScissorPaper.DAL
         /// Adds new empty game to data storage
         /// </summary>
         /// <param name="game"></param>
-        void CreateNewGame(RoshamboGame game);
+        void CreateNewGame(Game game);
 
         /// <summary>
         /// Retrives Game by Game Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        RoshamboGame RetrieveGame(int id);
+        Game GetGame(int id);
 
         /// <summary>
         /// Updates the Current game Status of selected gameId with set value
@@ -43,13 +43,13 @@ namespace RockScissorPaper.DAL
         /// <param name="gameId">The Id of the Game being played</param>
         /// <param name="gameRoundId">The Id of the current Round </param>
         /// <param name="selection">The Players selection</param>
-        void CreateGameRoundResult(int playerID, int gameId, int gameRoundId, RoshamboSelection selection);
+        void CreateGameRoundResult(int playerID, int gameId, int gameRoundId, GameSelection selection);
 
         /// <summary>
         /// Updates the GamePlayer Table with Players' game result and score
         /// </summary>
         /// <param name="game"></param>
-        void UpdateGameResult(RoshamboGame game);
+        void UpdateGameResult(Game game);
 
         /// <summary>
         /// Returns the Total wins of Human and Bot Players
@@ -63,13 +63,13 @@ namespace RockScissorPaper.DAL
        /// <param name="ruleId">Index to be retrieved</param>
        /// <param name="factory"></param>
        /// <returns></returns>
-        GameRules RetrieveGameRules(int ruleId, GameRulesFactory factory);
+        GameRules GetGameRules(int ruleId, GameRulesFactory factory);
  
         /// <summary>
         /// Returns Id for GameRuleSet
         /// </summary>
         /// <param name="rules"></param>
         /// <returns></returns>
-        int RetrieveGameRuleId(GameRules rules);
+        int GetGameRuleId(GameRules rules);
     }
 }

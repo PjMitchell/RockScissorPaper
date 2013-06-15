@@ -7,11 +7,11 @@ namespace RockScissorPaper.Domain
 {
     public class GameSelectorButton
     {
-        public RoshamboSelection Selection {get; private set;}
+        public GameSelection Selection {get; private set;}
         public int SelectionId { get { return (int)Selection; } }
         public string SelectionText { get { return Convert.ToString(Selection); } }
 
-        public GameSelectorButton(RoshamboSelection selection)
+        public GameSelectorButton(GameSelection selection)
         {
             Selection = selection;
         }
