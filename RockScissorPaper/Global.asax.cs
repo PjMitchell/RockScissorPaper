@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using HilltopDigital.SimpleDAL;
+using Ninject;
 using Ninject.Web.Common;
 using RockScissorPaper.DAL;
 using System;

@@ -1,4 +1,5 @@
 ﻿
+using HilltopDigital.SimpleDAL;
 using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,8 @@ namespace RockScissorPaper.DAL
 
         public Player GetPlayer(int id)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("PlayerIdInput", id));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("PlayerIdInput", id));
             PlayerMapper mapper = new PlayerMapper();
             _dataAccess.Get("Proc_Select_PlayerById", mapper, parameters);
             return mapper.Result as Player;
@@ -30,9 +31,9 @@ namespace RockScissorPaper.DAL
 
         public int CreatePlayer(string playerName, string ipAddress)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("PlayerNameInput", playerName));
-            parameters.Add(new StoreProceedureParameter("IpAddressInput", ipAddress));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("PlayerNameInput", playerName));
+            parameters.Add(new StoreProcedureParameter("IpAddressInput", ipAddress));
             return Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_NewPlayer", parameters));
         }
     }

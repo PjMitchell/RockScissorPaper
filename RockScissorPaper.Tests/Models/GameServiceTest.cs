@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockScissorPaper.Models;
 using RockScissorPaper.Domain;
 using RockScissorPaper.DAL;
+using HilltopDigital.SimpleDAL;
 
 namespace RockScissorPaper.Tests.Models
 {

@@ -258,6 +258,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HilltopDigital.SimpleDAL\HilltopDigital.SimpleDAL.csproj">
+      <Project>{4bfa59a8-50d7-45f7-a33c-6dc0b3ac3661}</Project>
+      <Name>HilltopDigital.SimpleDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
       <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>
       <Name>RockScissorPaper.Domain</Name>

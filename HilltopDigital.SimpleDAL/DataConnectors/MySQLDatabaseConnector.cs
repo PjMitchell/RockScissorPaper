@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 
-namespace RockScissorPaper.DAL
+namespace HilltopDigital.SimpleDAL
 {
     public class MySQLDatabaseConnector : IDatabaseConnector
     {
-        private static readonly string _connectionString = GetConnectionString();
-
+        private readonly string _connectionString;
         private static string GetConnectionString()
         {
 
@@ -23,13 +22,23 @@ namespace RockScissorPaper.DAL
             return cs;
         }
 
+        public MySQLDatabaseConnector()
+        {
+            _connectionString = GetConnectionString();
+        }
+
+        public MySQLDatabaseConnector(string connectionString)
+        {
+            _connectionString = GetConnectionString();
+        }
+
         /// <summary>
         /// Gets DataTable from Database using SQL
         /// </summary>
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        public System.Data.DataTable Get(string sql, List<StoreProceedureParameter> sqlParams = null)
+        public System.Data.DataTable Get(string sql, List<StoreProcedureParameter> sqlParams = null)
         {
             List<MySqlParameter> mySqlparams = getParameters(sqlParams);
             DataTable dt = new DataTable();
@@ -56,7 +65,7 @@ namespace RockScissorPaper.DAL
         /// <param name="output">IMapper required to map the result</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        public void Get(string sql, IMapper output, List<StoreProceedureParameter> sqlParams = null)
+        public void Get(string sql, IMapper output, List<StoreProcedureParameter> sqlParams = null)
         {
             List<MySqlParameter> mySqlparams = getParameters(sqlParams);
             DataTable dt = new DataTable();
@@ -82,7 +91,7 @@ namespace RockScissorPaper.DAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        public int ExecuteNonQuery(string sql, List<StoreProceedureParameter> sqlParams = null)
+        public int ExecuteNonQuery(string sql, List<StoreProcedureParameter> sqlParams = null)
         {
             List<MySqlParameter> mySqlparams = getParameters(sqlParams);
             int resultCount = 0;
@@ -107,7 +116,7 @@ namespace RockScissorPaper.DAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        public object GetScalar(string sql, List<StoreProceedureParameter> sqlParams = null)
+        public object GetScalar(string sql, List<StoreProcedureParameter> sqlParams = null)
         {
             List<MySqlParameter> mySqlparams = getParameters(sqlParams);
             object result;
@@ -130,7 +139,7 @@ namespace RockScissorPaper.DAL
         /// </summary>
         /// <param name="sqlParams"></param>
         /// <returns></returns>
-        private List<MySqlParameter> getParameters(List<StoreProceedureParameter> sqlParams)
+        private List<MySqlParameter> getParameters(List<StoreProcedureParameter> sqlParams)
         {
             if (sqlParams == null)
             {
@@ -139,7 +148,7 @@ namespace RockScissorPaper.DAL
             else
             {
                 List<MySqlParameter> results = new List<MySqlParameter>();
-                foreach (StoreProceedureParameter para in sqlParams)
+                foreach (StoreProcedureParameter para in sqlParams)
                 {
                     results.Add(new MySqlParameter(para.ParameterName, para.Value));
                 }
@@ -147,5 +156,6 @@ namespace RockScissorPaper.DAL
             }
 
         }
+        
     }
 }

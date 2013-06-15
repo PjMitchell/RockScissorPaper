@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace RockScissorPaper.DAL
+namespace HilltopDigital.SimpleDAL
 {
     public interface IDatabaseConnector
     {
@@ -11,7 +11,7 @@ namespace RockScissorPaper.DAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        DataTable Get(string sql, List<StoreProceedureParameter> sqlParams = null);
+        DataTable Get(string sql, List<StoreProcedureParameter> sqlParams = null);
 
         /// <summary>
         /// Passes data to IMapper from Database using SQL
@@ -20,7 +20,7 @@ namespace RockScissorPaper.DAL
         /// <param name="output">IMapper required to map the result</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        void Get(string sql, IMapper output, List<StoreProceedureParameter> sqlParams = null);
+        void Get(string sql, IMapper output, List<StoreProcedureParameter> sqlParams = null);
 
         /// <summary>
         /// Executes NonQuery from DataBase using SQL
@@ -28,7 +28,7 @@ namespace RockScissorPaper.DAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        int ExecuteNonQuery(string sql, List<StoreProceedureParameter> sqlParams = null);
+        int ExecuteNonQuery(string sql, List<StoreProcedureParameter> sqlParams = null);
 
         /// <summary>
         /// Returns single field result from SQL Query
@@ -36,6 +36,7 @@ namespace RockScissorPaper.DAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        object GetScalar(string sql, List<StoreProceedureParameter> sqlParams = null);
+        object GetScalar(string sql, List<StoreProcedureParameter> sqlParams = null);
+
     }
 }

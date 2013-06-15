@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace RockScissorPaper.DAL
+namespace HilltopDigital.SimpleDAL
 {
     /// <summary>
     /// Interface For Database mapper class.

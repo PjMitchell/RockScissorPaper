@@ -10,6 +10,7 @@ using RockScissorPaper.Controllers;
 using RockScissorPaper.Models;
 using RockScissorPaper.Tests.Models;
 using RockScissorPaper.DAL;
+using HilltopDigital.SimpleDAL;
 
 namespace RockScissorPaper.Tests.Controllers
 {

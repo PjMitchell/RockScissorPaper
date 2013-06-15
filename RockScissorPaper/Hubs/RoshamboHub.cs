@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using HilltopDigital.SimpleDAL;
+using Microsoft.AspNet.SignalR;
 using RockScissorPaper.DAL;
 using RockScissorPaper.Models;
 using System;

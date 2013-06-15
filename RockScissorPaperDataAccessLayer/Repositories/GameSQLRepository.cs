@@ -1,4 +1,5 @@
-﻿using RockScissorPaper.Domain;
+﻿using HilltopDigital.SimpleDAL;
+using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,10 +38,10 @@ namespace RockScissorPaper.DAL
         /// <param name="game"></param>
         public void CreateNewGame(Game game)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("PlayerOneIdInput", game.PlayerOne.PlayerId));
-            parameters.Add(new StoreProceedureParameter("PlayerTwoIdInput", game.PlayerTwo.PlayerId));
-            parameters.Add(new StoreProceedureParameter("RuleSetIdInput", game.Rules.Id));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("PlayerOneIdInput", game.PlayerOne.PlayerId));
+            parameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", game.PlayerTwo.PlayerId));
+            parameters.Add(new StoreProcedureParameter("RuleSetIdInput", game.Rules.Id));
             game.GameId = Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_NewGame", parameters));
         }
 
@@ -52,8 +53,8 @@ namespace RockScissorPaper.DAL
         /// <returns></returns>
         public Game GetGame(int id)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("GameIdInput", id));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("GameIdInput", id));
             RoshamboGameMapper mapper = new RoshamboGameMapper();
             _dataAccess.Get("Proc_Select_GameById", mapper, parameters);
             Game result = mapper.Result as Game;
@@ -66,10 +67,10 @@ namespace RockScissorPaper.DAL
             result.PlayerOne = _playerRepositotry.GetPlayer(result.PlayerOne.PlayerId);
             result.PlayerTwo = _playerRepositotry.GetPlayer(result.PlayerTwo.PlayerId);
             GameRoundMapper mapper2 = new GameRoundMapper();
-            List<StoreProceedureParameter> newParameters = new List<StoreProceedureParameter>();
-            newParameters.Add(new StoreProceedureParameter("GameIdInput", result.GameId));
-            newParameters.Add(new StoreProceedureParameter("PlayerOneIdInput", result.PlayerOne.PlayerId));
-            newParameters.Add(new StoreProceedureParameter("PlayerTwoIdInput", result.PlayerTwo.PlayerId));
+            List<StoreProcedureParameter> newParameters = new List<StoreProcedureParameter>();
+            newParameters.Add(new StoreProcedureParameter("GameIdInput", result.GameId));
+            newParameters.Add(new StoreProcedureParameter("PlayerOneIdInput", result.PlayerOne.PlayerId));
+            newParameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", result.PlayerTwo.PlayerId));
             _dataAccess.Get("Proc_Select_GameRoundByGameIdAndPlayerIds", mapper2, newParameters);
             result.Rounds = mapper2.Result as List<GameRound>;
             foreach (GameRound round in result.Rounds)
@@ -87,9 +88,9 @@ namespace RockScissorPaper.DAL
         /// <param name="value"></param>
         public void UpdateGameStatus(int gameId, GameStatus value)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("GameIdInput", gameId));
-            parameters.Add(new StoreProceedureParameter("NewStatusInput", (int)value));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("GameIdInput", gameId));
+            parameters.Add(new StoreProcedureParameter("NewStatusInput", (int)value));
             _dataAccess.ExecuteNonQuery("Proc_Update_GameStatus", parameters);
         }
 
@@ -101,9 +102,9 @@ namespace RockScissorPaper.DAL
         /// <returns></returns>
         public int CreateRound(int roundNumber, int gameId)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("GameIdInput", gameId));
-            parameters.Add(new StoreProceedureParameter("RoundNumberInput", roundNumber));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("GameIdInput", gameId));
+            parameters.Add(new StoreProcedureParameter("RoundNumberInput", roundNumber));
             return Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_GameRound", parameters));
         }
 
@@ -116,11 +117,11 @@ namespace RockScissorPaper.DAL
         /// <param name="selection">The Players selection</param>
         public void CreateGameRoundResult(int playerId, int gameId, int gameRoundId, GameSelection selection)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerId));
-            parameters.Add(new StoreProceedureParameter("RoshamboGameIdInput", gameId));
-            parameters.Add(new StoreProceedureParameter("GameRoundIdInput", gameRoundId));
-            parameters.Add(new StoreProceedureParameter("SelectionIdInput", (int)selection));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("PlayerIdInput", playerId));
+            parameters.Add(new StoreProcedureParameter("RoshamboGameIdInput", gameId));
+            parameters.Add(new StoreProcedureParameter("GameRoundIdInput", gameRoundId));
+            parameters.Add(new StoreProcedureParameter("SelectionIdInput", (int)selection));
             _dataAccess.ExecuteNonQuery("Proc_Create_GameRoundResult", parameters);
             
         }
@@ -142,11 +143,11 @@ namespace RockScissorPaper.DAL
         /// <param name="game"></param>
         private void UpdateGameResult(int gameId, int playerId, GameOutcome gameOutcome, int gameScore)
         {
-            List<StoreProceedureParameter> parameters = new List<StoreProceedureParameter>();
-            parameters.Add(new StoreProceedureParameter("PlayerIdInput", playerId));
-            parameters.Add(new StoreProceedureParameter("RoshamboGameIdInput", gameId));
-            parameters.Add(new StoreProceedureParameter("GameOutcomeInput", (int)gameOutcome));
-            parameters.Add(new StoreProceedureParameter("GameScoreInput", gameScore));
+            List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
+            parameters.Add(new StoreProcedureParameter("PlayerIdInput", playerId));
+            parameters.Add(new StoreProcedureParameter("RoshamboGameIdInput", gameId));
+            parameters.Add(new StoreProcedureParameter("GameOutcomeInput", (int)gameOutcome));
+            parameters.Add(new StoreProcedureParameter("GameScoreInput", gameScore));
             _dataAccess.ExecuteNonQuery("Proc_Update_GamePlayerResult", parameters);
         }
 
@@ -174,8 +175,8 @@ namespace RockScissorPaper.DAL
         /// <returns></returns>
         public GameRules GetGameRules(int ruleId, GameRulesFactory factory)
         {
-            List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
-            paras.Add(new StoreProceedureParameter("GameRuleSetIdInput", ruleId));
+            List<StoreProcedureParameter> paras = new List<StoreProcedureParameter>();
+            paras.Add(new StoreProcedureParameter("GameRuleSetIdInput", ruleId));
             DataTable dt = _dataAccess.Get("Proc_Select_GameRuleById", paras);
             MappingHelper mh = new MappingHelper(dt.Rows[0]);
             int rounds = mh.MapInt32("NumberOfRounds");
@@ -199,11 +200,11 @@ namespace RockScissorPaper.DAL
         /// <returns></returns>
         public int GetGameRuleId(GameRules rules)
         {
-            List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
-            paras.Add(new StoreProceedureParameter("GameTypeInput", Convert.ToString(rules.GameType)));
-            paras.Add(new StoreProceedureParameter("ButtonOrderInput", rules.ButtonBox.Id));
-            paras.Add(new StoreProceedureParameter("AllowDrawInput", rules.AllowDraw));
-            paras.Add(new StoreProceedureParameter("NumberOfRoundsInput", rules.TotalRounds));
+            List<StoreProcedureParameter> paras = new List<StoreProcedureParameter>();
+            paras.Add(new StoreProcedureParameter("GameTypeInput", Convert.ToString(rules.GameType)));
+            paras.Add(new StoreProcedureParameter("ButtonOrderInput", rules.ButtonBox.Id));
+            paras.Add(new StoreProcedureParameter("AllowDrawInput", rules.AllowDraw));
+            paras.Add(new StoreProcedureParameter("NumberOfRoundsInput", rules.TotalRounds));
             int result = (int)_dataAccess.GetScalar("Proc_Select_GameRuleId", paras);
             return result;
         }

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 
-namespace RockScissorPaper.DAL
+namespace HilltopDigital.SimpleDAL
 {
     public class MappingHelper
     {
@@ -75,16 +72,16 @@ namespace RockScissorPaper.DAL
             return dt;
         }
 
-        public string MapDateText(String columnName)
-        {
-            String dx = string.Empty;
-            bool hascolumnName = dr.Table.Columns.Contains(columnName);
-            if (hascolumnName)
-            {
-                dx = Convert.ToString(dr["dd/mm/yyyy"]);
-            }
-            return dx;
-        }
+        //public string MapDateText(String columnName)
+        //{
+        //    String dx = string.Empty;
+        //    bool hascolumnName = dr.Table.Columns.Contains(columnName);
+        //    if (hascolumnName)
+        //    {
+        //        dx = Convert.ToString(dr["dd/mm/yyyy"]);
+        //    }
+        //    return dx;
+        //}
 
         public bool MapBool(String columnName)
         {

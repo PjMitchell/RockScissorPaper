@@ -1,4 +1,5 @@
-﻿using RockScissorPaper.Domain;
+﻿using HilltopDigital.SimpleDAL;
+using RockScissorPaper.Domain;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;

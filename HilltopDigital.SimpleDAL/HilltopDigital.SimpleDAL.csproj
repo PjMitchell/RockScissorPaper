@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ADA5A597-B2BF-455B-AC06-ACDA02562146}</ProjectGuid>
+    <ProjectGuid>{4BFA59A8-50D7-45F7-A33C-6DC0B3AC3661}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RockScissorPaperDataAccessLayer</RootNamespace>
-    <AssemblyName>RockScissorPaperDataAccessLayer</AssemblyName>
+    <RootNamespace>HilltopDigital.SimpleDAL</RootNamespace>
+    <AssemblyName>HilltopDigital.SimpleDAL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,45 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\GameRuleFactoryParameters.cs" />
-    <Compile Include="Factory\GameRulesFactory.cs" />
-    <Compile Include="Factory\SelectionButtonOrderRandomizer.cs" />
-    <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IPlayerRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IStatisticsRepository.cs" />
-    <Compile Include="Mappers\GameRoundMapper.cs" />
-    <Compile Include="Mappers\ListOfRoundStatisticsMapper.cs" />
-    <Compile Include="Mappers\PlayerMapper.cs" />
-    <Compile Include="Mappers\RoshamboGameMapper.cs" />
-    <Compile Include="Mappers\RoundStatisticsMapper.cs" />
-    <Compile Include="Queries\CurrentGlobalResultsQuery.cs" />
-    <Compile Include="Repositories\GameSQLRepository.cs" />
-    <Compile Include="Repositories\PlayerSQLRepository.cs" />
-    <Compile Include="Repositories\StatisticsSQLRepository.cs" />
+    <Compile Include="DataConnectors\IDatabaseConnector.cs" />
+    <Compile Include="DataConnectors\MySQLDatabaseConnector.cs" />
+    <Compile Include="Mappers\IMapper.cs" />
+    <Compile Include="Mappers\MappingHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataConnectors\StoreProcedureParameter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataHandling\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HilltopDigital.SimpleDAL\HilltopDigital.SimpleDAL.csproj">
-      <Project>{4bfa59a8-50d7-45f7-a33c-6dc0b3ac3661}</Project>
-      <Name>HilltopDigital.SimpleDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
-      <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>
-      <Name>RockScissorPaper.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

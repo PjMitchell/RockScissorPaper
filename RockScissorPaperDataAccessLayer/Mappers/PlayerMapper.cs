@@ -1,4 +1,5 @@
-﻿using RockScissorPaper.Domain;
+﻿using HilltopDigital.SimpleDAL;
+using RockScissorPaper.Domain;
 using System.Data;
 
 namespace RockScissorPaper.DAL

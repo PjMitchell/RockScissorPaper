@@ -1,4 +1,5 @@
-﻿using RockScissorPaper.Domain;
+﻿using HilltopDigital.SimpleDAL;
+using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +42,8 @@ namespace RockScissorPaper.DAL
 
         public RoundStatistic GetRoundInformation(int round)
         {
-            List<StoreProceedureParameter> paras = new List<StoreProceedureParameter>();
-            paras.Add(new StoreProceedureParameter("RoundNumberInput", round));
+            List<StoreProcedureParameter> paras = new List<StoreProcedureParameter>();
+            paras.Add(new StoreProcedureParameter("RoundNumberInput", round));
             RoundStatisticsMapper mapper = new RoundStatisticsMapper();
             _dataAccess.Get("Proc_Select_RoundStatisticsByRoundNumber", mapper, paras);
             RoundStatistic result = mapper.Result as RoundStatistic;
