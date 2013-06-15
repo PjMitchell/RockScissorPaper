@@ -213,24 +213,6 @@
     <Content Include="Scripts\Lib\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Roshambo\Roshambo.js" />
-    <Content Include="SQLScripts\StoredProceedures\Game\CreateGameProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\CreateGameRoundResultProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRuleByIdProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRuleIdProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Player\CreateNewPlayerProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\CreateRoundProc.sql" />
-    <Content Include="SQLScripts\DatabaseStartUpScript.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\SelectBotVsHumanVicotryCountProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameByIdProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\SelectGameRoundByGameIdAndPlayerIdsProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Statistics\SelectGameTotalPlayedProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Player\SelectPlayerByIdProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsByRoundNumberProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsTotalProc.sql" />
-    <Content Include="SQLScripts\UNDO-DatabaseStartUpScript.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\UpdateGamePlayerResultProc.sql" />
-    <Content Include="SQLScripts\StoredProceedures\Game\UpdateGameStatusProc.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

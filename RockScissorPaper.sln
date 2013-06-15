@@ -25,6 +25,42 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FDB44BFF-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A06F4432-F2B3-4D32-B494-DB2FC3543BF6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{22F9501C-99CB-4BBE-AE88-F74B6E5E5017}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\DatabaseStartUpScript.sql = SQLScripts\DatabaseStartUpScript.sql
+		SQLScripts\UNDO-DatabaseStartUpScript.sql = SQLScripts\UNDO-DatabaseStartUpScript.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoredProcedures", "StoredProcedures", "{2EA4620E-6886-45EB-B429-F1CCC60B23D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{192E8DA4-F1C6-4E05-A515-2CD1CBB61E7A}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\StoredProceedures\Game\CreateGameProc.sql = SQLScripts\StoredProceedures\Game\CreateGameProc.sql
+		SQLScripts\StoredProceedures\Game\CreateGameRoundResultProc.sql = SQLScripts\StoredProceedures\Game\CreateGameRoundResultProc.sql
+		SQLScripts\StoredProceedures\Game\CreateRoundProc.sql = SQLScripts\StoredProceedures\Game\CreateRoundProc.sql
+		SQLScripts\StoredProceedures\Game\SelectBotVsHumanVicotryCountProc.sql = SQLScripts\StoredProceedures\Game\SelectBotVsHumanVicotryCountProc.sql
+		SQLScripts\StoredProceedures\Game\SelectGameByIdProc.sql = SQLScripts\StoredProceedures\Game\SelectGameByIdProc.sql
+		SQLScripts\StoredProceedures\Game\SelectGameRoundByGameIdAndPlayerIdsProc.sql = SQLScripts\StoredProceedures\Game\SelectGameRoundByGameIdAndPlayerIdsProc.sql
+		SQLScripts\StoredProceedures\Game\SelectGameRuleByIdProc.sql = SQLScripts\StoredProceedures\Game\SelectGameRuleByIdProc.sql
+		SQLScripts\StoredProceedures\Game\SelectGameRuleIdProc.sql = SQLScripts\StoredProceedures\Game\SelectGameRuleIdProc.sql
+		SQLScripts\StoredProceedures\Game\UpdateGamePlayerResultProc.sql = SQLScripts\StoredProceedures\Game\UpdateGamePlayerResultProc.sql
+		SQLScripts\StoredProceedures\Game\UpdateGameStatusProc.sql = SQLScripts\StoredProceedures\Game\UpdateGameStatusProc.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Player", "Player", "{B1449D74-492B-44D7-8232-F66D91B961B2}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\StoredProceedures\Player\CreateNewPlayerProc.sql = SQLScripts\StoredProceedures\Player\CreateNewPlayerProc.sql
+		SQLScripts\StoredProceedures\Player\SelectPlayerByIdProc.sql = SQLScripts\StoredProceedures\Player\SelectPlayerByIdProc.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Statistic", "Statistic", "{8772EBA7-48FA-42C5-AE8A-90CD536E1CD7}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\StoredProceedures\Statistics\SelectGameTotalPlayedProc.sql = SQLScripts\StoredProceedures\Statistics\SelectGameTotalPlayedProc.sql
+		SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticProc.sql = SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticProc.sql
+		SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsByRoundNumberProc.sql = SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsByRoundNumberProc.sql
+		SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsTotalProc.sql = SQLScripts\StoredProceedures\Statistics\SelectRoundStatisticsTotalProc.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +108,9 @@ Global
 		{42DBF428-134D-4F28-889F-167C315F82D3} = {184D4CCF-8D54-4567-9096-A764F4B422E7}
 		{4BFA59A8-50D7-45F7-A33C-6DC0B3AC3661} = {FDB44BFF-A2C3-4C28-976E-83644F285BEC}
 		{671AA7A6-9325-450F-830D-2E0A4900CCE5} = {A06F4432-F2B3-4D32-B494-DB2FC3543BF6}
+		{2EA4620E-6886-45EB-B429-F1CCC60B23D8} = {22F9501C-99CB-4BBE-AE88-F74B6E5E5017}
+		{192E8DA4-F1C6-4E05-A515-2CD1CBB61E7A} = {2EA4620E-6886-45EB-B429-F1CCC60B23D8}
+		{B1449D74-492B-44D7-8232-F66D91B961B2} = {2EA4620E-6886-45EB-B429-F1CCC60B23D8}
+		{8772EBA7-48FA-42C5-AE8A-90CD536E1CD7} = {2EA4620E-6886-45EB-B429-F1CCC60B23D8}
 	EndGlobalSection
 EndGlobal
