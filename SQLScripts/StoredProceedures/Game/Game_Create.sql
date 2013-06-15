@@ -1,6 +1,11 @@
 
-DELIMITER $$
 
+
+DROP PROCEDURE IF EXISTS `Proc_Create_NewGame`
+
+table_function
+
+Game_Create etc.
 
 CREATE PROCEDURE `Proc_Create_NewGame` (
 
@@ -13,23 +18,20 @@ RuleSetIdInput int)
 BEGIN
 
 Insert INTO RoshamboGame(StartDate, GameStatus, RuleSet)
-
 Values (UTC_TIMESTAMP(), 1,RuleSetIdInput);
 
 Select LAST_INSERT_ID();
 
 Insert INTO GamePlayer(PlayerId, RoshamboGameId, Position)
-
 Values (PlayerOneIdInput, LAST_INSERT_ID(), 1);
 
 Insert INTO GamePlayer(PlayerId, RoshamboGameId, Position)
-
 Values (PlayerTwoIdInput, LAST_INSERT_ID(), 2);
 
 
-END$$
+END
 
 
 
-DELIMITER ;
+
 

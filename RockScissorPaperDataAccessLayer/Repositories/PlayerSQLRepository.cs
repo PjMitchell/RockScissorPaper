@@ -34,7 +34,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("PlayerNameInput", playerName));
             parameters.Add(new StoreProcedureParameter("IpAddressInput", ipAddress));
-            return Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_NewPlayer", parameters));
+            return Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_NewPlayer", parameters));
         }
     }
 }

@@ -176,19 +176,13 @@
     </Compile>
     <Compile Include="Hubs\RoshamboHub.cs" />
     <Compile Include="Models\Commands\GameAPIPutCommand.cs" />
-    <Compile Include="Models\Services\GameStateService.cs" />
     <Compile Include="Models\ViewModels\StatisticsViewModel.cs" />
     <Compile Include="Models\Statistics\GammaFunction.cs" />
     <Compile Include="Models\ViewModels\RoshamboHubViewModel.cs" />
-    <Compile Include="Models\Services\NotificationService.cs" />
-    <Compile Include="Models\Queries\GameStateQuery.cs" />
+    <Compile Include="Models\NotificationService.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
-    <Compile Include="Models\Services\GameService.cs" />
-    <Compile Include="Models\Commands\PlayerSelectionCommand.cs" />
-    <Compile Include="Models\DomainModels\GameServiceResult.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />
-    <Compile Include="Models\DomainModels\PlayerGameInfomation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +229,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Bots\" />
+    <Folder Include="Models\DomainModels\" />
+    <Folder Include="Models\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -243,6 +239,10 @@
     <ProjectReference Include="..\HilltopDigital.SimpleDAL\HilltopDigital.SimpleDAL.csproj">
       <Project>{4bfa59a8-50d7-45f7-a33c-6dc0b3ac3661}</Project>
       <Name>HilltopDigital.SimpleDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RockScissorPaper.BLL\RockScissorPaper.BLL.csproj">
+      <Project>{5ce2162f-eb77-4f03-91cd-9b570db5c4d8}</Project>
+      <Name>RockScissorPaper.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">
       <Project>{e83840d2-e540-4c5e-a097-ace6360ab0bd}</Project>

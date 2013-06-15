@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RockScissorPaper.Models
+namespace RockScissorPaper.BLL
 {
     /// <summary>
     /// Player Selection for the round

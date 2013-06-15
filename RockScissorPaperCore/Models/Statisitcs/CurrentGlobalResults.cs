@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockScissorPaper.DAL
+namespace RockScissorPaper.Domain
 {
-    public class CurrentGlobalResultsQuery
+    public class CurrentGlobalResults
     {
         public int NumberOfPeopleConnected { get; set; }
         public int BotWins { get; set; }

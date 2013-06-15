@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using RockScissorPaper.Domain;
+using RockScissorPaper.BLL;
 
 namespace RockScissorPaper.Models
 {
@@ -13,18 +15,22 @@ namespace RockScissorPaper.Models
     {
         IHubContext _context;
         IGameRepository _gameRepository;
+        public GameEventManager GameEventManager;
 
-        public NotificationService(IGameRepository repository)
+        public NotificationService(IGameRepository repository, GameEventManager _gameEventManager)
         {
             _context = GlobalHost.ConnectionManager.GetHubContext<RoshamboHub>();
             _gameRepository = repository;
+            _gameEventManager.Subscribe<GameFinishedEvent>(m => GameFinished());
         }
         
         public void GameFinished()
         {
-            CurrentGlobalResultsQuery view = _gameRepository.RetrieveBotVsHumanScore();
+            CurrentGlobalResults view = _gameRepository.RetrieveBotVsHumanScore();
             view.NumberOfPeopleConnected = RoshamboHub.PeopleConnected;
             _context.Clients.All.refreshView(view);
         }
+
+
     }
 }

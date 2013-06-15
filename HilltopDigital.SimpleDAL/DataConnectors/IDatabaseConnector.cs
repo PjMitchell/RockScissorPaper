@@ -36,7 +36,7 @@ namespace HilltopDigital.SimpleDAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        object GetScalar(string sql, List<StoreProcedureParameter> sqlParams = null);
+        object ExecuteScalar(string sql, List<StoreProcedureParameter> sqlParams = null);
 
     }
 }

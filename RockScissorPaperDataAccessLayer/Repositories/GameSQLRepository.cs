@@ -42,7 +42,7 @@ namespace RockScissorPaper.DAL
             parameters.Add(new StoreProcedureParameter("PlayerOneIdInput", game.PlayerOne.PlayerId));
             parameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", game.PlayerTwo.PlayerId));
             parameters.Add(new StoreProcedureParameter("RuleSetIdInput", game.Rules.Id));
-            game.GameId = Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_NewGame", parameters));
+            game.GameId = Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_NewGame", parameters));
         }
 
         
@@ -105,7 +105,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("GameIdInput", gameId));
             parameters.Add(new StoreProcedureParameter("RoundNumberInput", roundNumber));
-            return Convert.ToInt32(_dataAccess.GetScalar("Proc_Create_GameRound", parameters));
+            return Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_GameRound", parameters));
         }
 
         /// <summary>
@@ -155,12 +155,12 @@ namespace RockScissorPaper.DAL
         /// Returns the Total wins of Human and Bot Players
         /// </summary>
         /// <returns></returns>
-        public CurrentGlobalResultsQuery RetrieveBotVsHumanScore()
+        public CurrentGlobalResults RetrieveBotVsHumanScore()
         {
             DataTable dt = _dataAccess.Get("Proc_Select_BotVsHumanVictoryCount");
             DataRow dr = dt.Rows[0];
             MappingHelper map = new MappingHelper(dr);
-            CurrentGlobalResultsQuery result = new CurrentGlobalResultsQuery();
+            CurrentGlobalResults result = new CurrentGlobalResults();
             result.BotWins = map.MapInt32("BotVictory");
             result.HumanWins = map.MapInt32("HumanVictory");
             return result;
@@ -205,7 +205,7 @@ namespace RockScissorPaper.DAL
             paras.Add(new StoreProcedureParameter("ButtonOrderInput", rules.ButtonBox.Id));
             paras.Add(new StoreProcedureParameter("AllowDrawInput", rules.AllowDraw));
             paras.Add(new StoreProcedureParameter("NumberOfRoundsInput", rules.TotalRounds));
-            int result = (int)_dataAccess.GetScalar("Proc_Select_GameRuleId", paras);
+            int result = (int)_dataAccess.ExecuteScalar("Proc_Select_GameRuleId", paras);
             return result;
         }
     }

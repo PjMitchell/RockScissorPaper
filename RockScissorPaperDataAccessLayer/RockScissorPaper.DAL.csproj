@@ -44,9 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\GameRuleFactoryParameters.cs" />
-    <Compile Include="Factory\GameRulesFactory.cs" />
-    <Compile Include="Factory\SelectionButtonOrderRandomizer.cs" />
+    <Compile Include="Factories\GameRuleFactoryParameters.cs" />
+    <Compile Include="Factories\GameRulesFactory.cs" />
+    <Compile Include="Factories\SelectionButtonOrderRandomizer.cs" />
     <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Repositories\Interfaces\IPlayerRepository.cs" />
     <Compile Include="Repositories\Interfaces\IStatisticsRepository.cs" />
@@ -55,7 +55,6 @@
     <Compile Include="Mappers\PlayerMapper.cs" />
     <Compile Include="Mappers\RoshamboGameMapper.cs" />
     <Compile Include="Mappers\RoundStatisticsMapper.cs" />
-    <Compile Include="Queries\CurrentGlobalResultsQuery.cs" />
     <Compile Include="Repositories\GameSQLRepository.cs" />
     <Compile Include="Repositories\PlayerSQLRepository.cs" />
     <Compile Include="Repositories\StatisticsSQLRepository.cs" />
@@ -64,12 +63,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataHandling\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\HilltopDigital.SimpleDAL\HilltopDigital.SimpleDAL.csproj">
       <Project>{4bfa59a8-50d7-45f7-a33c-6dc0b3ac3661}</Project>

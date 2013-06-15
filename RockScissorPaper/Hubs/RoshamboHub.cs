@@ -1,6 +1,7 @@
 ﻿using HilltopDigital.SimpleDAL;
 using Microsoft.AspNet.SignalR;
 using RockScissorPaper.DAL;
+using RockScissorPaper.Domain;
 using RockScissorPaper.Models;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace RockScissorPaper.Hubs
 
         public void GetInfo()
         {
-            CurrentGlobalResultsQuery view = _repository.RetrieveBotVsHumanScore();
+            CurrentGlobalResults view = _repository.RetrieveBotVsHumanScore();
             view.NumberOfPeopleConnected = PeopleConnected;
             Clients.Caller.refreshView(view);
         }

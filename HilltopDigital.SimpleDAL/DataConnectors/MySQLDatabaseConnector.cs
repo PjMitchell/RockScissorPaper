@@ -12,14 +12,14 @@ namespace HilltopDigital.SimpleDAL
         private static string GetConnectionString()
         {
 
-            string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            var cs = ConfigurationManager.ConnectionStrings["DefaultConnection"];
 
-            if (cs == null)
+            if (cs == null ||  string.IsNullOrWhiteSpace(cs.ConnectionString))
             {
                 throw new ApplicationException("The app requires a connection string 'DefaultConnection'");
             }
 
-            return cs;
+            return cs.ConnectionString;
         }
 
         public MySQLDatabaseConnector()
@@ -40,7 +40,7 @@ namespace HilltopDigital.SimpleDAL
         /// <returns></returns>
         public System.Data.DataTable Get(string sql, List<StoreProcedureParameter> sqlParams = null)
         {
-            List<MySqlParameter> mySqlparams = getParameters(sqlParams);
+            List<MySqlParameter> mySqlparams = GetParameters(sqlParams);
             DataTable dt = new DataTable();
 
             using (var da = new MySqlDataAdapter(sql, _connectionString))
@@ -67,7 +67,7 @@ namespace HilltopDigital.SimpleDAL
         /// <returns></returns>
         public void Get(string sql, IMapper output, List<StoreProcedureParameter> sqlParams = null)
         {
-            List<MySqlParameter> mySqlparams = getParameters(sqlParams);
+            List<MySqlParameter> mySqlparams = GetParameters(sqlParams);
             DataTable dt = new DataTable();
 
             using (var da = new MySqlDataAdapter(sql, _connectionString))
@@ -93,7 +93,7 @@ namespace HilltopDigital.SimpleDAL
         /// <returns></returns>
         public int ExecuteNonQuery(string sql, List<StoreProcedureParameter> sqlParams = null)
         {
-            List<MySqlParameter> mySqlparams = getParameters(sqlParams);
+            List<MySqlParameter> mySqlparams = GetParameters(sqlParams);
             int resultCount = 0;
             using (var connection = new MySqlConnection(_connectionString))
             using (var cmd = new MySqlCommand(sql, connection))
@@ -116,9 +116,9 @@ namespace HilltopDigital.SimpleDAL
         /// <param name="sql">SQL Query or Stored proceedure name</param>
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
-        public object GetScalar(string sql, List<StoreProcedureParameter> sqlParams = null)
+        public object ExecuteScalar(string sql, List<StoreProcedureParameter> sqlParams = null)
         {
-            List<MySqlParameter> mySqlparams = getParameters(sqlParams);
+            List<MySqlParameter> mySqlparams = GetParameters(sqlParams);
             object result;
             using (var connection = new MySqlConnection(_connectionString))
             using (var cmd = new MySqlCommand(sql, connection))
@@ -139,7 +139,7 @@ namespace HilltopDigital.SimpleDAL
         /// </summary>
         /// <param name="sqlParams"></param>
         /// <returns></returns>
-        private List<MySqlParameter> getParameters(List<StoreProcedureParameter> sqlParams)
+        private List<MySqlParameter> GetParameters(List<StoreProcedureParameter> sqlParams)
         {
             if (sqlParams == null)
             {

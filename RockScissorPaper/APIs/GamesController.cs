@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using HilltopDigital.SimpleDAL;
+using RockScissorPaper.BLL;
 
 namespace RockScissorPaper.Controllers
 {
@@ -17,6 +18,8 @@ namespace RockScissorPaper.Controllers
         private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
         private static IPlayerRepository _playerRepository = new PlayerSQLRepository(_connector);
         private static IGameRepository _gameRepository = new GameSQLRepository(_connector, _playerRepository);
+        private static GameEventManager _gameEventManager = new GameEventManager();
+        private static NotificationService _notificationService = new NotificationService(_gameRepository, _gameEventManager);
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };
@@ -26,7 +29,7 @@ namespace RockScissorPaper.Controllers
         public GameViewModel Get(int id, int currentUserId)
         {
 
-            GameService service = new GameService(_gameRepository, id);
+            GameService service = new GameService(_gameRepository, _gameEventManager, id);
             GameViewModel result = new GameViewModel();
             result.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
             result.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);
@@ -48,7 +51,7 @@ namespace RockScissorPaper.Controllers
             int playerId =  apiCommand.playerId;
             int selection = apiCommand.selection;
             GameSelection playerSelection = (GameSelection)selection;
-            GameService service = new GameService(_gameRepository, id);
+            GameService service = new GameService(_gameRepository, _gameEventManager, id);
             if (service == null)
             {
                 return null;

@@ -7,28 +7,23 @@ namespace RockScissorPaper.Domain
 {
     public class BotPlayerFactory
     {
-        
-        public Player GetBotPlayer(string BotType)
+        public Player GetBotPlayer(string botType)
         {
-            
-            switch (BotType)
+            switch (botType)
             {
                 case  "SimpleBot":
                     return CreateSimpleBot();
                 default: 
                     return CreateSimpleBot();
             }
-
-           
         }
+
         private Player CreateSimpleBot()
         {
             Player result = new Player();
             result.Bot = new SimpleBot();
             result.Name = result.Bot.Name;
             return result;
-
         }
-
     } 
 }

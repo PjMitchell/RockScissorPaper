@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using RockScissorPaper.BLL;
 
 namespace RockScissorPaper.Controllers
 {
@@ -19,12 +20,17 @@ namespace RockScissorPaper.Controllers
         private readonly IPlayerRepository _playerRepository;
         private readonly IGameRepository _gameRepository;
         private readonly IStatisticsRepository _statisticsRepository;
+        private readonly GameEventManager _gameEventManager;
+        private readonly NotificationService _notificationService;
+        
 
         public HomeController(IPlayerRepository playerRepository, IGameRepository gameRepository, IStatisticsRepository statisticsRepository)
         {
             _playerRepository = playerRepository;
             _gameRepository = gameRepository;
             _statisticsRepository = statisticsRepository;
+            _gameEventManager = new GameEventManager();
+            _notificationService = new NotificationService(_gameRepository, _gameEventManager);
         }
 
         public ActionResult Index()
@@ -59,7 +65,7 @@ namespace RockScissorPaper.Controllers
             GameRulesFactory _factory = new GameRulesFactory(_gameRepository);
             GameRules gameRules = _factory.GetGameRules(GameType.StandardGame, GameRuleFactoryParameters.RandomButtonAsignment);
             gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameRules.GameType));
-            GameService service = new GameService(_gameRepository, new Game(gameRules, one, two));
+            GameService service = new GameService(_gameRepository,_gameEventManager, new Game(gameRules, one, two));
 
             return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
         }
@@ -71,7 +77,7 @@ namespace RockScissorPaper.Controllers
         public ActionResult Game(int id, int currentUserId)
         {
             
-            GameService service = new GameService(_gameRepository, id);
+            GameService service = new GameService(_gameRepository,_gameEventManager, id);
             GameViewModel view = new GameViewModel();
             view.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
             view.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);

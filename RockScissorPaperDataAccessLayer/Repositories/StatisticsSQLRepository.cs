@@ -53,7 +53,7 @@ namespace RockScissorPaper.DAL
         
         public int GetGamesPlayed()
         {
-            int result = Convert.ToInt32(_dataAccess.GetScalar("Proc_Select_GameTotalPlayed"));
+            int result = Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Select_GameTotalPlayed"));
             return result;
         }
 

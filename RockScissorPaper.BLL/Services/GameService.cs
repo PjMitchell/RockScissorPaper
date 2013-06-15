@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RockScissorPaper.Models
+namespace RockScissorPaper.BLL
 {
     /// <summary>
     /// Starts new games, Processes selections, calculates results and supplies GameStateViewModel on request
@@ -31,13 +31,16 @@ namespace RockScissorPaper.Models
         }
         public Game CurrentGame { get; private set; }
         private GameStateService _gameStateService { get; set; }
+        private GameEventManager _eventManager; 
+
 
         #region Contructors
 
-        public GameService(IGameRepository repository, Game game)
+        public GameService(IGameRepository repository, GameEventManager eventManager, Game game)
         {
             
             _repository = repository;
+            _eventManager = eventManager;
             CurrentGame = game;
             _repository.CreateNewGame(CurrentGame);
             _gameStateService = new GameStateService(CurrentGame);
@@ -45,10 +48,11 @@ namespace RockScissorPaper.Models
             _gameStateService.Update(Status);
 
         }
-        public GameService(IGameRepository repository, int id)
+        public GameService(IGameRepository repository,GameEventManager eventManager, int id)
         {
             
             _repository = repository;
+            _eventManager = eventManager;
             CurrentGame = _repository.GetGame(id);
             _gameStateService = new GameStateService(CurrentGame);
             _status = CurrentGame.Status;
@@ -146,8 +150,7 @@ namespace RockScissorPaper.Models
                 {
                     _repository.UpdateGameResult(CurrentGame);
                     _gameStateService.SetAsFinalRoundResult();
-                    NotificationService service = new NotificationService(_repository);
-                    service.GameFinished();
+                    _eventManager.Publish(new GameFinishedEvent("Game Finished"));
                     Status = GameStatus.EndOfGame;
                     return result;
                 }
