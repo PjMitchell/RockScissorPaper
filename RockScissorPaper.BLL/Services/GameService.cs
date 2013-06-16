@@ -151,7 +151,7 @@ namespace RockScissorPaper.BLL
                     _repository.UpdateGameResult(CurrentGame);
                     _gameStateService.SetAsFinalRoundResult();
                     var ev = new GameFinishedEvent();
-                    ev.CurrentGlobalResults = new CurrentGlobalResults(); // TODO fill in
+                    ev.CurrentGlobalResults = _repository.RetrieveBotVsHumanScore();
                     _eventManager.Publish(ev);
                     Status = GameStatus.EndOfGame;
                     return result;

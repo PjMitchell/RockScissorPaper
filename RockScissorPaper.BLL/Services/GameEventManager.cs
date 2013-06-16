@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,18 +10,16 @@ namespace RockScissorPaper.BLL
     public class GameEventManager
     {
         
-
-        private Dictionary<object, string> _subscriptions = new Dictionary<object, string>();
+        private ConcurrentDictionary<object, string> _subscriptions = new ConcurrentDictionary<object, string>();
 
         public GameEventManager()
         {
-            _subscriptions = new Dictionary<object, string>();
+            _subscriptions = new ConcurrentDictionary<object, string>();
         }
 
         public void Subscribe<TMessage>(Action<TMessage> handler)
         {
-            _subscriptions.Add(handler, typeof(TMessage).FullName);
-            //if(_subscribersList.Any(m=>m.Key.GetType ==TMessage)
+            _subscriptions.TryAdd(handler, typeof(TMessage).FullName);
         }
 
         public void Publish<TMessage>(TMessage msg)
