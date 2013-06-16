@@ -63,7 +63,7 @@ namespace RockScissorPaper.DAL
        /// <param name="ruleId">Index to be retrieved</param>
        /// <param name="factory"></param>
        /// <returns></returns>
-        GameRules GetGameRules(int ruleId, GameRulesFactory factory);
+        GameRules GetGameRules(int ruleId);
  
         /// <summary>
         /// Returns Id for GameRuleSet
