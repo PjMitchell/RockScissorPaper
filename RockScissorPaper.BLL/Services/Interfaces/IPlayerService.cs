@@ -10,7 +10,9 @@ namespace RockScissorPaper.BLL
     public interface IPlayerService
     {
         Player GetPlayer(int id);
-
+        void Login(int id);
+        void SetCurrentGame(int gameId);
+        UserInfo GetCurrentUserInfo();
         int CreatePlayer(CreatePlayerCommand command);
     }
 }

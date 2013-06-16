@@ -188,6 +188,7 @@
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />
+    <Compile Include="Models\WebPlayerSessionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

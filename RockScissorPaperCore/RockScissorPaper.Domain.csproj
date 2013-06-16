@@ -57,6 +57,7 @@
     <Compile Include="Models\Game\Game.cs" />
     <Compile Include="Models\Statisitcs\RoundStatistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
