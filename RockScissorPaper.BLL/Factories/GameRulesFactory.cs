@@ -73,11 +73,11 @@ namespace RockScissorPaper.DAL
             {
                 case GameType.StandardGame:
                     result.GameScoreResolver = new StandardGameScoreResolver();
-                    result.RoundResolver = new RoshamboGameResolver();
+                    result.RoundResolver = new RoshamboGameRoundResolver();
                     break;
                 default :
                     result.GameScoreResolver = new StandardGameScoreResolver();
-                    result.RoundResolver = new RoshamboGameResolver();
+                    result.RoundResolver = new RoshamboGameRoundResolver();
                     break;
 
             }

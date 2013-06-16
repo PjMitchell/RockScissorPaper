@@ -10,7 +10,7 @@ using System.Web.Http;
 using HilltopDigital.SimpleDAL;
 using RockScissorPaper.BLL;
 
-namespace RockScissorPaper.Controllers
+namespace RockScissorPaper.API
 {
     public class GamesController : ApiController
     {
@@ -34,7 +34,7 @@ namespace RockScissorPaper.Controllers
         public GameViewModel Get(int id, int currentUserId)
         {
 
-            GameService service = new GameService(_gameRepository, _gameEventManager, id);
+            OldGameService service = new OldGameService(_gameRepository, _gameEventManager, id);
             GameViewModel result = new GameViewModel();
             result.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
             result.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);
@@ -56,7 +56,7 @@ namespace RockScissorPaper.Controllers
             int playerId =  apiCommand.playerId;
             int selection = apiCommand.selection;
             GameSelection playerSelection = (GameSelection)selection;
-            GameService service = new GameService(_gameRepository, _gameEventManager, id);
+            OldGameService service = new OldGameService(_gameRepository, _gameEventManager, id);
             if (service == null)
             {
                 return null;

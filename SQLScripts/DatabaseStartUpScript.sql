@@ -20,19 +20,13 @@ GameRuleSetId int NOT NULL AUTO_INCREMENT,
 NumberOfRounds int NOT NULL,
 AllowDraw bit NOT NULL,
 GameType varchar(25) character set UTF8 NOT NULL,
-ButtonOrder varchar(25) character set UTF8 NOT NULL,
 PRIMARY KEY (GameRuleSetId)
 )
 ;
 
 INSERT INTO GameRuleSet (GameRuleSetId, GameType, ButtonOrder, AllowDraw, NumberOfRounds)
 VALUES
-(1, 'StandardGame', 'RSP', 1, 5),
-(2, 'StandardGame', 'RPS', 1, 5),
-(3, 'StandardGame', 'PRS', 1, 5),
-(4, 'StandardGame', 'PSR', 1, 5),
-(5, 'StandardGame', 'SPR', 1, 5),
-(6, 'StandardGame', 'SRP', 1, 5)
+(1, 'StandardGame',  1, 5)
 ;
 
 
@@ -42,6 +36,7 @@ RoshamboGameId int NOT NULL AUTO_INCREMENT,
 StartDate Datetime NOT NULL,
 GameStatus int NOT NULL,
 RuleSet int NOT NULL,
+ButtonOrder varchar(10) character set UTF8 NOT NULL,
 PRIMARY KEY (RoshamboGameId),
 FOREIGN KEY (GameStatus) REFERENCES GameStatus(GameStatusId),
 FOREIGN KEY (RuleSet) REFERENCES GameRuleSet(GameRuleSetId)

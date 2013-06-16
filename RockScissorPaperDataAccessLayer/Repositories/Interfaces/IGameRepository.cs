@@ -12,7 +12,7 @@ namespace RockScissorPaper.DAL
         /// Adds new empty game to data storage
         /// </summary>
         /// <param name="game"></param>
-        void CreateNewGame(Game game);
+        void CreateNewGame(int playerOneId, int playerTwoId, int ruleSetId);
 
         /// <summary>
         /// Retrives Game by Game Id

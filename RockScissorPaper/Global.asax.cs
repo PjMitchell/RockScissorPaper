@@ -31,6 +31,7 @@ namespace RockScissorPaper
             kernel.Bind<IStatisticsRepository>().To<StatisticsSQLRepository>();
             kernel.Bind<IPlayerRepository>().To<PlayerSQLRepository>();
             kernel.Bind<GameEventManager>().ToConstant(new GameEventManager());
+            kernel.Bind<IPlayerService>().To<PlayerService>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new LocalNinjectDependencyResolver(kernel);
 

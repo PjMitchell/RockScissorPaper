@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Interfaces\IGameResolver.cs" />
+    <Compile Include="BusinessLogic\Interfaces\IGameRoundResolver.cs" />
     <Compile Include="BusinessLogic\Interfaces\IGameScoreResolver.cs" />
-    <Compile Include="BusinessLogic\RoshamboGameResolver.cs" />
+    <Compile Include="BusinessLogic\RoshamboGameRoundResolver.cs" />
     <Compile Include="BusinessLogic\StandardGameScoreResolver.cs" />
     <Compile Include="Models\Players\BotBase.cs" />
     <Compile Include="Models\Players\RockBot.cs" />

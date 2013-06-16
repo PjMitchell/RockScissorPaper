@@ -44,9 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\GameRuleFactoryParameters.cs" />
-    <Compile Include="Factories\GameRulesFactory.cs" />
-    <Compile Include="Factories\SelectionButtonOrderRandomizer.cs" />
     <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Repositories\Interfaces\IPlayerRepository.cs" />
     <Compile Include="Repositories\Interfaces\IStatisticsRepository.cs" />

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using RockScissorPaper.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RockScissorPaper.Domain
+namespace RockScissorPaper.BLL
 {
-    public class RoshamboGameResolver : IGameResolver
+    public class RoshamboGameRoundResolver : IGameRoundResolver
     {
         private string _message;
         private GameOutcome _playerOneResult;

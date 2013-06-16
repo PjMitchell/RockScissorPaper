@@ -36,12 +36,12 @@ namespace RockScissorPaper.DAL
         /// Adds new empty game to data storage
         /// </summary>
         /// <param name="game"></param>
-        public void CreateNewGame(Game game)
+        public void CreateNewGame(int playerOneId, int playerTwoId, int ruleSetId )
         {
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
-            parameters.Add(new StoreProcedureParameter("PlayerOneIdInput", game.PlayerOne.PlayerId));
-            parameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", game.PlayerTwo.PlayerId));
-            parameters.Add(new StoreProcedureParameter("RuleSetIdInput", game.Rules.Id));
+            parameters.Add(new StoreProcedureParameter("PlayerOneIdInput", playerOneId));
+            parameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", playerTwoId));
+            parameters.Add(new StoreProcedureParameter("RuleSetIdInput", ruleSetId));
             game.GameId = Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_NewGame", parameters));
         }
 
@@ -173,7 +173,7 @@ namespace RockScissorPaper.DAL
         /// <param name="ruleId">Index to be retrieved</param>
         /// <param name="factory"></param>
         /// <returns></returns>
-        public GameRules GetGameRules(int ruleId, GameRulesFactory factory)
+        public GameRules GetGameRules(int ruleId)
         {
             List<StoreProcedureParameter> paras = new List<StoreProcedureParameter>();
             paras.Add(new StoreProcedureParameter("GameRuleSetIdInput", ruleId));

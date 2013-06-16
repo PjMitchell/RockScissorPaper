@@ -17,7 +17,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestRockVsRock()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
             service.ResolveRound(GameSelection.Rock, GameSelection.Rock);
 
             Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
@@ -27,7 +27,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestRockVsScissor()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Rock, GameSelection.Scissor);
 
@@ -38,7 +38,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestRockVsPaper()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Rock, GameSelection.Paper);
 
@@ -49,7 +49,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestScissorVsRock()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Scissor, GameSelection.Rock);
 
@@ -60,7 +60,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestScissorVsScissor()
         {
-            var service = new RoshamboGameResolver();
+            var service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Scissor, GameSelection.Scissor);
             Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
@@ -71,7 +71,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestScissorVsPaper()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Scissor, GameSelection.Paper);
 
@@ -82,7 +82,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestPaperVsRock()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Paper, GameSelection.Rock);
 
@@ -93,7 +93,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestPaperVsScissor()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Paper, GameSelection.Scissor);
             
@@ -104,7 +104,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestPaperVsPaper()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
             service.ResolveRound(GameSelection.Paper, GameSelection.Paper);
 
@@ -118,7 +118,7 @@ namespace RockScissorPaper.Tests.Models
         [TestMethod]
         public void TestMultipleResolvesWithOneInstance()
         {
-            RoshamboGameResolver service = new RoshamboGameResolver();
+            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
             service.ResolveRound(GameSelection.Rock, GameSelection.Scissor);
             service.ResolveRound(GameSelection.Rock, GameSelection.Paper);
 

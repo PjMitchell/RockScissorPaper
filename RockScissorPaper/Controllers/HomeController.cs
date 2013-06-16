@@ -65,7 +65,7 @@ namespace RockScissorPaper.Controllers
             GameRulesFactory _factory = new GameRulesFactory(_gameRepository);
             GameRules gameRules = _factory.GetGameRules(GameType.StandardGame, GameRuleFactoryParameters.RandomButtonAsignment);
             gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameRules.GameType));
-            GameService service = new GameService(_gameRepository,_gameEventManager, new Game(gameRules, one, two));
+            OldGameService service = new OldGameService(_gameRepository,_gameEventManager, new Game(gameRules, one, two));
 
             return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
         }
@@ -77,7 +77,7 @@ namespace RockScissorPaper.Controllers
         public ActionResult Game(int id, int currentUserId)
         {
             
-            GameService service = new GameService(_gameRepository,_gameEventManager, id);
+            OldGameService service = new OldGameService(_gameRepository,_gameEventManager, id);
             GameViewModel view = new GameViewModel();
             view.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
             view.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);

@@ -171,7 +171,8 @@
     <Compile Include="App_Start\SignalRNinjectDependencyResolver.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="APIs\GamesController.cs" />
+    <Compile Include="API\GamesController.cs" />
+    <Compile Include="API\PlayersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

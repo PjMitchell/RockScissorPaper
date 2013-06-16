@@ -16,7 +16,7 @@ namespace RockScissorPaper.Tests.Models
         {
             Game game = new Game(new GameRules(), new Player(), new Player());
             game.PlayerTwo.Bot = new RockBot();
-            GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())),new GameEventManager(), game);
+            OldGameService service = new OldGameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())),new GameEventManager(), game);
             
             PlayerSelectionCommand c1 = new PlayerSelectionCommand(game.GameId);
             c1.PlayerOneSelection = GameSelection.Paper;

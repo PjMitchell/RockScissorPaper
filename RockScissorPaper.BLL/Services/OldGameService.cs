@@ -10,7 +10,7 @@ namespace RockScissorPaper.BLL
     /// <summary>
     /// Starts new games, Processes selections, calculates results and supplies GameStateViewModel on request
     /// </summary>
-    public class GameService
+    public class OldGameService
     {
 
         private IGameRepository _repository;
@@ -36,7 +36,7 @@ namespace RockScissorPaper.BLL
 
         #region Contructors
 
-        public GameService(IGameRepository repository, GameEventManager eventManager, Game game)
+        public OldGameService(IGameRepository repository, GameEventManager eventManager, Game game)
         {
             
             _repository = repository;
@@ -48,7 +48,7 @@ namespace RockScissorPaper.BLL
             _gameStateService.Update(Status);
 
         }
-        public GameService(IGameRepository repository,GameEventManager eventManager, int id)
+        public OldGameService(IGameRepository repository,GameEventManager eventManager, int id)
         {
             
             _repository = repository;
