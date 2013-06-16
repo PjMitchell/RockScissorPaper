@@ -12,7 +12,7 @@ namespace RockScissorPaper.DAL
         /// Adds new empty game to data storage
         /// </summary>
         /// <param name="game"></param>
-        void CreateNewGame(int playerOneId, int playerTwoId, int ruleSetId);
+        int CreateNewGame(int playerOneId, int playerTwoId, int ruleSetId, string buttonOrder);
 
         /// <summary>
         /// Retrives Game by Game Id
@@ -49,7 +49,7 @@ namespace RockScissorPaper.DAL
         /// Updates the GamePlayer Table with Players' game result and score
         /// </summary>
         /// <param name="game"></param>
-        void UpdateGameResult(Game game);
+        void UpdateGameResult(int gameId, int playerId, GameOutcome gameOutcome, int gameScore);
 
         /// <summary>
         /// Returns the Total wins of Human and Bot Players

@@ -14,7 +14,7 @@ namespace RockScissorPaper.Domain
         //public IGameScoreResolver GameScoreResolver { get; set; }
         public bool AllowDraw { get; set; }
         public GameType GameType { get; set; }
-        public GameSelectorButtonBox ButtonBox {get; set;}
+        //public GameSelectorButtonBox ButtonBox {get; set;}
 
         
         

@@ -31,52 +31,28 @@ namespace RockScissorPaper.API
         //}
 
         // GET api/values/5
-        public GameViewModel Get(int id, int currentUserId)
+        public Game Get(int id)
         {
-
-            OldGameService service = new OldGameService(_gameRepository, _gameEventManager, id);
-            GameViewModel result = new GameViewModel();
-            result.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
-            result.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);
-            result.CurrentUserId = currentUserId;
-            result.StateOfGame = service.GetGameStateViewModel(currentUserId);
-            return result;
-
+            GameService service = new GameService(_gameRepository, _gameEventManager);
+            PlayerService playerService = new PlayerService(_playerRepository);
+            Game game = service.GetGame(id);
+            return game;
         }
 
         // POST api/values
-        //public void Post()
-        //{
-            
-        //}
+        public int Post(CreateGameCommand command)
+        {
+            GameService service = new GameService(_gameRepository, _gameEventManager);
+            return service.CreateGame(command);
+        }
 
         // PUT api/values/5
-        public GameStateQuery Put(int id, GameAPIPutCommand apiCommand)
+        public GameStateQuery Put(int id, ExecuteMoveCommand command)
         {
-            int playerId =  apiCommand.playerId;
-            int selection = apiCommand.selection;
-            GameSelection playerSelection = (GameSelection)selection;
-            OldGameService service = new OldGameService(_gameRepository, _gameEventManager, id);
-            if (service == null)
-            {
-                return null;
-            }
-            PlayerSelectionCommand command = new PlayerSelectionCommand(id);
-            if (playerId == service.CurrentGame.PlayerOne.PlayerId)
-            {
-                command.PlayerOneSelection = playerSelection;
-            }
-            else if (playerId == service.CurrentGame.PlayerTwo.PlayerId)
-            {
-                command.PlayerOneSelection = playerSelection;
-            }
-            else
-            {
-                return null;
-            }
-            
-            service.Execute(command);
-            GameStateQuery result = service.GetGameStateViewModel(playerId);
+            command.GameId = id;
+            GameService service = new GameService(_gameRepository, _gameEventManager);
+            service.ExecuteMove(command);
+            GameStateQuery result = service.GetGameState(id, command.PlayerId);
             
             return result;
         }

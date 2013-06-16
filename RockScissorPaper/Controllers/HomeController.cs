@@ -59,15 +59,15 @@ namespace RockScissorPaper.Controllers
         /// <returns></returns>
         public ActionResult GameLobby(int id)
         {
-            int botid = 1;
-            Player one = _playerRepository.GetPlayer(id);
-            Player two = _playerRepository.GetPlayer(botid);
-            GameRulesFactory _factory = new GameRulesFactory(_gameRepository);
-            GameRules gameRules = _factory.GetGameRules(GameType.StandardGame, GameRuleFactoryParameters.RandomButtonAsignment);
-            gameRules.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(gameRules.GameType, SelectionButtonOrderRandomizer.GetButtonBoxOrder(gameRules.GameType));
-            OldGameService service = new OldGameService(_gameRepository,_gameEventManager, new Game(gameRules, one, two));
-
-            return RedirectToAction("Game", new { id = service.CurrentGame.GameId, currentUserId = id });
+            int botId = 1;
+            int ruleId = 1;
+            GameService sevice = new GameService(_gameRepository, _gameEventManager);
+            CreateGameCommand command = new CreateGameCommand();
+            command.PlayerOneId = id;
+            command.PlayerTwoId = botId;
+            command.RuleId = ruleId;
+            int gameId = sevice.CreateGame(command);
+            return RedirectToAction("Game", new { id = gameId, currentUserId = id });
         }
         /// <summary>
         /// Game Is setup
@@ -76,14 +76,15 @@ namespace RockScissorPaper.Controllers
         /// <returns></returns>
         public ActionResult Game(int id, int currentUserId)
         {
+            GameService service = new GameService(_gameRepository, _gameEventManager);
+            Game game = service.GetGame(id);
             
-            OldGameService service = new OldGameService(_gameRepository,_gameEventManager, id);
             GameViewModel view = new GameViewModel();
-            view.PlayerOne = _playerRepository.GetPlayer(service.CurrentGame.PlayerOne.PlayerId);
-            view.PlayerTwo = _playerRepository.GetPlayer(service.CurrentGame.PlayerTwo.PlayerId);
+            view.PlayerOne = _playerRepository.GetPlayer(game.PlayerOne.PlayerId);
+            view.PlayerTwo = _playerRepository.GetPlayer(game.PlayerTwo.PlayerId);
             view.CurrentUserId = currentUserId;
-            view.StateOfGame = service.GetGameStateViewModel(currentUserId);
-            view.ButtonBox = service.CurrentGame.Rules.ButtonBox;
+            view.StateOfGame = service.GetGameState(id, currentUserId);
+            view.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(game.Rules.GameType, game.ButtonOrder);
             return View(view);
         }
 

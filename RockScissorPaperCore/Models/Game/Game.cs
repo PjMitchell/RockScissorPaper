@@ -11,6 +11,7 @@ namespace RockScissorPaper.Domain
         public GameRules Rules { get; set; }
         public Player PlayerOne { get; set; }
         public Player PlayerTwo { get; set; }
+        public string ButtonOrder { get; set; }
         public List<GameRound> Rounds { get; set; }
         public GameStatus Status { get; set; }
 

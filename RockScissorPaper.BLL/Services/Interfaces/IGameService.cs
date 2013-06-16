@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RockScissorPaper.BLL;
 
 namespace RockScissorPaper.BLL
 {
     public interface IGameService
     {
-        void CreateGame(CreateGameCommand command);
+        int CreateGame(CreateGameCommand command);
         IEnumerable<GameRules> GetGameRuleSets();
         GameRules GetGameRuleSetById(int id);
         Game GetGame(int id);
-        GameStateQuery ExecuteMove(ExecuteMoveCommand command);
-
+        void ExecuteMove(ExecuteMoveCommand command);
+        GameStateQuery GetGameState(int gameId, int playerId);
     }
 }

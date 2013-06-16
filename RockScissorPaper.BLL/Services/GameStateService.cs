@@ -10,11 +10,13 @@ namespace RockScissorPaper.BLL
     {
         public GameStateQuery GameState { get; private set; }
         public Game CurrentGame { get; private set; }
+        private GameLogic _logic;
 
         public GameStateService(Game game)
         {
             CurrentGame = game;
             GameState = new GameStateQuery();
+            _logic = GameLogicFactory.Build(game.Rules.GameType);
         }
 
         public void Update(GameStatus currentStatus, GameRound currentRound = null)
@@ -46,23 +48,24 @@ namespace RockScissorPaper.BLL
             GameState.GameId = CurrentGame.GameId;
             int currentRoundNumber = CurrentGame.Rounds.Count;
             GameState.RoundMessage = string.Format("{0} / {1}", currentRoundNumber, CurrentGame.Rules.TotalRounds);
-            CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
+            
+            _logic.ScoreResolver.ResolveGame(CurrentGame.Rounds);
             
             //Sets Player One State
             GameState.PlayerOne.PlayerId = CurrentGame.PlayerOne.PlayerId;
             GameState.PlayerOne.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerOneOutcome == GameOutcome.Win);
-            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome);
+            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(_logic.ScoreResolver.PlayerOneOutcome);
             GameState.PlayerOne.PlayerMessage = "<a href=\"/home/GameLobby/" + CurrentGame.PlayerOne.PlayerId + "\">Play again?</a>";
             //Sets Player Two State
             GameState.PlayerTwo.PlayerId = CurrentGame.PlayerTwo.PlayerId;
             GameState.PlayerTwo.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
             GameState.PlayerTwo.PlayerMessage = "<a href=\"/home/GameLobby/" + CurrentGame.PlayerTwo.PlayerId + "\">Play again?</a>";
 
-            if (CurrentGame.Rules.GameScoreResolver.PlayerOneOutcome == GameOutcome.Win)
+            if (_logic.ScoreResolver.PlayerOneOutcome == GameOutcome.Win)
             {
                 GameState.BannerMessage = CurrentGame.PlayerOne.Name + " wins the game!";
             }
-            else if (CurrentGame.Rules.GameScoreResolver.PlayerTwoOutcome == GameOutcome.Win)
+            else if (_logic.ScoreResolver.PlayerTwoOutcome == GameOutcome.Win)
             {
                 GameState.BannerMessage = CurrentGame.PlayerTwo.Name + " wins the game!";
             }
@@ -75,23 +78,23 @@ namespace RockScissorPaper.BLL
         private void SetAsRoundResultState(GameRound currentRound)
         {
             GameState.GameId = CurrentGame.GameId;
-            CurrentGame.Rules.RoundResolver.ResolveRound(currentRound);
-            GameState.BannerMessage = CurrentGame.Rules.RoundResolver.Message;
+            _logic.RoundResolver.ResolveRound(currentRound);
+            GameState.BannerMessage = _logic.RoundResolver.Message;
             int currentRoundNumber = CurrentGame.Rounds.Count;
             GameState.RoundMessage = string.Format("{0} / {1}", currentRoundNumber, CurrentGame.Rules.TotalRounds);
-            CurrentGame.Rules.GameScoreResolver.ResolveGame(CurrentGame.Rounds);
+            _logic.ScoreResolver.ResolveGame(CurrentGame.Rounds);
             
             //Sets Player One State
             GameState.PlayerOne.PlayerId = CurrentGame.PlayerOne.PlayerId;
             GameState.PlayerOne.CurrentSelection = currentRound.PlayerOneSelection;
             GameState.PlayerOne.CurrentScore = CurrentGame.Rounds.Count(r=>r.PlayerOneOutcome== GameOutcome.Win);
-            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.RoundResolver.PlayerOneResult);
+            GameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(_logic.RoundResolver.PlayerOneResult);
             
             //Sets Player Two State
             GameState.PlayerTwo.PlayerId = CurrentGame.PlayerTwo.PlayerId;
             GameState.PlayerTwo.CurrentSelection = currentRound.PlayerTwoSelection;
             GameState.PlayerTwo.CurrentScore = CurrentGame.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
-            GameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(CurrentGame.Rules.RoundResolver.PlayerTwoResult);
+            GameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(_logic.RoundResolver.PlayerTwoResult);
         }
 
         private void SetAsInitialState()

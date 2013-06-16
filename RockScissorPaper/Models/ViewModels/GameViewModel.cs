@@ -1,5 +1,6 @@
 ﻿using RockScissorPaper.BLL;
 using RockScissorPaper.Domain;
+using RockScissorPaper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

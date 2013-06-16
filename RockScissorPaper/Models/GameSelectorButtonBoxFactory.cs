@@ -1,10 +1,12 @@
-﻿using System;
+﻿using RockScissorPaper.Domain;
+using RockScissorPaper.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace RockScissorPaper.Domain
+namespace RockScissorPaper.Models
 {
     public class GameSelectorButtonBoxFactory
     {

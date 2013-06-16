@@ -41,10 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Interfaces\IGameRoundResolver.cs" />
-    <Compile Include="BusinessLogic\Interfaces\IGameScoreResolver.cs" />
-    <Compile Include="BusinessLogic\RoshamboGameRoundResolver.cs" />
-    <Compile Include="BusinessLogic\StandardGameScoreResolver.cs" />
     <Compile Include="Models\Players\BotBase.cs" />
     <Compile Include="Models\Players\RockBot.cs" />
     <Compile Include="Models\Players\SimpleBot.cs" />
@@ -53,11 +49,8 @@
     <Compile Include="Models\Game\GameType.cs" />
     <Compile Include="Models\Game\GameSelection.cs" />
     <Compile Include="Factories\BotPlayerFactory.cs" />
-    <Compile Include="Factories\GameSelectorButtonBoxFactory.cs" />
     <Compile Include="Models\Game\GameRound.cs" />
     <Compile Include="Models\Game\GameRules.cs" />
-    <Compile Include="Models\Game\GameSelectorButton.cs" />
-    <Compile Include="Models\Game\GameSelectorButtonBox.cs" />
     <Compile Include="Models\Players\Player.cs" />
     <Compile Include="Models\Statisitcs\CurrentGlobalResults.cs" />
     <Compile Include="Models\Statisitcs\GameChoiceStatistic.cs" />
