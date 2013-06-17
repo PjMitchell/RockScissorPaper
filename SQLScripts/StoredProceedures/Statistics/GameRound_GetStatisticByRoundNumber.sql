@@ -1,7 +1,7 @@
-
+DROP PROCEDURE IF EXISTS `GameRound_GetStatisticByRoundNumber`;
 DELIMITER $$
 
-CREATE PROCEDURE `Proc_Select_RoundStatisticsByRoundNumber` (in RoundNumberInput int)
+CREATE PROCEDURE `GameRound_GetStatisticByRoundNumber` (in RoundNumberInput int)
 
 BEGIN
 

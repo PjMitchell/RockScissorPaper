@@ -1,9 +1,9 @@
-
+DROP PROCEDURE IF EXISTS `Player_GetById`;
 DELIMITER $$
 
 
 
-CREATE PROCEDURE `Proc_Select_PlayerById` (in PlayerIdInput int)
+CREATE PROCEDURE `Player_GetById` (in PlayerIdInput int)
 
 BEGIN
 

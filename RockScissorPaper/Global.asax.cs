@@ -5,6 +5,7 @@ using Ninject.Web.Common;
 using Ninject.Web.Mvc;
 using RockScissorPaper.BLL;
 using RockScissorPaper.DAL;
+using RockScissorPaper.Models;
 using System;
 using System.Reflection;
 using System.Web;
@@ -26,12 +27,18 @@ namespace RockScissorPaper
             kernel.Load(Assembly.GetExecutingAssembly());
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+            //Data Connector
             kernel.Bind<IDatabaseConnector>().To<MySQLDatabaseConnector>();
+            //Repositorys
             kernel.Bind<IGameRepository>().To<GameSQLRepository>();
             kernel.Bind<IStatisticsRepository>().To<StatisticsSQLRepository>();
+            kernel.Bind <IPlayerSessionRepository>().To<WebPlayerSessionRepository>();
             kernel.Bind<IPlayerRepository>().To<PlayerSQLRepository>();
+            //GameEventManager
             kernel.Bind<GameEventManager>().ToConstant(new GameEventManager());
+            //Services
             kernel.Bind<IPlayerService>().To<PlayerService>();
+            kernel.Bind<IGameService>().To<GameService>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new LocalNinjectDependencyResolver(kernel);
 

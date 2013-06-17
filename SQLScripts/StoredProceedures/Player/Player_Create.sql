@@ -1,9 +1,9 @@
-
+DROP PROCEDURE IF EXISTS `Player_Create`;
 DELIMITER $$
 
 
 
-CREATE PROCEDURE `Proc_Create_NewPlayer` (in PlayerNameInput varchar(25), IpAddressInput varchar(25))
+CREATE PROCEDURE `Player_Create` (in PlayerNameInput varchar(25), IpAddressInput varchar(25))
 
 BEGIN
 

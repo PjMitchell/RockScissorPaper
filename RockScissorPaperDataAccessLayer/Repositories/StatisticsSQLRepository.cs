@@ -26,7 +26,7 @@ namespace RockScissorPaper.DAL
         public RoundStatistic GetRoundSummary()
         {
             RoundStatisticsMapper mapper = new RoundStatisticsMapper();
-            _dataAccess.Get("Proc_Select_RoundStatisticsTotal", mapper);
+            _dataAccess.Get("GameRound_GetStatisticSummary", mapper);
             RoundStatistic result = mapper.Result as RoundStatistic;
             result.RoundNumber = 0;
             return result;
@@ -35,7 +35,7 @@ namespace RockScissorPaper.DAL
         public List<RoundStatistic> GetRoundInformation()
         {
             ListOfRoundStatisticsMapper mapper = new ListOfRoundStatisticsMapper();
-            _dataAccess.Get("Proc_Select_RoundStatistics", mapper);
+            _dataAccess.Get("GameRound_GetStatistic", mapper);
             List<RoundStatistic> result = mapper.Result as List<RoundStatistic>;
             return result;
         }
@@ -45,7 +45,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> paras = new List<StoreProcedureParameter>();
             paras.Add(new StoreProcedureParameter("RoundNumberInput", round));
             RoundStatisticsMapper mapper = new RoundStatisticsMapper();
-            _dataAccess.Get("Proc_Select_RoundStatisticsByRoundNumber", mapper, paras);
+            _dataAccess.Get("GameRound_GetStatisticByRoundNumber", mapper, paras);
             RoundStatistic result = mapper.Result as RoundStatistic;
             result.RoundNumber = round;
             return result;
@@ -53,7 +53,7 @@ namespace RockScissorPaper.DAL
         
         public int GetGamesPlayed()
         {
-            int result = Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Select_GameTotalPlayed"));
+            int result = Convert.ToInt32(_dataAccess.ExecuteScalar("Game_GetGamesPlayed"));
             return result;
         }
 

@@ -17,20 +17,16 @@ namespace RockScissorPaper.Controllers
     public class HomeController : Controller
     {
         
-        private readonly IPlayerRepository _playerRepository;
-        private readonly IGameRepository _gameRepository;
-        private readonly IStatisticsRepository _statisticsRepository;
-        private readonly GameEventManager _gameEventManager;
-        private readonly NotificationService _notificationService;
+        private readonly IStatisticsRepository _statisticsRepository; //TODO Create StatsService
+        private IPlayerService _playerService;
+        private IGameService _gameService;
         
 
-        public HomeController(IPlayerRepository playerRepository, IGameRepository gameRepository, IStatisticsRepository statisticsRepository)
+        public HomeController(IPlayerService playerService, IGameService gameService, IStatisticsRepository statisticsRepository)
         {
-            _playerRepository = playerRepository;
-            _gameRepository = gameRepository;
+            _playerService = playerService;
+            _gameService = gameService;
             _statisticsRepository = statisticsRepository;
-            _gameEventManager = new GameEventManager();
-            _notificationService = new NotificationService(_gameRepository, _gameEventManager);
         }
 
         public ActionResult Index()
@@ -48,7 +44,12 @@ namespace RockScissorPaper.Controllers
             else
             {
                 string ipAddress = Request.UserHostAddress;
-                int playerId = _playerRepository.CreatePlayer(username, ipAddress);
+                CreatePlayerCommand command = new CreatePlayerCommand
+                {
+                    PlayerName = username,
+                    IPAddress = ipAddress
+                };
+                int playerId = _playerService.CreatePlayer(command);
                 return RedirectToAction("GameLobby", new { id = playerId });
             }
         }
@@ -61,12 +62,11 @@ namespace RockScissorPaper.Controllers
         {
             int botId = 1;
             int ruleId = 1;
-            GameService sevice = new GameService(_gameRepository, _gameEventManager);
             CreateGameCommand command = new CreateGameCommand();
             command.PlayerOneId = id;
             command.PlayerTwoId = botId;
             command.RuleId = ruleId;
-            int gameId = sevice.CreateGame(command);
+            int gameId = _gameService.CreateGame(command);
             return RedirectToAction("Game", new { id = gameId, currentUserId = id });
         }
         /// <summary>
@@ -76,14 +76,14 @@ namespace RockScissorPaper.Controllers
         /// <returns></returns>
         public ActionResult Game(int id, int currentUserId)
         {
-            GameService service = new GameService(_gameRepository, _gameEventManager);
-            Game game = service.GetGame(id);
+            
+            Game game = _gameService.GetGame(id);
             
             GameViewModel view = new GameViewModel();
-            view.PlayerOne = _playerRepository.GetPlayer(game.PlayerOne.PlayerId);
-            view.PlayerTwo = _playerRepository.GetPlayer(game.PlayerTwo.PlayerId);
+            view.PlayerOne = _playerService.GetPlayer(game.PlayerOne.PlayerId);
+            view.PlayerTwo = _playerService.GetPlayer(game.PlayerTwo.PlayerId);
             view.CurrentUserId = currentUserId;
-            view.StateOfGame = service.GetGameState(id, currentUserId);
+            view.StateOfGame = _gameService.GetGameState(id, currentUserId);
             view.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(game.Rules.GameType, game.ButtonOrder);
             return View(view);
         }

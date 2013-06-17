@@ -1,8 +1,8 @@
-
+DROP PROCEDURE IF EXISTS `Game_GetGamesPlayed`;
 DELIMITER $$
 
 
-CREATE PROCEDURE `Proc_Select_GameTotalPlayed` ()
+CREATE PROCEDURE `Game_GetGamesPlayed` ()
 
 BEGIN
 

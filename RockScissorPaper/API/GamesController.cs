@@ -15,14 +15,11 @@ namespace RockScissorPaper.API
     public class GamesController : ApiController
     {
         // GET api/values
-        private static IDatabaseConnector _connector = new MySQLDatabaseConnector();
-        private static IPlayerRepository _playerRepository = new PlayerSQLRepository(_connector);
-        private static IGameRepository _gameRepository = new GameSQLRepository(_connector, _playerRepository);
-        private GameEventManager _gameEventManager;
+        private IGameService _service;
 
-        public GamesController(GameEventManager gameEventManager)
+        public GamesController(IGameService gameService)
         {
-            _gameEventManager = gameEventManager;
+            _service = gameService;
         }
        // private static NotificationService _notificationService = new NotificationService(_gameRepository, _gameEventManager);
         //public IEnumerable<string> Get()
@@ -33,26 +30,22 @@ namespace RockScissorPaper.API
         // GET api/values/5
         public Game Get(int id)
         {
-            GameService service = new GameService(_gameRepository, _gameEventManager);
-            PlayerService playerService = new PlayerService(_playerRepository);
-            Game game = service.GetGame(id);
+            Game game = _service.GetGame(id);
             return game;
         }
 
         // POST api/values
         public int Post(CreateGameCommand command)
         {
-            GameService service = new GameService(_gameRepository, _gameEventManager);
-            return service.CreateGame(command);
+            return _service.CreateGame(command);
         }
 
         // PUT api/values/5
         public GameStateQuery Put(int id, ExecuteMoveCommand command)
         {
             command.GameId = id;
-            GameService service = new GameService(_gameRepository, _gameEventManager);
-            service.ExecuteMove(command);
-            GameStateQuery result = service.GetGameState(id, command.PlayerId);
+            _service.ExecuteMove(command);
+            GameStateQuery result = _service.GetGameState(id, command.PlayerId);
             
             return result;
         }

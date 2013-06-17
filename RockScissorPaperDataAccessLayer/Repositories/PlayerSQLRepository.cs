@@ -25,7 +25,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("PlayerIdInput", id));
             PlayerMapper mapper = new PlayerMapper();
-            _dataAccess.Get("Proc_Select_PlayerById", mapper, parameters);
+            _dataAccess.Get("Player_GetById", mapper, parameters);
             return mapper.Result as Player;
         }
 
@@ -34,7 +34,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("PlayerNameInput", playerName));
             parameters.Add(new StoreProcedureParameter("IpAddressInput", ipAddress));
-            return Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_NewPlayer", parameters));
+            return Convert.ToInt32(_dataAccess.ExecuteScalar("Player_Create", parameters));
         }
     }
 }

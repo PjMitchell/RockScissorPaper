@@ -1,7 +1,7 @@
-
+DROP PROCEDURE IF EXISTS `GameRound_GetStatisticSummary`;
 DELIMITER $$
 
-CREATE PROCEDURE `Proc_Select_RoundStatisticsTotal` ()
+CREATE PROCEDURE `GameRound_GetStatisticSummary` ()
 
 BEGIN
 
