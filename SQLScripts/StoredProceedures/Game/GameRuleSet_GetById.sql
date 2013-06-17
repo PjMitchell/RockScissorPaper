@@ -1,8 +1,9 @@
+DROP PROCEDURE IF EXISTS `GameRuleSet_GetById`;
 
 DELIMITER $$
 
 
-CREATE PROCEDURE `Proc_Select_GameRuleById` (in GameRuleSetIdInput int)
+CREATE PROCEDURE `GameRuleSet_GetById` (in GameRuleSetIdInput int)
                                                
 BEGIN   
                                        

@@ -1,8 +1,9 @@
+DROP PROCEDURE IF EXISTS `GamePlayer_GetBotVsHumanVictoryCount`;
 
 DELIMITER $$
 
 
-CREATE PROCEDURE `Proc_Select_BotVsHumanVictoryCount` ()
+CREATE PROCEDURE `GamePlayer_GetBotVsHumanVictoryCount` ()
 
 BEGIN
 

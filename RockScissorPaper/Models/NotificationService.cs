@@ -26,7 +26,7 @@ namespace RockScissorPaper.Models
         
         public void GameFinished()
         {
-            CurrentGlobalResults view = _gameRepository.RetrieveBotVsHumanScore();
+            CurrentGlobalResults view = _gameRepository.GetBotVsHumanScore();
             view.NumberOfPeopleConnected = RoshamboHub.PeopleConnected;
             _context.Clients.All.refreshView(view);
         }

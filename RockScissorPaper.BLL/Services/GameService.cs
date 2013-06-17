@@ -108,7 +108,7 @@ namespace RockScissorPaper.BLL
                     _gameRepository.UpdateGameResult(game.GameId, game.PlayerTwo.PlayerId, logic.ScoreResolver.PlayerTwoOutcome, logic.ScoreResolver.PlayerTwoScore);
                     //_gameStateService.SetAsFinalRoundResult(); TODO add this to service;
                     var ev = new GameFinishedEvent();
-                    ev.CurrentGlobalResults = _gameRepository.RetrieveBotVsHumanScore();
+                    ev.CurrentGlobalResults = _gameRepository.GetBotVsHumanScore();
                     _gameEventManager.Publish(ev);
                     game.Status = GameStatus.EndOfGame;
                     _gameRepository.UpdateGameStatus(game.GameId, game.Status);

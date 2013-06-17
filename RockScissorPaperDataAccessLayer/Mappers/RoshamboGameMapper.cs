@@ -37,6 +37,7 @@ namespace RockScissorPaper.DAL
             _result.Rules.Id = map.MapInt32("RuleSet");
             int statusInt = map.MapInt32("GameStatus");
             _result.Status = (GameStatus)statusInt;
+            _result.ButtonOrder = map.MapString("ButtonOrder");
 
             }
         

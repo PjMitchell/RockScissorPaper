@@ -76,7 +76,7 @@ namespace RockScissorPaper.Hubs
 
         public void GetInfo()
         {
-            CurrentGlobalResults view = _repository.RetrieveBotVsHumanScore();
+            CurrentGlobalResults view = _repository.GetBotVsHumanScore();
             view.NumberOfPeopleConnected = PeopleConnected;
             Clients.Caller.refreshView(view);
         }

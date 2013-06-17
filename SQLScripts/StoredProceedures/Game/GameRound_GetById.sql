@@ -1,8 +1,10 @@
 
+DROP PROCEDURE IF EXISTS `GameRound_GetById`;
+
 DELIMITER $$
 
 
-CREATE PROCEDURE `Proc_Select_GameRoundByGameIdAndPlayerIds` (
+CREATE PROCEDURE `GameRound_GetById` (
 
 in GameIdInput int,
 

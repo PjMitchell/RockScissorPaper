@@ -1,24 +1,23 @@
 
+DROP PROCEDURE IF EXISTS `Game_Create`;
 
+DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `Proc_Create_NewGame`
-
-table_function
-
-Game_Create etc.
-
-CREATE PROCEDURE `Proc_Create_NewGame` (
+CREATE PROCEDURE `Game_Create` (
 
 in PlayerOneIdInput int,
 
 PlayerTwoIdInput int,
 
-RuleSetIdInput int)
+RuleSetIdInput int,
+ButtonOrderInput varchar(10))
+
+
 
 BEGIN
 
-Insert INTO RoshamboGame(StartDate, GameStatus, RuleSet)
-Values (UTC_TIMESTAMP(), 1,RuleSetIdInput);
+Insert INTO RoshamboGame(StartDate, GameStatus, RuleSet, ButtonOrder)
+Values (UTC_TIMESTAMP(), 1, RuleSetIdInput, ButtonOrderInput) ;
 
 Select LAST_INSERT_ID();
 
@@ -29,7 +28,9 @@ Insert INTO GamePlayer(PlayerId, RoshamboGameId, Position)
 Values (PlayerTwoIdInput, LAST_INSERT_ID(), 2);
 
 
-END
+END $$
+
+DELIMITER ;
 
 
 

@@ -43,7 +43,7 @@ namespace RockScissorPaper.DAL
             parameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", playerTwoId));
             parameters.Add(new StoreProcedureParameter("RuleSetIdInput", ruleSetId));
             parameters.Add(new StoreProcedureParameter("ButtonOrderInput", buttonOrder));
-            return Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_NewGame", parameters));
+            return Convert.ToInt32(_dataAccess.ExecuteScalar("Game_Create", parameters));
         }
 
         
@@ -57,7 +57,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("GameIdInput", id));
             RoshamboGameMapper mapper = new RoshamboGameMapper();
-            _dataAccess.Get("Proc_Select_GameById", mapper, parameters);
+            _dataAccess.Get("Game_GetById", mapper, parameters);
             Game result = mapper.Result as Game;
             if (result.GameId != id) 
             {
@@ -71,7 +71,7 @@ namespace RockScissorPaper.DAL
             newParameters.Add(new StoreProcedureParameter("GameIdInput", result.GameId));
             newParameters.Add(new StoreProcedureParameter("PlayerOneIdInput", result.PlayerOne.PlayerId));
             newParameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", result.PlayerTwo.PlayerId));
-            _dataAccess.Get("Proc_Select_GameRoundByGameIdAndPlayerIds", mapper2, newParameters);
+            _dataAccess.Get("GameRound_GetById", mapper2, newParameters);
             result.Rounds = mapper2.Result as List<GameRound>;
             
             return result;
@@ -88,7 +88,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("GameIdInput", gameId));
             parameters.Add(new StoreProcedureParameter("NewStatusInput", (int)value));
-            _dataAccess.ExecuteNonQuery("Proc_Update_GameStatus", parameters);
+            _dataAccess.ExecuteNonQuery("GameStatus_Update", parameters);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace RockScissorPaper.DAL
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("GameIdInput", gameId));
             parameters.Add(new StoreProcedureParameter("RoundNumberInput", roundNumber));
-            return Convert.ToInt32(_dataAccess.ExecuteScalar("Proc_Create_GameRound", parameters));
+            return Convert.ToInt32(_dataAccess.ExecuteScalar("GameRound_Create", parameters));
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace RockScissorPaper.DAL
             parameters.Add(new StoreProcedureParameter("RoshamboGameIdInput", gameId));
             parameters.Add(new StoreProcedureParameter("GameRoundIdInput", gameRoundId));
             parameters.Add(new StoreProcedureParameter("SelectionIdInput", (int)selection));
-            _dataAccess.ExecuteNonQuery("Proc_Create_GameRoundResult", parameters);
+            _dataAccess.ExecuteNonQuery("GameRoundResult_Create", parameters);
             
         }
 
@@ -145,16 +145,16 @@ namespace RockScissorPaper.DAL
             parameters.Add(new StoreProcedureParameter("RoshamboGameIdInput", gameId));
             parameters.Add(new StoreProcedureParameter("GameOutcomeInput", (int)gameOutcome));
             parameters.Add(new StoreProcedureParameter("GameScoreInput", gameScore));
-            _dataAccess.ExecuteNonQuery("Proc_Update_GamePlayerResult", parameters);
+            _dataAccess.ExecuteNonQuery("GamePlayer_Update", parameters);
         }
 
         /// <summary>
         /// Returns the Total wins of Human and Bot Players
         /// </summary>
         /// <returns></returns>
-        public CurrentGlobalResults RetrieveBotVsHumanScore()
+        public CurrentGlobalResults GetBotVsHumanScore()
         {
-            DataTable dt = _dataAccess.Get("Proc_Select_BotVsHumanVictoryCount");
+            DataTable dt = _dataAccess.Get("GamePlayer_GetBotVsHumanVictoryCount");
             DataRow dr = dt.Rows[0];
             MappingHelper map = new MappingHelper(dr);
             CurrentGlobalResults result = new CurrentGlobalResults();
@@ -174,7 +174,7 @@ namespace RockScissorPaper.DAL
         {
             List<StoreProcedureParameter> paras = new List<StoreProcedureParameter>();
             paras.Add(new StoreProcedureParameter("GameRuleSetIdInput", ruleId));
-            DataTable dt = _dataAccess.Get("Proc_Select_GameRuleById", paras);
+            DataTable dt = _dataAccess.Get("GameRuleSet_GetById", paras);
             MappingHelper mh = new MappingHelper(dt.Rows[0]);
             GameRules rules = new GameRules();
             rules.AllowDraw = mh.MapBool("AllowDraw");
@@ -197,7 +197,7 @@ namespace RockScissorPaper.DAL
             paras.Add(new StoreProcedureParameter("GameTypeInput", Convert.ToString(rules.GameType)));
             paras.Add(new StoreProcedureParameter("AllowDrawInput", rules.AllowDraw));
             paras.Add(new StoreProcedureParameter("NumberOfRoundsInput", rules.TotalRounds));
-            int result = (int)_dataAccess.ExecuteScalar("Proc_Select_GameRuleId", paras);
+            int result = (int)_dataAccess.ExecuteScalar("GameRuleSet_GetGameRuleSetId", paras);
             return result;
         }
     }

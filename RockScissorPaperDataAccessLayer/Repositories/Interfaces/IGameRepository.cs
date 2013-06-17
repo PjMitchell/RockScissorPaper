@@ -55,7 +55,7 @@ namespace RockScissorPaper.DAL
         /// Returns the Total wins of Human and Bot Players
         /// </summary>
         /// <returns></returns>
-        CurrentGlobalResults RetrieveBotVsHumanScore();
+        CurrentGlobalResults GetBotVsHumanScore();
 
        /// <summary>
        /// Returns the rule set for the desired Rule Id

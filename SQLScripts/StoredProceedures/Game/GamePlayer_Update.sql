@@ -1,9 +1,9 @@
-
+DROP PROCEDURE IF EXISTS `GamePlayer_Update`;
 DELIMITER $$
 
 
 
-CREATE PROCEDURE `Proc_Update_GamePlayerResult` (
+CREATE PROCEDURE `GamePlayer_Update` (
 
 in 
 

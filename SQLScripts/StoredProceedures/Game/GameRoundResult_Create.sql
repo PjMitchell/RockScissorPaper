@@ -1,8 +1,8 @@
-
+DROP PROCEDURE IF EXISTS `GameRoundResult_Create`;
 DELIMITER $$
 
 
-CREATE PROCEDURE `Proc_Create_GameRoundResult` (in PlayerIdInput int, RoshamboGameIdInput int, GameRoundIdInput int, SelectionIdInput int)
+CREATE PROCEDURE `GameRoundResult_Create` (in PlayerIdInput int, RoshamboGameIdInput int, GameRoundIdInput int, SelectionIdInput int)
 
 BEGIN
 
