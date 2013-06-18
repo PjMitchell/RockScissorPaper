@@ -44,9 +44,11 @@
     <Compile Include="Commands\PlayerSelectionCommand.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="GameLogicFactory.cs" />
+    <Compile Include="IStatisticsService.cs" />
     <Compile Include="Models\Commands\CreateGameCommand.cs" />
     <Compile Include="Models\RoshamboGameRoundResolver.cs" />
     <Compile Include="Models\StandardGameScoreResolver.cs" />
+    <Compile Include="Queries\StatisticsOverviewQuery.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Models\Commands\ExecuteMoveCommand.cs" />
     <Compile Include="Services\Interfaces\IGameService.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GameStateQuery.cs" />
     <Compile Include="Services\GameEventManager.cs" />
+    <Compile Include="StatisticsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">

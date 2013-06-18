@@ -17,16 +17,17 @@ namespace RockScissorPaper.Controllers
     public class HomeController : Controller
     {
         
-        private readonly IStatisticsRepository _statisticsRepository; //TODO Create StatsService
+        //private readonly IStatisticsRepository _statisticsRepository; //TODO Create StatsService
         private IPlayerService _playerService;
         private IGameService _gameService;
-        
+        private IStatisticsService _statsService;
 
-        public HomeController(IPlayerService playerService, IGameService gameService, IStatisticsRepository statisticsRepository)
+
+        public HomeController(IPlayerService playerService, IGameService gameService, IStatisticsService statsService)
         {
             _playerService = playerService;
             _gameService = gameService;
-            _statisticsRepository = statisticsRepository;
+            _statsService = statsService;
         }
 
         public ActionResult Index()
@@ -91,11 +92,7 @@ namespace RockScissorPaper.Controllers
         [OutputCache(Location=OutputCacheLocation.Server, Duration=5)]
         public ActionResult Statistics()
         {
-            StatisticsViewModel view = new StatisticsViewModel();
-            view.RoundInformation = _statisticsRepository.GetRoundInformation();
-            view.RoundInformation.OrderBy(r => r.RoundNumber);
-            view.Overview = _statisticsRepository.GetRoundSummary();
-            view.GamesPlayed = _statisticsRepository.GetGamesPlayed();
+            StatisticsOverviewQuery view = _statsService.GetOverview();
             return View(view);
         }
     }

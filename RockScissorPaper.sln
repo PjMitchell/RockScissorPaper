@@ -67,6 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OldItems", "OldItems", "{F6
 	ProjectSection(SolutionItems) = preProject
 		RockScissorPaper.BLL\Factories\GameRulesFactory.cs = RockScissorPaper.BLL\Factories\GameRulesFactory.cs
 		RockScissorPaper.BLL\Services\GameStateService.cs = RockScissorPaper.BLL\Services\GameStateService.cs
+		RockScissorPaper\Models\NotificationService.cs = RockScissorPaper\Models\NotificationService.cs
 		RockScissorPaper.BLL\Services\OldGameService.cs = RockScissorPaper.BLL\Services\OldGameService.cs
 	EndProjectSection
 EndProject

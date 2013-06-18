@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RockScissorPaper.Models
+namespace RockScissorPaper.BLL
 {
-    public class StatisticsViewModel
+    public class StatisticsOverviewQuery
     {
         public List<RoundStatistic> RoundInformation { get; set; }
         public RoundStatistic Overview { get; set; }

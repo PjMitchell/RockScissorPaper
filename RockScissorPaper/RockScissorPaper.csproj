@@ -181,10 +181,7 @@
     <Compile Include="Models\GameSelectorButton.cs" />
     <Compile Include="Models\GameSelectorButtonBox.cs" />
     <Compile Include="Models\GameSelectorButtonBoxFactory.cs" />
-    <Compile Include="Models\ViewModels\StatisticsViewModel.cs" />
     <Compile Include="Models\Statistics\GammaFunction.cs" />
-    <Compile Include="Models\ViewModels\RoshamboHubViewModel.cs" />
-    <Compile Include="Models\NotificationService.cs" />
     <Compile Include="Models\ViewModels\GameViewModel.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredSample.cs" />
     <Compile Include="Models\Statistics\PearsonChiSquaredTest.cs" />

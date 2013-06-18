@@ -39,6 +39,7 @@ namespace RockScissorPaper
             //Services
             kernel.Bind<IPlayerService>().To<PlayerService>();
             kernel.Bind<IGameService>().To<GameService>();
+            kernel.Bind<IStatisticsService>().To<StatisticsService>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new LocalNinjectDependencyResolver(kernel);
 
