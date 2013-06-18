@@ -12,7 +12,8 @@ VALUES
 (2, 'Waiting Player One'),
 (3, 'Waiting Player Two'),
 (4,'Round Result'),
-(5, 'End Of Game');
+(5,'Final Round Result'),
+(6, 'End Of Game');
 
 CREATE TABLE GameRuleSet
 (

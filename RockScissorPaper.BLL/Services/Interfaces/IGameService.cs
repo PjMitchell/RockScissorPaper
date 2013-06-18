@@ -14,7 +14,7 @@ namespace RockScissorPaper.BLL
         IEnumerable<GameRules> GetGameRuleSets();
         GameRules GetGameRuleSetById(int id);
         Game GetGame(int id);
-        void ExecuteMove(ExecuteMoveCommand command);
+        GameStatus ExecuteMove(ExecuteMoveCommand command);
         GameStateQuery GetGameState(int gameId, int playerId);
     }
 }

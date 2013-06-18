@@ -11,6 +11,7 @@ namespace RockScissorPaper.Domain
         WaitingPlayerOne = 2,
         WaitingPlayerTwo =3,
         RoundResult = 4,
-        EndOfGame = 5
+        FinalRoundResult = 5,
+        EndOfGame = 6
     }
 }

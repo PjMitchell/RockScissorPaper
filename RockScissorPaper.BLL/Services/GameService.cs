@@ -31,7 +31,7 @@ namespace RockScissorPaper.BLL
         public IEnumerable<GameRules> GetGameRuleSets()
         {
             List<GameRules> results = new List<GameRules>();
-            results.Add(_gameRepository.GetGameRules(1)); //TODO Added when new Stored Proceedure is ready
+            results.Add(_gameRepository.GetGameRules(1)); //TODO Added when new Stored Procedure is ready
             return results;
         }
 
@@ -53,7 +53,7 @@ namespace RockScissorPaper.BLL
 
         }
 
-        public void ExecuteMove(ExecuteMoveCommand command)
+        public GameStatus ExecuteMove(ExecuteMoveCommand command)
         {
             Game game = GetGame(command.GameId);
 
@@ -61,25 +61,31 @@ namespace RockScissorPaper.BLL
             {
                 case GameStatus.NewRound:
                      ProcessNewRound(game, command);
-                     return;
+                     break;
                 case GameStatus.WaitingPlayerOne:
                     break;
                 case GameStatus.WaitingPlayerTwo:
                     break;
                 case GameStatus.RoundResult:
                     ProcessRoundResult(game, command);
-                    return; 
-                case GameStatus.EndOfGame:
-                    return;
+                    break; 
+                case GameStatus.FinalRoundResult:
+                    ProcessFinalRoundResult(game);
+                    break;
                 default:
                     break;
             }
-            return;
+            return game.Status;
         }
 
         
-        #region executeMove Submethods
 
+        
+        #region executeMove Submethods
+        private void ProcessFinalRoundResult(Game game)
+        {
+            SetGameStatus(game, GameStatus.EndOfGame);
+        }
 
         private void ProcessRoundResult(Game game, ExecuteMoveCommand command)
         {
@@ -95,9 +101,7 @@ namespace RockScissorPaper.BLL
 
             if (currentRound.RoundNumber < game.Rules.TotalRounds)
             {
-                game.Status = GameStatus.NewRound;
-                _gameRepository.UpdateGameStatus(game.GameId, game.Status);
-                return;
+                 SetGameStatus(game,  GameStatus.NewRound);
             }
             else
             {
@@ -106,19 +110,15 @@ namespace RockScissorPaper.BLL
                 {
                     _gameRepository.UpdateGameResult(game.GameId, game.PlayerOne.PlayerId, logic.ScoreResolver.PlayerOneOutcome, logic.ScoreResolver.PlayerOneScore);
                     _gameRepository.UpdateGameResult(game.GameId, game.PlayerTwo.PlayerId, logic.ScoreResolver.PlayerTwoOutcome, logic.ScoreResolver.PlayerTwoScore);
-                    //_gameStateService.SetAsFinalRoundResult(); TODO add this to service;
+                   
                     var ev = new GameFinishedEvent();
                     ev.CurrentGlobalResults = _gameRepository.GetBotVsHumanScore();
                     _gameEventManager.Publish(ev);
-                    game.Status = GameStatus.EndOfGame;
-                    _gameRepository.UpdateGameStatus(game.GameId, game.Status);
-                    return;
+                    SetGameStatus(game, GameStatus.FinalRoundResult);
                 }
                 else
                 {
-                     game.Status = GameStatus.NewRound;
-                    _gameRepository.UpdateGameStatus(game.GameId, game.Status);
-                    return;
+                    SetGameStatus(game, GameStatus.NewRound);
                 }
             }
         }
@@ -144,20 +144,16 @@ namespace RockScissorPaper.BLL
                 {
                     _currentRound.PlayerTwoSelection = game.PlayerTwo.Bot.Go();
                     _gameRepository.CreateGameRoundResult(game.PlayerTwo.PlayerId, game.GameId, _currentRound.RoundId, _currentRound.PlayerTwoSelection);
-                    game.Status = GameStatus.RoundResult;
-                    _gameRepository.UpdateGameStatus(game.GameId, game.Status);
+                    SetGameStatus(game, GameStatus.RoundResult);
                     ExecuteMove(command);
-                    return; 
                 }
                 else
                 {
-                    game.Status = GameStatus.WaitingPlayerTwo;
-                    _gameRepository.UpdateGameStatus(game.GameId, game.Status);
-                    return;
+                    SetGameStatus(game, GameStatus.WaitingPlayerTwo);
                 }
             }
             //player two choice
-            if (command.PlayerId == game.PlayerTwo.PlayerId)
+            else if (command.PlayerId == game.PlayerTwo.PlayerId)
             {
                 _currentRound.PlayerTwoSelection = (GameSelection)command.Selection;
                 _gameRepository.CreateGameRoundResult(game.PlayerTwo.PlayerId, game.GameId, _currentRound.RoundId, (GameSelection)command.Selection);
@@ -166,20 +162,20 @@ namespace RockScissorPaper.BLL
                 {
                     _currentRound.PlayerOneSelection = game.PlayerOne.Bot.Go();
                     _gameRepository.CreateGameRoundResult(game.PlayerOne.PlayerId, game.GameId, _currentRound.RoundId, _currentRound.PlayerOneSelection);
-                    game.Status = GameStatus.RoundResult;
-                    _gameRepository.UpdateGameStatus(game.GameId, game.Status);
+                    SetGameStatus(game, GameStatus.RoundResult);
                     ExecuteMove(command);
-                    return;
                 }
                 else
                 {
-                    game.Status = GameStatus.WaitingPlayerOne;
-                    _gameRepository.UpdateGameStatus(game.GameId, game.Status);
-                    return;
+                    SetGameStatus(game, GameStatus.WaitingPlayerOne);
                 }
             }
+        }
 
-            return;
+        private void SetGameStatus(Game game, GameStatus status)
+        {
+            game.Status = status;
+            _gameRepository.UpdateGameStatus(game.GameId, game.Status);
         }
 
         #endregion
