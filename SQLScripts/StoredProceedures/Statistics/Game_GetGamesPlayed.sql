@@ -10,7 +10,7 @@ SELECT Count(*)
 
 FROM roshambogame
 
-WHERE GameStatus = 5
+WHERE GameStatus = 6
 
 ;
 
