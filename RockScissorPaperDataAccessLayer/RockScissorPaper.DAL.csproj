@@ -7,8 +7,8 @@
     <ProjectGuid>{ADA5A597-B2BF-455B-AC06-ACDA02562146}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RockScissorPaperDataAccessLayer</RootNamespace>
-    <AssemblyName>RockScissorPaperDataAccessLayer</AssemblyName>
+    <RootNamespace>RockScissorPaper.DAL</RootNamespace>
+    <AssemblyName>RockScissorPaper.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

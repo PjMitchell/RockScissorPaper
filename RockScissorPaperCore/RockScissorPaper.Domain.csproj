@@ -7,8 +7,8 @@
     <ProjectGuid>{E83840D2-E540-4C5E-A097-ACE6360AB0BD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RockScissorPaperCore</RootNamespace>
-    <AssemblyName>RockScissorPaperCore</AssemblyName>
+    <RootNamespace>RockScissorPaper.Domain</RootNamespace>
+    <AssemblyName>RockScissorPaper.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
