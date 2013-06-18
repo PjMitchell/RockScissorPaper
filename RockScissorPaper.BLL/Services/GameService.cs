@@ -18,39 +18,14 @@ namespace RockScissorPaper.BLL
             _gameRepository = gameRepository;
             _gameEventManager = gameEventManager;
         }
-        
-        
-        
+
+        #region Commands
+
         public int CreateGame(CreateGameCommand command)
         {
             GameRules rule = _gameRepository.GetGameRules(command.RuleId);
             string buttonOrder = SelectionButtonOrderRandomizer.GetButtonBoxOrder(rule.GameType);
             return _gameRepository.CreateNewGame(command.PlayerOneId, command.PlayerTwoId, command.RuleId, buttonOrder);
-        }
-
-        public IEnumerable<GameRules> GetGameRuleSets()
-        {
-            List<GameRules> results = new List<GameRules>();
-            results.Add(_gameRepository.GetGameRules(1)); //TODO Added when new Stored Procedure is ready
-            return results;
-        }
-
-        public GameRules GetGameRuleSetById(int id)
-        {
-            return  _gameRepository.GetGameRules(id);
-        }
-
-        public Game GetGame(int id)
-        {
-            Game result = _gameRepository.GetGame(id);
-            GameLogic logic = GameLogicFactory.Build(result.Rules.GameType);
-            foreach (GameRound round in result.Rounds)
-            {
-                logic.RoundResolver.ResolveRound(round);
-            }
-            logic.ScoreResolver.ResolveGame(result.Rounds);
-            return result;
-
         }
 
         public GameStatus ExecuteMove(ExecuteMoveCommand command)
@@ -60,15 +35,15 @@ namespace RockScissorPaper.BLL
             switch (game.Status)
             {
                 case GameStatus.NewRound:
-                     ProcessNewRound(game, command);
-                     break;
+                    ProcessNewRound(game, command);
+                    break;
                 case GameStatus.WaitingPlayerOne:
                     break;
                 case GameStatus.WaitingPlayerTwo:
                     break;
                 case GameStatus.RoundResult:
                     ProcessRoundResult(game, command);
-                    break; 
+                    break;
                 case GameStatus.FinalRoundResult:
                     ProcessFinalRoundResult(game);
                     break;
@@ -78,10 +53,8 @@ namespace RockScissorPaper.BLL
             return game.Status;
         }
 
-        
+        #region ExecuteMove Submethods
 
-        
-        #region executeMove Submethods
         private void ProcessFinalRoundResult(Game game)
         {
             SetGameStatus(game, GameStatus.EndOfGame);
@@ -101,7 +74,7 @@ namespace RockScissorPaper.BLL
 
             if (currentRound.RoundNumber < game.Rules.TotalRounds)
             {
-                 SetGameStatus(game,  GameStatus.NewRound);
+                SetGameStatus(game, GameStatus.NewRound);
             }
             else
             {
@@ -110,7 +83,7 @@ namespace RockScissorPaper.BLL
                 {
                     _gameRepository.UpdateGameResult(game.GameId, game.PlayerOne.PlayerId, logic.ScoreResolver.PlayerOneOutcome, logic.ScoreResolver.PlayerOneScore);
                     _gameRepository.UpdateGameResult(game.GameId, game.PlayerTwo.PlayerId, logic.ScoreResolver.PlayerTwoOutcome, logic.ScoreResolver.PlayerTwoScore);
-                   
+
                     var ev = new GameFinishedEvent();
                     ev.CurrentGlobalResults = _gameRepository.GetBotVsHumanScore();
                     _gameEventManager.Publish(ev);
@@ -180,14 +153,171 @@ namespace RockScissorPaper.BLL
 
         #endregion
 
-        public GameStateQuery GetGameState(int gameId, int playerId)
+        #endregion
+
+        #region Queries
+
+        public IEnumerable<GameRules> GetGameRuleSets()
         {
-            Game game = GetGame(gameId);
-            GameStateService gameState = new GameStateService(game);
-            gameState.Update(game.Status);
-            gameState.SetObservingPlayer(playerId);
-            return gameState.GameState;
+            List<GameRules> results = new List<GameRules>();
+            results.Add(_gameRepository.GetGameRules(1)); //TODO Added when new Stored Procedure is ready
+            return results;
         }
 
+        public GameRules GetGameRuleSetById(int id)
+        {
+            return  _gameRepository.GetGameRules(id);
+        }
+
+        public Game GetGame(int id)
+        {
+            Game result = _gameRepository.GetGame(id);
+            GameLogic logic = GameLogicFactory.Build(result.Rules.GameType);
+            foreach (GameRound round in result.Rounds)
+            {
+                logic.RoundResolver.ResolveRound(round);
+            }
+            logic.ScoreResolver.ResolveGame(result.Rounds);
+            return result;
+
+        }
+        
+        public GameStateQuery GetLastestRoundResult(int gameId, int playerId)
+        {
+            Game game = GetGame(gameId);
+            GameStateQuery gameState = new GameStateQuery();
+            GameLogic logic = GameLogicFactory.Build(game.Rules.GameType);
+
+            gameState.GameId = game.GameId;
+
+            GameRound currentRound = game.Rounds.LastOrDefault();
+
+            if (currentRound != null)
+            {
+                logic.RoundResolver.ResolveRound(currentRound);
+
+                gameState.BannerMessage = logic.RoundResolver.Message;
+                int currentRoundNumber = game.Rounds.Count;
+                gameState.RoundMessage = string.Format("{0} / {1}", currentRoundNumber, game.Rules.TotalRounds);
+                logic.ScoreResolver.ResolveGame(game.Rounds);
+
+                //Sets Player One State
+                gameState.PlayerOne.PlayerId = game.PlayerOne.PlayerId;
+                gameState.PlayerOne.CurrentSelection = currentRound.PlayerOneSelection;
+                gameState.PlayerOne.CurrentScore = game.Rounds.Count(r => r.PlayerOneOutcome == GameOutcome.Win);
+                gameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(logic.RoundResolver.PlayerOneResult);
+
+                //Sets Player Two State
+                gameState.PlayerTwo.PlayerId = game.PlayerTwo.PlayerId;
+                gameState.PlayerTwo.CurrentSelection = currentRound.PlayerTwoSelection;
+                gameState.PlayerTwo.CurrentScore = game.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
+                gameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(logic.RoundResolver.PlayerTwoResult);
+
+                gameState.FinalRoundResult = game.Status == GameStatus.FinalRoundResult;
+                SetObservingPlayer(gameState, playerId);
+                return gameState;
+            }
+            return null;
+        }
+
+        public GameStateQuery GetEndOfGame(int gameId, int playerId)
+        {
+            Game game = GetGame(gameId);
+            GameStateQuery gameState = new GameStateQuery();
+            GameLogic logic = GameLogicFactory.Build(game.Rules.GameType);
+            
+
+            gameState.GameId = game.GameId;
+            int currentRoundNumber = game.Rounds.Count;
+            gameState.RoundMessage = string.Format("{0} / {1}", currentRoundNumber, game.Rules.TotalRounds);
+
+            logic.ScoreResolver.ResolveGame(game.Rounds);
+
+            //Sets Player One State
+            gameState.PlayerOne.PlayerId = game.PlayerOne.PlayerId;
+            gameState.PlayerOne.CurrentScore = game.Rounds.Count(r => r.PlayerOneOutcome == GameOutcome.Win);
+            gameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(logic.ScoreResolver.PlayerOneOutcome);
+            gameState.PlayerOne.PlayerMessage = "<a href=\"/home/GameLobby/" + game.PlayerOne.PlayerId + "\">Play again?</a>";
+            //Sets Player Two State
+            gameState.PlayerTwo.PlayerId = game.PlayerTwo.PlayerId;
+            gameState.PlayerTwo.CurrentScore = game.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
+            gameState.PlayerTwo.PlayerMessage = "<a href=\"/home/GameLobby/" + game.PlayerTwo.PlayerId + "\">Play again?</a>";
+
+            if (logic.ScoreResolver.PlayerOneOutcome == GameOutcome.Win)
+            {
+                gameState.BannerMessage = game.PlayerOne.Name + " wins the game!";
+            }
+            else if (logic.ScoreResolver.PlayerTwoOutcome == GameOutcome.Win)
+            {
+                gameState.BannerMessage = game.PlayerTwo.Name + " wins the game!";
+            }
+            else
+            {
+                gameState.BannerMessage = "Its a draw.";
+            }
+            SetObservingPlayer(gameState, playerId);
+            return gameState;
+        }
+        
+        public GameStateQuery GetCurrentState(int gameId, int playerId)
+        {
+            Game game = GetGame(gameId);
+            if (game.Status == GameStatus.EndOfGame)
+            {
+                return GetEndOfGame(gameId, playerId);
+            }
+            GameStateQuery gameState = new GameStateQuery();
+            //TodDO add handlers for Waiting PLayer one /two
+            gameState.GameId = game.GameId;
+            gameState.BannerMessage = " Round Start";
+            int currentRound = game.Rounds.Count + 1;
+            gameState.RoundMessage = string.Format("{0} / {1}", currentRound, game.Rules.TotalRounds);
+
+            gameState.PlayerOne = SetInitialPlayerState(game.PlayerOne.PlayerId);
+            gameState.PlayerTwo = SetInitialPlayerState(game.PlayerOne.PlayerId);
+            SetObservingPlayer(gameState, playerId);
+            return gameState;
+        }
+        #region GameState submethods
+
+        private PlayerGameInformation SetInitialPlayerState(int playerId)
+        {
+            PlayerGameInformation state = new PlayerGameInformation();
+            state.PlayerId = playerId;
+            state.CurrentScore = 0;
+            state.PlayerMessage = "Go!";
+            return state;
+        }
+
+        private string SetWinLoseDrawMessage(GameOutcome gameOutcome)
+        {
+            switch (gameOutcome)
+            {
+                case GameOutcome.Win:
+                    return "You Win!";
+                case GameOutcome.Lose:
+                    return "You Lose!";
+                case GameOutcome.Draw:
+                    return "Its a tie!";
+                default:
+                    return null;
+            }
+        }
+
+        private void SetObservingPlayer(GameStateQuery gameState, int playerId)
+        {
+            gameState.PlayerOne.IsViewer = playerId == gameState.PlayerOne.PlayerId;
+            gameState.PlayerTwo.IsViewer = playerId == gameState.PlayerTwo.PlayerId;
+        }
+        
+        #endregion
+
+        #endregion
+
+
+
+
+
+        
     }
 }

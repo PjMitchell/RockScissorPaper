@@ -44,8 +44,20 @@ namespace RockScissorPaper.API
         public GameStateQuery Put(int id, ExecuteMoveCommand command)
         {
             command.GameId = id;
-            _service.ExecuteMove(command);
-            GameStateQuery result = _service.GetGameState(id, command.PlayerId);
+            GameStatus status = _service.ExecuteMove(command);
+            GameStateQuery result = new GameStateQuery();
+            if (status == GameStatus.EndOfGame)
+            {
+                result = _service.GetEndOfGame(id, command.PlayerId);
+            }
+            else
+            {
+                result = _service.GetLastestRoundResult(id, command.PlayerId);
+                if (status == GameStatus.FinalRoundResult)
+                {
+                    _service.ExecuteMove(command);
+                }
+            }
             
             return result;
         }

@@ -83,7 +83,7 @@ namespace RockScissorPaper.Controllers
             view.PlayerOne = _playerService.GetPlayer(game.PlayerOne.PlayerId);
             view.PlayerTwo = _playerService.GetPlayer(game.PlayerTwo.PlayerId);
             view.CurrentUserId = currentUserId;
-            view.StateOfGame = _gameService.GetGameState(id, currentUserId);
+            view.StateOfGame = _gameService.GetCurrentState(id, currentUserId);
             view.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(game.Rules.GameType, game.ButtonOrder);
             return View(view);
         }
