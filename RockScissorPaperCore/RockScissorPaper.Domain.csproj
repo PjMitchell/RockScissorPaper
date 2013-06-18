@@ -52,7 +52,7 @@
     <Compile Include="Models\Game\GameRound.cs" />
     <Compile Include="Models\Game\GameRules.cs" />
     <Compile Include="Models\Players\Player.cs" />
-    <Compile Include="Models\Statisitcs\CurrentGlobalResults.cs" />
+    <Compile Include="Models\Statisitcs\BotvsHumanStatistics.cs" />
     <Compile Include="Models\Statisitcs\GameChoiceStatistic.cs" />
     <Compile Include="Models\Game\Game.cs" />
     <Compile Include="Models\Statisitcs\RoundStatistic.cs" />

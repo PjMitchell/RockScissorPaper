@@ -1,4 +1,5 @@
 ﻿using RockScissorPaper.DAL;
+using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace RockScissorPaper.BLL
             result.Overview = _repository.GetRoundSummary();
             result.GamesPlayed = _repository.GetGamesPlayed();
             return result;
+        }
+
+
+        public BotvsHumanStatistics GetBotVsHumanScore()
+        {
+            return _repository.GetBotVsHumanScore();
         }
     }
 }

@@ -2,6 +2,7 @@
 using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -55,6 +56,22 @@ namespace RockScissorPaper.DAL
         {
             int result = Convert.ToInt32(_dataAccess.ExecuteScalar("Game_GetGamesPlayed"));
             return result;
+        }
+
+        /// <summary>
+        /// Returns the Total wins of Human and Bot Players
+        /// </summary>
+        /// <returns></returns>
+        public BotvsHumanStatistics GetBotVsHumanScore()
+        {
+            DataTable dt = _dataAccess.Get("GamePlayer_GetBotVsHumanVictoryCount");
+            DataRow dr = dt.Rows[0];
+            MappingHelper map = new MappingHelper(dr);
+            BotvsHumanStatistics result = new BotvsHumanStatistics();
+            result.BotWins = map.MapInt32("BotVictory");
+            result.HumanWins = map.MapInt32("HumanVictory");
+            return result;
+
         }
 
     }

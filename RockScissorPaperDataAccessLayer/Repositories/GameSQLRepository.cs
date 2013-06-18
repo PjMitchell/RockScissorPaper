@@ -148,21 +148,7 @@ namespace RockScissorPaper.DAL
             _dataAccess.ExecuteNonQuery("GamePlayer_Update", parameters);
         }
 
-        /// <summary>
-        /// Returns the Total wins of Human and Bot Players
-        /// </summary>
-        /// <returns></returns>
-        public CurrentGlobalResults GetBotVsHumanScore()
-        {
-            DataTable dt = _dataAccess.Get("GamePlayer_GetBotVsHumanVictoryCount");
-            DataRow dr = dt.Rows[0];
-            MappingHelper map = new MappingHelper(dr);
-            CurrentGlobalResults result = new CurrentGlobalResults();
-            result.BotWins = map.MapInt32("BotVictory");
-            result.HumanWins = map.MapInt32("HumanVictory");
-            return result;
-
-        }
+        
 
         /// <summary>
         /// Returns the rule set for the desired Rule Id

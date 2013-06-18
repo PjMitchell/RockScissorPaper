@@ -9,6 +9,6 @@ namespace RockScissorPaper.BLL
 {
     public class GameFinishedEvent
     {
-        public CurrentGlobalResults CurrentGlobalResults;
+        
     }
 }

@@ -51,11 +51,7 @@ namespace RockScissorPaper.DAL
         /// <param name="game"></param>
         void UpdateGameResult(int gameId, int playerId, GameOutcome gameOutcome, int gameScore);
 
-        /// <summary>
-        /// Returns the Total wins of Human and Bot Players
-        /// </summary>
-        /// <returns></returns>
-        CurrentGlobalResults GetBotVsHumanScore();
+        
 
        /// <summary>
        /// Returns the rule set for the desired Rule Id

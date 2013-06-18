@@ -16,18 +16,19 @@ namespace RockScissorPaper.Hubs
     {
         private readonly static HashSet<string> _connectionIds = new HashSet<string>();
         public static int PeopleConnected { get {return _connectionIds.Count; } }
-        private IGameRepository _repository = new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector()));
+        private IStatisticsService _statsService;
 
-        public RoshamboHub(GameEventManager eventManager)
+        public RoshamboHub(GameEventManager eventManager, IStatisticsService statsService)
         {
             eventManager.Subscribe<GameFinishedEvent>(GameFinished);
+            _statsService = statsService;
         }
 
         public void GameFinished(GameFinishedEvent gameFinishedEvent)
         {
             var context = GlobalHost.ConnectionManager.GetHubContext<RoshamboHub>();
-            gameFinishedEvent.CurrentGlobalResults.NumberOfPeopleConnected = RoshamboHub.PeopleConnected;
-            context.Clients.All.refreshView(gameFinishedEvent.CurrentGlobalResults);
+            GlobalResultsHubObject view = GetCurrentGlobalResults();
+            context.Clients.All.refreshView(view);
         }
 
         public void Send(string name, string message)
@@ -76,9 +77,18 @@ namespace RockScissorPaper.Hubs
 
         public void GetInfo()
         {
-            CurrentGlobalResults view = _repository.GetBotVsHumanScore();
-            view.NumberOfPeopleConnected = PeopleConnected;
+            GlobalResultsHubObject view = GetCurrentGlobalResults();
             Clients.Caller.refreshView(view);
+        }
+
+        private GlobalResultsHubObject GetCurrentGlobalResults()
+        {
+            GlobalResultsHubObject result = new GlobalResultsHubObject();
+            BotvsHumanStatistics query = _statsService.GetBotVsHumanScore();
+            result.BotWins = query.BotWins;
+            result.HumanWins = query.HumanWins;
+            result.NumberOfPeopleConnected = PeopleConnected;
+            return result;
         }
     }
 }
