@@ -2,6 +2,7 @@
 using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace RockScissorPaper.BLL
 
         public int CreatePlayer(CreatePlayerCommand command)
         {
-
+            Validator.ValidateObject(command, new ValidationContext(command), true);
             return _repository.CreatePlayer(command.PlayerName, command.IPAddress);
         }
 

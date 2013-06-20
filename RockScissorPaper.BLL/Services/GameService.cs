@@ -2,6 +2,7 @@
 using RockScissorPaper.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace RockScissorPaper.BLL
 
         public int CreateGame(CreateGameCommand command)
         {
+            Validator.ValidateObject(command, new ValidationContext(command));
             GameRules rule = _gameRepository.GetGameRules(command.RuleId);
             string buttonOrder = SelectionButtonOrderRandomizer.GetButtonBoxOrder(rule.GameType);
             return _gameRepository.CreateNewGame(command.PlayerOneId, command.PlayerTwoId, command.RuleId, buttonOrder);
@@ -30,16 +32,13 @@ namespace RockScissorPaper.BLL
 
         public GameStatus ExecuteMove(ExecuteMoveCommand command)
         {
+            Validator.ValidateObject(command, new ValidationContext(command));
             Game game = GetGame(command.GameId);
 
             switch (game.Status)
             {
                 case GameStatus.NewRound:
                     ProcessNewRound(game, command);
-                    break;
-                case GameStatus.WaitingPlayerOne:
-                    break;
-                case GameStatus.WaitingPlayerTwo:
                     break;
                 case GameStatus.RoundResult:
                     ProcessRoundResult(game, command);
@@ -277,6 +276,7 @@ namespace RockScissorPaper.BLL
             SetObservingPlayer(gameState, playerId);
             return gameState;
         }
+       
         #region GameState submethods
 
         private PlayerGameInformation SetInitialPlayerState(int playerId)

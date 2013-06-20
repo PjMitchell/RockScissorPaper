@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using HilltopDigital.SimpleDAL;
 using RockScissorPaper.BLL;
+using RockScissorPaper.Model;
 
 namespace RockScissorPaper.API
 {
@@ -21,11 +22,6 @@ namespace RockScissorPaper.API
         {
             _service = gameService;
         }
-       // private static NotificationService _notificationService = new NotificationService(_gameRepository, _gameEventManager);
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
 
         // GET api/values/5
         public Game Get(int id)
@@ -41,10 +37,16 @@ namespace RockScissorPaper.API
         }
 
         // PUT api/values/5
-        public GameStateQuery Put(int id, ExecuteMoveCommand command)
+        public GameStateQuery Put(int id, GameAPIPutCommand command)
         {
-            command.GameId = id;
-            GameStatus status = _service.ExecuteMove(command);
+            ExecuteMoveCommand moveCommand = new ExecuteMoveCommand
+            {
+                GameId = id,
+                PlayerId = command.PlayerId,
+                Selection = (GameSelection)command.Selection
+            };
+            //command.GameId = id;
+            GameStatus status = _service.ExecuteMove(moveCommand);
             GameStateQuery result = new GameStateQuery();
             if (status == GameStatus.EndOfGame)
             {
@@ -55,16 +57,12 @@ namespace RockScissorPaper.API
                 result = _service.GetLastestRoundResult(id, command.PlayerId);
                 if (status == GameStatus.FinalRoundResult)
                 {
-                    _service.ExecuteMove(command);
+                    _service.ExecuteMove(moveCommand);
                 }
             }
             
             return result;
         }
 
-        // DELETE api/values/5
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

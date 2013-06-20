@@ -65,10 +65,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.BLL", "Roc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OldItems", "OldItems", "{F6F241CC-D1B3-4AC3-91CF-D77451DE2054}"
 	ProjectSection(SolutionItems) = preProject
+		RockScissorPaper.BLL\Factories\GameRuleFactoryParameters.cs = RockScissorPaper.BLL\Factories\GameRuleFactoryParameters.cs
 		RockScissorPaper.BLL\Factories\GameRulesFactory.cs = RockScissorPaper.BLL\Factories\GameRulesFactory.cs
 		RockScissorPaper.BLL\Services\GameStateService.cs = RockScissorPaper.BLL\Services\GameStateService.cs
 		RockScissorPaper\Models\NotificationService.cs = RockScissorPaper\Models\NotificationService.cs
 		RockScissorPaper.BLL\Services\OldGameService.cs = RockScissorPaper.BLL\Services\OldGameService.cs
+		RockScissorPaper.BLL\Commands\PlayerSelectionCommand.cs = RockScissorPaper.BLL\Commands\PlayerSelectionCommand.cs
 	EndProjectSection
 EndProject
 Global

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 
-namespace RockScissorPaper.BLL
+namespace RockScissorPaper.Model
 {
-    public class ExecuteMoveCommand
+    public class GameAPIPutCommand
     {
         public int PlayerId { get; set; }
         public int Selection { get; set; }
-        public int GameId { get; set; }
     }
 }

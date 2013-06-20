@@ -17,11 +17,9 @@ namespace RockScissorPaper.Controllers
     public class HomeController : Controller
     {
         
-        //private readonly IStatisticsRepository _statisticsRepository; //TODO Create StatsService
         private IPlayerService _playerService;
         private IGameService _gameService;
         private IStatisticsService _statsService;
-
 
         public HomeController(IPlayerService playerService, IGameService gameService, IStatisticsService statsService)
         {
@@ -51,7 +49,8 @@ namespace RockScissorPaper.Controllers
                     IPAddress = ipAddress
                 };
                 int playerId = _playerService.CreatePlayer(command);
-                return RedirectToAction("GameLobby", new { id = playerId });
+                _playerService.Login(playerId);
+                return RedirectToAction("GameLobby");
             }
         }
         /// <summary>
@@ -59,32 +58,34 @@ namespace RockScissorPaper.Controllers
         /// </summary>
         /// <param name="id">Player Id</param>
         /// <returns></returns>
-        public ActionResult GameLobby(int id)
+        public ActionResult GameLobby()
         {
             int botId = 1;
             int ruleId = 1;
             CreateGameCommand command = new CreateGameCommand();
-            command.PlayerOneId = id;
+            UserInfo info = _playerService.GetCurrentUserInfo();
+            command.PlayerOneId = info.Id;
             command.PlayerTwoId = botId;
             command.RuleId = ruleId;
             int gameId = _gameService.CreateGame(command);
-            return RedirectToAction("Game", new { id = gameId, currentUserId = id });
+            _playerService.SetCurrentGame(gameId);
+            return RedirectToAction("Game", new { id = gameId});
         }
         /// <summary>
         /// Game Is setup
         /// </summary>
         /// <param name="id">Game Id</param>
         /// <returns></returns>
-        public ActionResult Game(int id, int currentUserId)
+        public ActionResult Game(int id)
         {
-            
+            UserInfo info = _playerService.GetCurrentUserInfo();
             Game game = _gameService.GetGame(id);
             
             GameViewModel view = new GameViewModel();
             view.PlayerOne = _playerService.GetPlayer(game.PlayerOne.PlayerId);
             view.PlayerTwo = _playerService.GetPlayer(game.PlayerTwo.PlayerId);
-            view.CurrentUserId = currentUserId;
-            view.StateOfGame = _gameService.GetCurrentState(id, currentUserId);
+            view.CurrentUserId = info.Id;
+            view.StateOfGame = _gameService.GetCurrentState(id, info.Id);
             view.ButtonBox = GameSelectorButtonBoxFactory.GetButtonBox(game.Rules.GameType, game.ButtonOrder);
             return View(view);
         }

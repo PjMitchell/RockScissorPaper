@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,20 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\PlayerSelectionCommand.cs" />
-    <Compile Include="GameLogic.cs" />
-    <Compile Include="GameLogicFactory.cs" />
-    <Compile Include="IStatisticsService.cs" />
-    <Compile Include="Models\Commands\CreateGameCommand.cs" />
+    <Compile Include="Models\GameLogic.cs" />
+    <Compile Include="Factories\GameLogicFactory.cs" />
+    <Compile Include="Services\Interfaces\IStatisticsService.cs" />
+    <Compile Include="Commands\CreateGameCommand.cs" />
     <Compile Include="Models\RoshamboGameRoundResolver.cs" />
     <Compile Include="Models\StandardGameScoreResolver.cs" />
     <Compile Include="Queries\StatisticsOverviewQuery.cs" />
     <Compile Include="Services\GameService.cs" />
-    <Compile Include="Models\Commands\ExecuteMoveCommand.cs" />
+    <Compile Include="Commands\ExecuteMoveCommand.cs" />
     <Compile Include="Services\Interfaces\IGameService.cs" />
     <Compile Include="Services\Interfaces\IPlayerService.cs" />
-    <Compile Include="Models\Commands\CreatePlayerCommand.cs" />
-    <Compile Include="Factories\GameRuleFactoryParameters.cs" />
+    <Compile Include="Commands\CreatePlayerCommand.cs" />
     <Compile Include="Models\SelectionButtonOrderRandomizer.cs" />
     <Compile Include="GameEvents\GameFinishedEvent.cs" />
     <Compile Include="Models\GameServiceResult.cs" />
@@ -65,7 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GameStateQuery.cs" />
     <Compile Include="Services\GameEventManager.cs" />
-    <Compile Include="StatisticsService.cs" />
+    <Compile Include="Services\StatisticsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RockScissorPaperCore\RockScissorPaper.Domain.csproj">

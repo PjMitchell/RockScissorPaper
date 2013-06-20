@@ -37,7 +37,7 @@ window.Roshambo = (function ($) {
     }
 
     function processSelection(input) {
-        var inputModel = { playerId: _playerId, selection: input },
+        var inputModel = { PlayerId: _playerId, Selection: input },
             $buttonbox = $('#playerOptions');
         $.ajax({
             dataType: 'json',
