@@ -193,8 +193,11 @@
   <ItemGroup>
     <Content Include="Content\Css\Game.css" />
     <Content Include="Content\Images\ajax-loader.gif" />
-    <Content Include="Content\Images\Drunk-hamster2.jpg" />
-    <Content Include="Content\Images\Pm.jpg" />
+    <Content Include="Content\Images\Avatars\BlueBot.jpg" />
+    <Content Include="Content\Images\Avatars\ConeOfShame.jpg" />
+    <Content Include="Content\Images\Avatars\Drunk-hamster.jpg" />
+    <Content Include="Content\Images\Avatars\GreenBot.jpg" />
+    <Content Include="Content\Images\Avatars\PurpleBot.jpg" />
     <Content Include="Content\Css\Wrapper960Static.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
