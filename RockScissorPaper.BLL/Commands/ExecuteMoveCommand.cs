@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RockScissorPaper.BLL
 {
+    
     public class ExecuteMoveCommand
     {
         [Required]
@@ -15,6 +16,7 @@ namespace RockScissorPaper.BLL
         [Required]
         public int GameId { get; set; }
 
-        public GameSelection  Selection { get; set; }
+        public GameSelection Selection { get; set; }
+
     }
 }

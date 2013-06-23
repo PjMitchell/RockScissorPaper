@@ -10,6 +10,7 @@ using System.Web.Http;
 using HilltopDigital.SimpleDAL;
 using RockScissorPaper.BLL;
 using RockScissorPaper.Model;
+using System.Web.Mvc;
 
 namespace RockScissorPaper.API
 {
@@ -41,11 +42,11 @@ namespace RockScissorPaper.API
         {
             ExecuteMoveCommand moveCommand = new ExecuteMoveCommand
             {
-                GameId = id,
+                GameId = command.GameId,
                 PlayerId = command.PlayerId,
                 Selection = (GameSelection)command.Selection
             };
-            //command.GameId = id;
+            command.GameId = id;
             GameStatus status = _service.ExecuteMove(moveCommand);
             GameStateQuery result = new GameStateQuery();
             if (status == GameStatus.EndOfGame)

@@ -5,6 +5,7 @@ using Ninject.Web.Common;
 using Ninject.Web.Mvc;
 using RockScissorPaper.BLL;
 using RockScissorPaper.DAL;
+using RockScissorPaper.Domain;
 using RockScissorPaper.Models;
 using System;
 using System.Reflection;
@@ -56,6 +57,7 @@ namespace RockScissorPaper
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(GameSelection), new GameSelectionModelBinder());
         }
     }
 }

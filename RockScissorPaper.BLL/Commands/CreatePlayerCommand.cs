@@ -14,7 +14,7 @@ namespace RockScissorPaper.BLL
         public string PlayerName { get; set; }
 
         [Required]
-        [StringLength(25)]
+        [StringLength(45)]
         public string IPAddress { get; set; }
 
     }

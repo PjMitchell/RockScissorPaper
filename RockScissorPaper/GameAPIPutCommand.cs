@@ -9,5 +9,6 @@ namespace RockScissorPaper.Model
     {
         public int PlayerId { get; set; }
         public int Selection { get; set; }
+        public int GameId { get; set; }
     }
 }
