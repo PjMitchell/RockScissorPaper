@@ -19,7 +19,7 @@ namespace RockScissorPaper.BLL
         public GameOutcome PlayerOneResult { get { return _playerOneResult; } }
         public GameOutcome PlayerTwoResult { get { return _playerTwoResult; } }
 
-        public void ResolveRound(GameSelection playerOne, GameSelection playerTwo)
+        private void ResolveRound(GameSelection playerOne, GameSelection playerTwo)
         {
             if (playerOne == playerTwo)
             {

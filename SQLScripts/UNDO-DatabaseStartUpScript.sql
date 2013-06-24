@@ -1,9 +1,9 @@
-DROP TABLE GameRoundResult;
-DROP TABLE GameRound;
-DROP TABLE RoshamboSelection;
-DROP TABLE GamePlayer;
-DROP TABLE GameResult;
-DROP TABLE Player;
-DROP TABLE RoshamboGame;
-DROP TABLE GameRuleSet;
-DROP TABLE GameStatus;
+DROP TABLE  IF EXISTS GameRoundResult;
+DROP TABLE  IF EXISTS GameRound;
+DROP TABLE  IF EXISTS RoshamboSelection;
+DROP TABLE  IF EXISTS GamePlayer;
+DROP TABLE  IF EXISTS GameResult;
+DROP TABLE  IF EXISTS Player;
+DROP TABLE  IF EXISTS RoshamboGame;
+DROP TABLE  IF EXISTS GameRuleSet;
+DROP TABLE  IF EXISTS GameStatus;

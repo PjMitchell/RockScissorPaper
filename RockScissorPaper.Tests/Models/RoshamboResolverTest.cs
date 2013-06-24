@@ -1,6 +1,7 @@
 ﻿using System;
 using RockScissorPaper.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RockScissorPaper.BLL;
 
 namespace RockScissorPaper.Tests.Models
 {
@@ -12,118 +13,154 @@ namespace RockScissorPaper.Tests.Models
         private const string _paperWin = "Paper covers Rock";
         private const string _draw = "Great minds think alike";
 
+        
+        /// <summary>
+        /// Test Determines If every Posible Combination resolves Correctly
+        /// </summary>
+        [TestMethod]
+        public void RoshamboResolver()
+        {
+            RoshamboGameRoundResolver resolver = new RoshamboGameRoundResolver();
+
+            TestRockVsRock(resolver);
+            TestRockVsScissor(resolver);
+            TestRockVsPaper(resolver);
+            TestScissorVsRock(resolver);
+            TestScissorVsScissor(resolver);
+            TestScissorVsPaper(resolver);
+            TestPaperVsRock(resolver);
+            TestPaperVsScissor(resolver);
+            TestPaperVsPaper(resolver);
+        }
+        
         #region All Combos
-        
-        [TestMethod]
-        public void TestRockVsRock()
+        private void TestRockVsRock(RoshamboGameRoundResolver resolver)
         {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
-            service.ResolveRound(GameSelection.Rock, GameSelection.Rock);
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Rock,
+                PlayerTwoSelection = GameSelection.Rock
+            };
+            resolver.ResolveRound(round);
 
-            Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
-            Assert.AreEqual(_draw, service.Message);
-        }
-       
-        [TestMethod]
-        public void TestRockVsScissor()
-        {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
-
-            service.ResolveRound(GameSelection.Rock, GameSelection.Scissor);
-
-            Assert.AreEqual(GameOutcome.Win, service.PlayerOneResult);
-            Assert.AreEqual(_rockWin, service.Message);
-        }
-        
-        [TestMethod]
-        public void TestRockVsPaper()
-        {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
-
-            service.ResolveRound(GameSelection.Rock, GameSelection.Paper);
-
-            Assert.AreEqual(GameOutcome.Lose, service.PlayerOneResult);
-            Assert.AreEqual(_paperWin, service.Message);
-        }
-        
-        [TestMethod]
-        public void TestScissorVsRock()
-        {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
-
-            service.ResolveRound(GameSelection.Scissor, GameSelection.Rock);
-
-            Assert.AreEqual(GameOutcome.Lose, service.PlayerOneResult);
-            Assert.AreEqual(_rockWin, service.Message);
+            Assert.AreEqual(GameOutcome.Draw, round.PlayerOneOutcome);
+            Assert.AreEqual(_draw, resolver.Message);
         }
 
-        [TestMethod]
-        public void TestScissorVsScissor()
+        private void TestRockVsScissor(RoshamboGameRoundResolver resolver)
         {
-            var service = new RoshamboGameRoundResolver();
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Rock,
+                PlayerTwoSelection = GameSelection.Scissor
+            };
+            resolver.ResolveRound(round);
 
-            service.ResolveRound(GameSelection.Scissor, GameSelection.Scissor);
-            Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
-            Assert.AreEqual(_draw, service.Message);
+            Assert.AreEqual(GameOutcome.Win, round.PlayerOneOutcome);
+            Assert.AreEqual(_rockWin, resolver.Message);
+        }
+
+        private void TestRockVsPaper(RoshamboGameRoundResolver resolver)
+        {
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Rock,
+                PlayerTwoSelection = GameSelection.Paper
+            };
+
+            resolver.ResolveRound(round);
+
+            Assert.AreEqual(GameOutcome.Lose, round.PlayerOneOutcome);
+            Assert.AreEqual(_paperWin, resolver.Message);
+        }
+
+        private void TestScissorVsRock(RoshamboGameRoundResolver resolver)
+        {
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Scissor,
+                PlayerTwoSelection = GameSelection.Rock
+            };
+
+            resolver.ResolveRound(round);
+
+            Assert.AreEqual(GameOutcome.Lose, round.PlayerOneOutcome);
+            Assert.AreEqual(_rockWin, resolver.Message);
+        }
+
+        private void TestScissorVsScissor(RoshamboGameRoundResolver resolver)
+        {
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Scissor,
+                PlayerTwoSelection = GameSelection.Scissor
+            };
+
+            resolver.ResolveRound(round);
+            
+            Assert.AreEqual(GameOutcome.Draw, round.PlayerOneOutcome);
+            Assert.AreEqual(_draw, resolver.Message);
            
         }
-        
-        [TestMethod]
-        public void TestScissorVsPaper()
+
+        private void TestScissorVsPaper(RoshamboGameRoundResolver resolver)
         {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Scissor,
+                PlayerTwoSelection = GameSelection.Paper
+            };
 
-            service.ResolveRound(GameSelection.Scissor, GameSelection.Paper);
+            resolver.ResolveRound(round);
 
-            Assert.AreEqual(GameOutcome.Win, service.PlayerOneResult);
-            Assert.AreEqual(_scissorWin, service.Message);
+            Assert.AreEqual(GameOutcome.Win, round.PlayerOneOutcome);
+            Assert.AreEqual(_scissorWin, resolver.Message);
         }
-        
-        [TestMethod]
-        public void TestPaperVsRock()
+
+        private void TestPaperVsRock(RoshamboGameRoundResolver resolver)
         {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Paper,
+                PlayerTwoSelection = GameSelection.Rock
+            };
 
-            service.ResolveRound(GameSelection.Paper, GameSelection.Rock);
+            resolver.ResolveRound(round);
 
-            Assert.AreEqual(GameOutcome.Win, service.PlayerOneResult);
-            Assert.AreEqual(_paperWin, service.Message);
+            Assert.AreEqual(GameOutcome.Win, round.PlayerOneOutcome);
+            Assert.AreEqual(_paperWin, resolver.Message);
         }
-        
-        [TestMethod]
-        public void TestPaperVsScissor()
-        {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
 
-            service.ResolveRound(GameSelection.Paper, GameSelection.Scissor);
-            
-            Assert.AreEqual(GameOutcome.Lose, service.PlayerOneResult);
-            Assert.AreEqual(_scissorWin, service.Message);
+        private void TestPaperVsScissor(RoshamboGameRoundResolver resolver)
+        {
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Paper,
+                PlayerTwoSelection = GameSelection.Scissor
+            };
+
+            resolver.ResolveRound(round);
+
+            Assert.AreEqual(GameOutcome.Lose, round.PlayerOneOutcome);
+            Assert.AreEqual(_scissorWin, resolver.Message);
         }
-        
-        [TestMethod]
-        public void TestPaperVsPaper()
+
+        private void TestPaperVsPaper(RoshamboGameRoundResolver resolver)
         {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
+            GameRound round = new GameRound()
+            {
+                PlayerOneSelection = GameSelection.Paper,
+                PlayerTwoSelection = GameSelection.Paper
+            };
 
-            service.ResolveRound(GameSelection.Paper, GameSelection.Paper);
+            resolver.ResolveRound(round);
 
-            Assert.AreEqual(GameOutcome.Draw, service.PlayerOneResult);
-            Assert.AreEqual(_draw, service.Message);
+            Assert.AreEqual(GameOutcome.Draw, round.PlayerOneOutcome);
+            Assert.AreEqual(_draw, resolver.Message);
 
         }
 
         #endregion
-
-        [TestMethod]
-        public void TestMultipleResolvesWithOneInstance()
-        {
-            RoshamboGameRoundResolver service = new RoshamboGameRoundResolver();
-            service.ResolveRound(GameSelection.Rock, GameSelection.Scissor);
-            service.ResolveRound(GameSelection.Rock, GameSelection.Paper);
-
-            Assert.AreEqual(GameOutcome.Lose, service.PlayerOneResult);
-            Assert.AreEqual(_paperWin, service.Message);
-        }
+        
     }
 }

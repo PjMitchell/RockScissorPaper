@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 
 namespace HilltopDigital.SimpleDAL
 {
@@ -132,6 +133,39 @@ namespace HilltopDigital.SimpleDAL
                 result = cmd.ExecuteScalar();
             }
             return result;
+        }
+
+        public void ExecuteNonQueryScript(string path)
+        {
+            List<string> list = new List<string>();
+            list.Add(path);
+            ExecuteNonQueryScript(list);
+        }
+
+        public void ExecuteNonQueryScript(List<string> paths)
+        {
+            List<string> scripts = new List<string>();
+            foreach (string path in paths)
+            {
+                FileInfo file = new FileInfo(path);
+                if (file.Exists && file.Extension == ".sql")
+                {
+                    string script = file.OpenText().ReadToEnd();
+                    scripts.Add(script);
+                }
+            }
+
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+                foreach (string script in scripts)
+                {
+                    using (var cmd = new MySqlCommand(script, connection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         /// <summary>

@@ -9,18 +9,11 @@ namespace RockScissorPaper.Tests.Models.Bots
     [TestClass]
     public class SimpleBotTest
     {
-        [TestMethod]
-        public void TestBotName()
-        {
-            SimpleBot bot = new SimpleBot();
-            Assert.AreEqual("Simple Jack", bot.Name);
-            
-        }
         /// <summary>
         /// Note This test will fail 1% of the time due to chance
         /// </summary>
         [TestMethod]
-        public void TestRandomSlection()
+        public void TestSimpleBotSelection()
         {
             SimpleBot bot = new SimpleBot();
             int countRock = 0;

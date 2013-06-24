@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace HilltopDigital.SimpleDAL
@@ -37,6 +38,9 @@ namespace HilltopDigital.SimpleDAL
         /// <param name="sqlParams">Stored proceedure parameters</param>
         /// <returns></returns>
         object ExecuteScalar(string sql, List<StoreProcedureParameter> sqlParams = null);
+
+        void ExecuteNonQueryScript(string path);
+        void ExecuteNonQueryScript(List<string> paths);
 
     }
 }

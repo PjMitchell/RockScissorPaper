@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -12,6 +13,7 @@ using RockScissorPaper.Tests.Models;
 using RockScissorPaper.DAL;
 using HilltopDigital.SimpleDAL;
 using RockScissorPaper.BLL;
+using System.Configuration;
 
 namespace RockScissorPaper.Tests.Controllers
 {
@@ -37,31 +39,36 @@ namespace RockScissorPaper.Tests.Controllers
         [TestMethod]
         public void GetById()
         {
+           // string localPath = ConfigurationManager.AppSettings["LocalPath"];
+            //MySQLDatabaseConnector connector = new MySQLDatabaseConnector();
+            //List<string> paths = new List<string>();
+           // paths.Add( localPath + "\\SQLScripts\\UNDO-DatabaseStartUpScript.sql");
+            //paths.Add(localPath + "\\SQLScripts\\DatabaseStartUpScript.sql");
+            //connector.ExecuteNonQueryScript(paths);
+        }
+
+        //[TestMethod]
+        //public void Post()
+        //{
             
-        }
+        //}
 
-        [TestMethod]
-        public void Post()
-        {
-            
-        }
+        //[TestMethod]
+        //public void Put()
+        //{
+        //     Arrange
+        //    GamesController controller = new GamesController();
+        //    OldGameService service = new OldGameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())),new GameEventManager(), DummyGame.GetDummyGame());
+        //    GameAPIPutCommand command = new GameAPIPutCommand();
+        //    command.playerId = 1;
+        //    command.selection = 3;
 
-        [TestMethod]
-        public void Put()
-        {
-            // Arrange
-            GamesController controller = new GamesController();
-            OldGameService service = new OldGameService(new GameSQLRepository(new MySQLDatabaseConnector(), new PlayerSQLRepository(new MySQLDatabaseConnector())),new GameEventManager(), DummyGame.GetDummyGame());
-            GameAPIPutCommand command = new GameAPIPutCommand();
-            command.playerId = 1;
-            command.selection = 3;
+        //     Act
+        //    GameStateQuery result = controller.Put(1, command);
 
-            // Act
-            GameStateQuery result = controller.Put(1, command);
-
-            // Assert
-            Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);
-        }
+        //     Assert
+        //    Assert.AreEqual("You Win!", result.PlayerOne.PlayerMessage);
+        //}
 
         //[TestMethod]
         //public void Delete()
