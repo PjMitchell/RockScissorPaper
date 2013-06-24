@@ -49,7 +49,7 @@ namespace RockScissorPaper.DAL
         /// Updates the GamePlayer Table with Players' game result and score
         /// </summary>
         /// <param name="game"></param>
-        void UpdateGameResult(int gameId, int playerId, GameOutcome gameOutcome, int gameScore);
+        void UpdateGameResult(UpdateGameResultCommand command);
 
         
 

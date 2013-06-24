@@ -80,8 +80,17 @@ namespace RockScissorPaper.BLL
                 logic.ScoreResolver.ResolveGame(game.Rounds);
                 if (game.Rules.AllowDraw || logic.ScoreResolver.PlayerOneOutcome != GameOutcome.Draw)
                 {
-                    _gameRepository.UpdateGameResult(game.GameId, game.PlayerOne.PlayerId, logic.ScoreResolver.PlayerOneOutcome, logic.ScoreResolver.PlayerOneScore);
-                    _gameRepository.UpdateGameResult(game.GameId, game.PlayerTwo.PlayerId, logic.ScoreResolver.PlayerTwoOutcome, logic.ScoreResolver.PlayerTwoScore);
+                    UpdateGameResultCommand updateGameCommand = new UpdateGameResultCommand()
+                    {
+                        GameId = game.GameId,
+                        PlayerOneId = game.PlayerOne.PlayerId,
+                        PlayerOneGameOutcome = logic.ScoreResolver.PlayerOneOutcome,
+                        PlayerOneGameScore = logic.ScoreResolver.PlayerOneScore,
+                        PlayerTwoId = game.PlayerTwo.PlayerId,
+                        PlayerTwoGameOutcome = logic.ScoreResolver.PlayerTwoOutcome,
+                        PlayerTwoGameScore = logic.ScoreResolver.PlayerTwoScore
+                    };
+                    _gameRepository.UpdateGameResult(updateGameCommand);
 
                     var ev = new GameFinishedEvent();
                     _gameEventManager.Publish(ev);

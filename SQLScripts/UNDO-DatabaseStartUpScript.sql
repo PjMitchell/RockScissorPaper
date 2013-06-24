@@ -1,5 +1,3 @@
-START TRANSACTION;
-
 DROP TABLE GameRoundResult;
 DROP TABLE GameRound;
 DROP TABLE RoshamboSelection;
@@ -9,4 +7,3 @@ DROP TABLE Player;
 DROP TABLE RoshamboGame;
 DROP TABLE GameRuleSet;
 DROP TABLE GameStatus;
-COMMIT;

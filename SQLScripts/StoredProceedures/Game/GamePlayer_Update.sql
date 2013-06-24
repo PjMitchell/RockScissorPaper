@@ -6,24 +6,36 @@ DELIMITER $$
 CREATE PROCEDURE `GamePlayer_Update` (
 
 in 
-
-PlayerIdInput int,
-
 RoshamboGameIdInput int,
 
-GameOutcomeInput int,
+PlayerOneIdInput int,
 
-GameScoreInput int)
+PlayerOneGameOutcomeInput int,
+
+PlayerOneGameScoreInput int,
+
+PlayerTwoIdInput int,
+
+PlayerTwoGameOutcomeInput int,
+
+PlayerTwoGameScoreInput int)
 
 BEGIN
+Start Transaction;
 
 UPDATE Gameplayer
 
-SET PlayerGameResult = GameOutcomeInput, PlayerGameScore = GameScoreInput
+SET PlayerGameResult = PlayerOneGameOutcomeInput, PlayerGameScore = PlayerOneGameScoreInput
 
-WHERE PlayerId = PlayerIdInput AND RoshamboGameId = RoshamboGameIdInput
-
+WHERE PlayerId = PlayerOneIdInput AND RoshamboGameId = RoshamboGameIdInput
 ;
+UPDATE Gameplayer
+
+SET PlayerGameResult = PlayerTwoGameOutcomeInput, PlayerGameScore = PlayerTwoGameScoreInput
+
+WHERE PlayerId = PlayerTwoIdInput AND RoshamboGameId = RoshamboGameIdInput
+;
+Commit;
 
 END$$
 

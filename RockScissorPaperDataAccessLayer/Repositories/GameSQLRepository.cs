@@ -138,13 +138,18 @@ namespace RockScissorPaper.DAL
         /// Private method used by UpdateGameResult for each player
         /// </summary>
         /// <param name="game"></param>
-        public void UpdateGameResult(int gameId, int playerId, GameOutcome gameOutcome, int gameScore)
+        public void UpdateGameResult(UpdateGameResultCommand command)
         {
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
-            parameters.Add(new StoreProcedureParameter("PlayerIdInput", playerId));
-            parameters.Add(new StoreProcedureParameter("RoshamboGameIdInput", gameId));
-            parameters.Add(new StoreProcedureParameter("GameOutcomeInput", (int)gameOutcome));
-            parameters.Add(new StoreProcedureParameter("GameScoreInput", gameScore));
+            parameters.Add(new StoreProcedureParameter("RoshamboGameIdInput", command.GameId));
+            
+            parameters.Add(new StoreProcedureParameter("PlayerOneIdInput", command.PlayerOneId));
+            parameters.Add(new StoreProcedureParameter("PlayerOneGameOutcomeInput", (int)command.PlayerOneGameOutcome));
+            parameters.Add(new StoreProcedureParameter("PlayerOneGameScoreInput", command.PlayerOneGameScore));
+
+            parameters.Add(new StoreProcedureParameter("PlayerTwoIdInput", command.PlayerTwoId));
+            parameters.Add(new StoreProcedureParameter("PlayerTwoGameOutcomeInput", (int)command.PlayerTwoGameOutcome));
+            parameters.Add(new StoreProcedureParameter("PlayerTwoGameScoreInput", command.PlayerTwoGameScore));
             _dataAccess.ExecuteNonQuery("GamePlayer_Update", parameters);
         }
 
