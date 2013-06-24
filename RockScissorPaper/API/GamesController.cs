@@ -38,7 +38,7 @@ namespace RockScissorPaper.API
         }
 
         // PUT api/values/5
-        public GameStateQuery Put(int id, GameAPIPutCommand command)
+        public GameStateQuery Put(int id, ExecuteMoveCommand command)
         {
             ExecuteMoveCommand moveCommand = new ExecuteMoveCommand
             {

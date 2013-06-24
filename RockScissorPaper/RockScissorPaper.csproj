@@ -173,8 +173,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="API\GamesController.cs" />
     <Compile Include="API\PlayersController.cs" />
-    <Compile Include="GameAPIPutCommand.cs" />
-    <Compile Include="GameSelectionModelBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
