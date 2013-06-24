@@ -56,7 +56,8 @@ PRIMARY KEY (PlayerId)
 ;
 INSERT INTO Player(PlayerId, PlayerName, PlayerIPAddress, IsBot, BotType)
 VALUES
-(1, 'Simple Jack','IsBot',1, 'SimpleBot')
+(1, 'Simple Jack','IsBot',1, 'SimpleBot'),
+(2, 'ROCK BOT','IsBot',1, 'RockBot')
 ;
 
 CREATE TABLE GameResult

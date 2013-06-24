@@ -125,7 +125,7 @@ namespace RockScissorPaper.BLL
                     _currentRound.PlayerTwoSelection = game.PlayerTwo.Bot.Go();
                     _gameRepository.CreateGameRoundResult(game.PlayerTwo.PlayerId, game.GameId, _currentRound.RoundId, _currentRound.PlayerTwoSelection);
                     SetGameStatus(game, GameStatus.RoundResult);
-                    ExecuteMove(command);
+                    game.Status = ExecuteMove(command);
                 }
                 else
                 {

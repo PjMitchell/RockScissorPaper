@@ -13,9 +13,19 @@ namespace RockScissorPaper.Domain
             {
                 case  "SimpleBot":
                     return CreateSimpleBot();
+                case "RockBot":
+                    return CreateRockBot();
                 default: 
                     return CreateSimpleBot();
             }
+        }
+
+        private Player CreateRockBot()
+        {
+            Player result = new Player();
+            result.Bot = new RockBot();
+            result.Name = result.Bot.Name;
+            return result;
         }
 
         private Player CreateSimpleBot()
