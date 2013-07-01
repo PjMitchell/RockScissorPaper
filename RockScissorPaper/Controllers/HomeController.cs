@@ -34,7 +34,7 @@ namespace RockScissorPaper.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string username)
+        public ActionResult Index(string username, string avatar)
         {
             if (string.IsNullOrWhiteSpace(username))
             {
