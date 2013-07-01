@@ -1,4 +1,5 @@
 ﻿using RockScissorPaper.Domain;
+using System.Collections.Generic;
 
 namespace RockScissorPaper.DAL
 {
@@ -6,5 +7,6 @@ namespace RockScissorPaper.DAL
     {
         Player GetPlayer(int id);
         int CreatePlayer(string playerName, string ipAddress);
+        List<Player> GetBotList();
     }
 }

@@ -7,5 +7,6 @@ namespace RockScissorPaper.Domain
         public string Name { get; set; }
         public BotBase Bot { get; set; }
         public bool IsBot { get { return Bot != null; } }
+        public string AvatarImgFile { get; set; }
     }
 }

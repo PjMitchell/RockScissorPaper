@@ -36,5 +36,13 @@ namespace RockScissorPaper.DAL
             parameters.Add(new StoreProcedureParameter("IpAddressInput", ipAddress));
             return Convert.ToInt32(_dataAccess.ExecuteScalar("Player_Create", parameters));
         }
+
+
+        public List<Player> GetBotList()
+        {
+            PlayerListMapper mapper = new PlayerListMapper();
+            _dataAccess.Get("Player_GetBots", mapper);
+            return mapper.Result as List<Player>;
+        }
     }
 }

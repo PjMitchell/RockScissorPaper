@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\PlayerListMapper.cs" />
     <Compile Include="Repositories\Interfaces\IPlayerSessionRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGameRepository.cs" />
     <Compile Include="Repositories\Interfaces\IPlayerRepository.cs" />

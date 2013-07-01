@@ -24,16 +24,15 @@ namespace RockScissorPaper.DAL
             {
                 _botFactory = new BotPlayerFactory();
                 _result = _botFactory.GetBotPlayer(map.MapString("BotType"));
-                _result.Name = map.MapString("PlayerName");
-                
             }
             else
             {
                 _result = new Player();
-                _result.PlayerId = map.MapInt32("PlayerId");
-                _result.Name = map.MapString("PlayerName");
+               
             }
             _result.PlayerId = map.MapInt32("PlayerId");
+            _result.Name = map.MapString("PlayerName");
+            _result.AvatarImgFile = map.MapString("AvatarImg");
             
         }
     }

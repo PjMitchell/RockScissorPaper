@@ -60,7 +60,7 @@ namespace RockScissorPaper.Controllers
         /// <returns></returns>
         public ActionResult GameLobby()
         {
-            int botId = 1;
+            int botId = (_playerService.GetRandomBot()).PlayerId;
             int ruleId = 1;
             CreateGameCommand command = new CreateGameCommand();
             UserInfo info = _playerService.GetCurrentUserInfo();

@@ -49,15 +49,18 @@ CREATE TABLE Player
 PlayerId int NOT NULL AUTO_INCREMENT,
 PlayerName  varchar(25) character set UTF8 NOT NULL,
 PlayerIPAddress varchar(45) character set UTF8 NOT NULL,
+AvatarImg varchar(25) character set UTF8 NOT NULL DEFAULT 'Drunk-hamster.jpg',
 IsBot bit NOT NULL DEFAULT 0, 
 BotType varchar(25) character set UTF8,
 PRIMARY KEY (PlayerId)
 )
 ;
-INSERT INTO Player(PlayerId, PlayerName, PlayerIPAddress, IsBot, BotType)
+INSERT INTO Player(PlayerId, PlayerName, PlayerIPAddress, IsBot, BotType, AvatarImg)
 VALUES
-(1, 'Simple Jack','IsBot',1, 'SimpleBot'),
-(2, 'ROCK BOT','IsBot',1, 'RockBot')
+(1, 'Jack','IsBot',1, 'SimpleBot', 'BlueBot.jpg'),
+(2, 'ROCK BOT','IsBot',1, 'RockBot', 'BlueBot.jpg'),
+(3, 'Jimbo', 'IsBot', 1, 'SimpleBot', 'GreenBot.jpg'),
+(4, 'Timmy', 'IsBot', 1, 'SimpleBot', 'PurpleBot.jpg')
 ;
 
 CREATE TABLE GameResult

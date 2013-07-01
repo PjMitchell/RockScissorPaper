@@ -7,7 +7,7 @@ namespace RockScissorPaper.Domain
 {
     public class SimpleBot : BotBase
     {
-        private static string name = "Simple Jack";
+        private static string name = "SimpleBot";
         private static Random _random = new Random((int)DateTime.Now.Ticks);
 
         public SimpleBot() :base(name)

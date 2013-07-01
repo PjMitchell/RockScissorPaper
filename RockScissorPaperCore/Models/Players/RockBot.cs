@@ -7,7 +7,7 @@ namespace RockScissorPaper.Domain
 {
     public class RockBot : BotBase
     {
-        private static string name = "Rock Bot";
+        private static string name = "RockBot";
         public RockBot()
             : base(name)
         {
