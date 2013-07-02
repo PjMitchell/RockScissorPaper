@@ -3,13 +3,13 @@ DELIMITER $$
 
 
 
-CREATE PROCEDURE `Player_Create` (in PlayerNameInput varchar(25), IpAddressInput varchar(25))
+CREATE PROCEDURE `Player_Create` (in PlayerNameInput varchar(25), IpAddressInput varchar(45), AvatarInput varchar(25))
 
 BEGIN
 
-Insert INTO Player(PlayerName, PlayerIPAddress)
+Insert INTO Player(PlayerName, PlayerIPAddress, AvatarImg)
 
-Values (PlayerNameInput, IpAddressInput);
+Values (PlayerNameInput, IpAddressInput, AvatarInput);
 
 Select LAST_INSERT_ID();
 

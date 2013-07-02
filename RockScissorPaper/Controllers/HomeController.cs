@@ -46,7 +46,8 @@ namespace RockScissorPaper.Controllers
                 CreatePlayerCommand command = new CreatePlayerCommand
                 {
                     PlayerName = username,
-                    IPAddress = ipAddress
+                    IPAddress = ipAddress,
+                    AvatarName = avatar
                 };
                 int playerId = _playerService.CreatePlayer(command);
                 _playerService.Login(playerId);

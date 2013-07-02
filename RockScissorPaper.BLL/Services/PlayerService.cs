@@ -48,7 +48,7 @@ namespace RockScissorPaper.BLL
         public int CreatePlayer(CreatePlayerCommand command)
         {
             Validator.ValidateObject(command, new ValidationContext(command), true);
-            return _repository.CreatePlayer(command.PlayerName, command.IPAddress);
+            return _repository.CreatePlayer(command.PlayerName, command.IPAddress, command.AvatarName);
         }
 
         public void Login(int id)

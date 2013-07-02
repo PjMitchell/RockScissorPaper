@@ -1,43 +1,20 @@
 ﻿<div class="wrapper4"></div>
 
 <div class="wrapper4">
-    <style>
-        input[type=radio]:checked + label img {
-            border: solid red 5pt;
-        }
-        .avatar {
-            float: left;
-            margin: 5px;
-            height: 120px;
-            line-height:120px;
-        }
-            .avatar img {
-                display: inline;
-                border: solid 5pt #FFFFFF;
-                vertical-align: middle;
-            }
-        #avatarSelectionBox {
-            margin:20px -10px
-        } 
-        #avatarSelectionBox input[type=radio] {
-            display: none;
-            
-        }
-
-    </style>
+   
 @using( Html.BeginForm())
 {
     <h3>Please enter your name before you start</h3>
     @Html.TextBox("username", null)
     <div id="avatarSelectionBox">
         <div class="avatar">
-            <input type="radio" name="avatar" id="ConeOfShame" checked="checked" value="ConeOfShame" />
+            <input type="radio" name="avatar" id="ConeOfShame" checked="checked" value="ConeOfShame.jpg" />
             <label for="ConeOfShame">
                 <img src="~/Content/Images/Avatars/ConeOfShame.jpg" />
             </label>
         </div>
         <div class="avatar">
-            <input type="radio" name="avatar" id="Drunk-hamster" hidden="hidden" value="Drunk-hamster" />
+            <input type="radio" name="avatar" id="Drunk-hamster" hidden="hidden" value="Drunk-hamster.jpg" />
             <label for="Drunk-hamster">
                 <img src="~/Content/Images/Avatars/Drunk-hamster.jpg" />
             </label>

@@ -19,7 +19,7 @@ h4, h5, h6 {
     color: #000;
     margin: 0;
     padding: 15px 0px 5px 0px;
-    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+    font-family: 'Paytone One', sans-serif;
     text-align:center;
     letter-spacing: 1px;
 }
@@ -66,9 +66,10 @@ nav a{
 header {
     height:55px;
     border:2px solid #000;
-    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+    font-family: 'Paytone One', sans-serif;
     letter-spacing:1px;
-    background-color:#B22222 ;
+    background-color:#B22222;
+    
 }
 
 header a {
@@ -79,6 +80,7 @@ header a {
     text-decoration:none;
     font-size:40px;
     padding:2px 0px;
+    color:#ffffff;
 }
 
 
@@ -111,13 +113,37 @@ input[type="submit"],
         border: 1px solid #24A9FE;
         color:#dddddd;
         cursor: pointer;
-        font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+        font-family: 'Paytone One', sans-serif;
         letter-spacing:1px;
         font-size: 1.3em;
         padding: 7px;
         margin:0px auto;
         width: auto;
     }
+/*#endregion*/
+
+/*#region defaults*/
+input[type=radio]:checked + label img {
+    border: solid #B22222 5pt;
+}
+.avatar {
+    float: left;
+    margin: 5px;
+    height: 120px;
+    line-height:120px;
+}
+    .avatar img {
+        display: inline;
+        border: solid 5pt #FFFFFF;
+        vertical-align: middle;
+    }
+#avatarSelectionBox {
+    margin:20px -10px
+} 
+#avatarSelectionBox input[type=radio] {
+    display: none;
+            
+}
 /*#endregion*/
 
 /*#region defaults*/
@@ -135,7 +161,7 @@ a {
 
     a:link, a:visited,
     a:active, a:hover {
-        color: #333;
+        
     }
 
     

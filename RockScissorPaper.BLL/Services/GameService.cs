@@ -220,7 +220,8 @@ namespace RockScissorPaper.BLL
                 gameState.PlayerTwo.CurrentScore = game.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
                 gameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(logic.RoundResolver.PlayerTwoResult);
 
-                gameState.FinalRoundResult = game.Status == GameStatus.FinalRoundResult;
+                gameState.Status = game.Status;
+                // gameState.FinalRoundResult = game.Status == GameStatus.FinalRoundResult;
                 SetObservingPlayer(gameState, playerId);
                 return gameState;
             }
@@ -262,6 +263,7 @@ namespace RockScissorPaper.BLL
             {
                 gameState.BannerMessage = "Its a draw.";
             }
+            gameState.Status = game.Status;
             SetObservingPlayer(gameState, playerId);
             return gameState;
         }

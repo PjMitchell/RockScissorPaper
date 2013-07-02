@@ -29,11 +29,12 @@ namespace RockScissorPaper.DAL
             return mapper.Result as Player;
         }
 
-        public int CreatePlayer(string playerName, string ipAddress)
+        public int CreatePlayer(string playerName, string ipAddress, string avatar)
         {
             List<StoreProcedureParameter> parameters = new List<StoreProcedureParameter>();
             parameters.Add(new StoreProcedureParameter("PlayerNameInput", playerName));
             parameters.Add(new StoreProcedureParameter("IpAddressInput", ipAddress));
+            parameters.Add(new StoreProcedureParameter("AvatarInput", avatar));
             return Convert.ToInt32(_dataAccess.ExecuteScalar("Player_Create", parameters));
         }
 

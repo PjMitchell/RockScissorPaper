@@ -16,6 +16,9 @@ namespace RockScissorPaper.BLL
         [Required]
         [StringLength(45)]
         public string IPAddress { get; set; }
-
+        
+        [Required]
+        [StringLength(25)]
+        public string AvatarName { get; set; }
     }
 }

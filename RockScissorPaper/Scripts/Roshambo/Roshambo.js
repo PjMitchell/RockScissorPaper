@@ -13,8 +13,24 @@ window.Roshambo = (function ($) {
         });
         _gameId = gameId;
         _playerId = playerId;
+    }
 
+    function restoreButtons() {
+        var $buttonbox = $('#playerOptions');
+        $buttonbox.children('button').each(function () {
+            var $this = $(this),
+                 text = $this.attr('data-selectionName');
+            $this.removeAttr('disabled', 'disabled');
+            $this.html(text);
+        });
+    }
 
+    function removeButtons() {
+        var $buttonbox = $('#playerOptions');
+        $buttonbox.children('button').each(function () {
+            var $this = $(this);
+            $this.remove();
+        });
     }
     
     function setCurrentSelection($divToUpdate, data) {
@@ -44,49 +60,41 @@ window.Roshambo = (function ($) {
             url: '/api/Games/' + _gameId,
             data: inputModel,
             type: 'PUT',
-            success: function (data) {
-                var $banner = $('#gameBannerMessage'),
-                    $p1Selection = $('#p1Selection'),
-                    $p2Selection = $('#p2Selection'),
-                    $p1Score = $('#p1Score'),
-                    $p2Score = $('#p2Score'),
-                    $userMessage = $('#userMessage'),
-                    $gameRounds = $('#GameRounds');
-
-                $banner.html(data.BannerMessage);
-                setCurrentSelection($p1Selection, data.PlayerOne.CurrentSelection);
-                setCurrentSelection($p2Selection, data.PlayerTwo.CurrentSelection);
-                $p1Score.html(data.PlayerOne.CurrentScore);
-                $p2Score.html(data.PlayerTwo.CurrentScore);
-                if (data.PlayerOne.IsViewer) {
-                    $userMessage.html(data.PlayerOne.PlayerMessage);
-                } else if (data.PlayerTwo.IsViewer) {
-                    $userMessage.html(data.PlayerTwo.PlayerMessage);
-                }
-                $gameRounds.html(data.RoundMessage);
-                if (data.FinalRoundResult) {
-                    $buttonbox.children('button').each(function () {
-                        var $this = $(this);
-                        $this.remove();
-                    });
-                    setTimeout(function () { processSelection(1) }, 3000);
-
-                }
-                else {
-                    $buttonbox.children('button').each(function () {
-                        var $this = $(this),
-                             text = $this.attr('data-selectionName');
-                        $this.removeAttr('disabled', 'disabled');
-                        $this.html(text);
-                    });
-                }
-                
-            }
-            
-        });
+            success: function (data) { processResult(data); } });
         $buttonbox.children('button').attr('disabled', 'disabled').html('<img src="/Content/Images/ajax-loader.gif"/>');
         
     }
+    
+    function processResult(data) {
+        var $banner = $('#gameBannerMessage'),
+                   $p1Selection = $('#p1Selection'),
+                   $p2Selection = $('#p2Selection'),
+                   $p1Score = $('#p1Score'),
+                   $p2Score = $('#p2Score'),
+                   $userMessage = $('#userMessage'),
+                   $gameRounds = $('#GameRounds');
+
+        $banner.html(data.BannerMessage);
+        setCurrentSelection($p1Selection, data.PlayerOne.CurrentSelection);
+        setCurrentSelection($p2Selection, data.PlayerTwo.CurrentSelection);
+        $p1Score.html(data.PlayerOne.CurrentScore);
+        $p2Score.html(data.PlayerTwo.CurrentScore);
+        if (data.PlayerOne.IsViewer) {
+            $userMessage.html(data.PlayerOne.PlayerMessage);
+        } else if (data.PlayerTwo.IsViewer) {
+            $userMessage.html(data.PlayerTwo.PlayerMessage);
+        }
+        $gameRounds.html(data.RoundMessage);
+        if (data.Status === 5) {
+            removeButtons();
+            setTimeout(function () { processSelection(1) }, 3000);
+        }
+        else {
+            restoreButtons();
+        }
+    }
+
+    
 
     function liveStatus() {
         // Reference the auto-generated proxy for the hub. 
