@@ -47,7 +47,9 @@
     position:absolute;
     text-align:center;
     top:80px;
+    
 }
+
 
 .score {
     position:absolute;
@@ -115,7 +117,7 @@
     display:inline-block;
 }
 
-#p1Selection img {
+#p1Selection {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);

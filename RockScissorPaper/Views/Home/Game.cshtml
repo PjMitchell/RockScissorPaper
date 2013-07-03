@@ -17,7 +17,7 @@
         <img  src="@Html.Raw("/Content/Images/Avatars/"+ Model.PlayerOne.AvatarImgFile)" width="80"/>
             
         </div>
-        <p class="playerSelection" id="p1Selection">@Model.StateOfGame.PlayerOne.CurrentSelection </p>
+        <img class="playerSelection" id="p1Selection" src="@Html.Raw("/Content/Images/Selections/" + Model.StateOfGame.PlayerOne.CurrentSelection+".png")"/>
         <h3 class="score" id="p1Score">@Model.StateOfGame.PlayerOne.CurrentScore</h3>
     </div>
     <div id="displayCenter" class="centerPanel">
@@ -41,7 +41,7 @@
          <div class="playerImage">
              <img src="@Html.Raw("/Content/Images/Avatars/"+ Model.PlayerTwo.AvatarImgFile)" width="80" />
         </div>
-        <p class="playerSelection" id="p2Selection">@Model.StateOfGame.PlayerTwo.CurrentSelection </p>
+        <img class="playerSelection" id="p2Selection" src="@Html.Raw("/Content/Images/Selections/" + Model.StateOfGame.PlayerTwo.CurrentSelection+".png")" />
         <h3 class="score" id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
     </div>
     <div id="playerOptions">

@@ -36,20 +36,20 @@ window.Roshambo = (function ($) {
     function setCurrentSelection($divToUpdate, data) {
         switch (data) {
             case 1:
-                data = '<img src="/Content/Images/Selections/Rock.png"/>';
+                data = '/Content/Images/Selections/Rock.png';
                 break;
             case 2:
-                data = '<img src="/Content/Images/Selections/Scissor.png"/>';
+                data = '/Content/Images/Selections/Scissor.png';
                 break;
             case 3:
-                data = '<img src="/Content/Images/Selections/Paper.png"/>';
+                data = '/Content/Images/Selections/Paper.png';
                 break;
             case 0:
-                data = 'Ready';
+                data = '/Content/Images/Selections/Ready.png';
                 break;
         }
 
-        $divToUpdate.html(data);
+        $divToUpdate.attr('src',data);
     }
 
     function processSelection(input) {
@@ -89,17 +89,23 @@ window.Roshambo = (function ($) {
             removeButtons();
             setTimeout(function () { processSelection(1) }, 3000);
         }
-        else {
-            restoreButtons();
+        else if (data.Status === 6) {
+
         }
-        new function(){flashRoundResult(data)};
+        else {
+            flashRoundResult(data);
+        }
+        
     }
 
 
     function flashRoundResult(data) {
-        var $p1Box = $('#playerOne'),
-            $p2Box = $('#playerTwo'),
-            $centerBox = $('#displayCenter');
+        var  $p1Selection = $('#p1Selection'),
+             $p2Selection = $('#p2Selection');
+        $p1Selection.css('opacity', '1');
+        $p2Selection.css('opacity', '1');
+        $p1Selection.animate({ "right": "-40px" }, "slow");
+        $p2Selection.animate({ "left": "-40px" }, "slow");
 
         if(data.PlayerOne.RoundOutcome ===2)
         {
@@ -107,12 +113,17 @@ window.Roshambo = (function ($) {
         }
         else if (data.PlayerOne.RoundOutcome ===1)
         {
-            //alert("Player One Lose!");
+            $p1Selection.animate({ "opacity": "0.15" }, "slow");
+            $p2Selection.animate({ "left": "-80px" }, "slow");
         }
         else if (data.PlayerTwo.RoundOutcome ===1)
         {
-            //alert("Player Two Lose!");
+            $p2Selection.animate({ "opacity": "0.15" }, "slow");
+            $p1Selection.animate({ "right": "-80px" }, "slow");
         }
+        $p1Selection.animate({ "right": "0px" }, "slow");
+        $p2Selection.animate({ "left": "0px" }, "slow");
+        restoreButtons();
     }
 
     function liveStatus() {

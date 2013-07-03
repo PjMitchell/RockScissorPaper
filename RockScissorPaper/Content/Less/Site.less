@@ -45,6 +45,15 @@ h3 {
     font-size: large;
 }
 
+a {
+    color:@Foreground;
+}
+
+ a:link, a:visited,
+    a:active, a:hover {
+       
+    }
+
 .clear-fix:after {
     content: ".";
     clear: both;
@@ -52,6 +61,8 @@ h3 {
     height: 0;
     visibility: hidden;
 }
+
+
 /*#endregion*/
 
 /*#region StatsPage*/
@@ -89,8 +100,6 @@ nav a{
     border-top-left-radius: 10px;
     margin:0px 5px 0px 5px;
     text-decoration:none;
-    color:@Foreground;
-    
 }
 header {
     height:55px;

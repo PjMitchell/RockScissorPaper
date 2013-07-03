@@ -65,6 +65,10 @@ namespace RockScissorPaper.Controllers
             int ruleId = 1;
             CreateGameCommand command = new CreateGameCommand();
             UserInfo info = _playerService.GetCurrentUserInfo();
+            if (info == null)
+            {
+                return RedirectToAction("Index");
+            }
             command.PlayerOneId = info.Id;
             command.PlayerTwoId = botId;
             command.RuleId = ruleId;

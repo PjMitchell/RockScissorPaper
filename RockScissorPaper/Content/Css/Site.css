@@ -31,6 +31,9 @@ h6 {
 h3 {
   font-size: large;
 }
+a {
+  color: #000000;
+}
 .clear-fix:after {
   content: ".";
   clear: both;
@@ -71,7 +74,6 @@ nav a {
   border-top-left-radius: 10px;
   margin: 0px 5px 0px 5px;
   text-decoration: none;
-  color: #000000;
 }
 header {
   height: 55px;

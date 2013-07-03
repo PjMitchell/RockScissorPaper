@@ -202,6 +202,7 @@
     <Content Include="Content\Images\Avatars\PurpleBot.jpg" />
     <Content Include="Content\Css\Wrapper960Static.css" />
     <Content Include="Content\Images\Selections\Paper.png" />
+    <Content Include="Content\Images\Selections\Ready.png" />
     <Content Include="Content\Images\Selections\Rock.png" />
     <Content Include="Content\Images\Selections\Scissor.png" />
     <Content Include="favicon.ico" />
