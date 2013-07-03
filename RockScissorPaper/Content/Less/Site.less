@@ -1,0 +1,184 @@
+﻿/*#region SiteStyle*/
+//Colour Palette
+@Background: #ffffff;
+@Foreground: #000;
+@Overflow: #e2e2e2;
+@Primary:#B22222;
+@PrimaryContrast:#ffffff;
+@Secondary: #0C527F;
+@SecondaryContrast:#dddddd;
+@SecondaryHighlight: #24A9FE;
+//Fonts
+@BaseFont: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+@EmphaticFont: 'Paytone One', sans-serif;
+/*#endregion*/
+
+/*#region Basic Elements*/
+
+html {
+    background-color:@Overflow;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: @Background;
+    border:none;
+    color: @Foreground;
+    font-size: .85em;
+    font-family: @BaseFont;
+    margin: 0px;
+    padding: 10px 0px 20px 0px;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: @Foreground;
+    margin: 0;
+    padding: 15px 0px 5px 0px;
+    font-family:@EmphaticFont ;
+    text-align:center;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: large;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+/*#endregion*/
+
+/*#region StatsPage*/
+.Rock {
+    background-color:black;
+}
+.Scissor {
+    background-color:gray;
+}
+.Paper {
+    background-color:blue;
+}
+.bar {
+    height:10px;
+}
+.roundStat {
+    float:left;
+    padding: 5px;
+}
+/*#endregion*/
+
+/*#region Header*/
+
+nav {
+    margin:0px;
+
+}
+nav a{
+    display:block;
+    float:right;
+    border-width:2px 2px 0px 2px;
+    border-style: solid;
+    border-color: @Foreground @Foreground @Background @Foreground;
+    padding:5px;
+    border-top-left-radius: 10px;
+    margin:0px 5px 0px 5px;
+    text-decoration:none;
+    color:@Foreground;
+    
+}
+header {
+    height:55px;
+    border:2px solid @Foreground;
+    font-family: @EmphaticFont;
+    letter-spacing:1px;
+    background-color:@Primary;
+    
+}
+
+header a {
+    width:100%;
+    height:100%;
+    text-align:center;
+    display:block;
+    text-decoration:none;
+    font-size:40px;
+    padding:2px 0px;
+    color:@PrimaryContrast;
+}
+
+/*#endregion*/
+
+/*#region inputs*/
+input, textarea {
+    border: 1px solid @SecondaryHighlight;
+    background: @Background;
+    color: @Foreground;
+    font-size: 1.2em;
+    margin: 10px auto;
+    padding: 5px;
+    width:auto;
+    display:block;
+}
+
+textarea {
+    font-family: inherit;
+    width: 100%;
+}
+
+    input:focus, textarea:focus {
+        border: 1px solid @Primary;
+    }
+
+
+input[type="submit"],
+    input[type="button"],
+    button {
+        background-color:@Secondary;
+        border: 1px solid @SecondaryHighlight;
+        color:@SecondaryContrast;
+        cursor: pointer;
+        font-family: @EmphaticFont;
+        letter-spacing:1px;
+        font-size: 1.3em;
+        padding: 7px;
+        margin:0px auto;
+        width: auto;
+    }
+/*#endregion*/
+
+/*#region Index*/
+input[type=radio]:checked + label img {
+    border: solid @Primary 5pt;
+}
+.avatar {
+    float: left;
+    margin: 5px;
+    height: 120px;
+    line-height:120px;
+}
+    .avatar img {
+        display: inline;
+        border: solid 5pt @Background;
+        vertical-align: middle;
+    }
+#avatarSelectionBox {
+    margin:20px -10px
+} 
+#avatarSelectionBox input[type=radio] {
+    display: none;
+            
+}
+/*#endregion*/
+
+
+/*#region defaults*/
+
+
+
+/*#endregion*/

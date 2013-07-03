@@ -24,6 +24,8 @@ namespace RockScissorPaper
             bundles.Add(new StyleBundle("~/Content/styles").Include(
                 "~/Content/Css/Site.css",
                 "~/Content/Css/Wrapper960Static.css"));
+
+          
         }
     }
 }

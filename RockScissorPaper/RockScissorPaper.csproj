@@ -115,6 +115,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
@@ -152,9 +156,6 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
@@ -191,6 +192,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Css\Game.css" />
+    <Content Include="Content\Css\Old\Site.css" />
+    <Content Include="Content\Css\Site.css" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\Avatars\BlueBot.jpg" />
     <Content Include="Content\Images\Avatars\ConeOfShame.jpg" />
@@ -200,6 +203,7 @@
     <Content Include="Content\Css\Wrapper960Static.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\Less\Site.less" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - Web Deploy.pubxml" />
     <None Include="Scripts\Lib\jquery-2.0.2.intellisense.js" />
@@ -217,7 +221,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Css\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
