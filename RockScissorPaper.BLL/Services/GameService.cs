@@ -213,12 +213,14 @@ namespace RockScissorPaper.BLL
                 gameState.PlayerOne.CurrentSelection = currentRound.PlayerOneSelection;
                 gameState.PlayerOne.CurrentScore = game.Rounds.Count(r => r.PlayerOneOutcome == GameOutcome.Win);
                 gameState.PlayerOne.PlayerMessage = SetWinLoseDrawMessage(logic.RoundResolver.PlayerOneResult);
+                gameState.PlayerOne.RoundOutcome = logic.RoundResolver.PlayerOneResult;
 
                 //Sets Player Two State
                 gameState.PlayerTwo.PlayerId = game.PlayerTwo.PlayerId;
                 gameState.PlayerTwo.CurrentSelection = currentRound.PlayerTwoSelection;
                 gameState.PlayerTwo.CurrentScore = game.Rounds.Count(r => r.PlayerTwoOutcome == GameOutcome.Win);
                 gameState.PlayerTwo.PlayerMessage = SetWinLoseDrawMessage(logic.RoundResolver.PlayerTwoResult);
+                gameState.PlayerTwo.RoundOutcome = logic.RoundResolver.PlayerTwoResult;
 
                 gameState.Status = game.Status;
                 // gameState.FinalRoundResult = game.Status == GameStatus.FinalRoundResult;

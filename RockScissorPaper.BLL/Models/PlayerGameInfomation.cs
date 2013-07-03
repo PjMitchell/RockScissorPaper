@@ -13,5 +13,6 @@ namespace RockScissorPaper.BLL
         public bool IsViewer { get; set; }
         public int CurrentScore { get; set; }
         public string PlayerMessage { get; set; }
+        public GameOutcome RoundOutcome { get; set; }
     }
 }

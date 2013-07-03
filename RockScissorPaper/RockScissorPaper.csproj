@@ -201,6 +201,9 @@
     <Content Include="Content\Images\Avatars\GreenBot.jpg" />
     <Content Include="Content\Images\Avatars\PurpleBot.jpg" />
     <Content Include="Content\Css\Wrapper960Static.css" />
+    <Content Include="Content\Images\Selections\Paper.png" />
+    <Content Include="Content\Images\Selections\Rock.png" />
+    <Content Include="Content\Images\Selections\Scissor.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Less\Site.less" />

@@ -36,13 +36,13 @@ window.Roshambo = (function ($) {
     function setCurrentSelection($divToUpdate, data) {
         switch (data) {
             case 1:
-                data = 'Rock';
+                data = '<img src="/Content/Images/Selections/Rock.png"/>';
                 break;
             case 2:
-                data = 'Scissor';
+                data = '<img src="/Content/Images/Selections/Scissor.png"/>';
                 break;
             case 3:
-                data = 'Paper';
+                data = '<img src="/Content/Images/Selections/Paper.png"/>';
                 break;
             case 0:
                 data = 'Ready';
@@ -92,9 +92,28 @@ window.Roshambo = (function ($) {
         else {
             restoreButtons();
         }
+        new function(){flashRoundResult(data)};
     }
 
-    
+
+    function flashRoundResult(data) {
+        var $p1Box = $('#playerOne'),
+            $p2Box = $('#playerTwo'),
+            $centerBox = $('#displayCenter');
+
+        if(data.PlayerOne.RoundOutcome ===2)
+        {
+            //alert("Draw");
+        }
+        else if (data.PlayerOne.RoundOutcome ===1)
+        {
+            //alert("Player One Lose!");
+        }
+        else if (data.PlayerTwo.RoundOutcome ===1)
+        {
+            //alert("Player Two Lose!");
+        }
+    }
 
     function liveStatus() {
         // Reference the auto-generated proxy for the hub. 

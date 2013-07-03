@@ -14,13 +14,13 @@ namespace RockScissorPaper.BLL
         public string RoundMessage { get; set; }
         public string BannerMessage { get; set; }
         public GameStatus Status { get; set; }
-        public bool FinalRoundResult { get; set; }
+        //public bool FinalRoundResult { get; set; }
 
         public GameStateQuery()
         {
             PlayerOne = new PlayerGameInformation();
             PlayerTwo = new PlayerGameInformation();
-            FinalRoundResult = false;
+            //FinalRoundResult = false;
         }
     }
 }

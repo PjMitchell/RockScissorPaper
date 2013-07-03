@@ -20,7 +20,7 @@
         <p class="playerSelection" id="p1Selection">@Model.StateOfGame.PlayerOne.CurrentSelection </p>
         <h3 class="score" id="p1Score">@Model.StateOfGame.PlayerOne.CurrentScore</h3>
     </div>
-    <div class="centerPanel">
+    <div id="displayCenter" class="centerPanel">
             <h2>Vs</h2>
             <p id="userMessage">
                 @if (@Model.StateOfGame.PlayerOne.IsViewer)
