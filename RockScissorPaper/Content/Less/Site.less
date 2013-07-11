@@ -1,4 +1,6 @@
 ﻿/*#region SiteStyle*/
+
+
 //Colour Palette
 @Background: #ffffff;
 @Foreground: #000;
@@ -9,8 +11,21 @@
 @SecondaryContrast:#dddddd;
 @SecondaryHighlight: #24A9FE;
 //Fonts
+
+@font-face {
+    font-family: 'BowlbyOne-Regular';
+    src: url('/Content/Fonts/BowlbyOne-Regular.eot');
+    src: url('/Content/Fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'),
+         url('/Content/Fonts/BowlbyOne-Regular.woff') format('woff'),
+         url('/Content/Fonts/BowlbyOne-Regular.ttf') format('truetype'),
+         url('/Content/Fonts/BowlbyOne-Regular.svg#leckerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 @BaseFont: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-@EmphaticFont: 'Paytone One', sans-serif;
+@EmphaticFont: 'BowlbyOne-Regular', sans-serif;
 /*#endregion*/
 
 /*#region Basic Elements*/
@@ -158,6 +173,13 @@ input[type="submit"],
         padding: 7px;
         margin:0px auto;
         width: auto;
+    }
+input[type="submit"],
+    input[type="button"],
+    button img{
+        
+        margin:-7px auto;
+       
     }
 /*#endregion*/
 

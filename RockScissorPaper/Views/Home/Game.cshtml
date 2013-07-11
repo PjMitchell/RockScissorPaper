@@ -47,7 +47,7 @@
     <div id="playerOptions">
         @foreach(var item in Model.ButtonBox.Buttons)
         {
-        <button data-selection="@item.SelectionId" data-selectionName="@item.SelectionText">@item.SelectionText</button>
+        <button data-selection="@item.SelectionId" data-selectionName="@item.SelectionText"><img src="@Html.Raw("/Content/Images/Selections/" + item.SelectionText + ".png")" height="25"/> </button>
         }
     </div>
 </div>

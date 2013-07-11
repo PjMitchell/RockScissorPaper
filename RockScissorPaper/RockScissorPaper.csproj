@@ -194,6 +194,7 @@
     <Content Include="Content\Css\Game.css" />
     <Content Include="Content\Css\Old\Site.css" />
     <Content Include="Content\Css\Site.css" />
+    <Content Include="Content\Fonts\BowlbyOne-Regular.svg" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\Avatars\BlueBot.jpg" />
     <Content Include="Content\Images\Avatars\ConeOfShame.jpg" />
@@ -208,6 +209,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Less\Site.less" />
+    <Content Include="Content\Fonts\BowlbyOne-Regular.ttf" />
+    <Content Include="Content\Fonts\BowlbyOne-Regular.eot" />
+    <Content Include="Content\Fonts\BowlbyOne-Regular.otf" />
+    <Content Include="Content\Fonts\BowlbyOne-Regular.woff" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - Web Deploy.pubxml" />
     <None Include="Scripts\Lib\jquery-2.0.2.intellisense.js" />

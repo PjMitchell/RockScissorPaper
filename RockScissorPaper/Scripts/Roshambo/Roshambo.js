@@ -21,7 +21,7 @@ window.Roshambo = (function ($) {
             var $this = $(this),
                  text = $this.attr('data-selectionName');
             $this.removeAttr('disabled', 'disabled');
-            $this.html(text);
+            $this.html('<img src="/Content/Images/Selections/' + text + '.png")" height="25"/>');
         });
     }
 
@@ -109,20 +109,20 @@ window.Roshambo = (function ($) {
 
         if(data.PlayerOne.RoundOutcome ===2)
         {
-            //alert("Draw");
+            $p1Selection.animate({ "right": "-40px" }, "slow").animate({ "right": "0px" }, "slow");
+            $p2Selection.animate({ "left": "-40px" }, "slow").animate({ "left": "0px" }, "slow");
         }
         else if (data.PlayerOne.RoundOutcome ===1)
         {
-            $p1Selection.animate({ "opacity": "0.15" }, "slow");
-            $p2Selection.animate({ "left": "-80px" }, "slow");
+            $p1Selection.animate({ "right": "-30px" },  "slow" ).animate({ "opacity": "0.15" }, "slow" ).animate({ "right": "0px" }, "slow" );
+            $p2Selection.animate({ "left": "-60px" }, 1200).animate({ "left": "0px" }, "slow" );
         }
         else if (data.PlayerTwo.RoundOutcome ===1)
         {
-            $p2Selection.animate({ "opacity": "0.15" }, "slow");
-            $p1Selection.animate({ "right": "-80px" }, "slow");
+            $p1Selection.animate({ "right": "-60px" },1200).animate({ "right": "0px" }, "slow" );
+            $p2Selection.animate({ "left": "-30px" }, "slow").animate({ "opacity": "0.15" }, "slow" ).animate({ "left": "0px" }, "slow" );
         }
-        $p1Selection.animate({ "right": "0px" }, "slow");
-        $p2Selection.animate({ "left": "0px" }, "slow");
+       
         restoreButtons();
     }
 

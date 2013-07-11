@@ -1,4 +1,11 @@
 /*#region SiteStyle*/
+@font-face {
+  font-family: 'BowlbyOne-Regular';
+  src: url('/Content/Fonts/BowlbyOne-Regular.eot');
+  src: url('/Content/Fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'), url('/Content/Fonts/BowlbyOne-Regular.woff') format('woff'), url('/Content/Fonts/BowlbyOne-Regular.ttf') format('truetype'), url('/Content/Fonts/BowlbyOne-Regular.svg#leckerregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 /*#endregion*/
 /*#region Basic Elements*/
 html {
@@ -24,7 +31,7 @@ h6 {
   color: #000000;
   margin: 0;
   padding: 15px 0px 5px 0px;
-  font-family: 'Paytone One', sans-serif;
+  font-family: 'BowlbyOne-Regular', sans-serif;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -78,7 +85,7 @@ nav a {
 header {
   height: 55px;
   border: 2px solid #000000;
-  font-family: 'Paytone One', sans-serif;
+  font-family: 'BowlbyOne-Regular', sans-serif;
   letter-spacing: 1px;
   background-color: #b22222;
 }
@@ -120,12 +127,17 @@ button {
   border: 1px solid #24a9fe;
   color: #dddddd;
   cursor: pointer;
-  font-family: 'Paytone One', sans-serif;
+  font-family: 'BowlbyOne-Regular', sans-serif;
   letter-spacing: 1px;
   font-size: 1.3em;
   padding: 7px;
   margin: 0px auto;
   width: auto;
+}
+input[type="submit"],
+input[type="button"],
+button img {
+  margin: -7px auto;
 }
 /*#endregion*/
 /*#region Index*/
