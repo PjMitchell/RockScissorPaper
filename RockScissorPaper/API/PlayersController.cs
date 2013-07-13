@@ -19,9 +19,9 @@ namespace RockScissorPaper.API
             _service = service;
         }
 
-        public Player Get()
+        public List<Player> Get()
         {
-            return _service.GetRandomBot();
+            return _service.GetBotList();
         }
 
         public Player Get(int id)

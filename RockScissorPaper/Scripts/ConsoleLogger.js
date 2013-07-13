@@ -7,6 +7,5 @@ window.ConsoleLogger = (function ($) {
 
     return {
         log : log
-        //things to return
     }
 })($);

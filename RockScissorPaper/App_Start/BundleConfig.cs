@@ -11,6 +11,8 @@ namespace RockScissorPaper
             bundles.Add(new ScriptBundle("~/bundles/global").Include(
                         "~/Scripts/Lib/jquery-{version}.js",
                         "~/Scripts/Lib/Api.js",
+                        "~/Scripts/ConsoleLogger.js",
+                        "~/Scripts/Roshambo/Game.js",
                         "~/Scripts/Roshambo/Roshambo.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

@@ -32,11 +32,18 @@ namespace RockScissorPaper.BLL
             return _playerSessionRepository.GetCurrentUserInfo();
         }
 
-        public Player GetRandomBot()
+        public List<Player> GetBotList()
         {
             List<Player> botList = _repository.GetBotList();
             Random rnd = new Random();
             botList.RemoveAll(m => m.Bot.Name == "RockBot");
+            return botList;
+        }
+
+        public Player GetRandomBot()
+        {
+            List<Player> botList = GetBotList();
+            Random rnd = new Random();
             int i = rnd.Next(0, botList.Count);
             return botList[i];
         }
@@ -69,6 +76,9 @@ namespace RockScissorPaper.BLL
         }
        
         #endregion
-       
+
+
+
+        
     }
 }

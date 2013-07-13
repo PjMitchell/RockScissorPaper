@@ -12,6 +12,7 @@ namespace RockScissorPaper.BLL
         Player GetPlayer(int id);
         UserInfo GetCurrentUserInfo();
         Player GetRandomBot();
+        List<Player> GetBotList();
 
         void Login(int id);
         void SetCurrentGame(int gameId);

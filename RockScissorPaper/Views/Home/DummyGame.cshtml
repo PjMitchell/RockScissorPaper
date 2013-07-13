@@ -7,13 +7,13 @@
 <button id="GoButton">Run</button>
 
 @section scripts {
-    <script src="~/Scripts/ConsoleLogger.js"></script>
-    <script src="~/Scripts/Roshambo/DummyGames.js"></script>
+    <script src="~/Scripts/Roshambo/GamesSimulator.js"></script>
+    
     <script>
         $('document').ready( function() {
-            $('#GoButton').on('click', function() {
-                DummyGame.startDummyGame();
-            })
+            $('#GoButton').on('click', function () {
+                GameSimulator.start();
+                });
         })
     </script>
 }
