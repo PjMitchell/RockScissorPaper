@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-window.Roshambo = (function ($) {
+window.Roshambo = (function ($, api) {
 
     var _gameId,
         _playerId;
@@ -55,14 +55,16 @@ window.Roshambo = (function ($) {
     function processSelection(input) {
         var inputModel = { PlayerId: _playerId, GameId: _gameId, Selection: input },
             $buttonbox = $('#playerOptions');
-        $.ajax({
-            dataType: 'json',
-            url: '/api/Games/' + _gameId,
-            data: inputModel,
-            type: 'PUT',
-            success: function (data) { processResult(data); } });
-        $buttonbox.children('button').attr('disabled', 'disabled').html('<img src="/Content/Images/ajax-loader.gif"/>');
+        api.put('Games', _gameId, inputModel)
+            .done(function (data) {
+                processResult(data);
+            });
+        $buttonbox
+            .children('button')
+            .attr('disabled', 'disabled')
+            .html('<img src="/Content/Images/ajax-loader.gif"/>');
         
+
     }
     
     function processResult(data) {
@@ -152,7 +154,7 @@ window.Roshambo = (function ($) {
         init: init,
         liveStatus: liveStatus
     }
-})($);
+})($, Api);
 
 
 

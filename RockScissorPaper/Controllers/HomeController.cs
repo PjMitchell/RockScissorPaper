@@ -101,6 +101,11 @@ namespace RockScissorPaper.Controllers
             StatisticsOverviewQuery view = _statsService.GetOverview();
             return View(view);
         }
+
+        public ActionResult DummyGame()
+        {
+            return View();
+        }
     }
 
 }

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "DummyGame";
+}
+
+<h2>DummyGame</h2>
+
+<button id="GoButton">Run</button>
+
+@section scripts {
+    <script src="~/Scripts/ConsoleLogger.js"></script>
+    <script src="~/Scripts/Roshambo/DummyGames.js"></script>
+    <script>
+        $('document').ready( function() {
+            $('#GoButton').on('click', function() {
+                DummyGame.startDummyGame();
+            })
+        })
+    </script>
+}

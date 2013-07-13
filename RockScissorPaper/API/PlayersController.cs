@@ -29,12 +29,14 @@ namespace RockScissorPaper.API
             return _service.GetPlayer(id);
         }
 
-        public int Post(string name)
+        public int Post(CreatePlayerCommand command)
         {
             string ip = ((HttpContextBase)Request.Properties["MS_HttpContext"]).Request.UserHostAddress;
-            CreatePlayerCommand command = new CreatePlayerCommand();
             command.IPAddress = ip;
-            command.PlayerName = name;
+            if (string.IsNullOrEmpty(command.AvatarName))
+            {
+                command.AvatarName = "BlueBot";
+            }
             return _service.CreatePlayer(command);
         }
     }
