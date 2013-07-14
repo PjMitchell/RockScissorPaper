@@ -13,6 +13,7 @@ namespace RockScissorPaper
                         "~/Scripts/Lib/Api.js",
                         "~/Scripts/ConsoleLogger.js",
                         "~/Scripts/Roshambo/Game.js",
+                        "~/Scripts/Lib/underscore.js",
                         "~/Scripts/Roshambo/Roshambo.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

@@ -3,17 +3,32 @@
 }
 
 <h2>DummyGame</h2>
-
-<button id="GoButton">Run</button>
-
+<input type="number" id="InputField" />
+<button id="GoButton">Start</button>
+<button id="StopButton">Stop</button>
 @section scripts {
+
+    <script src="~/Scripts/Roshambo/SimulatedGameSession.js"></script>
     <script src="~/Scripts/Roshambo/GamesSimulator.js"></script>
     
     <script>
         $('document').ready( function() {
             $('#GoButton').on('click', function () {
-                GameSimulator.start();
-                });
+                var $Textbox = $('#InputField'),
+                    i = $Textbox.val();
+                if (!$.isNumeric(i)) {
+                    i = 1;
+                    $Textbox.val(1);
+                }
+                if (i > 6) {
+                    i = 5;
+                    $Textbox.val(5);
+                }
+                GameSimulator.start(i);
+            });
+            $('#StopButton').on('click', function () {
+                GameSimulator.stop();
+            });
         })
     </script>
 }

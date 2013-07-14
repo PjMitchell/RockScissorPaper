@@ -224,10 +224,15 @@
     <Content Include="Scripts\jquery.signalR-1.1.2.min.js" />
     <Content Include="Scripts\Lib\modernizr-2.6.2.js" />
     <Content Include="Scripts\ConsoleLogger.js" />
+    <Content Include="Scripts\Roshambo\Copy of GamesSimulator.js" />
+    <Content Include="Scripts\Roshambo\Copy of SimulatedGameSession.js" />
     <Content Include="Scripts\Roshambo\GamesSimulator.js" />
     <Content Include="Scripts\Roshambo\DummyGames.js" />
     <Content Include="Scripts\Roshambo\Game.js" />
     <Content Include="Scripts\Roshambo\Roshambo.js" />
+    <Content Include="Scripts\Roshambo\SimulatedGameSession.js" />
+    <Content Include="Scripts\Lib\underscore.js" />
+    <Content Include="Scripts\Lib\underscore.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -246,6 +251,7 @@
     <Content Include="Views\Home\Game.cshtml" />
     <Content Include="Views\Home\Statistics.cshtml" />
     <Content Include="Views\Home\DummyGame.cshtml" />
+    <Content Include="Scripts\Lib\underscore.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

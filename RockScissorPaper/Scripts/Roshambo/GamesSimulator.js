@@ -1,71 +1,42 @@
 ﻿'use strict'
-window.GameSimulator = (function ($, api, gameRepository) {
+window.GameSimulator = (function (_, $, gameSession, logger) {
 
     // Vars
-    var _allBots, _initDefered;
-
-    // Init
-
-    function init() {
-        if (!_initDefered) {
-            _initDefered = api.get('Players').done(function (response) {
-                _allBots = response;
-            })
-        }
-
-        return _initDefered;
-    }
+    var _sessions = [];
+        
 
     // Public functions
 
-    function start() {
-        init().done(function() {
-            $.when(createPlayer(), getBotId()).done(function (playerId, bot) {
-                var options = {
-                    ruleSet: 1
-                };
-                gameRepository.create(playerId[0], bot.PlayerId, options)
-                    .done(function (game) {
-                        processRound(game);
-                    });
-            });
-        });
-        
+    function start(instances) {
+        while (instances < _sessions.length) {
+            var item = _sessions.pop();
+            item.stop();
+        }
+        while (instances > _sessions.length) {
+            var session = gameSession.create();
+            _sessions.push(session);
+            session.start();
+        }
     }
 
     function stop() {
-        // TODO: Stop
-    }
+        var defArray = []
+        log("Games Stopping");
 
-    // Private helpers
-
-    function createPlayer() {
-        var firstname = ['Billy', 'Bob', 'Boris', 'Bernard', 'Beatrix'],
-            lastname = ['Smith', 'Miller', 'Baker', 'Tailor', 'Cartwright'],
-            firstnameIndex = Math.floor((Math.random() * firstname.length)),
-            lastnameIndex = Math.floor((Math.random() * lastname.length)),
-            data = {
-                PlayerName: firstname[firstnameIndex] + ' ' + lastname[lastnameIndex]
-            };
-        return api.post('Players', data);
-    }
-
-    function getBotId() {
-        var index = Math.floor((Math.random() * _allBots.length));
-        return _allBots[index];
-    }
-
-    function processRound(game) {
-        //checks if game over then makes move
-        var selection = Math.floor((Math.random() * 3) + 1);
-            
-        game.executeMove(game.player1Id, selection).done(function (response) {
-            if (! game.hasFinished()) {
-                processRound(game);
-            }
-            else {
-            }
+        _.each(_sessions, function(session) {
+            defArray.push( session.stop());
         });
+        $.when.apply(this, defArray)
+            .done(function () {
+                log("All games Stopped");
+            });
+        _sessions = [];
+    }
+
+    function log(message) {
+        if (logger) {
+            logger.log(message);
+        }
     }
     
     // Definition
@@ -73,4 +44,4 @@ window.GameSimulator = (function ($, api, gameRepository) {
         start: start,
         stop: stop
     }
-})($, Api , Models.Game);
+})(_, $, Models.SimulatedGameSession, ConsoleLogger);
