@@ -13,12 +13,13 @@ window.Models.Game = (function ($, api, logger) {
             Game.prototype.executeMove = function (playerid, selection) {
                 var me = this,
                     inputModel = {
-                    PlayerId: playerid,
-                    GameId: me.gameId,
-                    Selection: selection
-                    };
-
-                log('player ' + playerid + ' selects ' + selection);
+                        PlayerId: playerid,
+                        GameId: me.gameId,
+                        Selection: selection
+                    },
+                    selectionText = getSelectionText(selection);
+                
+                log('player ' + playerid + ' selects ' + selectionText);
 
                 return api.put('Games', this.gameId, inputModel).then(function (response) {
                     me.status = response.Status;
@@ -52,6 +53,17 @@ window.Models.Game = (function ($, api, logger) {
                 ruleSet: createGameCommand.RuleId
             });
         });
+    }
+
+    function getSelectionText(selectionInt) {
+        switch (selectionInt) {
+            case 1:
+                return "Rock";
+            case 2:
+                return "Scissor";
+            case 3:
+                return "Paper";
+        }
     }
 
     function log(message) {

@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -12,25 +16,10 @@
     @Styles.Render("~/Content/styles")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
-    <nav class="wrapper960">
-                @Html.ActionLink("Stats","Statistics","Home")
-                <a href="javascript:window.open('/Home/DummyGame', '_blank', 'height=400,width=360');preventdefault();">Tools</a>
-        <div class="clear-fix"></div>
-    </nav>
-    <header  class="wrapper960">
-        @Html.ActionLink("Rock Scissor Paper","Index","Home")
-                
-        <div class="clear-fix"></div>
-        
-    </header>
-    <div class="wrapper960" >
-        
-        @RenderBody()
-        <div class="clear-fix"></div>
-    </div>
+    @RenderBody()
     @Scripts.Render("~/bundles/global")
-    
     @RenderSection("scripts", required: false)
 </body>
 </html>

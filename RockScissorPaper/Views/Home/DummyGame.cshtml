@@ -1,18 +1,25 @@
 ﻿@{
-    ViewBag.Title = "DummyGame";
+    ViewBag.Title = "Run Dummy Games";
+    Layout = "/Views/Shared/_PopupLayout.cshtml";
 }
 
-<h2>DummyGame</h2>
+<h2>Run dummy games</h2>
 <input type="number" id="InputField" />
-<button id="GoButton">Start</button>
+<button id="GoButton" style="text-align:center">Start</button>
 <button id="StopButton">Stop</button>
-@section scripts {
+<div id="console">
+   
+</div>
 
+@section scripts {
+    <script src="~/Scripts/DivConsoleLogger.js"></script>
+    <script src="~/Scripts/Roshambo/Game.js"></script>
     <script src="~/Scripts/Roshambo/SimulatedGameSession.js"></script>
     <script src="~/Scripts/Roshambo/GamesSimulator.js"></script>
     
     <script>
-        $('document').ready( function() {
+        $('document').ready(function () {
+            ConsoleLogger.init();
             $('#GoButton').on('click', function () {
                 var $Textbox = $('#InputField'),
                     i = $Textbox.val();

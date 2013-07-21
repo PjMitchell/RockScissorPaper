@@ -216,6 +216,7 @@
     <None Include="Properties\PublishProfiles\RockScissorPaper - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - Web Deploy.pubxml" />
     <None Include="Scripts\Lib\jquery-2.0.2.intellisense.js" />
+    <Content Include="Scripts\DivConsoleLogger.js" />
     <Content Include="Scripts\Lib\Api.js" />
     <Content Include="Scripts\Lib\json2.js" />
     <Content Include="Scripts\Lib\json2.min.js" />
@@ -252,6 +253,7 @@
     <Content Include="Views\Home\Statistics.cshtml" />
     <Content Include="Views\Home\DummyGame.cshtml" />
     <Content Include="Scripts\Lib\underscore.min.map" />
+    <Content Include="Views\Shared\_PopupLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
