@@ -142,7 +142,7 @@ button img {
 /*#endregion*/
 /*#region Index*/
 input[type=radio]:checked + label img {
-  border: solid #b22222 5pt;
+  border: solid #b22222 5px;
 }
 .avatar {
   float: left;
@@ -152,7 +152,7 @@ input[type=radio]:checked + label img {
 }
 .avatar img {
   display: inline;
-  border: solid 5pt #ffffff;
+  border: solid 5px #ffffff;
   vertical-align: middle;
 }
 #avatarSelectionBox {
