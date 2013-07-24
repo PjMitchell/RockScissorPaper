@@ -49,7 +49,7 @@ CREATE TABLE Player
 PlayerId int NOT NULL AUTO_INCREMENT,
 PlayerName  varchar(25) character set UTF8 NOT NULL,
 PlayerIPAddress varchar(45) character set UTF8 NOT NULL,
-AvatarImg varchar(25) character set UTF8 NOT NULL DEFAULT 'Drunk-hamster.jpg',
+AvatarImg varchar(25) character set UTF8 NOT NULL DEFAULT 'Rock1.jpg',
 IsBot bit NOT NULL DEFAULT 0, 
 BotType varchar(25) character set UTF8,
 PRIMARY KEY (PlayerId)
