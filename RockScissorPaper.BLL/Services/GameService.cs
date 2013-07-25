@@ -92,8 +92,17 @@ namespace RockScissorPaper.BLL
                     };
                     _gameRepository.UpdateGameResult(updateGameCommand);
 
-                    var ev = new GameFinishedEvent();
+                    GameServiceResult eventMessage = new GameServiceResult
+                    {
+                        HasGameFinished = true,
+                        PlayerOne = game.PlayerOne,
+                        PlayerTwo = game.PlayerTwo,
+                        PlayerOneOutcome = logic.ScoreResolver.PlayerOneOutcome,
+                        PlayerTwoOutcome = logic.ScoreResolver.PlayerTwoOutcome
+                    };
+                    var ev = new GameFinishedEvent(eventMessage);
                     _gameEventManager.Publish(ev);
+
                     SetGameStatus(game, GameStatus.FinalRoundResult);
                 }
                 else
@@ -187,6 +196,11 @@ namespace RockScissorPaper.BLL
             logic.ScoreResolver.ResolveGame(result.Rounds);
             return result;
 
+        }
+
+        public int GetNumberofOpenGames()
+        {
+            return _gameRepository.GetNumberofOpenGames();
         }
         
         public GameStateQuery GetLastestRoundResult(int gameId, int playerId)

@@ -10,6 +10,8 @@ namespace RockScissorPaper.BLL
     {
         public bool HasGameFinished { get; set; }
         public string Message { get; set; }
+        public Player PlayerOne { get; set; }
+        public Player PlayerTwo { get; set; }
         public GameOutcome PlayerOneOutcome { get; set; }
         public GameOutcome PlayerTwoOutcome { get; set; }
     }

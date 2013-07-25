@@ -16,20 +16,44 @@ namespace RockScissorPaper.Hubs
     {
         private readonly static HashSet<string> _connectionIds = new HashSet<string>();
         public static int PeopleConnected { get {return _connectionIds.Count; } }
+        private HubNotificationService _notificationService;
+
         private IStatisticsService _statsService;
+        private IGameService _gameService;
 
-        public RoshamboHub(GameEventManager eventManager, IStatisticsService statsService)
+        public RoshamboHub(GameEventManager eventManager, IStatisticsService statsService, IGameService gameService)
         {
-            eventManager.Subscribe<GameFinishedEvent>(GameFinished);
+          //  eventManager.Subscribe<GameFinishedEvent>(GameFinished);
             _statsService = statsService;
+            _gameService = gameService;
+            _notificationService = HubNotificationService.Instance(eventManager, statsService, gameService);
         }
 
-        public void GameFinished(GameFinishedEvent gameFinishedEvent)
-        {
-            var context = GlobalHost.ConnectionManager.GetHubContext<RoshamboHub>();
-            GlobalResultsHubObject view = GetCurrentGlobalResults();
-            context.Clients.All.refreshView(view);
-        }
+        //public void GameFinished(GameFinishedEvent gameFinishedEvent)
+        //{
+        //    var context = GlobalHost.ConnectionManager.GetHubContext<RoshamboHub>();
+        //    GlobalResultsHubObject view = GetCurrentGlobalResults();
+        //    context.Clients.All.refreshView(view);
+
+        //    if(gameFinishedEvent.GameResult!=null)
+        //    {
+        //        string message;
+        //        if (gameFinishedEvent.GameResult.PlayerTwoOutcome == GameOutcome.Win)
+        //        {
+        //            message = gameFinishedEvent.GameResult.PlayerTwo.Name + " has beaten " + gameFinishedEvent.GameResult.PlayerOne.Name;
+        //        }
+        //        else if (gameFinishedEvent.GameResult.PlayerOneOutcome == GameOutcome.Win)
+        //        {
+        //            message = gameFinishedEvent.GameResult.PlayerOne.Name + " has beaten " + gameFinishedEvent.GameResult.PlayerTwo.Name;
+        //        }
+        //        else
+        //        {
+        //            message = gameFinishedEvent.GameResult.PlayerOne.Name + " has drawn against " + gameFinishedEvent.GameResult.PlayerTwo.Name;
+        //        }
+        //        context.Clients.All.newGameReport(message);
+        //    }
+
+        //}
 
         public void Send(string name, string message)
         {
@@ -87,7 +111,7 @@ namespace RockScissorPaper.Hubs
             BotvsHumanStatistics query = _statsService.GetBotVsHumanScore();
             result.BotWins = query.BotWins;
             result.HumanWins = query.HumanWins;
-            result.NumberOfPeopleConnected = PeopleConnected;
+            result.NumberOfPeopleConnected = _gameService.GetNumberofOpenGames();
             return result;
         }
     }

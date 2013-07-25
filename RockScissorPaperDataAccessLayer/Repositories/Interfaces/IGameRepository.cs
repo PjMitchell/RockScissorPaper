@@ -19,6 +19,13 @@ namespace RockScissorPaper.DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        int GetNumberofOpenGames();
+
+        /// <summary>
+        /// Retrives Game by Game Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Game GetGame(int id);
 
         /// <summary>

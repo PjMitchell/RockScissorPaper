@@ -145,6 +145,10 @@ window.Roshambo = (function ($, api) {
             botWinsField.html('Bots :'+ view.BotWins)
             humanWinsField.html('Humans :'+ view.HumanWins)
         }
+        hub.client.newGameReport = function (message) {
+            alert(message);
+        }
+
         $.connection.hub.start().done(function () {
             hub.server.getInfo();
         });

@@ -9,6 +9,16 @@ namespace RockScissorPaper.BLL
 {
     public class GameFinishedEvent
     {
-        
+        private GameServiceResult _gameResult;
+
+        public GameServiceResult GameResult { get { return _gameResult; } }
+
+        public GameFinishedEvent() { }
+
+        public GameFinishedEvent(GameServiceResult result)
+        {
+            _gameResult = result;
+        }
+
     }
 }

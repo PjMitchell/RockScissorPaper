@@ -191,5 +191,12 @@ namespace RockScissorPaper.DAL
             int result = (int)_dataAccess.ExecuteScalar("GameRuleSet_GetGameRuleSetId", paras);
             return result;
         }
+
+
+        public int GetNumberofOpenGames()
+        {
+            int result = Convert.ToInt32(_dataAccess.ExecuteScalar("Game_CountActive"));
+            return result;
+        }
     }
 }

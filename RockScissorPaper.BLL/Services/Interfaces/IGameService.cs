@@ -18,6 +18,7 @@ namespace RockScissorPaper.BLL
         IEnumerable<GameRules> GetGameRuleSets();
         GameRules GetGameRuleSetById(int id);
         Game GetGame(int id);
+        int GetNumberofOpenGames();
         GameStateQuery GetLastestRoundResult(int gameId, int playerId);
         GameStateQuery GetEndOfGame(int gameId, int playerId);
         GameStateQuery GetCurrentState(int gameId, int playerId);
