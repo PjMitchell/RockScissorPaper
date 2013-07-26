@@ -29,6 +29,8 @@ window.Roshambo = (function ($, api) {
         var $buttonbox = $('#playerOptions');
         $buttonbox.children('button').each(function () {
             var $this = $(this);
+               
+            
             $this.remove();
         });
     }

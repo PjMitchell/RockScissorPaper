@@ -27,8 +27,8 @@ window.Models.SimulatedGameSession = (function (_, $, api, gameRepository) {
     }
 
     function createPlayer() {
-        var firstname = ['Billy', 'Bob', 'Boris', 'Bernard', 'Beatrix'],
-            lastname = ['Smith', 'Miller', 'Baker', 'Tailor', 'Cartwright'],
+        var firstname = ['Susan', 'Jessica', 'Anna', 'Debra', 'Rita', 'Pepper', 'Kim', 'Vicky', 'Pam', 'Dan', 'Jason', 'Jeff', 'Eric', 'Scott', 'Dave', 'Chad', 'Steve', 'Jermaine', 'Liam', 'Richard', 'Jenny'],
+            lastname = ['Clark', 'Ballmer', 'Wilson', 'Guthrie', 'Jackson', 'Lewis', 'Brown', 'Bailey', 'Cook', 'Bell', 'Cooper', 'Howard', 'Morris', 'Phillips', 'Parker', 'Ellis', 'Jordan', 'Tucker', 'Sims', 'Fox', 'Greene', 'Banks', 'Fuller', 'Brewer', 'Cannon', 'Hogan', 'Phelps', 'Fischer', 'Kemp'],
             firstnameIndex = Math.floor((Math.random() * firstname.length)),
             lastnameIndex = Math.floor((Math.random() * lastname.length)),
             data = {

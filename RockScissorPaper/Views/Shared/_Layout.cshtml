@@ -15,7 +15,7 @@
 <body>
     <nav class="wrapper960">
                 @Html.ActionLink("Stats","Statistics","Home")
-                <a href="javascript:window.open('/Home/DummyGame', '_blank', 'height=400,width=360');preventdefault();">Tools</a>
+                <a class="popup" data-width="400" data-height="400" href="/Home/DummyGame">Tools</a>
         <div class="clear-fix"></div>
     </nav>
     <header  class="wrapper960">
@@ -30,7 +30,19 @@
         <div class="clear-fix"></div>
     </div>
     @Scripts.Render("~/bundles/global")
-    
+    <script>
+        $('a.popup').on('click', function (event) {
+            var $this = $(this),
+                href = $this.attr('href'),
+                height = $this.data('height'),
+                width = $this.data('width');
+            window.open(href, '_blank', 'width=' + width + ', height=' + height);
+
+            event.preventDefault();
+        });
+        
+
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
