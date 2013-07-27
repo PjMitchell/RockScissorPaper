@@ -15,6 +15,13 @@ namespace RockScissorPaper
                         "~/Scripts/Roshambo/Roshambo.js",
                         "~/Scripts/Roshambo/Roshambo.Hub.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/gameSimulator").Include(
+                "~/Scripts/DivConsoleLogger.js",
+                "~/Scripts/Roshambo/Game.js",
+                "~/Scripts/Roshambo/SimulatedGameSession.js",
+                "~/Scripts/Roshambo/GamesSimulator.js"));
+    
+
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.unobtrusive*",
             //            "~/Scripts/jquery.validate*"));
