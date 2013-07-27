@@ -5,8 +5,7 @@
 
 <h2>Run dummy games</h2>
 <input type="number" id="InputField" />
-<button id="GoButton" style="text-align:center">Start</button>
-<button id="StopButton">Stop</button>
+<button id="GoButton" Data-start="true" style="text-align:center">Start</button>
 <div id="console">
    
 </div>
@@ -22,17 +21,28 @@
             ConsoleLogger.init();
             $('#GoButton').on('click', function () {
                 var $Textbox = $('#InputField'),
-                    i = $Textbox.val();
-                if (!$.isNumeric(i)) {
-                    i = 1;
-                    $Textbox.val(1);
+                    i = $Textbox.val(),
+                    $button = $('#GoButton'),
+                    start = $button.data('start');
+                if (start) {
+                    if (!$.isNumeric(i)) {
+                        i = 1;
+                        $Textbox.val(1);
+                    }
+                    if (i > 6) {
+                        i = 5;
+                        $Textbox.val(5);
+                    }
+                    GameSimulator.start(i);
+                    $button.html('Stop');
+                    $button.data('start', false);
                 }
-                if (i > 6) {
-                    i = 5;
-                    $Textbox.val(5);
+                else {
+                    GameSimulator.stop();
+                    $button.html('Start');
+                    $button.data('start', true);
                 }
-                GameSimulator.start(i);
-            });
+                });
             $('#StopButton').on('click', function () {
                 GameSimulator.stop();
             });
