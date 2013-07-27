@@ -68,7 +68,7 @@
     <script>
         $(function () {
             Roshambo.init(@Model.StateOfGame.GameId, @Model.CurrentUserId);
-            Roshambo.liveStatus();
+            Roshambo.Hub.liveStatus();
         });
     </script>
         }

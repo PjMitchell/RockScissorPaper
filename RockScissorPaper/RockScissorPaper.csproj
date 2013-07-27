@@ -233,6 +233,7 @@
     <Content Include="Scripts\Roshambo\GamesSimulator.js" />
     <Content Include="Scripts\Roshambo\DummyGames.js" />
     <Content Include="Scripts\Roshambo\Game.js" />
+    <Content Include="Scripts\Roshambo\Roshambo.Hub.js" />
     <Content Include="Scripts\Roshambo\Roshambo.js" />
     <Content Include="Scripts\Roshambo\SimulatedGameSession.js" />
     <Content Include="Scripts\Lib\underscore.js" />

@@ -12,7 +12,8 @@ namespace RockScissorPaper
                         "~/Scripts/Lib/jquery-{version}.js",
                         "~/Scripts/Lib/Api.js",
                         "~/Scripts/Lib/underscore.js",
-                        "~/Scripts/Roshambo/Roshambo.js"));
+                        "~/Scripts/Roshambo/Roshambo.js",
+                        "~/Scripts/Roshambo/Roshambo.Hub.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.unobtrusive*",
