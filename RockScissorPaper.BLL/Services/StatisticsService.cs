@@ -21,7 +21,8 @@ namespace RockScissorPaper.BLL
         {
             StatisticsOverviewQuery result = new StatisticsOverviewQuery();
             result.RoundInformation = _repository.GetRoundInformation();
-            result.RoundInformation.OrderBy(r => r.RoundNumber);
+            if (result.RoundInformation !=null)
+                result.RoundInformation.OrderBy(r => r.RoundNumber);
             result.Overview = _repository.GetRoundSummary();
             result.GamesPlayed = _repository.GetGamesPlayed();
             return result;

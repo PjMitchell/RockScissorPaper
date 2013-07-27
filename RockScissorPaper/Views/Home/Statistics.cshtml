@@ -6,25 +6,31 @@
 <h3>Games Played: @Model.GamesPlayed</h3>
 
 <div id="overallResult" class="roundStat">
-    <h3>Overall Totals</h3>
-    @foreach(var item in Model.Overview.Choices)
+    @if(Model.Overview.Choices.Count !=0)
     {
-        <p >@item.Selection : @String.Format("{0:.##}", item.Percentage)%</p>
-        <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px; "></div>
+        <h3>Overall Totals</h3>
+        foreach(var item in Model.Overview.Choices)
+        {
+            <p >@item.Selection : @String.Format("{0:.##}", item.Percentage)%</p>
+            <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px; "></div>
+        }
     }
 </div>
 <div id="roundResults">
-    @foreach(var roundItem in Model.RoundInformation)
+    @if(Model.RoundInformation!=null)
     {
-        <div class="roundStat">
-        <h3>Round : @roundItem.RoundNumber</h3>
-        @foreach(var item in roundItem.Choices)
+        foreach(var roundItem in Model.RoundInformation)
         {
-            <p >@item.Selection :@String.Format("{0:.##}", item.Percentage)%</p>
-            <div  class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px;"></div>
-        }
+            <div class="roundStat">
+            <h3>Round : @roundItem.RoundNumber</h3>
+            @foreach(var item in roundItem.Choices)
+            {
+                <p >@item.Selection :@String.Format("{0:.##}", item.Percentage)%</p>
+                <div  class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px;"></div>
+            }
 
-        </div>
+            </div>
+        }
     }
 </div>
 
