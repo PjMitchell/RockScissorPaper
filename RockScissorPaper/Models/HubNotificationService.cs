@@ -13,7 +13,7 @@ namespace RockScissorPaper.Models
     {
         static HubNotificationService _instance;
         static object _lock = new object();
-
+        int _messageBoxSize = 10;
         IStatisticsService _statsService;
         IGameService _gameService;
         
@@ -23,6 +23,7 @@ namespace RockScissorPaper.Models
             eventManager.Subscribe<GameFinishedEvent>(GameFinished);
             _statsService = statsService;
             _gameService = gameService;
+            MessageBox = new FixedSizeQueue<string>(_messageBoxSize);
         }
 
         public static HubNotificationService Instance(GameEventManager eventManager, IStatisticsService statsService, IGameService gameService)
@@ -36,6 +37,8 @@ namespace RockScissorPaper.Models
                 }
                 return _instance;
         }
+
+        public FixedSizeQueue<String> MessageBox { get; private set; }
 
         public void GameFinished(GameFinishedEvent gameFinishedEvent)
         {
@@ -58,6 +61,7 @@ namespace RockScissorPaper.Models
                 {
                     message = gameFinishedEvent.GameResult.PlayerOne.Name + " has drawn against " + gameFinishedEvent.GameResult.PlayerTwo.Name;
                 }
+                MessageBox.Enqueue(message);
                 context.Clients.All.newGameReport(message);
             }
 

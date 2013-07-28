@@ -16,18 +16,28 @@ window.Roshambo.Hub = (function ($) {
 
             $peopleConnectedField.html('Games Running: ' + peopleConnected);
         };
+
         hub.client.refreshView = function (view) {
             $peopleConnectedField.html('Games Running: ' + view.NumberOfPeopleConnected)
             $botWinsField.html('Bots: ' + view.BotWins)
             $humanWinsField.html('Humans: ' + view.HumanWins)
         }
+
         hub.client.newGameReport = function (message) {
             $logBox.prepend('<p>' + message + '</p>')
             $logBox.find("p").slice(10).remove();
         }
-
+        hub.client.loadMessageBox = function (message) {
+            for (var i = 0; i<message.length; i++)
+            {
+                $logBox.prepend('<p>' + message[i] + '</p>')
+            }
+            $logBox.find("p").slice(10).remove();
+        }
+        
         $.connection.hub.start().done(function () {
             hub.server.getInfo();
+            hub.server.loadMessageBox();
         });
     }
 

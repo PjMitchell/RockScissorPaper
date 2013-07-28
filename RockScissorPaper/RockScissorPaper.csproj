@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Hubs\RoshamboHub.cs" />
     <Compile Include="App_Start\LocalNinjectDependencyResolver.cs" />
+    <Compile Include="Models\FixedSizeQueue.cs" />
     <Compile Include="Models\GameSelectorButton.cs" />
     <Compile Include="Models\GameSelectorButtonBox.cs" />
     <Compile Include="Models\GameSelectorButtonBoxFactory.cs" />

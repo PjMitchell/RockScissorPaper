@@ -105,6 +105,12 @@ namespace RockScissorPaper.Hubs
             Clients.Caller.refreshView(view);
         }
 
+        public void LoadMessageBox()
+        {
+            string[] messagebox = _notificationService.MessageBox.Get().ToArray();
+            Clients.Caller.loadMessageBox(messagebox);
+        }
+
         private GlobalResultsHubObject GetCurrentGlobalResults()
         {
             GlobalResultsHubObject result = new GlobalResultsHubObject();
