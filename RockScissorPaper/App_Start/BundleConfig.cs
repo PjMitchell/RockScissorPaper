@@ -13,7 +13,8 @@ namespace RockScissorPaper
                         "~/Scripts/Lib/Api.js",
                         "~/Scripts/Lib/underscore.js",
                         "~/Scripts/Roshambo/Roshambo.js",
-                        "~/Scripts/Roshambo/Roshambo.Hub.js"));
+                        "~/Scripts/Roshambo/Roshambo.Hub.js",
+                        "~/Scripts/Lib/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/gameSimulator").Include(
                 "~/Scripts/DivConsoleLogger.js",
@@ -33,7 +34,7 @@ namespace RockScissorPaper
 
             bundles.Add(new StyleBundle("~/Content/styles").Include(
                 "~/Content/Css/Site.css",
-                "~/Content/Css/Wrapper960Static.css"));
+                "~/Content/Css/BootStrap/bootstrap.css"));
 
           
         }

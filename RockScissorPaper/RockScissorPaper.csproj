@@ -193,8 +193,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Css\BootStrap\bootstrap-responsive.css" />
+    <Content Include="Content\Css\BootStrap\bootstrap-responsive.min.css" />
+    <Content Include="Content\Css\BootStrap\bootstrap.css" />
+    <Content Include="Content\Css\BootStrap\bootstrap.min.css" />
     <Content Include="Content\Css\Game.css" />
-    <Content Include="Content\Css\Old\Site.css" />
     <Content Include="Content\Css\Site.css" />
     <Content Include="Content\Fonts\BowlbyOne-Regular.svg" />
     <Content Include="Content\Images\ajax-loader.gif" />
@@ -208,6 +211,8 @@
     <Content Include="Content\Images\Avatars\Rock2.jpg" />
     <Content Include="Content\Images\Avatars\Scissor1.jpg" />
     <Content Include="Content\Images\Avatars\Scissor2.jpg" />
+    <Content Include="Content\Images\glyphicons-halflings-white.png" />
+    <Content Include="Content\Images\glyphicons-halflings.png" />
     <Content Include="Content\Images\Selections\Paper.png" />
     <Content Include="Content\Images\Selections\Ready.png" />
     <Content Include="Content\Images\Selections\Rock.png" />
@@ -221,6 +226,8 @@
     <Content Include="Content\Fonts\BowlbyOne-Regular.woff" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - Web Deploy.pubxml" />
+    <Content Include="Scripts\Lib\bootstrap.js" />
+    <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\DivConsoleLogger.js" />
     <Content Include="Scripts\Lib\Api.js" />
     <Content Include="Scripts\Lib\jquery-1.10.2.js" />
