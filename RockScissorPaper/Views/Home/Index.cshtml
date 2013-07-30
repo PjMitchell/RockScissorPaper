@@ -1,11 +1,12 @@
-﻿<div class="wrapper4"></div>
-
-<div class="wrapper4">
+﻿<div class="row">
+    <h3>Please enter your name and avatar before you start</h3>
+</div>
+<div class="offset4 span4">
    
 @using( Html.BeginForm())
 {
-    <h3>Please enter your name and avatar before you start</h3>
-    @Html.TextBox("username", null)
+    
+    @Html.TextBox("username", null, new { @class ="span4" })
     <div id="avatarSelectionBox">
         <div class="avatar">
             <input type="radio" name="avatar" id="Paper1" checked="checked" value="Paper1.jpg" />

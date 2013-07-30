@@ -13,21 +13,19 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="wrapper960">
-                @Html.ActionLink("Stats","Statistics","Home")
-                <a class="popup" data-width="400" data-height="400" href="/Home/DummyGame">Tools</a>
-        <div class="clear-fix"></div>
-    </nav>
-    <header  class="wrapper960">
-        @Html.ActionLink("Rock Scissor Paper","Index","Home")
-                
-        <div class="clear-fix"></div>
-        
-    </header>
-    <div class="wrapper960" >
+    <section class="container">
+        <nav class="span12">
+                    @Html.ActionLink("Stats","Statistics","Home")
+                    <a class="popup" data-width="400" data-height="400" href="/Home/DummyGame">Tools</a>
+            
+        </nav>
+        <header  class="span12">
+            @Html.ActionLink("Rock Scissor Paper","Index","Home")
+        </header>
+    </section>
+    <div class="container" >
         
         @RenderBody()
-        <div class="clear-fix"></div>
     </div>
     @Scripts.Render("~/bundles/global")
     <script>

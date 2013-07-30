@@ -6,7 +6,7 @@
 <h2>Run dummy games</h2>
 <input type="number" id="InputField" />
 <button id="GoButton" Data-start="true" style="text-align:center">Start</button>
-<div id="console">
+<div id="console" style="height:300px; overflow:scroll;">
    
 </div>
 
@@ -39,9 +39,6 @@
                     $button.data('start', true);
                 }
                 });
-            $('#StopButton').on('click', function () {
-                GameSimulator.stop();
-            });
         })
     </script>
 }

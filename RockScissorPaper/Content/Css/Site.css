@@ -88,6 +88,7 @@ header {
   font-family: 'BowlbyOne-Regular', sans-serif;
   letter-spacing: 1px;
   background-color: #b22222;
+  line-height:55px;
 }
 header a {
   width: 100%;

@@ -5,7 +5,7 @@ window.ConsoleLogger = (function ($) {
 
     function log(message) {
         $console.prepend('<p>'+message+'</p>')
-        console.log(message);
+        $console.find("p").slice(100).remove();
     }
 
     function init() {
