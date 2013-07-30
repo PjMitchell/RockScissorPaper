@@ -33,8 +33,8 @@ namespace RockScissorPaper
                         "~/Scripts/Lib/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/styles").Include(
-                "~/Content/Css/Site.css",
-                "~/Content/Css/BootStrap/bootstrap.css"));
+                "~/Content/Css/BootStrap/bootstrap.css",
+                "~/Content/Css/Site.css"));
 
           
         }

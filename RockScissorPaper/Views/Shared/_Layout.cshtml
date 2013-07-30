@@ -14,12 +14,11 @@
 </head>
 <body>
     <section class="container">
-        <nav class="span12">
+        <nav class="row">
                     @Html.ActionLink("Stats","Statistics","Home")
-                    <a class="popup" data-width="400" data-height="400" href="/Home/DummyGame">Tools</a>
-            
+                    @Html.ActionLink("Tools", "DummyGame", "Home", new {@class="popup", data_width="400", data_height="400"})
         </nav>
-        <header  class="span12">
+        <header  class="row">
             @Html.ActionLink("Rock Scissor Paper","Index","Home")
         </header>
     </section>

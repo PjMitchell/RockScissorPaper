@@ -95,7 +95,7 @@ a {
 }
 .roundStat {
     float:left;
-    padding: 5px;
+    padding: 0px 5px 5px 5px;
 }
 /*#endregion*/
 
@@ -116,12 +116,19 @@ nav a{
     margin:0px 5px 0px 5px;
     text-decoration:none;
 }
+
+nav a:hover{
+    text-decoration:none;
+}
+
+
 header {
     height:55px;
     border:2px solid @Foreground;
     font-family: @EmphaticFont;
     letter-spacing:1px;
     background-color:@Primary;
+    line-height:55px;
     
 }
 
@@ -135,6 +142,11 @@ header a {
     padding:2px 0px;
     color:@PrimaryContrast;
 }
+
+    header a:hover {
+        color:@PrimaryContrast;
+        text-decoration:none;
+    }
 
 /*#endregion*/
 
@@ -178,9 +190,45 @@ input[type="submit"],
     input[type="button"],
     button img{
         
-        margin:-7px auto;
+        margin:0px auto;
        
     }
+
+.btn-secondary {
+  color: @SecondaryContrast;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: @Secondary;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  font-size: 1.0em;
+  padding: 4px;
+  
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.btn-secondary.disabled,
+.btn-secondary[disabled] {
+  color: @SecondaryContrast;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: #003399 \9;
+}
 /*#endregion*/
 
 /*#region Index*/

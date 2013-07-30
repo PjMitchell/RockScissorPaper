@@ -4,35 +4,36 @@
     ViewBag.Title = "Statistics";
 }
 <h3>Games Played: @Model.GamesPlayed</h3>
-
-<div id="overallResult" class="roundStat">
-    @if(Model.Overview.Choices.Count !=0)
-    {
-        <h3>Overall Totals</h3>
-        foreach(var item in Model.Overview.Choices)
+<section class="row">
+    <div id="overallResult" class="span2">
+        @if (Model.Overview.Choices.Count != 0)
         {
-            <p >@item.Selection : @String.Format("{0:.##}", item.Percentage)%</p>
-            <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px; "></div>
-        }
-    }
-</div>
-<div id="roundResults">
-    @if(Model.RoundInformation!=null)
-    {
-        foreach(var roundItem in Model.RoundInformation)
-        {
-            <div class="roundStat">
-            <h3>Round : @roundItem.RoundNumber</h3>
-            @foreach(var item in roundItem.Choices)
+            <h3>Overall</h3>
+            foreach (var item in Model.Overview.Choices)
             {
-                <p >@item.Selection :@String.Format("{0:.##}", item.Percentage)%</p>
-                <div  class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px;"></div>
+                <p>@item.Selection : @String.Format("{0:.##}", item.Percentage)%</p>
+                <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px; "></div>
             }
-
-            </div>
         }
-    }
-</div>
+    </div>
+    <div id="roundResults" class="span10">
+        @if (Model.RoundInformation != null)
+        {
+            foreach (var roundItem in Model.RoundInformation)
+            {
+                <div class="roundStat">
+                    <h3>Round : @roundItem.RoundNumber</h3>
+                    @foreach (var item in roundItem.Choices)
+                    {
+                        <p>@item.Selection :@String.Format("{0:.##}", item.Percentage)%</p>
+                        <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px;"></div>
+                    }
+
+                </div>
+            }
+        }
+    </div>
+    </section>
 
 
 

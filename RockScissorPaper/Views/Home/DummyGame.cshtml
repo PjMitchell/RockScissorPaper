@@ -1,11 +1,21 @@
 ﻿@{
     ViewBag.Title = "Run Dummy Games";
-    Layout = "/Views/Shared/_PopupLayout.cshtml";
+    Layout = "~/Views/Shared/_PopupLayout.cshtml";
 }
 
 <h2>Run dummy games</h2>
-<input type="number" id="InputField" />
-<button id="GoButton" Data-start="true" style="text-align:center">Start</button>
+<div class="row-fluid">
+    <div class="offset4">
+        <input type="number" id="InputField" class="span2"/>
+        <span>
+            <button id="GoButton" data-start="true" class="offset1 btn-secondary">Start</button>
+        </span>
+    </div>
+    
+    
+    
+</div>
+
 <div id="console" style="height:300px; overflow:scroll;">
    
 </div>
