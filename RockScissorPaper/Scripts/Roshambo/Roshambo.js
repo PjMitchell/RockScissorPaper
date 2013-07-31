@@ -91,6 +91,7 @@ window.Roshambo = (function ($, api) {
         $gameRounds.html(data.RoundMessage);
         if (data.Status === 5) {
             removeButtons();
+            flashRoundResult(data);
             setTimeout(function () { processSelection(1) }, 3000);
         }
         else if (data.Status === 6) {

@@ -1,9 +1,6 @@
 ﻿#gameContainer {
     position:relative;
-    width: 460px;
     height:300px;
-    margin: 0px 10px;
-    float:left;
 }
 #gameBannerMessage {
     height:60px;
@@ -111,6 +108,10 @@
     display:inline-block;
     width:80px;
 }
+
+#playerOptions button img{
+    height:25px;
+}
 #playerOptions:after {
     content:'';
     width:100%;
@@ -128,9 +129,7 @@
 
 /*#region LiveStatus Box*/
 #liveStatusBox {
-    width: 216px;
-    margin: 20px 10px;
-    float:left;
+    margin-top: 20px;
     border: 2px solid #000;
     padding: 5px;
     border-radius: 5px;

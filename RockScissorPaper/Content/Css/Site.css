@@ -147,7 +147,7 @@ input[type="button"],
 button img {
   margin: 0px auto;
 }
-.btn-secondary {
+.btn-primary {
   color: #dddddd;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #0c527f;
@@ -165,18 +165,18 @@ button img {
   font-size: 1.0em;
   padding: 4px;
 }
-.btn-secondary:hover,
-.btn-secondary:focus,
-.btn-secondary:active,
-.btn-secondary.active,
-.btn-secondary.disabled,
-.btn-secondary[disabled] {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
   color: #dddddd;
   background-color: #0044cc;
   *background-color: #003bb3;
 }
-.btn-secondary:active,
-.btn-secondary.active {
+.btn-primary:active,
+.btn-primary.active {
   background-color: #003399 \9;
 }
 /*#endregion*/
@@ -200,6 +200,12 @@ input[type=radio]:checked + label img {
 }
 #avatarSelectionBox input[type=radio] {
   display: none;
+}
+/*#endregion*/
+/*#region console*/
+#console {
+  height: 200px;
+  overflow: scroll;
 }
 /*#endregion*/
 /*#region defaults*/

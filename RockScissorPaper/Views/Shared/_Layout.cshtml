@@ -12,20 +12,20 @@
     @Styles.Render("~/Content/styles")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body >
     <section class="container">
-        <nav class="row">
-                    @Html.ActionLink("Stats","Statistics","Home")
-                    @Html.ActionLink("Tools", "DummyGame", "Home", new {@class="popup", data_width="400", data_height="400"})
-        </nav>
-        <header  class="row">
-            @Html.ActionLink("Rock Scissor Paper","Index","Home")
+        <div class="row">
+            <nav class="span12">
+                @Html.ActionLink("Stats", "Statistics", "Home")
+                @Html.ActionLink("Tools", "DummyGame", "Home", new { @class = "popup", data_width = "400", data_height = "400" })
+            </nav>
+        </div>
+
+        <header>
+            @Html.ActionLink("Rock Scissor Paper", "Index", "Home")
         </header>
-    </section>
-    <div class="container" >
-        
         @RenderBody()
-    </div>
+    </section>
     @Scripts.Render("~/bundles/global")
     <script>
         $('a.popup').on('click', function (event) {

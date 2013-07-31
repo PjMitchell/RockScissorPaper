@@ -3,20 +3,16 @@
     Layout = "~/Views/Shared/_PopupLayout.cshtml";
 }
 
-<h2>Run dummy games</h2>
+<h3>Simulated Activity</h3>
 <div class="row-fluid">
-    <div class="offset4">
-        <input type="number" id="InputField" class="span2"/>
-        <span>
-            <button id="GoButton" data-start="true" class="offset1 btn-secondary">Start</button>
-        </span>
-    </div>
-    
+    <p class="text-center"> Number of Concurent Games <input type="number" id="InputField" class="span2" /></p>
+   
+    <button id="GoButton" data-start="true" class="offset4 span4 btn btn-primary">Start</button>
     
     
 </div>
 
-<div id="console" style="height:300px; overflow:scroll;">
+<div id="console">
    
 </div>
 
