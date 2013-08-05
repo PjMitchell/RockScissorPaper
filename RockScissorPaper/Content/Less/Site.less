@@ -2,14 +2,16 @@
 
 
 //Colour Palette
-@Background: #ffffff;
-@Foreground: #000;
-@Overflow: #e2e2e2;
-@Primary:#B22222;
-@PrimaryContrast:#ffffff;
-@Secondary: #0C527F;
-@SecondaryContrast:#dddddd;
-@SecondaryHighlight: #24A9FE;
+@Background: #F1F2C0;
+@Foreground: #332F29;
+@Overflow: #CCC59E;
+@Primary:#8FA68E;
+@PrimaryContrast:#332F29;
+@PrimaryHighlight:#CCC59E;
+@Secondary: #CC3910;
+@SecondaryContrast:#332F29;
+@SecondaryHighlight: #F1F2C0;
+@SecondaryBoxShadow: rgba(204, 57, 16, 0.6);
 //Fonts
 
 @font-face {
@@ -108,23 +110,28 @@ nav {
 nav a{
     display:block;
     float:right;
-    border-width:2px 2px 0px 2px;
+    color:@Foreground;
+    border-width:2px 2px 2px 2px;
     border-style: solid;
-    border-color: @Foreground @Foreground @Background @Foreground;
-    padding:5px;
+    border-color: @PrimaryHighlight;
+    
+    background: @PrimaryHighlight;
+    padding:2px 5px 2px 5px;
     border-top-left-radius: 10px;
-    margin:0px 5px 0px 5px;
+    margin:0px 5px -2px 5px;
     text-decoration:none;
 }
 
 nav a:hover{
     text-decoration:none;
+    background:@Primary;
+    border-bottom-color : @Primary;
 }
 
 
 header {
     height:55px;
-    border:2px solid @Foreground;
+    border:2px solid @PrimaryHighlight;
     font-family: @EmphaticFont;
     letter-spacing:1px;
     background-color:@Primary;
@@ -151,33 +158,79 @@ header a {
 /*#endregion*/
 
 /*#region inputs*/
-input, textarea {
-    border: 1px solid @SecondaryHighlight;
-    background: @Background;
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    background-color: @PrimaryHighlight;
+    border: 1px solid @Primary;
     color: @Foreground;
     font-size: 1.2em;
     margin: 10px auto;
     padding: 5px;
-    width:auto;
+    width:100%;
     display:block;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+        -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+            transition: border linear 0.2s, box-shadow linear 0.2s;
 }
+
 
 textarea {
     font-family: inherit;
     width: 100%;
 }
 
-    input:focus, textarea:focus {
-        border: 1px solid @Primary;
-    }
 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: @Secondary;
+  outline: 0;
+  /*outline: thin dotted \9;*/
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px @SecondaryBoxShadow;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px @SecondaryBoxShadow;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px @SecondaryBoxShadow;
+}
 
 input[type="submit"],
     input[type="button"],
     button {
-        background-color:@Secondary;
-        border: 1px solid @SecondaryHighlight;
-        color:@SecondaryContrast;
+        background-color:@Primary;
+        border: 1px solid @PrimaryHighlight;
+        color:@PrimaryContrast;
         cursor: pointer;
         font-family: @EmphaticFont;
         letter-spacing:1px;
@@ -186,12 +239,13 @@ input[type="submit"],
         margin:0px auto;
         width: auto;
     }
+
+
 input[type="submit"],
     input[type="button"],
     button img{
-        
         margin:0px auto;
-       
+        display:block;
     }
 
 .btn-primary {
@@ -233,7 +287,11 @@ input[type="submit"],
 
 /*#region Index*/
 input[type=radio]:checked + label img {
-    border: solid @Primary 5pt;
+    border: solid @Secondary 3pt;
+    border-radius: 2pt;
+    -webkit-box-shadow:  0 0 10px @Secondary;
+     -moz-box-shadow:  0 0 10px @Secondary;
+          box-shadow: 0 0 10px @Secondary;
 }
 .avatar {
     float: left;
@@ -243,17 +301,47 @@ input[type=radio]:checked + label img {
 }
     .avatar img {
         display: inline;
-        border: solid 5pt @Background;
+        border: solid 3pt @Primary;
+        border-radius: 2pt;
+        -webkit-box-shadow:  0 0 10px @Primary;
+         -moz-box-shadow:  0 0 10px @Primary;
+              box-shadow: 0 0 10px @Primary;
         vertical-align: middle;
     }
 #avatarSelectionBox {
-    margin:20px -10px
+    margin:20px auto;
 } 
 #avatarSelectionBox input[type=radio] {
     display: none;
             
 }
 /*#endregion*/
+
+/*#region LiveStatus Box*/
+#liveStatusBox {
+    margin-top: 20px;
+    border: 2px solid @Foreground;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+#liveStatusLog {
+    height:300px;
+    margin: 0px -5px;
+    border-top: solid 2px @Foreground;
+    overflow:hidden;
+    
+}
+#liveStatusLog p {
+    padding:5px;
+    margin:0px;
+}
+
+#liveStatusLog :nth-child(even) {
+    background: @PrimaryHighlight;
+}
+
+/*endregion*/
 
 /*#region console*/
 #console {

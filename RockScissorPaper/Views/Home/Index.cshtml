@@ -5,8 +5,9 @@
    
     @using( Html.BeginForm())
     {
-    
-        @Html.TextBox("username", null, new { @class ="span4" })
+        <div class="row">
+            @Html.TextBox("username", null, new { @class ="span4" })
+        </div>
         <div id="avatarSelectionBox">
             <div class="avatar">
                 <input type="radio" name="avatar" id="Paper1" checked="checked" value="Paper1.jpg" />
@@ -46,8 +47,7 @@
             </div>
             <div class="clear-fix"></div>
         </div>
-    
-       <input type="submit" value="Start Game" />
+        <input type="submit" value="Start Game"/>
     }
     </div>
 </div>
