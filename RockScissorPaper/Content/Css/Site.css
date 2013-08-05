@@ -41,6 +41,9 @@ h3 {
 a {
   color: #332f29;
 }
+.float {
+  float: left;
+}
 .clear-fix:after {
   content: ".";
   clear: both;
@@ -188,12 +191,29 @@ button {
   padding: 7px;
   margin: 0px auto;
   width: auto;
+  display: block;
 }
 input[type="submit"],
 input[type="button"],
-button img {
+button {
+  background-color: #8fa68e;
+  border: 1px solid #ccc59e;
+  color: #332f29;
+  cursor: pointer;
+  font-family: 'BowlbyOne-Regular', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.3em;
+  padding: 7px;
   margin: 0px auto;
-  display: block;
+  width: auto;
+}
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover {
+  border: 1px solid #cc3910;
+  -webkit-box-shadow: 0 0 8px rgba(204, 57, 16, 0.6);
+  -moz-box-shadow: 0 0 8px rgba(204, 57, 16, 0.6);
+  box-shadow: 0 0 8px rgba(204, 57, 16, 0.6);
 }
 .btn-primary {
   color: #332f29;

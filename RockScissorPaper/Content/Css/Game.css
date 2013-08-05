@@ -1,106 +1,75 @@
 ﻿#gameContainer {
     position:relative;
-    height:300px;
 }
 #gameBannerMessage {
     height:60px;
     width: 460px;
-    position:absolute;
-    left:0px;
-    top:0px;
 }
 .playerPanel {
     width:160px;
-    height:200px;
+    height:120px;
     margin:0px;
     padding:0px;
-    position:absolute;
 }
 
 .centerPanel {
-    position:absolute;
     width:140px;
-    height:200px;
-    left:160px;
-    top:60px;
+    height:120px;
+    float:left;
     text-align:center;
+    
 }
 
 .playerImage {
     width:80px;
     height:120px;
-    position:absolute;
-    top:45px;
+    float:left;
     line-height:120px;
 }
 .playerImage img {
     display: inline; 
-    vertical-align: middle ;
+    vertical-align: middle;
     
         
 }
 .playerSelection {
     width:80px;
-    position:absolute;
+    height:120px;
     text-align:center;
-    top:80px;
-    
+    vertical-align:middle;
+    float:left;
+}
+.playerSelection img {
+    display: block; 
+    margin-top:33px;
+}
+
+.gamePanel {
+
 }
 
 
-.score {
-    position:absolute;
-    width:80px;
-    bottom:0px;
-}
 #playerOne {
-    left:0px;
-    top:60px;
+    float:left;
 }
-    #playerOne .playerImage {
-        left:0px;
-    }
-    #playerOne .playerSelection {
-        right:0px;
-    }
-    #playerOne .score {
-        left:0px;
-    }
 
 
 #playerTwo {
-    right:0px;
-    top:60px;
+  float:right;
 }
-    #playerTwo .playerImage {
-            right:0px;
-        }
-    #playerTwo .playerSelection {
-            left:0px;
-        }
-    #playerTwo .score {
-            right:0px;
-        }
+    
 
 
 #userMessage {
-     position:absolute;
-     top:80px;
-     left:0px;
-     right:0px;
+     margin-top:30px;
+    
 }
 #GameRounds {
-    position:absolute;
-     bottom:0px;
-     left:0px;
-     right:0px;
+   
 }
 
 #playerOptions {
-    position:absolute;
-    left:0px;
-    right:0px;
-    bottom:-20px;
+    
     text-align:justify;
 }
 #playerOptions button{

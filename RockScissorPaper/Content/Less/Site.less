@@ -71,6 +71,10 @@ a {
        
     }
 
+ .float {
+     float:left;
+ }
+
 .clear-fix:after {
     content: ".";
     clear: both;
@@ -238,14 +242,32 @@ input[type="submit"],
         padding: 7px;
         margin:0px auto;
         width: auto;
+        display:block;
     }
-
 
 input[type="submit"],
     input[type="button"],
-    button img{
+    button {
+        background-color:@Primary;
+        border: 1px solid @PrimaryHighlight;
+        color:@PrimaryContrast;
+        cursor: pointer;
+        font-family: @EmphaticFont;
+        letter-spacing:1px;
+        font-size: 1.3em;
+        padding: 7px;
         margin:0px auto;
-        display:block;
+        width: auto;
+    }
+
+
+input[type="submit"]:hover,
+    input[type="button"]:hover,
+    button:hover{
+       border: 1px solid @Secondary;
+       -webkit-box-shadow: 0 0 8px @SecondaryBoxShadow;
+     -moz-box-shadow: 0 0 8px @SecondaryBoxShadow;
+          box-shadow: 0 0 8px @SecondaryBoxShadow;
     }
 
 .btn-primary {
