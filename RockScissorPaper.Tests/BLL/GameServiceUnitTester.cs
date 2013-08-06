@@ -15,7 +15,7 @@ namespace RockScissorPaper.Tests
         {
             PlayerSQLRepository playerRepository = new PlayerSQLRepository(new MySQLDatabaseConnector());
             GameService service = new GameService(new GameSQLRepository(new MySQLDatabaseConnector(), playerRepository), new GameEventManager());
-            int playerId = playerRepository.CreatePlayer("Tester Bob",  "this.fake.add.ress");
+            int playerId = playerRepository.CreatePlayer("Tester Bob",  "this.fake.add.ress","fakeAvatar");
             CreateGameCommand createGameCommand = new CreateGameCommand(){
                 PlayerOneId = playerId, PlayerTwoId = 2, RuleId= 1};
             int gameId =  service.CreateGame(createGameCommand);
@@ -40,7 +40,7 @@ namespace RockScissorPaper.Tests
             Assert.AreEqual(GameStatus.NewRound, status);
 
             GameStateQuery currentState = service.GetLastestRoundResult(gameId, playerId);
-            Assert.AreEqual(false, currentState.FinalRoundResult);
+            Assert.AreNotEqual(GameStatus.FinalRoundResult, currentState.Status);
             Assert.AreEqual("You Win!", currentState.PlayerOne.PlayerMessage);
 
             //Round 5
@@ -49,14 +49,14 @@ namespace RockScissorPaper.Tests
 
             //Round 5 State
             currentState = service.GetLastestRoundResult(gameId, playerId);
-            Assert.AreEqual(true, currentState.FinalRoundResult);
+            Assert.AreEqual(GameStatus.FinalRoundResult, currentState.Status);
 
 
             //GameOver
             status = service.ExecuteMove(moveCommand);
             Assert.AreEqual(GameStatus.EndOfGame, status);
             currentState = service.GetEndOfGame(gameId, playerId);
-            Assert.AreEqual(false, currentState.FinalRoundResult);
+            Assert.AreNotEqual(GameStatus.FinalRoundResult, currentState.Status);
             Assert.AreEqual("Tester Bob wins the game!", currentState.BannerMessage);
 
         }

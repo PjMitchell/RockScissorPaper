@@ -18,8 +18,9 @@ namespace RockScissorPaper.Tests
             Name = "Tester Bob"
             };
             string ip = "this.fake.add.ress";
+            string avatar = "fakeAvatar";
             
-            testPlayer.PlayerId = _repository.CreatePlayer(testPlayer.Name, ip);
+            testPlayer.PlayerId = _repository.CreatePlayer(testPlayer.Name, ip, avatar);
             Player testResult = _repository.GetPlayer(testPlayer.PlayerId);
 
             Assert.AreEqual(testPlayer.Name, testResult.Name);
