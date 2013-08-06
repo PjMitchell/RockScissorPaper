@@ -37,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoredProcedures", "StoredP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{192E8DA4-F1C6-4E05-A515-2CD1CBB61E7A}"
 	ProjectSection(SolutionItems) = preProject
+		SQLScripts\StoredProceedures\Game\Game_All.sql = SQLScripts\StoredProceedures\Game\Game_All.sql
 		SQLScripts\StoredProceedures\Game\Game_CountActive.sql = SQLScripts\StoredProceedures\Game\Game_CountActive.sql
 		SQLScripts\StoredProceedures\Game\Game_GetById.sql = SQLScripts\StoredProceedures\Game\Game_GetById.sql
 		SQLScripts\StoredProceedures\Game\GamePlayer_GetBotvsHumanVictoryCount.sql = SQLScripts\StoredProceedures\Game\GamePlayer_GetBotvsHumanVictoryCount.sql
