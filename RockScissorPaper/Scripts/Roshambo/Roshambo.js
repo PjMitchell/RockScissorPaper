@@ -119,12 +119,12 @@ window.Roshambo = (function ($, api) {
         }
         else if (data.PlayerOne.RoundOutcome ===1)
         {
-            $p1Selection.animate({ "right": "-30px" },  "slow" ).animate({ "opacity": "0.15" }, "slow" ).animate({ "right": "0px" }, "slow" );
+            $p1Selection.animate({ "right": "-30px" }, "slow").animate({ "opacity": "0.15" }, "slow").animate({ "right": "0px" }, "slow");
             $p2Selection.animate({ "left": "-60px" }, 1200).animate({ "left": "0px" }, "slow" );
         }
         else if (data.PlayerTwo.RoundOutcome ===1)
         {
-            $p1Selection.animate({ "right": "-60px" },1200).animate({ "right": "0px" }, "slow" );
+            $p1Selection.animate({ "right": "-60px" }, 1200).animate({ "right": "0px" }, "slow");
             $p2Selection.animate({ "left": "-30px" }, "slow").animate({ "opacity": "0.15" }, "slow" ).animate({ "left": "0px" }, "slow" );
         }
        

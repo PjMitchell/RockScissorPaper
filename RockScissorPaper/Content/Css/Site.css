@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'BowlbyOne-Regular';
   src: url('/Content/Fonts/BowlbyOne-Regular.eot');
-  src: url('/Content/Fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'), url('/Content/Fonts/BowlbyOne-Regular.woff') format('woff'), url('/Content/Fonts/BowlbyOne-Regular.ttf') format('truetype'), url('/Content/Fonts/BowlbyOne-Regular.svg#leckerregular') format('svg');
+  src: url('/Content/Fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'), url('/Content/Fonts/BowlbyOne-Regular.woff') format('woff'), url('/Content/Fonts/BowlbyOne-Regular.ttf') format('truetype'), url('/Content/Fonts/BowlbyOne-Regular.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
