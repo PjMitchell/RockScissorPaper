@@ -18,9 +18,14 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
-<body class="container-fluid">
-    @RenderBody()
-    @Scripts.Render("~/bundles/global")
-    @RenderSection("scripts", required: false)
+<body >
+    <section class="headerBand">
+            <header class="popup">@ViewBag.HeaderText</header>
+    </section>
+    <section class="container-fluid">
+        @RenderBody()
+        @Scripts.Render("~/bundles/global")
+        @RenderSection("scripts", required: false)
+    </section>
 </body>
 </html>

@@ -2,13 +2,14 @@
 
 
 //Colour Palette
-@Background: #F1F2C0;
+@Background: #FFFFFF;
 @Foreground: #4b64db;
 @Overflow: #CCC59E;
 @Primary:#6F83D6;
 @PrimaryContrast:#FFFFFF;
 @PrimaryShaddow:#1533AD;
 @PrimaryHighlight:#8493d6;
+@PrimaryLight:#d4daf4;
 @Secondary: #FFB300;
 @SecondaryContrast:#1533AD;
 @SecondaryHighlight: #4b64db;
@@ -66,11 +67,29 @@ h4, h5, h6 {
     margin: 0;
     padding: 15px 0px 5px 0px;
     text-align:center;
+    vertical-align:central;
     letter-spacing: 1px;
 }
 
+h1 {
+    color:@PrimaryShaddow;
+    font-size: 300%;
+    font-weight:700;
+}
+
+h2 {
+    color:@PrimaryShaddow;
+    font-size: 180%;
+}
+
 h3 {
-    font-size: 120%;
+    font-size: 160%;
+    line-height:20px;
+}
+
+h4 {
+    font-size: 100%;
+    line-height:20px;
 }
 
 a {
@@ -98,7 +117,13 @@ a {
     height:100%;
     min-height:100%;
 }
+.leftAlign {
+    text-align:left;
+}
 
+.rightAlign {
+    text-align:right;
+}
 /*#endregion*/
 
 /*#region StatsPage*/
@@ -117,6 +142,9 @@ a {
 .roundStat {
     float:left;
     padding: 0px 5px 5px 5px;
+}
+.roundStat h3{
+    text-align:left;
 }
 /*#endregion*/
 
@@ -173,10 +201,19 @@ header a {
         text-decoration:none;
     }
 
+    header.popup {
+    text-align:center;
+    font-size:150%;
+    }
+
 aside {
-    background: @Primary;
+    background: @PrimaryLight;
     height:100%;
 }
+
+    aside p {
+    margin-left:10px;
+    }
 /*#endregion*/
 
 /*#region inputs*/
@@ -199,7 +236,7 @@ input[type="color"],
 .uneditable-input {
     background-color: @Overflow;
     border: 1px solid @Primary;
-    color: @Foreground;
+    color: @PrimaryShaddow;
     font-size: 1.2em;
     margin: 10px auto;
     padding: 5px;
@@ -343,26 +380,19 @@ input[type=radio]:checked + label img {
 
 /*#region LiveStatus Box*/
 #liveStatusBox {
-    margin-top: 20px;
-    border: 2px solid @Foreground;
-    padding: 5px;
-    border-radius: 5px;
-
 }
 #liveStatusLog {
     height:300px;
-    margin: 0px -5px;
-    border-top: solid 2px @Foreground;
     overflow:hidden;
-    
 }
 #liveStatusLog p {
     padding:5px;
-    margin:0px;
+    margin:0px 10px;
 }
 
 #liveStatusLog :nth-child(even) {
     background: @PrimaryHighlight;
+    color:@Background;
 }
 
 /*endregion*/

@@ -19,8 +19,8 @@ window.Roshambo.Hub = (function ($) {
 
         hub.client.refreshView = function (view) {
             $peopleConnectedField.html('Games Running: ' + view.NumberOfPeopleConnected)
-            $botWinsField.html('Bots: ' + view.BotWins)
-            $humanWinsField.html('Humans: ' + view.HumanWins)
+            $botWinsField.html('Bots Victories: ' + view.BotWins)
+            $humanWinsField.html('Humans Victories: ' + view.HumanWins)
         }
 
         hub.client.newGameReport = function (message) {
