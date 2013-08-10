@@ -224,6 +224,10 @@
     <Content Include="Content\Fonts\BowlbyOne-Regular.eot" />
     <Content Include="Content\Fonts\BowlbyOne-Regular.otf" />
     <Content Include="Content\Fonts\BowlbyOne-Regular.woff" />
+    <Content Include="ConnectionStrings.config" />
+    <Content Include="Content\Fonts\Acme.woff" />
+    <Content Include="Content\Fonts\Abel.woff" />
+    <None Include="Properties\PublishProfiles\ISSDeploy.pubxml" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\RockScissorPaper - Web Deploy.pubxml" />
     <Content Include="Scripts\Lib\bootstrap.js" />

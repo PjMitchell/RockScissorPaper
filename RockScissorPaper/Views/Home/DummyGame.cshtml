@@ -40,9 +40,14 @@
                     $button.data('start', false);
                 }
                 else {
-                    GameSimulator.stop();
-                    $button.html('Start');
-                    $button.data('start', true);
+                    GameSimulator.stop().done(function () {
+                        $button.html('Start');
+                        $button.data('start', true);
+                        $button.removeAttr('disabled', 'disabled');
+                    });
+                    $button.html('Stopping...');
+                    $button.data('start', false);
+                    $button.attr('disabled', 'disabled');
                 }
                 });
         })
