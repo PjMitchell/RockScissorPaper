@@ -4,13 +4,13 @@
 }
 <link rel="stylesheet" href="/Content/Css/Game.css" type="text/css" />
 
-<section id="gameContainer" class="main span9">
-    <div class="row">
+<section id="gameContainer" class="main span8">
+    <div class="row PlayerName">
         <h2 class="span3 leftAlign">@Model.PlayerOne.Name</h2>
         <h1 class="span2">Vs</h1>
         <h2 class="span3 rightAlign">@Model.PlayerTwo.Name</h2>
     </div>
-    <div class="row">
+    <div class="row roundInfo">
             <h3 class="score span3 leftAlign" id="p1Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
             <h4 id="GameRounds" class="span2">@Model.StateOfGame.RoundMessage</h4>
             <h3 class="score span3 rightAlign" id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
@@ -25,9 +25,9 @@
                     <img id="p1Selection" src="@Html.Raw("/Content/Images/Selections/" + Model.StateOfGame.PlayerOne.CurrentSelection+".png")" />
                 </div>
         </div>
-        <div id="displayCenter" class="centerPanel span4">
+        <div id="displayCenter" class="centerPanel span3">
             <h3 id="gameBannerMessage" > @Model.StateOfGame.BannerMessage</h3>    
-            <h4 id="userMessage">
+            <h2 id="userMessage">
                     @if (@Model.StateOfGame.PlayerOne.IsViewer)
                 {
                                     @Html.Raw(Model.StateOfGame.PlayerOne.PlayerMessage )
@@ -37,7 +37,7 @@
                                     @Html.Raw(Model.StateOfGame.PlayerTwo.PlayerMessage )
 
                 }
-            </h4>
+            </h2>
         </div>
         <div id="playerTwo" class="playerPanel span2">
             <div class="playerSelection">
@@ -60,12 +60,12 @@
         </div>
     </div>
 </section>
-<aside id="liveStatusBox" class="span3">
-    <h3>Server Stats</h3>
+<aside id="liveStatusBox" class="span4">
+    <h3 class="leftAlign">Server Stats</h3>
     <p id="peoplePlayingField">Games Running:</p>
         <p id="botWins">Bots Victories:</p>
         <p id="humanWins">Human Victories:</p>
-    <h3>Activity</h3>
+    <h3 class="leftAlign">Activity</h3>
         <div id="liveStatusLog">
 
         </div>

@@ -44,7 +44,7 @@
 }
 
 .gamePanel {
-
+    margin-top:20px;
 }
 
 
@@ -55,7 +55,7 @@
 
 #playerTwo {
   float:right;
-  margin-right:80px;
+  
 }
     
 
@@ -100,3 +100,6 @@
     -ms-filter: "FlipH";
 }
 
+.roundInfo h3, h4 {
+    padding-top:5px;
+}

@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Statistics";
 }
-<h3>Games Played: @Model.GamesPlayed</h3>
-<section class="row">
+<h3 class="firstRow leftAlign">Games Played: @Model.GamesPlayed</h3>
+<section class="row firstRow">
     <div id="overallResult" class="span2">
         @if (Model.Overview.Choices.Count != 0)
         {

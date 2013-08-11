@@ -65,10 +65,11 @@ h1, h2, h3,
 h4, h5, h6 {
     color: @Foreground;
     margin: 0;
-    padding: 15px 0px 5px 0px;
+    padding: 5px 0px 5px 0px;
     text-align:center;
     vertical-align:central;
     letter-spacing: 1px;
+    line-height:inherit;
 }
 
 h1 {
@@ -100,6 +101,10 @@ a {
     a:active, a:hover {
        
     }
+label {
+display:inline;
+font-size:1.2em;
+}
 
  .float {
      float:left;
@@ -123,6 +128,9 @@ a {
 
 .rightAlign {
     text-align:right;
+}
+.firstRow {
+    margin-top:20px;
 }
 /*#endregion*/
 
@@ -164,12 +172,14 @@ nav a{
     float:left;
     color:@PrimaryContrast;
     background: @Primary;
-    padding:0px 5px 0px 5px;
+    padding:0px 19px 0px 19px;
     text-decoration:none;
     line-height:@HeaderBandHeight;
     height:@HeaderBandHeight;
     min-width:40px;
     text-align:center;
+    font-size:140%;
+    
 }
 
 nav a:hover{
@@ -209,11 +219,15 @@ header a {
 
 aside {
     background: @PrimaryLight;
+    padding-top:20px;
     height:100%;
 }
 
     aside p {
-    margin-left:10px;
+    margin-left:20px;
+    }
+    aside h3 {
+    margin-left:20px;
     }
 /*#endregion*/
 
@@ -238,7 +252,7 @@ input[type="color"],
     background-color: @Overflow;
     border: 1px solid @Primary;
     color: @PrimaryShaddow;
-    font-size: 1.2em;
+    font-size: 1.0em;
     margin: 10px auto;
     padding: 5px;
     display:block;
@@ -388,7 +402,7 @@ input[type=radio]:checked + label img {
 }
 #liveStatusLog p {
     padding:5px;
-    margin:0px 10px;
+    margin:0px 15px;
 }
 
 #liveStatusLog :nth-child(even) {
@@ -406,7 +420,14 @@ input[type=radio]:checked + label img {
 /*#endregion*/
 
 /*#region defaults*/
-
+.PlayerName {
+    font-family:@EmphaticFont;
+    margin-top:20px;
+}
+.PlayerName
+h2, h1 {
+    padding-bottom:0px;
+}
 
 
 /*#endregion*/
