@@ -3,15 +3,15 @@
 @{
     ViewBag.Title = "Statistics";
 }
-<h3>Games Played: @Model.GamesPlayed</h3>
-<section class="row">
+<h3 class="firstRow leftAlign">Games Played: @Model.GamesPlayed</h3>
+<section class="row firstRow">
     <div id="overallResult" class="span2">
         @if (Model.Overview.Choices.Count != 0)
         {
-            <h3>Overall</h3>
+            <h3 class="leftAlign">Overall</h3>
             foreach (var item in Model.Overview.Choices)
             {
-                <p>@item.Selection : @String.Format("{0:.##}", item.Percentage)%</p>
+                <p>@item.Selection: @String.Format("{0:.##}", item.Percentage)%</p>
                 <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px; "></div>
             }
         }
@@ -22,10 +22,10 @@
             foreach (var roundItem in Model.RoundInformation)
             {
                 <div class="roundStat">
-                    <h3>Round : @roundItem.RoundNumber</h3>
+                    <h3>Round: @roundItem.RoundNumber</h3>
                     @foreach (var item in roundItem.Choices)
                     {
-                        <p>@item.Selection :@String.Format("{0:.##}", item.Percentage)%</p>
+                        <p>@item.Selection: @String.Format("{0:.##}", item.Percentage)%</p>
                         <div class="@item.Selection bar" style="width:@Html.Raw(item.Percentage)px;"></div>
                     }
 

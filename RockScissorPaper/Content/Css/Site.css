@@ -1,26 +1,35 @@
 /*#region SiteStyle*/
 @font-face {
-  font-family: 'BowlbyOne-Regular';
-  src: url('/Content/Fonts/BowlbyOne-Regular.eot');
-  src: url('/Content/Fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'), url('/Content/Fonts/BowlbyOne-Regular.woff') format('woff'), url('/Content/Fonts/BowlbyOne-Regular.ttf') format('truetype'), url('/Content/Fonts/BowlbyOne-Regular.svg') format('svg');
-  font-weight: normal;
+  font-family: 'Abel';
   font-style: normal;
+  font-weight: 400;
+  src: url('/Content/Fonts/Abel.eot');
+  src: url('/Content/Fonts/Abel.eot?#iefix') format('embedded-opentype'), url('/Content/Fonts/Abel.woff') format('woff');
+}
+@font-face {
+  font-family: 'Acme';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/Content/Fonts/Acme.eot');
+  src: url('/Content/Fonts/Acme.eot?#iefix') format('embedded-opentype'), url('/Content/Fonts/Acme.woff') format('woff');
 }
 /*#endregion*/
 /*#region Basic Elements*/
 html {
-  background-color: #ccc59e;
+  background-color: #ffffff;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 body {
-  background-color: #f1f2c0;
+  background-color: #ffffff;
+  height: 100%;
   border: none;
-  color: #332f29;
-  font-size: .85em;
-  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+  color: #4b64db;
+  font-size: 0.85em;
+  font-family: 'Abel', Sans-Serif;
   margin: 0px;
-  padding: 10px 0px 20px 0px;
+  padding: 0px;
 }
 h1,
 h2,
@@ -28,18 +37,37 @@ h3,
 h4,
 h5,
 h6 {
-  color: #332f29;
+  color: #4b64db;
   margin: 0;
-  padding: 15px 0px 5px 0px;
-  font-family: 'BowlbyOne-Regular', sans-serif;
+  padding: 5px 0px 5px 0px;
   text-align: center;
+  vertical-align: central;
   letter-spacing: 1px;
+  line-height: inherit;
+}
+h1 {
+  color: #1533ad;
+  font-size: 300%;
+  font-weight: 700;
+}
+h2 {
+  color: #1533ad;
+  font-size: 180%;
 }
 h3 {
-  font-size: large;
+  font-size: 160%;
+  line-height: 20px;
+}
+h4 {
+  font-size: 100%;
+  line-height: 20px;
 }
 a {
-  color: #332f29;
+  color: #4b64db;
+}
+label {
+  display: inline;
+  font-size: 1.2em;
 }
 .float {
   float: left;
@@ -50,6 +78,19 @@ a {
   display: block;
   height: 0;
   visibility: hidden;
+}
+.height100 {
+  height: 100%;
+  min-height: 100%;
+}
+.leftAlign {
+  text-align: left;
+}
+.rightAlign {
+  text-align: right;
+}
+.firstRow {
+  margin-top: 20px;
 }
 /*#endregion*/
 /*#region StatsPage*/
@@ -69,50 +110,72 @@ a {
   float: left;
   padding: 0px 5px 5px 5px;
 }
+.roundStat h3 {
+  text-align: left;
+}
 /*#endregion*/
-/*#region Header*/
+/*#region Header Nav Section Aside*/
+section.headerBand {
+  background: #ffb300;
+  height: 55px;
+}
 nav {
-  margin: 0px;
+  height: 55px;
+  background: #6f83d6;
 }
 nav a {
   display: block;
-  float: right;
-  color: #332f29;
-  border-width: 2px 2px 2px 2px;
-  border-style: solid;
-  border-color: #ccc59e;
-  background: #ccc59e;
-  padding: 2px 5px 2px 5px;
-  border-top-left-radius: 10px;
-  margin: 0px 5px -2px 5px;
+  float: left;
+  color: #ffffff;
+  background: #6f83d6;
+  padding: 0px 19px 0px 19px;
   text-decoration: none;
+  line-height: 55px;
+  height: 55px;
+  min-width: 40px;
+  text-align: center;
+  font-size: 140%;
+  font-weight: 400;
 }
 nav a:hover {
   text-decoration: none;
-  background: #8fa68e;
-  border-bottom-color: #8fa68e;
+  background: #1533ad;
+  color: #ffffff;
 }
 header {
   height: 55px;
-  border: 2px solid #ccc59e;
-  font-family: 'BowlbyOne-Regular', sans-serif;
-  letter-spacing: 1px;
-  background-color: #8fa68e;
+  font-family: 'Acme', sans-serif;
   line-height: 55px;
 }
 header a {
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: left;
   display: block;
   text-decoration: none;
   font-size: 40px;
   padding: 2px 0px;
-  color: #332f29;
+  color: #1533ad;
 }
 header a:hover {
-  color: #332f29;
+  color: #1533ad;
   text-decoration: none;
+}
+header.popup {
+  text-align: center;
+  font-size: 150%;
+  color: #1533ad;
+}
+aside {
+  background: #d4daf4;
+  padding-top: 20px;
+  height: 100%;
+}
+aside p {
+  margin-left: 20px;
+}
+aside h3 {
+  margin-left: 20px;
 }
 /*#endregion*/
 /*#region inputs*/
@@ -133,12 +196,11 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   background-color: #ccc59e;
-  border: 1px solid #8fa68e;
-  color: #332f29;
-  font-size: 1.2em;
+  border: 1px solid #6f83d6;
+  color: #1533ad;
+  font-size: 1.0em;
   margin: 10px auto;
   padding: 5px;
-  width: 100%;
   display: block;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -168,7 +230,7 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: #cc3910;
+  border-color: #ffb300;
   outline: 0;
   /*outline: thin dotted \9;*/
 
@@ -181,44 +243,29 @@ input[type="color"]:focus,
 input[type="submit"],
 input[type="button"],
 button {
-  background-color: #8fa68e;
-  border: 1px solid #ccc59e;
-  color: #332f29;
+  background-color: #8493d6;
+  border: 1px solid #6f83d6;
+  color: #ffffff;
   cursor: pointer;
-  font-family: 'BowlbyOne-Regular', sans-serif;
+  font-family: 'Abel', Sans-Serif;
   letter-spacing: 1px;
   font-size: 1.3em;
   padding: 7px;
   margin: 0px auto;
-  width: auto;
   display: block;
-}
-input[type="submit"],
-input[type="button"],
-button {
-  background-color: #8fa68e;
-  border: 1px solid #ccc59e;
-  color: #332f29;
-  cursor: pointer;
-  font-family: 'BowlbyOne-Regular', sans-serif;
-  letter-spacing: 1px;
-  font-size: 1.3em;
-  padding: 7px;
-  margin: 0px auto;
-  width: auto;
 }
 input[type="submit"]:hover,
 input[type="button"]:hover,
 button:hover {
-  border: 1px solid #cc3910;
+  border: 1px solid #ffb300;
   -webkit-box-shadow: 0 0 8px rgba(204, 57, 16, 0.6);
   -moz-box-shadow: 0 0 8px rgba(204, 57, 16, 0.6);
   box-shadow: 0 0 8px rgba(204, 57, 16, 0.6);
 }
 .btn-primary {
-  color: #332f29;
+  color: #1533ad;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #cc3910;
+  background-color: #ffb300;
   *background-color: #0044cc;
   background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
@@ -239,7 +286,7 @@ button:hover {
 .btn-primary.active,
 .btn-primary.disabled,
 .btn-primary[disabled] {
-  color: #332f29;
+  color: #1533ad;
   background-color: #0044cc;
   *background-color: #003bb3;
 }
@@ -250,53 +297,47 @@ button:hover {
 /*#endregion*/
 /*#region Index*/
 input[type=radio]:checked + label img {
-  border: solid #cc3910 3pt;
+  border: solid #ffb300 3pt;
   border-radius: 2pt;
-  -webkit-box-shadow: 0 0 10px #cc3910;
-  -moz-box-shadow: 0 0 10px #cc3910;
-  box-shadow: 0 0 10px #cc3910;
+  -webkit-box-shadow: 0 0 10px #ffb300;
+  -moz-box-shadow: 0 0 10px #ffb300;
+  box-shadow: 0 0 10px #ffb300;
 }
 .avatar {
   float: left;
-  margin: 10px 5px;
+  margin: 10px 7.5px;
+  width: 90px;
   height: 120px;
   line-height: 120px;
 }
 .avatar img {
   display: inline;
-  border: solid 3pt #8fa68e;
+  border: solid 3pt #6f83d6;
   border-radius: 2pt;
-  -webkit-box-shadow: 0 0 10px #8fa68e;
-  -moz-box-shadow: 0 0 10px #8fa68e;
-  box-shadow: 0 0 10px #8fa68e;
+  -webkit-box-shadow: 0 0 10px #6f83d6;
+  -moz-box-shadow: 0 0 10px #6f83d6;
+  box-shadow: 0 0 10px #6f83d6;
   vertical-align: middle;
 }
 #avatarSelectionBox {
-  margin: 20px auto;
+  margin: 10px -7.5px;
 }
 #avatarSelectionBox input[type=radio] {
   display: none;
 }
 /*#endregion*/
 /*#region LiveStatus Box*/
-#liveStatusBox {
-  margin-top: 20px;
-  border: 2px solid #332f29;
-  padding: 5px;
-  border-radius: 5px;
-}
 #liveStatusLog {
   height: 300px;
-  margin: 0px -5px;
-  border-top: solid 2px #332f29;
   overflow: hidden;
 }
 #liveStatusLog p {
   padding: 5px;
-  margin: 0px;
+  margin: 0px 15px;
 }
 #liveStatusLog :nth-child(even) {
-  background: #ccc59e;
+  background: #8493d6;
+  color: #ffffff;
 }
 /*endregion*/
 /*#region console*/
@@ -306,4 +347,12 @@ input[type=radio]:checked + label img {
 }
 /*#endregion*/
 /*#region defaults*/
+.PlayerName {
+  font-family: 'Acme', sans-serif;
+  margin-top: 20px;
+}
+.PlayerName h2,
+h1 {
+  padding-bottom: 0px;
+}
 /*#endregion*/

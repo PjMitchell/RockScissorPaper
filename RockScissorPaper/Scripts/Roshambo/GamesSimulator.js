@@ -20,7 +20,8 @@ window.GameSimulator = (function (_, $, gameSession, logger) {
     }
 
     function stop() {
-        var defArray = []
+        var defArray = [],
+            $stopdeferred = $.Deferred();
         log("Games Stopping");
 
         _.each(_sessions, function(session) {
@@ -29,8 +30,11 @@ window.GameSimulator = (function (_, $, gameSession, logger) {
         $.when.apply(this, defArray)
             .done(function () {
                 log("All games Stopped");
+                $stopdeferred.resolve();
             });
         _sessions = [];
+
+        return $stopdeferred.promise();
     }
 
     function log(message) {

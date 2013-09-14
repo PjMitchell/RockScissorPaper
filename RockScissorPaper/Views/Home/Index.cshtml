@@ -1,53 +1,62 @@
 ﻿
-    <h3>Please enter your name and avatar before you start</h3>
-<div class="row">
-    <div class="offset4 span4">
+
+
+<h3 class="firstRow">Please enter your name and avatar before you start</h3>
    
-    @using( Html.BeginForm())
-    {
-        <div class="row">
-            @Html.TextBox("username", null, new { @class ="span4" })
+@using( Html.BeginForm())
+{
+    <div class="row">
+        <div class ="span4 offset4">
+            @Html.TextBox("username", null, new { @class = "span4", placeholder = "Enter your name here" })
         </div>
-        <div id="avatarSelectionBox">
-            <div class="avatar">
-                <input type="radio" name="avatar" id="Paper1" checked="checked" value="Paper1.jpg" />
-                <label for="Paper1">
-                    <img src="~/Content/Images/Avatars/Paper1.jpg" />
-                </label>
-            </div>
-            <div class="avatar">
-                <input type="radio" name="avatar" id="Rock1"  value="Rock1.jpg" />
-                <label for="Rock1">
-                    <img src="~/Content/Images/Avatars/Rock1.jpg" />
-                </label>
-            </div>
-            <div class="avatar">
-                <input type="radio" name="avatar" id="Scissor1"  value="Scissor1.jpg" />
-                <label for="Scissor1">
-                    <img src="~/Content/Images/Avatars/Scissor1.jpg" />
-                </label>
-            </div>
-            <div class="avatar">
-                <input type="radio" name="avatar" id="Paper2" hidden="hidden" value="Paper2.jpg" />
-                <label for="Paper2">
-                    <img src="~/Content/Images/Avatars/Paper2.jpg" />
-                </label>
-            </div>
-            <div class="avatar">
-                <input type="radio" name="avatar" id="Rock2"  value="Rock2.jpg" />
-                <label for="Rock2">
-                    <img src="~/Content/Images/Avatars/Rock2.jpg" />
-                </label>
-            </div>
-            <div class="avatar">
-                <input type="radio" name="avatar" id="Scissor2"  value="Scissor1.jpg" />
-                <label for="Scissor2">
-                    <img src="~/Content/Images/Avatars/Scissor2.jpg" />
-                </label>
-            </div>
-            <div class="clear-fix"></div>
-        </div>
-        <input type="submit" value="Start Game"/>
-    }
     </div>
-</div>
+    <div class="row">
+        <div class ="span4 offset4">
+            <div id="avatarSelectionBox" >
+                <div class="avatar">
+                    <input type="radio" name="avatar" id="Paper1" checked="checked" value="Paper1.jpg" />
+                    <label for="Paper1">
+                        <img src="~/Content/Images/Avatars/Paper1.jpg" />
+                    </label>
+                </div>
+                <div class="avatar">
+                    <input type="radio" name="avatar" id="Rock1"  value="Rock1.jpg" />
+                    <label for="Rock1">
+                        <img src="~/Content/Images/Avatars/Rock1.jpg" />
+                    </label>
+                </div>
+                <div class="avatar">
+                    <input type="radio" name="avatar" id="Scissor1"  value="Scissor1.jpg" />
+                    <label for="Scissor1">
+                        <img src="~/Content/Images/Avatars/Scissor1.jpg" />
+                    </label>
+                </div>
+                <div class="avatar">
+                    <input type="radio" name="avatar" id="Paper2" hidden="hidden" value="Paper2.jpg" />
+                    <label for="Paper2">
+                        <img src="~/Content/Images/Avatars/Paper2.jpg" />
+                    </label>
+                </div>
+                <div class="avatar">
+                    <input type="radio" name="avatar" id="Rock2"  value="Rock2.jpg" />
+                    <label for="Rock2">
+                        <img src="~/Content/Images/Avatars/Rock2.jpg" />
+                    </label>
+                </div>
+                <div class="avatar">
+                    <input type="radio" name="avatar" id="Scissor2"  value="Scissor1.jpg" />
+                    <label for="Scissor2">
+                        <img src="~/Content/Images/Avatars/Scissor2.jpg" />
+                    </label>
+                </div>
+            <div class="clear-fix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class ="span4 offset4">
+            <input type="submit" value="Start Game" class ="span4"/>
+        </div>
+    </div>
+}
+

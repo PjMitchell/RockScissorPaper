@@ -3,26 +3,20 @@
     ViewBag.Title = "Game";
 }
 <link rel="stylesheet" href="/Content/Css/Game.css" type="text/css" />
-<div class="row">
-    <div id="liveStatusBox" class="span3">
-        <p id="peoplePlayingField">Games Running:</p>
-        <p id="botWins">Bots :</p>
-        <p id="humanWins">Human :</p>
-        <div id="liveStatusLog">
 
-        </div>
+<section id="gameContainer" class="main span8">
+    <div class="row PlayerName">
+        <h2 class="span3 leftAlign">@Model.PlayerOne.Name</h2>
+        <h1 class="span2">Vs</h1>
+        <h2 class="span3 rightAlign">@Model.PlayerTwo.Name</h2>
     </div>
-    <div id="gameContainer" class="span6">
-        
-        <h3 id="gameBannerMessage" > @Model.StateOfGame.BannerMessage</h3>
-        <div class="clear-fix"></div>
-        <div class="row">
-            <h3 class="span2">@Model.PlayerOne.Name</h3>
-            <h2 class="span2">Vs</h2>
-            <h3 class="span2">@Model.PlayerTwo.Name</h3>
-        </div>
-        <div class="gamePanel">
-            <div id="playerOne" class="playerPanel">
+    <div class="row roundInfo">
+            <h3 class="score span3 leftAlign" id="p1Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
+            <h4 id="GameRounds" class="span2">@Model.StateOfGame.RoundMessage</h4>
+            <h3 class="score span3 rightAlign" id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
+    </div>
+    <div class="row gamePanel">
+        <div id="playerOne" class="playerPanel span2">
                 <div class="playerImage">
                     <img src="@Html.Raw("/Content/Images/Avatars/"+ Model.PlayerOne.AvatarImgFile)" width="80" />
 
@@ -30,50 +24,53 @@
                 <div class="playerSelection">
                     <img id="p1Selection" src="@Html.Raw("/Content/Images/Selections/" + Model.StateOfGame.PlayerOne.CurrentSelection+".png")" />
                 </div>
-                   
-            </div>
-            <div id="displayCenter" class="centerPanel">
-                    <p id="userMessage">
-                        @if (@Model.StateOfGame.PlayerOne.IsViewer)
-                    {
-                                        @Html.Raw(Model.StateOfGame.PlayerOne.PlayerMessage )
-                    }
-                    else
-                    {
-                                        @Html.Raw(Model.StateOfGame.PlayerTwo.PlayerMessage )
-
-                    }
-                    </p>
-            </div>
-            <div id="playerTwo" class="playerPanel">
-                <div class="playerSelection">
-                    <img id="p2Selection" src="@Html.Raw("/Content/Images/Selections/" + Model.StateOfGame.PlayerTwo.CurrentSelection+".png")" />
-                </div>
-                <div class="playerImage">
-                    <img src="@Html.Raw("/Content/Images/Avatars/"+ Model.PlayerTwo.AvatarImgFile)" width="80" />
-                </div>
-            </div>
         </div>
-        <div class="clear-fix"></div>
-        <div class="row float">
-            <h3 class="score span2" id="p1Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
-            <h3 id="GameRounds" class="span2">@Model.StateOfGame.RoundMessage</h3>
-            <h3 class="score span2" id="p2Score">@Model.StateOfGame.PlayerTwo.CurrentScore</h3>
-        </div>
-        <div class="clear-fix"></div>
-        <div class="row float">
-            <div id="playerOptions" class="span6">
-                @if (Model.StateOfGame.Status != RockScissorPaper.Domain.GameStatus.EndOfGame)
+        <div id="displayCenter" class="centerPanel span3">
+            <h3 id="gameBannerMessage" > @Model.StateOfGame.BannerMessage</h3>    
+            <h2 id="userMessage">
+                    @if (@Model.StateOfGame.PlayerOne.IsViewer)
                 {
-                    foreach (var item in Model.ButtonBox.Buttons)
-                    {
-                            <button data-selection="@item.SelectionId" data-selectionname="@item.SelectionText"><img src="@Html.Raw("/Content/Images/Selections/" + item.SelectionText + ".png")" height="25" /> </button>
-                    }
+                                    @Html.Raw(Model.StateOfGame.PlayerOne.PlayerMessage )
                 }
-                </div>
+                else
+                {
+                                    @Html.Raw(Model.StateOfGame.PlayerTwo.PlayerMessage )
+
+                }
+            </h2>
+        </div>
+        <div id="playerTwo" class="playerPanel span2">
+            <div class="playerSelection">
+                <img id="p2Selection" src="@Html.Raw("/Content/Images/Selections/" + Model.StateOfGame.PlayerTwo.CurrentSelection+".png")" />
+            </div>
+            <div class="playerImage">
+                <img src="@Html.Raw("/Content/Images/Avatars/"+ Model.PlayerTwo.AvatarImgFile)" width="80" />
             </div>
         </div>
-</div>
+    </div>
+    <div class="row">
+        <div id="playerOptions">
+            @if (Model.StateOfGame.Status != RockScissorPaper.Domain.GameStatus.EndOfGame)
+            {
+                foreach (var item in Model.ButtonBox.Buttons)
+                {
+                        <button data-selection="@item.SelectionId" data-selectionname="@item.SelectionText"><img src="@Html.Raw("/Content/Images/Selections/" + item.SelectionText + ".png")" height="25" /> </button>
+                }
+            }
+        </div>
+    </div>
+</section>
+<aside id="liveStatusBox" class="span4">
+    <h3 class="leftAlign">Server Stats</h3>
+    <p id="peoplePlayingField">Games Running:</p>
+        <p id="botWins">Bots Victories:</p>
+        <p id="humanWins">Human Victories:</p>
+    <h3 class="leftAlign">Activity</h3>
+        <div id="liveStatusLog">
+
+        </div>
+</aside>
+
     @section scripts {
     
         <!--Script references. -->

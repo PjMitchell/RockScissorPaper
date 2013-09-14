@@ -12,19 +12,26 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body >
-    <section class="container">
-        <div class="row">
-            <nav class="span12">
-                @Html.ActionLink("Stats", "Statistics", "Home")
-                @Html.ActionLink("Tools", "DummyGame", "Home", new { @class = "popup", data_width = "400", data_height = "400" })
-            </nav>
+    <section class="headerBand">
+        <div class="container">
+            <div class="row">
+                <header class="span8">
+                    @Html.ActionLink("Rock Scissor Paper", "Index", "Home")
+                </header>
+                <nav class="span4">
+                        @Html.ActionLink("new game", "Index", "Home")
+                        @Html.ActionLink("stats", "Statistics", "Home")
+                        @Html.ActionLink("simulator", "DummyGame", "Home", new { @class = "popup", data_width = "400", data_height = "400" })
+                </nav>
+            </div>
         </div>
-
-        <header>
-            @Html.ActionLink("Rock Scissor Paper", "Index", "Home")
-        </header>
-        @RenderBody()
     </section>
+    <div class="container height100">
+        <div class="row height100">
+                @RenderBody()
+        </div>
+    </div>
+     
     @Scripts.Render("~/bundles/global")
     <script>
         $('a.popup').on('click', function (event) {

@@ -2,18 +2,15 @@
     position:relative;
 }
 #gameBannerMessage {
-    height:60px;
-    width: 460px;
 }
 .playerPanel {
     width:160px;
     height:120px;
-    margin:0px;
     padding:0px;
 }
 
 .centerPanel {
-    width:140px;
+    width:260px;
     height:120px;
     float:left;
     text-align:center;
@@ -47,7 +44,7 @@
 }
 
 .gamePanel {
-
+    margin-top:20px;
 }
 
 
@@ -58,20 +55,25 @@
 
 #playerTwo {
   float:right;
+  
 }
     
 
 
 #userMessage {
-     margin-top:30px;
-    
+     color:#FFB300;
+}
+
+#userMessage a{
+     color:#FFB300;
 }
 #GameRounds {
    
 }
 
 #playerOptions {
-    
+    margin:20px 160px 20px 180px;
+    width:300px;
     text-align:justify;
 }
 #playerOptions button{
@@ -98,3 +100,6 @@
     -ms-filter: "FlipH";
 }
 
+.roundInfo h3, h4 {
+    padding-top:5px;
+}

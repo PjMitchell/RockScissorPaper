@@ -2,64 +2,95 @@
 
 
 //Colour Palette
-@Background: #F1F2C0;
-@Foreground: #332F29;
+@Background: #FFFFFF;
+@Foreground: #4b64db;
 @Overflow: #CCC59E;
-@Primary:#8FA68E;
-@PrimaryContrast:#332F29;
-@PrimaryHighlight:#CCC59E;
-@Secondary: #CC3910;
-@SecondaryContrast:#332F29;
-@SecondaryHighlight: #F1F2C0;
+@Primary:#6F83D6;
+@PrimaryContrast:#FFFFFF;
+@PrimaryShaddow:#1533AD;
+@PrimaryHighlight:#8493d6;
+@PrimaryLight:#d4daf4;
+@Secondary: #FFB300;
+@SecondaryContrast:#1533AD;
+@SecondaryHighlight: #4b64db;
 @SecondaryBoxShadow: rgba(204, 57, 16, 0.6);
 //Fonts
 
+
 @font-face {
-    font-family: 'BowlbyOne-Regular';
-    src: url('/Content/Fonts/BowlbyOne-Regular.eot');
-    src: url('/Content/Fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'),
-         url('/Content/Fonts/BowlbyOne-Regular.woff') format('woff'),
-         url('/Content/Fonts/BowlbyOne-Regular.ttf') format('truetype'),
-         url('/Content/Fonts/BowlbyOne-Regular.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/Content/Fonts/Abel.eot');
+  src: url('/Content/Fonts/Abel.eot?#iefix') format('embedded-opentype'),
+       url('/Content/Fonts/Abel.woff') format('woff');
 
 }
+@font-face {
+  font-family: 'Acme';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/Content/Fonts/Acme.eot');
+  src: url('/Content/Fonts/Acme.eot?#iefix') format('embedded-opentype'),
+       url('/Content/Fonts/Acme.woff') format('woff');
+}
 
-@BaseFont: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-@EmphaticFont: 'BowlbyOne-Regular', sans-serif;
+@BaseFont: 'Abel', Sans-Serif;
+@EmphaticFont: 'Acme', sans-serif;
+
+@HeaderBandHeight: 55px;
 /*#endregion*/
 
 /*#region Basic Elements*/
 
 html {
-    background-color:@Overflow;
+    background-color:@Background;
+    height:100%;
     margin: 0;
     padding: 0;
 }
 
 body {
     background-color: @Background;
+    height:100%;
     border:none;
     color: @Foreground;
-    font-size: .85em;
+    font-size: 0.85em;
     font-family: @BaseFont;
     margin: 0px;
-    padding: 10px 0px 20px 0px;
+    padding: 0px;
 }
 
 h1, h2, h3,
 h4, h5, h6 {
     color: @Foreground;
     margin: 0;
-    padding: 15px 0px 5px 0px;
-    font-family:@EmphaticFont ;
+    padding: 5px 0px 5px 0px;
     text-align:center;
+    vertical-align:central;
     letter-spacing: 1px;
+    line-height:inherit;
+}
+
+h1 {
+    color:@PrimaryShaddow;
+    font-size: 300%;
+    font-weight:700;
+}
+
+h2 {
+    color:@PrimaryShaddow;
+    font-size: 180%;
 }
 
 h3 {
-    font-size: large;
+    font-size: 160%;
+    line-height:20px;
+}
+
+h4 {
+    font-size: 100%;
+    line-height:20px;
 }
 
 a {
@@ -70,6 +101,10 @@ a {
     a:active, a:hover {
        
     }
+label {
+display:inline;
+font-size:1.2em;
+}
 
  .float {
      float:left;
@@ -83,7 +118,20 @@ a {
     visibility: hidden;
 }
 
+.height100 {
+    height:100%;
+    min-height:100%;
+}
+.leftAlign {
+    text-align:left;
+}
 
+.rightAlign {
+    text-align:right;
+}
+.firstRow {
+    margin-top:20px;
+}
 /*#endregion*/
 
 /*#region StatsPage*/
@@ -103,62 +151,85 @@ a {
     float:left;
     padding: 0px 5px 5px 5px;
 }
+.roundStat h3{
+    text-align:left;
+}
 /*#endregion*/
 
-/*#region Header*/
+/*#region Header Nav Section Aside*/
+
+section.headerBand {
+    background: @Secondary;
+    height:@HeaderBandHeight;
+}
 
 nav {
-    margin:0px;
-
+    height:@HeaderBandHeight;
+    background: @Primary;
 }
 nav a{
     display:block;
-    float:right;
-    color:@Foreground;
-    border-width:2px 2px 2px 2px;
-    border-style: solid;
-    border-color: @PrimaryHighlight;
-    
-    background: @PrimaryHighlight;
-    padding:2px 5px 2px 5px;
-    border-top-left-radius: 10px;
-    margin:0px 5px -2px 5px;
+    float:left;
+    color:@PrimaryContrast;
+    background: @Primary;
+    padding:0px 19px 0px 19px;
     text-decoration:none;
+    line-height:@HeaderBandHeight;
+    height:@HeaderBandHeight;
+    min-width:40px;
+    text-align:center;
+    font-size:140%;
+    font-weight:400;
+    
 }
 
 nav a:hover{
     text-decoration:none;
-    background:@Primary;
-    border-bottom-color : @Primary;
+    background:@PrimaryShaddow;
+    color:@PrimaryContrast;
 }
 
 
 header {
-    height:55px;
-    border:2px solid @PrimaryHighlight;
+    height:@HeaderBandHeight;
     font-family: @EmphaticFont;
-    letter-spacing:1px;
-    background-color:@Primary;
     line-height:55px;
-    
 }
 
 header a {
     width:100%;
     height:100%;
-    text-align:center;
+    text-align:left;
     display:block;
     text-decoration:none;
     font-size:40px;
     padding:2px 0px;
-    color:@PrimaryContrast;
+    color:@SecondaryContrast;
 }
 
     header a:hover {
-        color:@PrimaryContrast;
+        color:@SecondaryContrast;
         text-decoration:none;
     }
 
+    header.popup {
+    text-align:center;
+    font-size:150%;
+    color:@SecondaryContrast;
+    }
+
+aside {
+    background: @PrimaryLight;
+    padding-top:20px;
+    height:100%;
+}
+
+    aside p {
+    margin-left:20px;
+    }
+    aside h3 {
+    margin-left:20px;
+    }
 /*#endregion*/
 
 /*#region inputs*/
@@ -179,13 +250,12 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    background-color: @PrimaryHighlight;
+    background-color: @Overflow;
     border: 1px solid @Primary;
-    color: @Foreground;
-    font-size: 1.2em;
+    color: @PrimaryShaddow;
+    font-size: 1.0em;
     margin: 10px auto;
     padding: 5px;
-    width:100%;
     display:block;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -232,32 +302,16 @@ input[type="color"]:focus,
 input[type="submit"],
     input[type="button"],
     button {
-        background-color:@Primary;
-        border: 1px solid @PrimaryHighlight;
+        background-color: @PrimaryHighlight;
+        border: 1px solid @Primary;
         color:@PrimaryContrast;
         cursor: pointer;
-        font-family: @EmphaticFont;
+        font-family: @BaseFont;
         letter-spacing:1px;
         font-size: 1.3em;
         padding: 7px;
         margin:0px auto;
-        width: auto;
         display:block;
-    }
-
-input[type="submit"],
-    input[type="button"],
-    button {
-        background-color:@Primary;
-        border: 1px solid @PrimaryHighlight;
-        color:@PrimaryContrast;
-        cursor: pointer;
-        font-family: @EmphaticFont;
-        letter-spacing:1px;
-        font-size: 1.3em;
-        padding: 7px;
-        margin:0px auto;
-        width: auto;
     }
 
 
@@ -317,7 +371,8 @@ input[type=radio]:checked + label img {
 }
 .avatar {
     float: left;
-    margin: 10px 5px;
+    margin: 10px 7.5px;
+    width:90px;
     height: 120px;
     line-height:120px;
 }
@@ -331,7 +386,7 @@ input[type=radio]:checked + label img {
         vertical-align: middle;
     }
 #avatarSelectionBox {
-    margin:20px auto;
+    margin:10px -7.5px;
 } 
 #avatarSelectionBox input[type=radio] {
     display: none;
@@ -341,26 +396,19 @@ input[type=radio]:checked + label img {
 
 /*#region LiveStatus Box*/
 #liveStatusBox {
-    margin-top: 20px;
-    border: 2px solid @Foreground;
-    padding: 5px;
-    border-radius: 5px;
-
 }
 #liveStatusLog {
     height:300px;
-    margin: 0px -5px;
-    border-top: solid 2px @Foreground;
     overflow:hidden;
-    
 }
 #liveStatusLog p {
     padding:5px;
-    margin:0px;
+    margin:0px 15px;
 }
 
 #liveStatusLog :nth-child(even) {
     background: @PrimaryHighlight;
+    color:@Background;
 }
 
 /*endregion*/
@@ -373,7 +421,14 @@ input[type=radio]:checked + label img {
 /*#endregion*/
 
 /*#region defaults*/
-
+.PlayerName {
+    font-family:@EmphaticFont;
+    margin-top:20px;
+}
+.PlayerName
+h2, h1 {
+    padding-bottom:0px;
+}
 
 
 /*#endregion*/
