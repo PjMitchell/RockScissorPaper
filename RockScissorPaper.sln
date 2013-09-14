@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.20617.1 PREVIEW
+VisualStudioVersion = 12.0.20827.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper", "RockScissorPaper\RockScissorPaper.csproj", "{42DBF428-134D-4F28-889F-167C315F82D3}"
 EndProject
@@ -27,44 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FDB44BFF-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A06F4432-F2B3-4D32-B494-DB2FC3543BF6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{22F9501C-99CB-4BBE-AE88-F74B6E5E5017}"
-	ProjectSection(SolutionItems) = preProject
-		SQLScripts\DatabaseStartUpScript.sql = SQLScripts\DatabaseStartUpScript.sql
-		SQLScripts\UNDO-DatabaseStartUpScript.sql = SQLScripts\UNDO-DatabaseStartUpScript.sql
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoredProcedures", "StoredProcedures", "{2EA4620E-6886-45EB-B429-F1CCC60B23D8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{192E8DA4-F1C6-4E05-A515-2CD1CBB61E7A}"
-	ProjectSection(SolutionItems) = preProject
-		SQLScripts\StoredProceedures\Game\Game_All.sql = SQLScripts\StoredProceedures\Game\Game_All.sql
-		SQLScripts\StoredProceedures\Game\Game_CountActive.sql = SQLScripts\StoredProceedures\Game\Game_CountActive.sql
-		SQLScripts\StoredProceedures\Game\Game_GetById.sql = SQLScripts\StoredProceedures\Game\Game_GetById.sql
-		SQLScripts\StoredProceedures\Game\GamePlayer_GetBotvsHumanVictoryCount.sql = SQLScripts\StoredProceedures\Game\GamePlayer_GetBotvsHumanVictoryCount.sql
-		SQLScripts\StoredProceedures\Game\GamePlayer_Update.sql = SQLScripts\StoredProceedures\Game\GamePlayer_Update.sql
-		SQLScripts\StoredProceedures\Game\GameRound_Create.sql = SQLScripts\StoredProceedures\Game\GameRound_Create.sql
-		SQLScripts\StoredProceedures\Game\GameRound_GetById.sql = SQLScripts\StoredProceedures\Game\GameRound_GetById.sql
-		SQLScripts\StoredProceedures\Game\GameRoundResult_Create.sql = SQLScripts\StoredProceedures\Game\GameRoundResult_Create.sql
-		SQLScripts\StoredProceedures\Game\GameRuleSet_GetById.sql = SQLScripts\StoredProceedures\Game\GameRuleSet_GetById.sql
-		SQLScripts\StoredProceedures\Game\GameRuleSet_GetGameRuleSetId.sql = SQLScripts\StoredProceedures\Game\GameRuleSet_GetGameRuleSetId.sql
-		SQLScripts\StoredProceedures\Game\GameStatus_Update.sql = SQLScripts\StoredProceedures\Game\GameStatus_Update.sql
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Player", "Player", "{B1449D74-492B-44D7-8232-F66D91B961B2}"
-	ProjectSection(SolutionItems) = preProject
-		SQLScripts\StoredProceedures\Player\Player_Create.sql = SQLScripts\StoredProceedures\Player\Player_Create.sql
-		Player_GetBots.sql = Player_GetBots.sql
-		SQLScripts\StoredProceedures\Player\Player_GetById.sql = SQLScripts\StoredProceedures\Player\Player_GetById.sql
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Statistic", "Statistic", "{8772EBA7-48FA-42C5-AE8A-90CD536E1CD7}"
-	ProjectSection(SolutionItems) = preProject
-		SQLScripts\StoredProceedures\Statistics\Game_GetGamesPlayed.sql = SQLScripts\StoredProceedures\Statistics\Game_GetGamesPlayed.sql
-		SQLScripts\StoredProceedures\Statistics\GameRound_GetStatistic.sql = SQLScripts\StoredProceedures\Statistics\GameRound_GetStatistic.sql
-		SQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticByRoundNumber.sql = SQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticByRoundNumber.sql
-		SQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticSummary.sql = SQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticSummary.sql
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.BLL", "RockScissorPaper.BLL\RockScissorPaper.BLL.csproj", "{5CE2162F-EB77-4F03-91CD-9B570DB5C4D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OldItems", "OldItems", "{F6F241CC-D1B3-4AC3-91CF-D77451DE2054}"
@@ -80,6 +42,50 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27B1D724-7FE1-42B8-8101-BFB946709FFF}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{4471EAC6-6A66-46DF-9A6F-F8ABDD0D243C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MySQLScripts", "MySQLScripts", "{499F4A51-8A4C-49DD-8705-BA9272656B11}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\MySQLScripts\DatabaseStartUpScript.sql = SQLScripts\MySQLScripts\DatabaseStartUpScript.sql
+		SQLScripts\MSSQLScripts\UNDO-DatabaseStartUpScript.sql = SQLScripts\MSSQLScripts\UNDO-DatabaseStartUpScript.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSQLScripts", "MSSQLScripts", "{9FB159D0-59AC-49B3-B5B7-6B787CD21A53}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\MSSQLScripts\DatabaseStartUpScript.sql = SQLScripts\MSSQLScripts\DatabaseStartUpScript.sql
+		SQLScripts\MSSQLScripts\UNDO-DatabaseStartUpScript.sql = SQLScripts\MSSQLScripts\UNDO-DatabaseStartUpScript.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Player", "Player", "{0737F088-400B-4BBB-B069-81A8AF2EA4AC}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\MySQLScripts\StoredProceedures\Player\Player_Create.sql = SQLScripts\MySQLScripts\StoredProceedures\Player\Player_Create.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Player\Player_GetById.sql = SQLScripts\MySQLScripts\StoredProceedures\Player\Player_GetById.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{74B49E9B-83A2-47EA-96EC-4AF28E70C076}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\MySQLScripts\StoredProceedures\Game\Game_All.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\Game_All.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\Game_CountActive.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\Game_CountActive.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\Game_Create.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\Game_Create.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\Game_GetById.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\Game_GetById.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GamePlayer_GetBotvsHumanVictoryCount.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GamePlayer_GetBotvsHumanVictoryCount.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GamePlayer_Update.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GamePlayer_Update.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GameRound_Create.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GameRound_Create.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GameRound_GetById.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GameRound_GetById.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GameRoundResult_Create.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GameRoundResult_Create.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GameRuleSet_GetById.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GameRuleSet_GetById.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GameRuleSet_GetGameRuleSetId.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GameRuleSet_GetGameRuleSetId.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Game\GameStatus_Update.sql = SQLScripts\MySQLScripts\StoredProceedures\Game\GameStatus_Update.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stats", "Stats", "{6C68CEB3-3995-4E35-820D-3914F7545E83}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\MySQLScripts\StoredProceedures\Statistics\Game_GetGamesPlayed.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\Game_GetGamesPlayed.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatistic.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatistic.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticByRoundNumber.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticByRoundNumber.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticSummary.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticSummary.sql
 	EndProjectSection
 EndProject
 Global
@@ -136,9 +142,10 @@ Global
 		{5CE2162F-EB77-4F03-91CD-9B570DB5C4D8} = {184D4CCF-8D54-4567-9096-A764F4B422E7}
 		{671AA7A6-9325-450F-830D-2E0A4900CCE5} = {A06F4432-F2B3-4D32-B494-DB2FC3543BF6}
 		{4BFA59A8-50D7-45F7-A33C-6DC0B3AC3661} = {FDB44BFF-A2C3-4C28-976E-83644F285BEC}
-		{2EA4620E-6886-45EB-B429-F1CCC60B23D8} = {22F9501C-99CB-4BBE-AE88-F74B6E5E5017}
-		{192E8DA4-F1C6-4E05-A515-2CD1CBB61E7A} = {2EA4620E-6886-45EB-B429-F1CCC60B23D8}
-		{B1449D74-492B-44D7-8232-F66D91B961B2} = {2EA4620E-6886-45EB-B429-F1CCC60B23D8}
-		{8772EBA7-48FA-42C5-AE8A-90CD536E1CD7} = {2EA4620E-6886-45EB-B429-F1CCC60B23D8}
+		{499F4A51-8A4C-49DD-8705-BA9272656B11} = {4471EAC6-6A66-46DF-9A6F-F8ABDD0D243C}
+		{9FB159D0-59AC-49B3-B5B7-6B787CD21A53} = {4471EAC6-6A66-46DF-9A6F-F8ABDD0D243C}
+		{0737F088-400B-4BBB-B069-81A8AF2EA4AC} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
+		{74B49E9B-83A2-47EA-96EC-4AF28E70C076} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
+		{6C68CEB3-3995-4E35-820D-3914F7545E83} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
 	EndGlobalSection
 EndGlobal
