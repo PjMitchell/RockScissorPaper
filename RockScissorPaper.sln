@@ -83,6 +83,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stats", "Stats", "{6C68CEB3-3995-4E35-820D-3914F7545E83}"
 	ProjectSection(SolutionItems) = preProject
 		SQLScripts\MySQLScripts\StoredProceedures\Statistics\Game_GetGamesPlayed.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\Game_GetGamesPlayed.sql
+		SQLScripts\MySQLScripts\StoredProceedures\Statistics\Gameround_GetGroupedByDate.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\Gameround_GetGroupedByDate.sql
 		SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatistic.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatistic.sql
 		SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticByRoundNumber.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticByRoundNumber.sql
 		SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticSummary.sql = SQLScripts\MySQLScripts\StoredProceedures\Statistics\GameRound_GetStatisticSummary.sql
