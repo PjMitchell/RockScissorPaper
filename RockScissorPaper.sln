@@ -49,6 +49,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MySQLScripts", "MySQLScripts", "{499F4A51-8A4C-49DD-8705-BA9272656B11}"
 	ProjectSection(SolutionItems) = preProject
 		SQLScripts\MySQLScripts\DatabaseStartUpScript.sql = SQLScripts\MySQLScripts\DatabaseStartUpScript.sql
+		SQLScripts\MySQLScripts\GetSelectionPositionScript.sql = SQLScripts\MySQLScripts\GetSelectionPositionScript.sql
 		SQLScripts\MSSQLScripts\UNDO-DatabaseStartUpScript.sql = SQLScripts\MSSQLScripts\UNDO-DatabaseStartUpScript.sql
 	EndProjectSection
 EndProject

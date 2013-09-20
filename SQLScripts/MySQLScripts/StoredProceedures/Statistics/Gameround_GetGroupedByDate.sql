@@ -4,7 +4,7 @@ DELIMITER $$
 
 CREATE PROCEDURE `Gameround_GetGroupedByDate` ()
 
-BEGINgameruleset
+BEGIN 
 
 SELECT Date(game.StartDate) as 'Date',
  SUM(CASE WHEN SelectionId = 1 THEN 1 ELSE 0 END) as Rock,
