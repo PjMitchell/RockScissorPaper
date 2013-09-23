@@ -29,16 +29,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A06F4432-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.BLL", "RockScissorPaper.BLL\RockScissorPaper.BLL.csproj", "{5CE2162F-EB77-4F03-91CD-9B570DB5C4D8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OldItems", "OldItems", "{F6F241CC-D1B3-4AC3-91CF-D77451DE2054}"
-	ProjectSection(SolutionItems) = preProject
-		RockScissorPaper.BLL\Factories\GameRuleFactoryParameters.cs = RockScissorPaper.BLL\Factories\GameRuleFactoryParameters.cs
-		RockScissorPaper.BLL\Factories\GameRulesFactory.cs = RockScissorPaper.BLL\Factories\GameRulesFactory.cs
-		RockScissorPaper.BLL\Services\GameStateService.cs = RockScissorPaper.BLL\Services\GameStateService.cs
-		RockScissorPaper\Models\NotificationService.cs = RockScissorPaper\Models\NotificationService.cs
-		RockScissorPaper.BLL\Services\OldGameService.cs = RockScissorPaper.BLL\Services\OldGameService.cs
-		RockScissorPaper.BLL\Commands\PlayerSelectionCommand.cs = RockScissorPaper.BLL\Commands\PlayerSelectionCommand.cs
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27B1D724-7FE1-42B8-8101-BFB946709FFF}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
@@ -91,6 +81,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stats", "Stats", "{6C68CEB3
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockScissorPaper.DAL.Test", "RockScissorPaper.DAL.Test\RockScissorPaper.DAL.Test.csproj", "{CC8E9521-D044-4FB5-94BE-B2531B933EDB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{91129E2F-79AA-490F-AF7F-76BACE27B5C6}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\MySQLScripts\Views\RoundSelectionStatistics.sql = SQLScripts\MySQLScripts\Views\RoundSelectionStatistics.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,5 +153,6 @@ Global
 		{0737F088-400B-4BBB-B069-81A8AF2EA4AC} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
 		{74B49E9B-83A2-47EA-96EC-4AF28E70C076} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
 		{6C68CEB3-3995-4E35-820D-3914F7545E83} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
+		{91129E2F-79AA-490F-AF7F-76BACE27B5C6} = {499F4A51-8A4C-49DD-8705-BA9272656B11}
 	EndGlobalSection
 EndGlobal
