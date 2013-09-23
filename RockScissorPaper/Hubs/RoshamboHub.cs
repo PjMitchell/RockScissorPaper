@@ -16,16 +16,16 @@ namespace RockScissorPaper.Hubs
     {
         private readonly static HashSet<string> _connectionIds = new HashSet<string>();
         public static int PeopleConnected { get {return _connectionIds.Count; } }
-        private HubNotificationService _notificationService;
+        private RoshamboHubNotificationService _notificationService;
 
         private IStatisticsService _statsService;
         private IGameService _gameService;
 
-        public RoshamboHub(GameEventManager eventManager, IStatisticsService statsService, IGameService gameService)
+        public RoshamboHub(RoshamboHubNotificationService notificationService, IStatisticsService statsService, IGameService gameService)
         {
             _statsService = statsService;
             _gameService = gameService;
-            _notificationService = HubNotificationService.Instance(eventManager, statsService, gameService);
+            _notificationService = notificationService;
         }
 
         

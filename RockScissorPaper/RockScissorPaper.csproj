@@ -184,6 +184,7 @@
     <Compile Include="Models\GameSelectorButton.cs" />
     <Compile Include="Models\GameSelectorButtonBox.cs" />
     <Compile Include="Models\GameSelectorButtonBoxFactory.cs" />
+    <Compile Include="Models\RoshamboHubNotificationService.cs" />
     <Compile Include="Models\HubNotificationService.cs" />
     <Compile Include="Models\HubObjects\GlobalResultsHubObject.cs" />
     <Compile Include="Models\Statistics\GammaFunction.cs" />

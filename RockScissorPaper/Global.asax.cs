@@ -37,6 +37,7 @@ namespace RockScissorPaper
             kernel.Bind<IPlayerRepository>().To<PlayerSQLRepository>();
             //GameEventManager
             kernel.Bind<GameEventManager>().ToConstant(new GameEventManager());
+            kernel.Bind<RoshamboHubNotificationService>().To<RoshamboHubNotificationService>().InSingletonScope();
             //Services
             kernel.Bind<IPlayerService>().To<PlayerService>();
             kernel.Bind<IGameService>().To<GameService>();
