@@ -1,5 +1,6 @@
 ﻿using RockScissorPaper.Domain;
 using System.Collections.Generic;
+using System.Data;
 
 namespace RockScissorPaper.DAL
 {
@@ -10,6 +11,8 @@ namespace RockScissorPaper.DAL
         List<RoundStatistic> GetRoundInformation();
 
         RoundStatistic GetRoundInformation(int round);
+
+        DataTable GetSelectionVsTime();
 
         int GetGamesPlayed();
 

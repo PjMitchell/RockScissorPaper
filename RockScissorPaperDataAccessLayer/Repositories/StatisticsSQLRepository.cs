@@ -74,5 +74,11 @@ namespace RockScissorPaper.DAL
 
         }
 
+        public DataTable GetSelectionVsTime()
+        {
+            DataTable dt = _dataAccess.Get("Gameround_GetGroupedByDate");
+
+            return dt;
+        }
     }
 }

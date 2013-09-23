@@ -30,7 +30,7 @@ namespace HilltopDigital.SimpleDAL
 
         public MySQLDatabaseConnector(string connectionString)
         {
-            _connectionString = GetConnectionString();
+            _connectionString = connectionString;
         }
 
         /// <summary>
