@@ -19,13 +19,11 @@ namespace RockScissorPaper.Controllers
         
         private IPlayerService _playerService;
         private IGameService _gameService;
-        private IStatisticsService _statsService;
 
-        public HomeController(IPlayerService playerService, IGameService gameService, IStatisticsService statsService)
+        public HomeController(IPlayerService playerService, IGameService gameService)
         {
             _playerService = playerService;
             _gameService = gameService;
-            _statsService = statsService;
         }
 
         public ActionResult Index()
@@ -95,13 +93,12 @@ namespace RockScissorPaper.Controllers
             return View(view);
         }
 
-        [OutputCache(Location=OutputCacheLocation.Server, Duration=5)]
-        public ActionResult Statistics()
-        {
-            StatisticsOverviewQuery view = _statsService.GetOverview();
-            return View(view);
-        }
+        
 
+        /// <summary>
+        /// Simulated Game Page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult DummyGame()
         {
             return View();
