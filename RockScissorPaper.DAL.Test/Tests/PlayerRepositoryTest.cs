@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockScissorPaper.DAL;
 using HilltopDigital.SimpleDAL;
 using RockScissorPaper.Domain;
+using System.Transactions;
 
 namespace RockScissorPaper.DAL.Test
 {
@@ -13,8 +14,10 @@ namespace RockScissorPaper.DAL.Test
         public void PlayerSQLRespositoryTest_CreateAndGet()
         {
             FakeDBService dbService = FakeDBService.GetInstance();
+            using (TransactionScope scope = new TransactionScope())
+            { 
             PlayerSQLRepository _repository = new PlayerSQLRepository(dbService.GetDatabaseConnector());
-
+            
             Player testPlayer = new Player(){
             Name = "Tester Bob"
             };
@@ -26,8 +29,9 @@ namespace RockScissorPaper.DAL.Test
 
             Assert.AreEqual(testPlayer.Name, testResult.Name);
             Assert.AreEqual(false, testResult.IsBot);
-
-            dbService.ResetDb();
+            
+            }
+            
         }
         
     }
