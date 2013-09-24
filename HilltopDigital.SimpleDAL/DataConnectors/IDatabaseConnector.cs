@@ -39,8 +39,8 @@ namespace HilltopDigital.SimpleDAL
         /// <returns></returns>
         object ExecuteScalar(string sql, List<StoreProcedureParameter> sqlParams = null);
 
-        void ExecuteNonQueryScript(string path);
-        void ExecuteNonQueryScript(List<string> paths);
+        int ExecuteNonQueryScript(string path);
+        int ExecuteNonQueryScript(List<string> paths);
 
     }
 }

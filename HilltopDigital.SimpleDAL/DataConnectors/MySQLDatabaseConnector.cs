@@ -135,16 +135,17 @@ namespace HilltopDigital.SimpleDAL
             return result;
         }
 
-        public void ExecuteNonQueryScript(string path)
+        public int ExecuteNonQueryScript(string path)
         {
             List<string> list = new List<string>();
             list.Add(path);
-            ExecuteNonQueryScript(list);
+            return ExecuteNonQueryScript(list);
         }
 
-        public void ExecuteNonQueryScript(List<string> paths)
+        public int ExecuteNonQueryScript(List<string> paths)
         {
             List<string> scripts = new List<string>();
+            int result = 0;
             foreach (string path in paths)
             {
                 FileInfo file = new FileInfo(path);
@@ -162,10 +163,11 @@ namespace HilltopDigital.SimpleDAL
                 {
                     using (var cmd = new MySqlCommand(script, connection))
                     {
-                        cmd.ExecuteNonQuery();
+                        result += cmd.ExecuteNonQuery();
                     }
                 }
             }
+            return result;
         }
 
         /// <summary>
