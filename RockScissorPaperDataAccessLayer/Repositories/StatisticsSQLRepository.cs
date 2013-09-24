@@ -74,11 +74,12 @@ namespace RockScissorPaper.DAL
 
         }
 
-        public DataTable GetSelectionVsTime()
+        public List<SelectionVsTimeQuery> GetSelectionVsTime()
         {
-            DataTable dt = _dataAccess.Get("Gameround_GetGroupedByDate");
-
-            return dt;
+            SelectionVsTimeMapper mapper = new SelectionVsTimeMapper();
+             _dataAccess.Get("Gameround_GetGroupedByDate", mapper);
+             List<SelectionVsTimeQuery> result = mapper.Result as List<SelectionVsTimeQuery>;
+            return result;
         }
     }
 }

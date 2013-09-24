@@ -12,7 +12,7 @@ namespace RockScissorPaper.DAL
 
         RoundStatistic GetRoundInformation(int round);
 
-        DataTable GetSelectionVsTime();
+        List<SelectionVsTimeQuery> GetSelectionVsTime();
 
         int GetGamesPlayed();
 

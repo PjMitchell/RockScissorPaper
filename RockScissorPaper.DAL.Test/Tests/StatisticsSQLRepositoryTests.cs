@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Data.Linq;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RockScissorPaper.DAL.Test
@@ -26,15 +24,32 @@ namespace RockScissorPaper.DAL.Test
             FakeDBService service = FakeDBService.GetInstance();
             StatisticsSQLRepository repository = new StatisticsSQLRepository(service.GetDatabaseConnector());
             int expectedRowCount = 1;
-            int expectedColumnCount = 4;
 
 
-            DataTable result = repository.GetSelectionVsTime();
-            int rowCount = result.Rows.Count;
-            int columnCount = result.Columns.Count;
+            List<SelectionVsTimeQuery> result = repository.GetSelectionVsTime();
+            int rowCount = result.Count;
 
             Assert.AreEqual(expectedRowCount, rowCount);
-            Assert.AreEqual(expectedColumnCount, columnCount);
+            
+        }
+
+        [TestMethod]
+        public void GetSelectionVsTime_FirstRowIsCorrect()
+        {
+            FakeDBService service = FakeDBService.GetInstance();
+            StatisticsSQLRepository repository = new StatisticsSQLRepository(service.GetDatabaseConnector());
+            int expectedFirstRowRockCount = 3;
+            int expectedFirstRowScissorCount = 4;
+            int expectedFirstRowPaperCount = 3;
+            int expectedFirstRowDayOfTheMonth = 25;
+
+
+            List<SelectionVsTimeQuery> result = repository.GetSelectionVsTime();
+            
+            Assert.AreEqual(expectedFirstRowRockCount,result[0].Rock);
+            Assert.AreEqual(expectedFirstRowScissorCount,result[0].Scissor);
+            Assert.AreEqual(expectedFirstRowPaperCount,result[0].Paper);
+            Assert.AreEqual(expectedFirstRowDayOfTheMonth, result[0].Date.Day);
         }
     }
 }
