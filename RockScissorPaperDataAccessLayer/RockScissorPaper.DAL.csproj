@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,7 +60,7 @@
     <Compile Include="Repositories\PlayerSQLRepository.cs" />
     <Compile Include="Repositories\StatisticsSQLRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateGameResultCommand.cs" />
+    <Compile Include="Models\UpdateGameResultCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
