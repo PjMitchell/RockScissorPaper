@@ -74,6 +74,9 @@
     <Content Include="TestDBScripts\DatabaseStartUpScript.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestDBScripts\PopulateFakeDB.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestDBScripts\UNDO-DatabaseStartUpScript.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

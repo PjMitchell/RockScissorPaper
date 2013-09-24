@@ -15,8 +15,9 @@ namespace RockScissorPaper.DAL.Test
         private string _connectionstring;
         private string _dbBuiltScript = @"TestDBScripts\DatabaseStartUpScript.sql";
         private string _dbTearDownScript = @"TestDBScripts\UNDO-DatabaseStartUpScript.sql";
-       
+        private string _populateDbScript = @"TestDBScripts\PopulateFakeDB.sql";
         private IDatabaseConnector _dataConnector;
+        
 
 
         public bool IsBuilt { get; private set; }
@@ -46,6 +47,7 @@ namespace RockScissorPaper.DAL.Test
         private void BuildDb()
         {
             _dataConnector.ExecuteNonQueryScript(_dbBuiltScript);
+            _dataConnector.ExecuteNonQueryScript(_populateDbScript);
             IsBuilt = true;
         }
 
