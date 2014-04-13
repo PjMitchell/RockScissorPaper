@@ -1,9 +1,10 @@
 ﻿"use strict";
 
-window.Roshambo = (function ($, api) {
-
+window.Roshambo = (function ($, Core) {
+     
     var _gameId,
         _playerId;
+    var Api = new Core.Api();
 
     function init(gameId, playerId) {
         $('#playerOptions').on('click', 'button', function (e) {
@@ -57,7 +58,7 @@ window.Roshambo = (function ($, api) {
     function processSelection(input) {
         var inputModel = { PlayerId: _playerId, GameId: _gameId, Selection: input },
             $buttonbox = $('#playerOptions');
-        api.put('Games', _gameId, inputModel)
+        Api.put('Games', _gameId, inputModel)
             .done(function (data) {
                 processResult(data);
             });
@@ -134,7 +135,7 @@ window.Roshambo = (function ($, api) {
     return {
         init: init
     }
-})($, Api);
+})($, Core);
 
 
 

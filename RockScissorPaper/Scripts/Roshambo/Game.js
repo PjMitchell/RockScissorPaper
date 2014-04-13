@@ -1,9 +1,9 @@
 ﻿'use strict'
 window.Models = window.Models || {};
-window.Models.Game = (function ($, api, logger) {
+window.Models.Game = (function ($, Core, logger) {
 
     var DEFAULT_RULESETID = 1;
-
+    var Api = new Core.Api();
     function Game(data) {
         $.extend(this, data, {
             status: 0
@@ -21,7 +21,7 @@ window.Models.Game = (function ($, api, logger) {
                 
                 log('player ' + playerid + ' selects ' + selectionText);
 
-                return api.put('Games', this.gameId, inputModel).then(function (response) {
+                return Api.put('Games', this.gameId, inputModel).then(function (response) {
                     me.status = response.Status;
                     if (me.hasFinished()) {
                         log('Game ' + me.gameId + ' Complete');
@@ -44,7 +44,7 @@ window.Models.Game = (function ($, api, logger) {
         createGameCommand.PlayerTwoId = player2Id;
         createGameCommand.RuleId = options.ruleSet || DEFAULT_RULESETID;
 
-        return api.post('Games', createGameCommand).then(function (response) {
+        return Api.post('Games', createGameCommand).then(function (response) {
             log('Game ' + response + ' created between player ' + createGameCommand.PlayerOneId + ' and player ' + createGameCommand.PlayerTwoId);
             return new Game({
                 gameId: response,
@@ -78,4 +78,4 @@ window.Models.Game = (function ($, api, logger) {
         create: create
     }
 
-})($, Api, ConsoleLogger);
+})($, Core, ConsoleLogger);

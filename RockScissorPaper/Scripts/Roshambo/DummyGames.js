@@ -1,17 +1,17 @@
 ﻿'use strict'
-window.DummyGame = (function ($, api, logger) {
+window.DummyGame = (function ($, Core, logger) {
     // Create player
-
+    var Api = new Core.Api();
     function createPlayer(name) {
         var data = {
             PlayerName: name
         };
-        return api.post('Players', data);
+        return Api.post('Players', data);
         
     }
 
     function getBotId() {
-        return api.get('Players');
+        return Api.get('Players');
     }
 
     function startDummyGame() {
@@ -22,7 +22,7 @@ window.DummyGame = (function ($, api, logger) {
                 PlayerTwoId: bot[0].PlayerId,
                 RuleId: 1
             };
-            api.post('Games', gameCommand)
+            Core.Api.post('Games', gameCommand)
                 .done(function (response) {
                     var moveCommand = {
                         Player: gameCommand.PlayerOneId,
@@ -47,7 +47,7 @@ window.DummyGame = (function ($, api, logger) {
         if (logger) {
             logger.log('Player Selected ' + selection);
         }
-        api.put('Games', command.GameId, inputModel).done(function (response) {
+        Api.put('Games', command.GameId, inputModel).done(function (response) {
             if (response.Status !== 5 && response.Status !== 6) {
                 
                 makeMove(command);
@@ -64,4 +64,4 @@ window.DummyGame = (function ($, api, logger) {
     return {
         startDummyGame: startDummyGame
     }
-})($, Api ,ConsoleLogger);
+})($, Core, ConsoleLogger);

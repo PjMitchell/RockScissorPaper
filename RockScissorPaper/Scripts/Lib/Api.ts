@@ -1,35 +1,31 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
-var Core;
-(function (Core) {
-    var Api = (function () {
-        function Api() {
-        }
-        Api.prototype.callAjax = function (type, path, data) {
+
+module Core {
+    export class Api {
+       private callAjax(type :string, path :string , data : any) {
             return $.ajax({
                 dataType: 'json',
                 type: type,
                 data: data,
                 url: path
             });
-        };
+       }
 
-        Api.prototype.get = function (route, id) {
+        get(route: string, id: any) {
             id = id || '';
             var path = '/api/' + route + '/' + id;
             return this.callAjax('GET', path, null);
-        };
+        }
 
-        Api.prototype.put = function (route, id, data) {
+        put(route :string, id: any, data: any) {
             var path = '/api/' + route + '/' + id;
             return this.callAjax('PUT', path, data);
-        };
+        }
 
-        Api.prototype.post = function (route, data) {
+         post(route: string, data : any) {
             var path = '/api/' + route;
             return this.callAjax('POST', path, data);
-        };
-        return Api;
-    })();
-    Core.Api = Api;
-})(Core || (Core = {}));
-//# sourceMappingURL=Api.js.map
+        }
+    }
+
+}

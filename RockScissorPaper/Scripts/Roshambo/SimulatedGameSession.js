@@ -1,19 +1,19 @@
 ﻿'use strict'
 window.Models = window.Models || {};
-window.Models.SimulatedGameSession = (function (_, $, api, gameRepository) {
+window.Models.SimulatedGameSession = (function (_, $, Core, gameRepository) {
     var _allBots,
         STATUS = { 
             stopped: 1,
             running: 2,
             stopping:3
         };
-
+    var Api = new Core.Api();
     // Private Funcs
 
     function init() {
         var initDefered;
         if (!initDefered) {
-            initDefered = api.get('Players').done(function (response) {
+            initDefered = Api.get('Players').done(function (response) {
                 _allBots = response;
             })
         }
@@ -34,7 +34,7 @@ window.Models.SimulatedGameSession = (function (_, $, api, gameRepository) {
             data = {
                 PlayerName: firstname[firstnameIndex] + ' ' + lastname[lastnameIndex]
             };
-        return api.post('Players', data);
+        return Api.post('Players', data);
     }
 
     function runGame(session) {
@@ -118,4 +118,4 @@ window.Models.SimulatedGameSession = (function (_, $, api, gameRepository) {
     return {
         create: create
     }
-})(_, $, Api, Models.Game);
+})(_, $, Core, Models.Game);
