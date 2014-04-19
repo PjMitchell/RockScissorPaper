@@ -256,13 +256,20 @@
     <Content Include="Scripts\Lib\underscore.js" />
     <Content Include="Scripts\Lib\underscore.min.js" />
     <Content Include="Scripts\TypeScriptBuildingSite\Game.js" />
-    <Content Include="Scripts\TypeScriptBuildingSite\Logger.js.map" />
-    <Content Include="Scripts\TypeScriptBuildingSite\Game.js.map" />
-    <Content Include="Scripts\TypeScriptBuildingSite\Roshambo.js.map" />
-    <TypeScriptCompile Include="Scripts\TypeScriptBuildingSite\Game.ts" />
-    <Content Include="Scripts\TypeScriptBuildingSite\Logger.js" />
-    <TypeScriptCompile Include="Scripts\TypeScriptBuildingSite\Roshambo.ts" />
+    <Content Include="Scripts\Roshambo\GamesSimulator.js.map" />
+    <Content Include="Scripts\Roshambo\SimulatedGameSession.js.map" />
+    <Content Include="Scripts\Lib\Api.js.map" />
+    <TypeScriptCompile Include="Scripts\Roshambo\GamesSimulator.ts" />
+    <Content Include="Scripts\TypeScriptBuildingSite\GamesSimulator.js" />
+    <Content Include="Scripts\Logger.js.map" />
+    <Content Include="Scripts\Roshambo\Game.js.map" />
+    <Content Include="Scripts\Roshambo\Roshambo.js.map" />
+    <TypeScriptCompile Include="Scripts\Roshambo\Game.ts" />
+    <Content Include="Scripts\Logger.js" />
+    <TypeScriptCompile Include="Scripts\Roshambo\Roshambo.ts" />
     <Content Include="Scripts\TypeScriptBuildingSite\Roshambo.js" />
+    <TypeScriptCompile Include="Scripts\Roshambo\SimulatedGameSession.ts" />
+    <Content Include="Scripts\TypeScriptBuildingSite\SimulatedGameSession.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -283,7 +290,8 @@
     <Content Include="Views\Home\DummyGame.cshtml" />
     <Content Include="Scripts\Lib\underscore.min.map" />
     <Content Include="Views\Shared\_PopupLayout.cshtml" />
-    <TypeScriptCompile Include="Scripts\TypeScriptBuildingSite\Logger.ts" />
+    <TypeScriptCompile Include="Scripts\Logger.ts" />
+    <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

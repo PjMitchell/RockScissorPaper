@@ -1,81 +1,88 @@
-﻿'use strict'
-window.Models = window.Models || {};
-window.Models.Game = (function ($, Core, logger) {
+﻿var Roshambo;
+(function (Roshambo) {
+    /// <reference path="../typings/jquery/jquery.d.ts" />
+    /// <reference path="../Lib/Api.ts" />
+    /// <reference path="../Logger.ts"/>
+    (function (Models) {
+        var GameOptions = (function () {
+            function GameOptions() {
+            }
+            return GameOptions;
+        })();
+        Models.GameOptions = GameOptions;
 
-    var DEFAULT_RULESETID = 1;
-    var Api = new Core.Api();
-    function Game(data) {
-        $.extend(this, data, {
-            status: 0
-        });
-        
-        if (typeof (this.executeMove) == 'undefined') {
+        var CreateGameCommand = (function () {
+            function CreateGameCommand() {
+            }
+            return CreateGameCommand;
+        })();
+
+        var Game = (function () {
+            function Game() {
+                this.DEFAULT_RULESETID = 1;
+                this.Api = new Core.Api();
+                this.logger = new Logging.DivConsoleLogger();
+            }
+            Game.prototype.hasFinished = function () {
+                return this.Status === 5 || this.Status === 6;
+            };
+
+            Game.prototype.create = function (player1Id, player2Id, options) {
+                var createGameCommand = new CreateGameCommand();
+                var options = options || new GameOptions();
+                createGameCommand.PlayerOneId = player1Id;
+                createGameCommand.PlayerTwoId = player2Id;
+                createGameCommand.RuleId = options.ruleSet || this.DEFAULT_RULESETID;
+
+                return this.Api.post('Games', createGameCommand).then(function (response) {
+                    this.log('Game ' + response + ' created between player ' + createGameCommand.PlayerOneId + ' and player ' + createGameCommand.PlayerTwoId);
+                    var game = new Game();
+                    game.GameId = response;
+                    game.Player1Id = createGameCommand.PlayerOneId;
+                    game.Player2Id = createGameCommand.PlayerTwoId;
+                    game.RuleSet = createGameCommand.RuleId;
+                    return game;
+                });
+            };
+
             Game.prototype.executeMove = function (playerid, selection) {
-                var me = this,
-                    inputModel = {
-                        PlayerId: playerid,
-                        GameId: me.gameId,
-                        Selection: selection
-                    },
-                    selectionText = getSelectionText(selection);
-                
-                log('player ' + playerid + ' selects ' + selectionText);
+                var inputModel = {
+                    PlayerId: playerid,
+                    GameId: this.GameId,
+                    Selection: selection
+                };
+                var selectionText = this.getSelectionText(selection);
 
-                return Api.put('Games', this.gameId, inputModel).then(function (response) {
-                    me.status = response.Status;
-                    if (me.hasFinished()) {
-                        log('Game ' + me.gameId + ' Complete');
+                this.log('player ' + playerid + ' selects ' + selectionText);
+
+                return this.Api.put('Games', this.GameId, inputModel).then(function (response) {
+                    this.Status = response.Status;
+                    if (this.hasFinished()) {
+                        this.log('Game ' + this.GameId + ' Complete');
                     }
                 });
-            }
-        }
-        if (typeof (this.hasFinished) == 'undefined') {
-            Game.prototype.hasFinished = function () {
-                return this.status === 5 || this.status === 6;
-            }
-        }
-    }
+            };
 
-    function create (player1Id, player2Id, options) {
-        var createGameCommand = {};
+            Game.prototype.getSelectionText = function (selectionInt) {
+                switch (selectionInt) {
+                    case 1:
+                        return "Rock";
+                    case 2:
+                        return "Scissor";
+                    case 3:
+                        return "Paper";
+                }
+            };
 
-        options = options || {};
-        createGameCommand.PlayerOneId = player1Id;
-        createGameCommand.PlayerTwoId = player2Id;
-        createGameCommand.RuleId = options.ruleSet || DEFAULT_RULESETID;
-
-        return Api.post('Games', createGameCommand).then(function (response) {
-            log('Game ' + response + ' created between player ' + createGameCommand.PlayerOneId + ' and player ' + createGameCommand.PlayerTwoId);
-            return new Game({
-                gameId: response,
-                player1Id: createGameCommand.PlayerOneId,
-                player2Id: createGameCommand.PlayerTwoId,
-                ruleSet: createGameCommand.RuleId
-            });
-        });
-    }
-
-    function getSelectionText(selectionInt) {
-        switch (selectionInt) {
-            case 1:
-                return "Rock";
-            case 2:
-                return "Scissor";
-            case 3:
-                return "Paper";
-        }
-    }
-
-    function log(message) {
-        if (logger) {
-            logger.log(message);
-        }
-    }
-
-
-    // PUBLIC
-    return {
-        create: create
-    }
-
-})($, Core, ConsoleLogger);
+            Game.prototype.log = function (message) {
+                if (this.logger) {
+                    this.logger.log(message);
+                }
+            };
+            return Game;
+        })();
+        Models.Game = Game;
+    })(Roshambo.Models || (Roshambo.Models = {}));
+    var Models = Roshambo.Models;
+})(Roshambo || (Roshambo = {}));
+//# sourceMappingURL=Game.js.map

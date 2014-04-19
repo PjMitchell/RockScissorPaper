@@ -17,7 +17,7 @@ namespace RockScissorPaper
                         "~/Scripts/Lib/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/gameSimulator").Include(
-                "~/Scripts/DivConsoleLogger.js",
+                "~/Scripts/Logger.js",
                 "~/Scripts/Roshambo/Game.js",
                 "~/Scripts/Roshambo/SimulatedGameSession.js",
                 "~/Scripts/Roshambo/GamesSimulator.js"));

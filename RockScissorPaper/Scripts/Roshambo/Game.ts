@@ -1,7 +1,7 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 /// <reference path="../Lib/Api.ts" />
-/// <reference path="Logger.ts"/>
-module Roshambo {
+/// <reference path="../Logger.ts"/>
+module Roshambo.Models {
     
     export class GameOptions {
         RuleSet: number;

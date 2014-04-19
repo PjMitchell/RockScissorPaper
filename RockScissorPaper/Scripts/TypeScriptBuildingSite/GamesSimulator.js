@@ -1,7 +1,7 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 /// <reference path="../typings/underscore/underscore.d.ts" />
 /// <reference path="../Lib/Api.ts" />
-/// <reference path="../Logger.ts"/>
+/// <reference path="Logger.ts"/>
 /// <reference path="SimulatedGameSession.ts"/>
 var GameSimulation;
 (function (GameSimulation) {

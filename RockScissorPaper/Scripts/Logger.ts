@@ -1,4 +1,4 @@
-﻿/// <reference path="../typings/jquery/jquery.d.ts" />
+﻿/// <reference path="typings/jquery/jquery.d.ts" />
 module Logging {
         export interface Logger {
             log(message :string);

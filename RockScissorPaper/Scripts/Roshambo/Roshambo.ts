@@ -1,40 +1,57 @@
 ﻿/// <reference path="../typings/jquery/jquery.d.ts" />
 /// <reference path="../Lib/Api.ts" />
-/// <reference path="Logger.ts"/>
-var Roshambo;
-(function (Roshambo) {
-    //export class RoshamboInputCommand {
-    //    PlayerId: number
-    //    GameId: number
-    //    Selection: number
-    //    }
-    var gameId, playerId, api = new Core.Api();
+/// <reference path="../Logger.ts"/>
 
-    function init(gameId, playerId) {
+module Roshambo {
+
+//export class RoshamboInputCommand {
+//    PlayerId: number
+//    GameId: number
+//    Selection: number 
+//    }
+
+
+    
+    var _gameId: number,
+    _playerId: number,
+    api = new Core.Api();
+
+    export function init(gameId: number, playerId: number) {
         $('#playerOptions').on('click', 'button', function (e) {
-            var $button = $(this), selection = $button.attr('data-selection');
-            this.processSelection(selection);
+            var $button = $(this),
+                selection = + $button.attr('data-selection');
+            processSelection(selection);
         });
-        this.gameId = gameId;
-        this.playerId = playerId;
-    }
-    Roshambo.init = init;
-
-    function processSelection(input) {
-        var inputModel = { PlayerId: this.playerId, GameId: this.gameId, Selection: input }, $buttonbox = $('#playerOptions');
-
-        this.api.put('Games', this.gameId, inputModel).done(function (data) {
-            this.processResult(data);
-        });
-        $buttonbox.children('button').attr('disabled', 'disabled').html('<img src="/Content/Images/ajax-loader.gif"/>');
+        _gameId = gameId;
+        _playerId = playerId;
     }
 
-    function processResult(data) {
-        var $banner = $('#gameBannerMessage'), $p1Selection = $('#p1Selection'), $p2Selection = $('#p2Selection'), $p1Score = $('#p1Score'), $p2Score = $('#p2Score'), $userMessage = $('#userMessage'), $gameRounds = $('#GameRounds');
+    function processSelection(input: number) {
+        var inputModel = { PlayerId: _playerId, GameId: _gameId, Selection: input },
+            $buttonbox = $('#playerOptions');
+
+        api.put('Games', _gameId, inputModel)
+            .done(function (data) {
+                processResult(data);
+            });
+        $buttonbox
+            .children('button')
+            .attr('disabled', 'disabled')
+            .html('<img src="/Content/Images/ajax-loader.gif"/>');
+    }
+
+    function processResult(data: any) {
+        var $banner = $('#gameBannerMessage'),
+            $p1Selection = $('#p1Selection'),
+            $p2Selection = $('#p2Selection'),
+            $p1Score = $('#p1Score'),
+            $p2Score = $('#p2Score'),
+            $userMessage = $('#userMessage'),
+            $gameRounds = $('#GameRounds');
 
         $banner.html(data.BannerMessage);
-        this.setCurrentSelection($p1Selection, data.PlayerOne.CurrentSelection);
-        this.setCurrentSelection($p2Selection, data.PlayerTwo.CurrentSelection);
+        setCurrentSelection($p1Selection, data.PlayerOne.CurrentSelection);
+        setCurrentSelection($p2Selection, data.PlayerTwo.CurrentSelection);
         $p1Score.html(data.PlayerOne.CurrentScore);
         $p2Score.html(data.PlayerTwo.CurrentScore);
         if (data.PlayerOne.IsViewer) {
@@ -44,19 +61,20 @@ var Roshambo;
         }
         $gameRounds.html(data.RoundMessage);
         if (data.Status === 5) {
-            this.removeButtons();
-            this.flashRoundResult(data);
-            setTimeout(function () {
-                this.processSelection(1);
-            }, 3000);
-        } else if (data.Status === 6) {
-        } else {
-            this.flashRoundResult(data);
+            removeButtons();
+            flashRoundResult(data);
+            setTimeout(function () { processSelection(1) }, 3000);
+        }
+        else if (data.Status === 6) {
+
+        }
+        else {
+            flashRoundResult(data);
         }
     }
 
-    function setCurrentSelection($divToUpdate, data) {
-        var output;
+    function setCurrentSelection($divToUpdate, data: number) {
+        var output: string
         switch (data) {
             case 1:
                 output = '/Content/Images/Selections/Rock.png';
@@ -84,7 +102,8 @@ var Roshambo;
     }
 
     function flashRoundResult(data) {
-        var $p1Selection = $('#p1Selection'), $p2Selection = $('#p2Selection');
+        var $p1Selection = $('#p1Selection'),
+            $p2Selection = $('#p2Selection');
         $p1Selection.css('opacity', '1');
         $p2Selection.css('opacity', '1');
         $p1Selection.animate({ "right": "-40px" }, "slow");
@@ -93,24 +112,31 @@ var Roshambo;
         if (data.PlayerOne.RoundOutcome === 2) {
             $p1Selection.animate({ "right": "-40px" }, "slow").animate({ "right": "0px" }, "slow");
             $p2Selection.animate({ "left": "-40px" }, "slow").animate({ "left": "0px" }, "slow");
-        } else if (data.PlayerOne.RoundOutcome === 1) {
+        }
+        else if (data.PlayerOne.RoundOutcome === 1) {
             $p1Selection.animate({ "right": "-30px" }, "slow").animate({ "opacity": "0.15" }, "slow").animate({ "right": "0px" }, "slow");
             $p2Selection.animate({ "left": "-60px" }, 1200).animate({ "left": "0px" }, "slow");
-        } else if (data.PlayerTwo.RoundOutcome === 1) {
+        }
+        else if (data.PlayerTwo.RoundOutcome === 1) {
             $p1Selection.animate({ "right": "-60px" }, 1200).animate({ "right": "0px" }, "slow");
             $p2Selection.animate({ "left": "-30px" }, "slow").animate({ "opacity": "0.15" }, "slow").animate({ "left": "0px" }, "slow");
         }
 
-        this.restoreButtons();
+        restoreButtons();
     }
 
     function restoreButtons() {
         var $buttonbox = $('#playerOptions');
         $buttonbox.children('button').each(function () {
-            var $this = $(this), text = $this.attr('data-selectionName');
+            var $this = $(this),
+                text = $this.attr('data-selectionName');
             $this.removeAttr('disabled');
             $this.html('<img src="/Content/Images/Selections/' + text + '.png")" height="25"/>');
         });
     }
-})(Roshambo || (Roshambo = {}));
-//# sourceMappingURL=Roshambo.js.map
+}
+
+
+
+
+
