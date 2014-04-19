@@ -3,8 +3,8 @@
 /// <reference path="../Lib/Api.ts" />
 /// <reference path="../Logger.ts"/>
 /// <reference path="SimulatedGameSession.ts"/>
-module GameSimulation{
-    import Session = Roshambo.Models.SimulatedGameSession.Session
+module Roshambo.Models.GameSimulator{
+    import Session = SimulatedGameSession.Session
     var _sessions = [],
         logger = new Logging.DivConsoleLogger();
     export function start(instances: number){
@@ -20,7 +20,7 @@ module GameSimulation{
         }
     }
 
-        function stop() {
+     export function stop() {
         var defArray = [],
             $stopdeferred = $.Deferred();
         log("Games Stopping");
@@ -28,7 +28,8 @@ module GameSimulation{
         _.each(_sessions, function(session : Session) {
             defArray.push( session.Stop());
         });
-        $.when.apply(this, defArray)
+       
+        $.when.apply($, defArray)
             .done(function () {
                 log("All games Stopped");
                 $stopdeferred.resolve();

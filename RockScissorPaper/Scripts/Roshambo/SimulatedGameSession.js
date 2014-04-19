@@ -11,7 +11,7 @@
                 GameStatus[GameStatus["stopping"] = 3] = "stopping";
             })(SimulatedGameSession.GameStatus || (SimulatedGameSession.GameStatus = {}));
             var GameStatus = SimulatedGameSession.GameStatus;
-            var _allBots, api, gamerepository = new Models.Game(), firstnameList = ['Susan', 'Jessica', 'Anna', 'Debra', 'Rita', 'Pepper', 'Kim', 'Vicky', 'Pam', 'Dan', 'Jason', 'Jeff', 'Eric', 'Scott', 'Dave', 'Chad', 'Steve', 'Jermaine', 'Liam', 'Richard', 'Jenny'], lastnameList = ['Clark', 'Ballmer', 'Wilson', 'Guthrie', 'Jackson', 'Lewis', 'Brown', 'Bailey', 'Cook', 'Bell', 'Cooper', 'Howard', 'Morris', 'Phillips', 'Parker', 'Ellis', 'Jordan', 'Tucker', 'Sims', 'Fox', 'Greene', 'Banks', 'Fuller', 'Brewer', 'Cannon', 'Hogan', 'Phelps', 'Fischer', 'Kemp'];
+            var _allBots, api = new Core.Api(), gameRepository = new Models.Game(), firstnameList = ['Susan', 'Jessica', 'Anna', 'Debra', 'Rita', 'Pepper', 'Kim', 'Vicky', 'Pam', 'Dan', 'Jason', 'Jeff', 'Eric', 'Scott', 'Dave', 'Chad', 'Steve', 'Jermaine', 'Liam', 'Richard', 'Jenny'], lastnameList = ['Clark', 'Ballmer', 'Wilson', 'Guthrie', 'Jackson', 'Lewis', 'Brown', 'Bailey', 'Cook', 'Bell', 'Cooper', 'Howard', 'Morris', 'Phillips', 'Parker', 'Ellis', 'Jordan', 'Tucker', 'Sims', 'Fox', 'Greene', 'Banks', 'Fuller', 'Brewer', 'Cannon', 'Hogan', 'Phelps', 'Fischer', 'Kemp'];
 
             function init() {
                 var initDefered;
@@ -42,7 +42,7 @@
                         var options = {
                             ruleSet: 1
                         };
-                        this.gameRepository.create(playerId[0], bot.PlayerId, options).done(function (game) {
+                        gameRepository.create(playerId[0], bot.PlayerId, options).done(function (game) {
                             session.CurrentGame = game;
                             processRound(session);
                         });
@@ -74,13 +74,13 @@
                     } else if (this.Status === 1 /* stopped */) {
                         this._onStopDef.resolve();
                     }
-                    return this._onStopDef.resolve();
+                    return this._onStopDef;
                 };
 
                 Session.prototype.Start = function () {
                     if (this.Status === 3 /* stopping */) {
                         this.Status = 2 /* running */;
-                    } else if (this.Status === 1 /* stopped */) {
+                    } else {
                         this.Status = 2 /* running */;
                         runGame(this);
                     }

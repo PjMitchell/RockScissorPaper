@@ -11,7 +11,7 @@ module Core {
             });
        }
 
-        get(route: string, id: any) {
+        get(route: string, id?: any) {
             id = id || '';
             var path = '/api/' + route + '/' + id;
             return this.callAjax('GET', path, null);

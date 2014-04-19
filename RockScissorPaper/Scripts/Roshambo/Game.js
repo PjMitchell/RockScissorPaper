@@ -33,9 +33,10 @@
                 createGameCommand.PlayerOneId = player1Id;
                 createGameCommand.PlayerTwoId = player2Id;
                 createGameCommand.RuleId = options.ruleSet || this.DEFAULT_RULESETID;
+                var instance = this;
 
                 return this.Api.post('Games', createGameCommand).then(function (response) {
-                    this.log('Game ' + response + ' created between player ' + createGameCommand.PlayerOneId + ' and player ' + createGameCommand.PlayerTwoId);
+                    instance.log('Game ' + response + ' created between player ' + createGameCommand.PlayerOneId + ' and player ' + createGameCommand.PlayerTwoId);
                     var game = new Game();
                     game.GameId = response;
                     game.Player1Id = createGameCommand.PlayerOneId;
@@ -50,17 +51,20 @@
                     PlayerId: playerid,
                     GameId: this.GameId,
                     Selection: selection
-                };
+                }, instance = this;
                 var selectionText = this.getSelectionText(selection);
 
                 this.log('player ' + playerid + ' selects ' + selectionText);
 
                 return this.Api.put('Games', this.GameId, inputModel).then(function (response) {
-                    this.Status = response.Status;
-                    if (this.hasFinished()) {
-                        this.log('Game ' + this.GameId + ' Complete');
+                    instance.Status = response.Status;
+                    if (instance.hasFinished()) {
+                        instance.log('Game ' + instance.GameId + ' Complete');
                     }
                 });
+            };
+
+            Game.prototype.handleGamePutRequest = function (response) {
             };
 
             Game.prototype.getSelectionText = function (selectionInt) {

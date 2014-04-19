@@ -4,8 +4,8 @@
 module Roshambo.Models.SimulatedGameSession{
     export enum GameStatus { stopped = 1, running = 2, stopping =3}
     var _allBots,
-        api,
-        gamerepository = new Game(),
+        api = new Core.Api(),
+        gameRepository = new Game(),
         firstnameList = ['Susan', 'Jessica', 'Anna', 'Debra', 'Rita', 'Pepper', 'Kim', 'Vicky', 'Pam', 'Dan', 'Jason', 'Jeff', 'Eric', 'Scott', 'Dave', 'Chad', 'Steve', 'Jermaine', 'Liam', 'Richard', 'Jenny'],
         lastnameList = ['Clark', 'Ballmer', 'Wilson', 'Guthrie', 'Jackson', 'Lewis', 'Brown', 'Bailey', 'Cook', 'Bell', 'Cooper', 'Howard', 'Morris', 'Phillips', 'Parker', 'Ellis', 'Jordan', 'Tucker', 'Sims', 'Fox', 'Greene', 'Banks', 'Fuller', 'Brewer', 'Cannon', 'Hogan', 'Phelps', 'Fischer', 'Kemp'];
 
@@ -42,7 +42,7 @@ module Roshambo.Models.SimulatedGameSession{
                 var options = {
                     ruleSet: 1
                 };
-                this.gameRepository.create(playerId[0], bot.PlayerId, options)
+                    gameRepository.create(playerId[0], bot.PlayerId, options)
                     .done(function (game) {
                         session.CurrentGame = game;
                         processRound(session);
@@ -81,13 +81,13 @@ module Roshambo.Models.SimulatedGameSession{
             else if (this.Status === GameStatus.stopped) {
                 this._onStopDef.resolve();
             }
-            return this._onStopDef.resolve();
+            return this._onStopDef;
         }
 
         Start() {
             if (this.Status === GameStatus.stopping) {
                 this.Status = GameStatus.running;
-            } else if (this.Status === GameStatus.stopped) {
+            } else {
                 this.Status = GameStatus.running;
                 runGame(this);
             }

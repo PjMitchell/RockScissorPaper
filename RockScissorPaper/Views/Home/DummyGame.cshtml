@@ -37,12 +37,12 @@
                         i = 5;
                         $Textbox.val(5);
                     }
-                    GameSimulator.start(i);
+                    Roshambo.Models.GameSimulator.start(i);
                     $button.html('Stop');
                     $button.data('start', false);
                 }
                 else {
-                    GameSimulator.stop().done(function () {
+                    Roshambo.Models.GameSimulator.stop().done(function () {
                         $button.html('Start');
                         $button.data('start', true);
                         $button.removeAttr('disabled', 'disabled');

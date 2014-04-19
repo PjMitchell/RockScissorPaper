@@ -20,7 +20,8 @@ namespace RockScissorPaper
                 "~/Scripts/Logger.js",
                 "~/Scripts/Roshambo/Game.js",
                 "~/Scripts/Roshambo/SimulatedGameSession.js",
-                "~/Scripts/Roshambo/GamesSimulator.js"));
+                "~/Scripts/Roshambo/GamesSimulatorService.js"
+                ));
     
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
